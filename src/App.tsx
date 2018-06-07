@@ -1,7 +1,7 @@
 import { AppBar, Badge, Divider, Drawer, Hidden, IconButton, List, ListItem, ListItemIcon, ListItemText, Theme, Toolbar, Typography, WithStyles, withStyles } from '@material-ui/core';
 import createStyles from '@material-ui/core/styles/createStyles';
 import TodoIcon from '@material-ui/icons/FormatListNumbered';
-import HomeIcon from '@material-ui/icons/Home';
+// import HomeIcon from '@material-ui/icons/Home';
 import MenuIcon from '@material-ui/icons/Menu';
 import { createBrowserHistory } from 'history';
 import * as React from 'react';
@@ -12,6 +12,7 @@ import HomePage from './pages/HomePage';
 import TodoPage from './pages/TodoPage';
 import { RootState } from './reducers/index';
 import withRoot from './withRoot';
+import { AppRoute } from './router/router';
 
 export namespace App {
     export interface Props extends RouteComponentProps<void>, WithStyles<typeof styles> {
@@ -38,34 +39,41 @@ class App extends React.Component<App.Props, App.State> {
             <Route exact={true} path="/todo" component={TodoPage} />
         </div>
     );
+    renderDrawer() {
+        const tabs = [
+            {
+                title: 'Home',
+                icon: 'home',
+                onClick: () => history.push('/'),
+            }, {
+                title: 'Todo',
+                icon: 'view_list',
+                onClick: () => history.push('/todo'),
+            },
+        ]
+        const drawer = tabs.map( tab => (
+            <div>
+                <Divider />
+                <List>
+                    <ListItem button onClick={tab.onClick}>
+                        <ListItemIcon>
+                            <i className="material-icons" style={{color: '#1107da'}}>{tab.icon}</i>
+                        </ListItemIcon>
+                        <ListItemText primary={tab.title} />
+                    </ListItem>
+                </List>
 
-    render() {
-
-        let drawer = (
+            </div>
+        ))
+        return (
             <div>
                 <div className={this.props.classes.drawerHeader} />
-                <Divider />
-                <List>
-                    <ListItem button onClick={() => history.push('/')}>
-                        <ListItemIcon>
-                            <HomeIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Home" />
-                    </ListItem>
-                </List>
-                <Divider />
-                <List>
-                    <ListItem button onClick={() => history.push('/todo')}>
-                        <ListItemIcon>
-                            {this.renderTodoIcon()}
-                        </ListItemIcon>
-                        <ListItemText primary="Todo" />
-                    </ListItem>
-                </List>
+                {drawer}
                 <div style={{ height: 10000 }} />
             </div>
-        );
-
+        )
+    }
+    render() {
         return (
             <Router history={history}>
                 <div className={this.props.classes.root}>
@@ -77,7 +85,7 @@ class App extends React.Component<App.Props, App.State> {
                                     aria-label="open drawer"
                                     onClick={this.handleDrawerToggle}
                                     className={this.props.classes.navIconHide}
-                                >
+                                    >
                                     <MenuIcon />
                                 </IconButton>
                                 <Typography variant="title" color="inherit" noWrap>
@@ -98,7 +106,7 @@ class App extends React.Component<App.Props, App.State> {
                                     keepMounted: true, // Better open performance on mobile.
                                 }}
                             >
-                                {drawer}
+                                {this.renderDrawer()}
                             </Drawer>
                         </Hidden>
                         <Hidden smDown implementation="css">
@@ -108,11 +116,12 @@ class App extends React.Component<App.Props, App.State> {
                                 classes={{
                                     paper: this.props.classes.drawerPaper,
                                 }}
-                            >
-                                {drawer}
+                                >
+                                {this.renderDrawer()}
                             </Drawer>
                         </Hidden>
-                        {this.routes}
+                        {/* {this.routes} */}
+                        <AppRoute />
                     </div>
                 </div>
             </Router>

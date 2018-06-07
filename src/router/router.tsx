@@ -1,0 +1,49 @@
+import { Route, RouteComponentProps } from 'react-router'
+import * as React from 'react';
+import { connect } from 'react-redux';
+
+import { getPageList } from "../helper/module";
+import { Theme, withStyles, WithStyles } from '@material-ui/core';
+import createStyles from '@material-ui/core/styles/createStyles';
+import { RootState } from '../reducers';
+
+const pages = getPageList()
+
+
+export namespace AppRouter {
+  export interface Props extends RouteComponentProps<void>, WithStyles<typeof styles> {
+  }
+
+  export interface State {
+    open: boolean;
+  }
+}
+
+class AppRouter extends React.Component<AppRouter.Props, AppRouter.State> {
+  render() {
+    const routesRender = pages.map((page: any) => (
+      <Route {...page} />
+    ))
+    return (
+      <div className={this.props.classes.body}>
+        {routesRender}
+      </div>
+    );
+  }
+}
+const styles = (theme: Theme) => createStyles({
+  body: {
+    backgroundColor: theme.palette.background.default,
+    width: '100%',
+    height: 'calc(100% - 56px)',
+    marginTop: 56,
+    [theme.breakpoints.up('sm')]: {
+        height: 'calc(100% - 64px)',
+        marginTop: 64,
+    },
+  }
+})
+const mapStateToProps = (state: RootState, props: any) => ({
+
+})
+export const AppRoute = withStyles(styles)(connect(mapStateToProps)(AppRouter))
