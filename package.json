@@ -5,7 +5,9 @@
   "dependencies": {
     "@material-ui/core": "^1.2.0",
     "@material-ui/icons": "^1.1.0",
+    "@types/classnames": "^2.2.4",
     "@types/react-router-dom": "^4.2.7",
+    "classnames": "^2.2.6",
     "npm": "^5.7.1",
     "ramda": "^0.25.0",
     "react": "^16.4.0",

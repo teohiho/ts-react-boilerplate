@@ -1,12 +1,14 @@
-import { Route, RouteComponentProps } from 'react-router'
+import { RouteComponentProps } from 'react-router'
 import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { getPageList } from "../helper/module";
 import { Theme, withStyles, WithStyles } from '@material-ui/core';
 import createStyles from '@material-ui/core/styles/createStyles';
-import { RootState } from '../reducers';
-
+// import { RootState } from '../reducers';
+import DashBoard from '../layout/Dashboard';
+import { RootState } from '../conf/redux/reducer';
+import { BrowserRouter, Route } from 'react-router-dom';
 const pages = getPageList()
 
 
@@ -21,12 +23,19 @@ export namespace AppRouter {
 
 class AppRouter extends React.Component<AppRouter.Props, AppRouter.State> {
   render() {
-    const routesRender = pages.map((page: any) => (
-      <Route {...page} />
+    const routesRender = pages.map((page: any, index: number) => (
+      <Route {...page} key={index} />
     ))
+    // Switch case layout 
     return (
       <div className={this.props.classes.body}>
-        {routesRender}
+        <DashBoard routes={pages}>
+          <BrowserRouter>
+            <div>
+              {routesRender}
+            </div>
+          </BrowserRouter>
+        </DashBoard>
       </div>
     );
   }
