@@ -1,7 +1,9 @@
 import { todo } from './todo/todo';
 import { home } from './home/home';
+import { sand } from './sand/sand';
 
 export const module = {
-  todo,
   home,
+  todo,
+  sand,
 }

@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "build/dist",
+    // "module": "commonjs",
     "module": "esnext",
     "target": "es5",
     "lib": ["es6", "dom"],
@@ -15,7 +16,11 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@asset/*": ["./asset/*"]
+    }
   },
   "exclude": [
     "node_modules",

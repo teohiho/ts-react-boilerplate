@@ -1,16 +1,20 @@
 import * as React from 'react';
 import { connect, Dispatch } from 'react-redux';
-import { Theme, createStyles, withStyles, WithStyles } from '@material-ui/core';
-// import { RouteComponentProps } from 'react-router';
-import SlideBar from '../tpl/SlideBar/SlideBar';
+import { withStyles, WithStyles } from '@material-ui/core';
+import { RouteComponentProps } from 'react-router';
+import dashboardStyle from './Dashboard.style';
+import { SlideBar, Header } from '../tpl/';
+import { imageResource } from '../theme/default';
 
-export interface StateProps {
+export interface IDashboardStateProps {
 }
 
-export interface IDashboardDispatchProps {}
+export interface IDashboardDispatchProps {
+  
+}
 
 export namespace Dashboard {
-  export interface Props extends WithStyles<typeof styles> {
+  export interface Props extends RouteComponentProps<void>, WithStyles<typeof dashboardStyle> {
     renderRouter?: Function,
     routes: any[],
   }
@@ -23,20 +27,25 @@ class Dashboard extends React.Component<Dashboard.Props, Dashboard.State> {
     return this.props.children
   }
   public render() {
-    const { routes } = this.props;
+    // console.log('>>>', this.props)
+    const { routes, classes, ...routeHistory } = this.props;
     return (
-      <div>
+      <div className={classes.wrapper}>
         <SlideBar
           routes={routes}
-          logoText={"Creative Tim"}
+          logoText={"Track It For Life"}
           // logo={logo}
-          // image={image}
+          image={imageResource.slideBar[1]}
           // handleDrawerToggle={this.handleDrawerToggle}
           // open={this.state.mobileOpen}
           color="blue"
-          // {...rest}
+          {...routeHistory}
         />
-        <div>
+        <div className={classes.mainPanel}>
+          <Header
+              routes={routes}
+             {...routeHistory}
+          />
           {this.renderRouter()}
         </div>
       </div>
@@ -44,13 +53,8 @@ class Dashboard extends React.Component<Dashboard.Props, Dashboard.State> {
   }
 }
 
-const styles = (theme: Theme) => createStyles({
-  root: {
-    padding: theme.spacing.unit * 10,
-  },
-});
 
-const mapStateToProps = (state: any): StateProps => {
+const mapStateToProps = (state: any): IDashboardStateProps => {
   return {
     // ...mapStateToProps
   };
@@ -62,6 +66,6 @@ const mapDispatchToProps = (dispatch: Dispatch<any>): IDashboardDispatchProps =>
   };
 };
 
-export default withStyles(styles)<Dashboard.Props>(connect(mapStateToProps, mapDispatchToProps)(Dashboard));
+export default withStyles(dashboardStyle)<Dashboard.Props>(connect(mapStateToProps, mapDispatchToProps)(Dashboard));
 
 

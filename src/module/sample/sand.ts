@@ -1,5 +1,5 @@
 import { page } from "./page/page";
 
-export const todo = {
+export const sand = {
   page,
 }

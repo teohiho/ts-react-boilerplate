@@ -1,5 +1,6 @@
 import SlideBar from './SlideBar/SlideBar'
-
-export default {
+import Header from './Header/Header'
+export {
   SlideBar,
+  Header
 }

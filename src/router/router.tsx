@@ -1,4 +1,4 @@
-import { RouteComponentProps } from 'react-router'
+import { RouteComponentProps, Switch } from 'react-router'
 import * as React from 'react';
 import { connect } from 'react-redux';
 
@@ -8,7 +8,13 @@ import createStyles from '@material-ui/core/styles/createStyles';
 // import { RootState } from '../reducers';
 import DashBoard from '../layout/Dashboard';
 import { RootState } from '../conf/redux/reducer';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { 
+  // BrowserRouter,
+  Route,
+  Router } from 'react-router-dom';
+import { createBrowserHistory } from "history";
+const hist = createBrowserHistory();
+
 const pages = getPageList()
 
 
@@ -22,34 +28,41 @@ export namespace AppRouter {
 }
 
 class AppRouter extends React.Component<AppRouter.Props, AppRouter.State> {
-  render() {
+  renderDashBoard = (props: any) => {
     const routesRender = pages.map((page: any, index: number) => (
       <Route {...page} key={index} />
     ))
+    return (
+      <DashBoard routes={pages} {...props} >
+        <Switch>
+          {routesRender}
+        </Switch>
+      </DashBoard>
+    )
+  }
+  render() {
     // Switch case layout 
     return (
       <div className={this.props.classes.body}>
-        <DashBoard routes={pages}>
-          <BrowserRouter>
-            <div>
-              {routesRender}
-            </div>
-          </BrowserRouter>
-        </DashBoard>
+        <Router history={hist}>
+          <Switch>
+            <Route path={'/'} render={this.renderDashBoard} />
+          </Switch>
+        </Router>
       </div>
     );
   }
 }
 const styles = (theme: Theme) => createStyles({
   body: {
-    backgroundColor: theme.palette.background.default,
-    width: '100%',
-    height: 'calc(100% - 56px)',
-    marginTop: 56,
-    [theme.breakpoints.up('sm')]: {
-        height: 'calc(100% - 64px)',
-        marginTop: 64,
-    },
+    // backgroundColor: theme.palette.background.default,
+    // width: '100%',
+    // height: 'calc(100% - 56px)',
+    // marginTop: 56,
+    // [theme.breakpoints.up('sm')]: {
+    //     height: 'calc(100% - 64px)',
+    //     marginTop: 64,
+    // },
   }
 })
 const mapStateToProps = (state: RootState, props: any) => ({

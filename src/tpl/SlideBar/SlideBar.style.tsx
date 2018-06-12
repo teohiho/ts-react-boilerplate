@@ -19,40 +19,51 @@ import {
 
 
 const themeStyle = (theme: Theme) => createStyles({
+  container: {
+    width: drawerWidth + 30,
+    // height: "100vh",
+    // ...transition,
+    // ...boxShadow,
+    padding: '30px'
+  },
   drawerPaper: {
     border: "none",
-    position: "fixed",
-    top: "0",
-    bottom: "0",
-    left: "0",
-    zIndex: 1,
-    // overflow: 'auto',
+    // width: drawerWidth,
+    height: "100vh",
+    ...transition,
     ...boxShadow,
-    width: drawerWidth,
-    [theme.breakpoints.up("md")]: {
-      width: drawerWidth,
-      position: "fixed",
-      height: "100%"
-    },
-    [theme.breakpoints.down("sm")]: {
-      width: drawerWidth,
-      ...boxShadow,
-      position: "fixed",
-      display: "block",
-      top: "0",
-      height: "100vh",
-      right: "0",
-      left: "auto",
-      zIndex: "1032",
-      visibility: "visible",
-      overflowY: "visible",
-      borderTop: "none",
-      textAlign: "left",
-      paddingRight: "0px",
-      paddingLeft: "0",
-      transform: `translate3d(${drawerWidth}px, 0, 0)`,
-      ...transition
-    }
+    // position: "fixed",
+    // top: "0",
+    // bottom: "0",
+    // left: "0",
+    // zIndex: 1,
+    // // overflow: 'auto',
+    // ...boxShadow,
+    // width: drawerWidth,
+    // [theme.breakpoints.up("md")]: {
+    //   width: drawerWidth,
+    //   position: "fixed",
+    //   height: "100%"
+    // },
+    // [theme.breakpoints.down("sm")]: {
+    //   width: drawerWidth,
+    //   ...boxShadow,
+    //   position: "fixed",
+    //   display: "block",
+    //   top: "0",
+    //   height: "100vh",
+    //   right: "0",
+    //   left: "auto",
+    //   zIndex: "1032",
+    //   visibility: "visible",
+    //   overflowY: "visible",
+    //   borderTop: "none",
+    //   textAlign: "left",
+    //   paddingRight: "0px",
+    //   paddingLeft: "0",
+    //   transform: `translate3d(${drawerWidth}px, 0, 0)`,
+    //   ...transition
+    // }
   },
   logo: {
     position: "relative",
@@ -102,12 +113,23 @@ const themeStyle = (theme: Theme) => createStyles({
     zIndex: 1,
     position: "fixed",
     height: "100%",
-    width: "100%",
+    // width: "100%",
+    width: drawerWidth,
     display: "block",
     top: 0,
     left: 0,
     backgroundSize: "cover",
     backgroundPosition: "center center",
+    "&:after": {
+      position: "absolute",
+      zIndex: 3,
+      width: "100%",
+      height: "100%",
+      content: '""',
+      display: "block",
+      background: "#000",
+      opacity: 0.7,
+    },
     // "&:after": {
       // position: "absolute",
       // zIndex: "3",

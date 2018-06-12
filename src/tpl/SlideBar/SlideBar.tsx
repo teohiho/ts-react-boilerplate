@@ -9,10 +9,11 @@ import {
   Hidden,
   List,
   ListItem,
-  ListItemIcon,
+  // ListItemIcon,
   ListItemText,
 } from "@material-ui/core";
 import styles from './SlideBar.style';
+import { RouteComponentProps } from 'react-router';
 
 interface ISlideBarStateProps {
   
@@ -20,7 +21,7 @@ interface ISlideBarStateProps {
 
 interface ISlideBarDispatchProps {}
 
-interface ISlideBarProps extends WithStyles<typeof styles> {
+interface ISlideBarProps extends RouteComponentProps<void>, WithStyles<typeof styles> {
   logo?: string,
   logoText?: string,
   routes: any[],
@@ -34,26 +35,29 @@ interface ISlideBarState {}
 
 class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
   private renderBrand() {
-    const { classes, logo, logoText } = this.props;
+    const { classes,
+      // logo,
+      logoText
+     } = this.props;
     return (
       <div className={classes.logo}>
-        <a href="https://www.creative-tim.com" className={classes.logoLink}>
-          <div className={classes.logoImage}>
+        <a href="/dashboard" className={classes.logoLink}>
+          {/* <div className={classes.logoImage}>
             <img src={logo} alt="logo" className={classes.img} />
-          </div>
+          </div> */}
           {logoText}
         </a>
       </div>
     )
   }
   private activeRoute(routeName: string) {
-    // return this.props.location.pathname.indexOf(routeName) > -1 ? true : false;
-    return false;
+    return this.props.location.pathname.indexOf(routeName) > -1 ? true : false;
+    // return true;
   }
   private renderLink() {
     const { classes, routes, color } = this.props;
     return (
-      <List className={classes.list}>
+      <List >
         {routes.map((prop, key) => {
           if (prop.redirect) return null;
           const listItemClasses = cx({
@@ -70,9 +74,9 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
               key={key}
             >
               <ListItem button className={classes.itemLink + listItemClasses}>
-                <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
+                {/* <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
                   <prop.icon />
-                </ListItemIcon>
+                </ListItemIcon> */}
                 <ListItemText
                   primary={prop.sidebarName}
                   className={classes.itemText + whiteFontClasses}
@@ -88,7 +92,7 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
   public render() {
     const { classes, image, open, handleDrawerToggle } = this.props;
     return (
-      <div>
+      <div className={classes.container} >
         <Hidden mdUp>
         <Drawer
           variant="temporary"
@@ -103,7 +107,7 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
           }}
         >
           {this.renderBrand()}
-          <div className={classes.sidebarWrapper}>
+          <div >
             {/* <HeaderLinks /> */}
             {this.renderLink()}
           </div>

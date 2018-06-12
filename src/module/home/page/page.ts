@@ -2,8 +2,9 @@ import HomePage from './Home.page'
 
 export const page = {
   route: {
-    path: '/',
+    path: '/dashboard',
     exact: true,
-    component: HomePage
+    component: HomePage,
+    sidebarName: 'Dashboard',
   }
 }

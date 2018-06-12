@@ -6,7 +6,6 @@ import {
 } from "@material-ui/core";
 import styles from './Sand.style';
 import { RouteComponentProps } from 'react-router';
-import { imageResource } from 'theme/default';
 
 export interface ISandStateProps {
 }
@@ -28,10 +27,7 @@ export namespace Sand {
 class Sand extends React.Component<Sand.Props, Sand.State> {
   public render() {
     // const { classes, image, open, handleDrawerToggle } = this.props;
-    
-    return (
-      <img src={imageResource.slideBar[0]} alt="fireSpot"/>
-    )
+    return null;
   }
 }
 

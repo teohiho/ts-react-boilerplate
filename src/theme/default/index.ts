@@ -17,7 +17,7 @@
 // ##############################
 // // // Variables - Styles that are used on more than one component
 // #############################
-
+import imageResource from './image';
 const drawerWidth = 260;
 
 const transition = {
@@ -153,5 +153,6 @@ export {
   purpleCardHeader,
   cardActions,
   cardHeader,
-  defaultBoxShadow
+  defaultBoxShadow,
+  imageResource
 };
