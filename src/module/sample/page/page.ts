@@ -6,5 +6,6 @@ export const page = {
     exact: true,
     component: SandPage,
     sidebarName: 'Sandbox',
+    navBarName: 'Sandbox',
   }
 }

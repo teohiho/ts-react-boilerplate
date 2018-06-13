@@ -37,7 +37,6 @@ class Dashboard extends React.Component<Dashboard.Props, Dashboard.State> {
     return this.props.children
   }
   public render() {
-    // console.log('>>>', this.props)
     const { routes, classes, ...routeHistory } = this.props;
     return (
       <div className={classes.wrapper}>
@@ -54,7 +53,6 @@ class Dashboard extends React.Component<Dashboard.Props, Dashboard.State> {
         <div className={classes.mainPanel}>
           <Header
               routes={routes}
-              // color="primary"
               handleDrawerToggle={this.handleDrawerToggle}
              {...routeHistory}
           />

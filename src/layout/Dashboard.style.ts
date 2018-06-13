@@ -10,7 +10,6 @@ const dashboardStyle = (theme: Theme) => createStyles({
     padding: theme.spacing.unit * 10,
   },
   mainPanel: {
-    // flex: 1,
     width: '100%',
     [theme.breakpoints.up("md")]: {
       width: `calc(100% - ${drawerWidth}px)`
@@ -20,16 +19,12 @@ const dashboardStyle = (theme: Theme) => createStyles({
     float: "right",
     ...transition,
     maxHeight: "100%",
-    // width: "100%",
     overflowScrolling: 'touch'
   },
   wrapper: {
     position: "relative",
     top: "0",
     height: "100vh",
-    // display: 'flex',
-    // flex: 1,
-    // flexDirection: 'row',
   },
 });
 export default dashboardStyle;

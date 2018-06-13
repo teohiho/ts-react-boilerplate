@@ -36,7 +36,13 @@ export namespace Header {
 
 class Header extends React.Component<Header.Props, Header.State> {
   private makeBrand() {
-    return 'Abc'
+    const { routes, location: { pathname } } = this.props;
+    for (const prop of routes) {
+      if (prop.path === pathname) {
+        return prop.navBarName
+      }
+    }
+    return ''
   }
   public render() {
     // const { classes, image, open, handleDrawerToggle } = this.props;

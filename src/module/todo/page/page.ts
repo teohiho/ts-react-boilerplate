@@ -6,5 +6,6 @@ export const page = {
     exact: true,
     component: TodoPage,
     sidebarName: 'Todo',
+    navBarName: 'Todo',
   }
 }
