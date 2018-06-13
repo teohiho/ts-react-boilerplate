@@ -20,8 +20,8 @@ import {
 
 const themeStyle = (theme: Theme) => createStyles({
   container: {
-    width: drawerWidth,
-    height: "100%",
+    // width: drawerWidth,
+    // height: "100%",
     // ...transition,
     // ...boxShadow,
     // padding: '30px',
