@@ -20,11 +20,14 @@ import {
 
 const themeStyle = (theme: Theme) => createStyles({
   container: {
-    width: drawerWidth + 30,
-    // height: "100vh",
+    width: drawerWidth,
+    height: "100%",
     // ...transition,
     // ...boxShadow,
-    padding: '30px'
+    // padding: '30px',
+    // backgroundSize: "cover",
+    // backgroundPosition: "center center",
+    // backgroundColor: 'red',
   },
   drawerPaper: {
     border: "none",

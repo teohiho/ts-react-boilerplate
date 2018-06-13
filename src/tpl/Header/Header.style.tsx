@@ -16,8 +16,8 @@ import {
 const themeStyle = (theme: Theme) => createStyles({
   appBar: {
     // flex: 1,
-    backgroundColor: "red",
-    height: "50px",
+    // backgroundColor: "red",
+    height: "30px",
     // boxShadow: "none",
     // borderBottom: "0",
     // marginBottom: "0",
@@ -30,12 +30,13 @@ const themeStyle = (theme: Theme) => createStyles({
     // borderRadius: "3px",
     // padding: "10px 0",
     // transition: "all 150ms ease 0s",
-    // minHeight: "50px",
+    minHeight: "30px",
     // display: "block"
   },
   container: {
     // ...container,
-    minHeight: "50px",
+    height: "70px",
+    minHeight: "30px",
   },
   flex: {
     flex: 1
@@ -52,12 +53,12 @@ const themeStyle = (theme: Theme) => createStyles({
     }
   },
   appResponsive: {
-    top: "8px"
+    // top: "8px"
   },
   primary: {
     backgroundColor: primaryColor,
     color: "#FFFFFF",
-    ...defaultBoxShadow
+    // ...defaultBoxShadow
   },
   info: {
     backgroundColor: infoColor,

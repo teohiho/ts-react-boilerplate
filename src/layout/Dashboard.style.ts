@@ -1,6 +1,7 @@
 import { 
   // drawerWidth, 
-  transition } from "../theme/default";
+  // transition 
+} from "../theme/default";
 import { Theme } from '@material-ui/core';
 import createStyles from '@material-ui/core/styles/createStyles';
 
@@ -9,14 +10,15 @@ const dashboardStyle = (theme: Theme) => createStyles({
     padding: theme.spacing.unit * 10,
   },
   mainPanel: {
-    width: '100%',
+    flex: 1,
+    // width: '100%',
     // [theme.breakpoints.up("md")]: {
     //   width: `calc(100% - ${drawerWidth}px)`
     // },
     // overflow: "auto",
     // position: "relative",
     // float: "right",
-    ...transition,
+    // ...transition,
     // maxHeight: "100%",
     // width: "100%",
     // overflowScrolling: 'touch'

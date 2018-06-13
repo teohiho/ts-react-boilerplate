@@ -13,6 +13,7 @@ import * as cx from 'classnames';
 import { RouteComponentProps } from 'react-router';
 
 import styles from './Header.style';
+import MenuIcon from '@material-ui/icons/Menu';
 
 export interface IHeaderStateProps {
 }
@@ -35,7 +36,7 @@ export namespace Header {
 
 class Header extends React.Component<Header.Props, Header.State> {
   private makeBrand() {
-    return 'abc'
+    return 'Abc'
   }
   public render() {
     // const { classes, image, open, handleDrawerToggle } = this.props;
@@ -43,17 +44,9 @@ class Header extends React.Component<Header.Props, Header.State> {
     const appBarClasses = cx({
       [" " + classes[color]]: color
     });
-    appBarClasses
     return (
       <AppBar position={'static'}>
-        <Toolbar className={classes.container}>
-          <Button href="#" className={classes.title}>
-            <h1>HelloWorld</h1>
-            {this.makeBrand()}
-          </Button>
-          <Hidden smDown implementation="css">
-            {/* <HeaderLinks /> */}
-          </Hidden>
+        <Toolbar className={classes.container + appBarClasses}>
           <Hidden mdUp>
             <IconButton
               className={classes.appResponsive}
@@ -61,9 +54,16 @@ class Header extends React.Component<Header.Props, Header.State> {
               aria-label="open drawer"
               onClick={handleDrawerToggle}
             >
-              {/* <MenuIcon /> */}
+              <MenuIcon />
             </IconButton>
           </Hidden>
+          <Button href="#" className={classes.title}>
+            {this.makeBrand()}
+          </Button>
+          <Hidden smDown implementation="css">
+            {/* <HeaderLinks /> */}
+          </Hidden>
+         
         </Toolbar>
       </AppBar>
     )

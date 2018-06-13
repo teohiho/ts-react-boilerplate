@@ -19,9 +19,19 @@ export namespace Dashboard {
     routes: any[],
   }
 
-  export interface State {}
+  export interface State {
+    drawerOpen: boolean,
+  }
 }
 class Dashboard extends React.Component<Dashboard.Props, Dashboard.State> {
+  state = {
+    drawerOpen: false,
+  }
+  public handleDrawerToggle = () => {
+    this.setState({
+      drawerOpen: !this.state.drawerOpen,
+    });
+  };
   private renderRouter() {
     if (this.props.renderRouter) return this.props.renderRouter()
     return this.props.children
@@ -36,14 +46,16 @@ class Dashboard extends React.Component<Dashboard.Props, Dashboard.State> {
           logoText={"Track It For Life"}
           // logo={logo}
           image={imageResource.slideBar[1]}
-          // handleDrawerToggle={this.handleDrawerToggle}
-          // open={this.state.mobileOpen}
+          handleDrawerToggle={this.handleDrawerToggle}
+          open={this.state.drawerOpen}
           color="blue"
           {...routeHistory}
         />
         <div className={classes.mainPanel}>
           <Header
               routes={routes}
+              // color="primary"
+              handleDrawerToggle={this.handleDrawerToggle}
              {...routeHistory}
           />
           {this.renderRouter()}

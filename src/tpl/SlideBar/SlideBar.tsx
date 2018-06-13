@@ -92,11 +92,11 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
   public render() {
     const { classes, image, open, handleDrawerToggle } = this.props;
     return (
-      <div className={classes.container} >
+      <div className={classes.container} style={{ backgroundImage: "url(" + image + ")" }}>
         <Hidden mdUp>
         <Drawer
           variant="temporary"
-          anchor="right"
+          anchor="left"
           open={open}
           classes={{
             paper: classes.drawerPaper
@@ -111,12 +111,12 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
             {/* <HeaderLinks /> */}
             {this.renderLink()}
           </div>
-          {image !== undefined ? (
+          {/* {image !== undefined ? (
             <div
               className={classes.background}
               style={{ backgroundImage: "url(" + image + ")" }}
             />
-          ) : null}
+          ) : null} */}
         </Drawer>
       </Hidden>
       <Hidden smDown>
