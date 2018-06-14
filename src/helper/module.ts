@@ -1,34 +1,35 @@
-import { compose, map, path, filter, isNil, values, mergeAll } from 'ramda'
+import { compose, map, path, filter, isNil, values, mergeAll, pick } from 'ramda'
+// tslint:disable-next-line:no-duplicate-imports
 
 import { module } from '../module/module'
 
-interface OptionType {
-  type?: string
+interface IOptionType {
+  type?: 'array' | 'flatten' | 'list'
 }
-interface ReduxType {
+interface IReduxType {
   reducer?: Function,
   saga?: Function,
   thunk?: Function
 }
-interface PageType {
+interface IPageType {
   [key: string]: any,
 }
-interface PageListType {
-  [key: string]: PageType
+interface IPageListType {
+  [key: string]: IPageType
 }
-interface ModuleType {
-  redux?: ReduxType,
-  page?: PageListType
+interface IModuleType {
+  redux?: IReduxType,
+  page?: IPageListType
 }
-interface ListModule {
-  [key: string]: ModuleType
+interface IListModule {
+  [key: string]: IModuleType
 }
 
+type ReduxKey = 'reducer' | 'action' | 'saga'
 
-
-export const pathDict = (data: ListModule, getPath: Function, options: OptionType = {}) => {
+export const pathDict = (data: typeof module, rootPath: string[], options: IOptionType = {}) => {
   const { type } = options
-  const getListData = map((eachModule: ModuleType) => path(getPath())(eachModule))
+  const getListData = map((eachModule: IModuleType) => path(rootPath)(eachModule))
   const removeUndefinedItem = filter((item: any) => !isNil(item))
   const listCompose = compose(removeUndefinedItem, getListData)
   switch (type) {
@@ -39,8 +40,15 @@ export const pathDict = (data: ListModule, getPath: Function, options: OptionTyp
   }
 }
 
-type ReduxKey = 'reducer' | 'action' | 'saga'
 
-export const getSpecificModuleRedux = (key: ReduxKey, options?: OptionType) => pathDict(module, () => ['redux', key], options)
-export const getPageList = () => pathDict(module, () => ['page', 'route'], { type: 'array' })
+export const getSpecificModuleRedux = (key: ReduxKey, options?: IOptionType) => pathDict(module, ['redux', key], options)
+export const getPageList = () => pathDict(module, ['page', 'route'], { type: 'array' })
 export default { getSpecificModuleRedux, getPageList }
+
+
+const reducerData = getSpecificModuleRedux('reducer')
+
+
+const pickAB = pick<'1', 'general'>()(['a', 'b'])
+
+pickAB({ a: 1, c: 3 })
