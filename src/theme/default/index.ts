@@ -18,6 +18,7 @@
 // // // Variables - Styles that are used on more than one component
 // #############################
 import imageResource from './image'
+import { getPalette } from './palette'
 const drawerWidth = 260
 
 const transition = {
@@ -155,4 +156,5 @@ export {
   cardHeader,
   defaultBoxShadow,
   imageResource,
+  getPalette,
 }

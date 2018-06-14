@@ -1,24 +1,24 @@
 import { combineReducers } from 'redux'
 
 import { getSpecificModuleRedux } from '../../helper/module'
+import { TAppState } from '../../module/app/logic.redux/reducer'
 
-const rootModule = getSpecificModuleRedux('reducer')
-
+const moduleReducer = getSpecificModuleRedux('reducer')
 const reducer = combineReducers({
-  ...rootModule,
+  ...moduleReducer,
 })
 
-export interface RootState {
+export type TRootState = Readonly<{
+  app: TAppState,
+}>
 
-}
-
-export const rootReducer = (state: RootState, action: any) => {
+export const rootReducer = (state: TRootState, action: any) => {
   const { type } = action
   switch (type) {
     case 'RS':
     case 'LOGOUT':
-      // tslint:disable-next-line:no-parameter-reassignment
-      state = {}
+      // state = {}
+      return undefined
       break
     default:
       break

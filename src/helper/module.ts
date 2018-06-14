@@ -39,6 +39,8 @@ export const pathDict = (data: ListModule, getPath: Function, options: OptionTyp
   }
 }
 
-export const getSpecificModuleRedux = <T>(key: string, options?: OptionType) => pathDict(module, () => ['redux', key], options)
+type ReduxKey = 'reducer' | 'action' | 'saga'
+
+export const getSpecificModuleRedux = (key: ReduxKey, options?: OptionType) => pathDict(module, () => ['redux', key], options)
 export const getPageList = () => pathDict(module, () => ['page', 'route'], { type: 'array' })
 export default { getSpecificModuleRedux, getPageList }

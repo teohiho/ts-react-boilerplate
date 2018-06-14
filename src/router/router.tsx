@@ -7,7 +7,7 @@ import { Theme, withStyles, WithStyles } from '@material-ui/core'
 import createStyles from '@material-ui/core/styles/createStyles'
 // import { RootState } from '../reducers';
 import DashBoard from '../layout/Dashboard'
-import { RootState } from '../conf/redux/reducer'
+import { TRootState } from '../conf/redux/reducer'
 import {
   // BrowserRouter,
   Route,
@@ -65,7 +65,7 @@ const styles = (theme: Theme) => createStyles({
     // },
   },
 })
-const mapStateToProps = (state: RootState, props: any) => ({
+const mapStateToProps = (state: TRootState, props: any) => ({
 
 })
 export const AppRoute = withStyles(styles)(connect(mapStateToProps)(AppRouter))
