@@ -7,5 +7,5 @@ export const page = {
     component: HomePage,
     sidebarName: 'Dashboard',
     navBarName: 'Dashboard',
-  }
+  },
 }

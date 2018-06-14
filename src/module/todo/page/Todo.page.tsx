@@ -1,8 +1,8 @@
-import * as React from 'react';
+import * as React from 'react'
 
-interface ComponentNameProps {};
+interface ComponentNameProps {}
 
-interface ComponentNameState {};
+interface ComponentNameState {}
 
 class ComponentName extends React.Component<ComponentNameProps, ComponentNameState> {
   public render(): JSX.Element {
@@ -18,8 +18,8 @@ class ComponentName extends React.Component<ComponentNameProps, ComponentNameSta
         <h1>Todo</h1>
         <h1>Todo</h1>
       </div>
-  );
+  )
   }
 }
 
-export default ComponentName;
+export default ComponentName

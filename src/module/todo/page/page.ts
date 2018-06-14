@@ -7,5 +7,5 @@ export const page = {
     component: TodoPage,
     sidebarName: 'Todo',
     navBarName: 'Todo',
-  }
+  },
 }

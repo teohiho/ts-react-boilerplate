@@ -1,7 +1,7 @@
 // import HomeIcon from '@material-ui/icons/Home';
-import * as React from 'react';
-import withRoot from './withRoot';
-import { AppRoute } from './router/router';
+import * as React from 'react'
+import withRoot from './withRoot'
+import { AppRoute } from './router/router'
 
 export namespace App {
     export interface Props {
@@ -16,8 +16,8 @@ class App extends React.Component<App.Props, App.State> {
     render() {
         return (
            <AppRoute />
-        );
+        )
     }
 }
 
-export default (withRoot(App));
+export default withRoot(App)

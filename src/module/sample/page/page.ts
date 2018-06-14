@@ -7,5 +7,5 @@ export const page = {
     component: SandPage,
     sidebarName: 'Sandbox',
     navBarName: 'Sandbox',
-  }
+  },
 }

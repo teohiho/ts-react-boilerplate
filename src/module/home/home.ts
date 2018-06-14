@@ -1,4 +1,4 @@
-import { page } from "./page/page";
+import { page } from './page/page'
 
 export const home = {
   page,

@@ -46,7 +46,8 @@
             "ban-keywords",
             "check-format",
             "allow-pascal-case"
-        ]
+        ],
+        "no-unused-variable": true
     },
     "rulesDirectory": []
 }

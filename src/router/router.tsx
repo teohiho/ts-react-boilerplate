@@ -1,19 +1,19 @@
 import { RouteComponentProps, Switch } from 'react-router'
-import * as React from 'react';
-import { connect } from 'react-redux';
+import * as React from 'react'
+import { connect } from 'react-redux'
 
-import { getPageList } from "../helper/module";
-import { Theme, withStyles, WithStyles } from '@material-ui/core';
-import createStyles from '@material-ui/core/styles/createStyles';
+import { getPageList } from '../helper/module'
+import { Theme, withStyles, WithStyles } from '@material-ui/core'
+import createStyles from '@material-ui/core/styles/createStyles'
 // import { RootState } from '../reducers';
-import DashBoard from '../layout/Dashboard';
-import { RootState } from '../conf/redux/reducer';
-import { 
+import DashBoard from '../layout/Dashboard'
+import { RootState } from '../conf/redux/reducer'
+import {
   // BrowserRouter,
   Route,
-  Router } from 'react-router-dom';
-import { createBrowserHistory } from "history";
-const hist = createBrowserHistory();
+  Router } from 'react-router-dom'
+import { createBrowserHistory } from 'history'
+const hist = createBrowserHistory()
 
 const pages = getPageList()
 
@@ -23,7 +23,7 @@ export namespace AppRouter {
   }
 
   export interface State {
-    open: boolean;
+    open: boolean
   }
 }
 
@@ -41,7 +41,7 @@ class AppRouter extends React.Component<AppRouter.Props, AppRouter.State> {
     )
   }
   render() {
-    // Switch case layout 
+    // Switch case layout
     return (
       <div className={this.props.classes.body}>
         <Router history={hist}>
@@ -50,7 +50,7 @@ class AppRouter extends React.Component<AppRouter.Props, AppRouter.State> {
           </Switch>
         </Router>
       </div>
-    );
+    )
   }
 }
 const styles = (theme: Theme) => createStyles({
@@ -63,7 +63,7 @@ const styles = (theme: Theme) => createStyles({
     //     height: 'calc(100% - 64px)',
     //     marginTop: 64,
     // },
-  }
+  },
 })
 const mapStateToProps = (state: RootState, props: any) => ({
 

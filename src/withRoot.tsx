@@ -1,5 +1,5 @@
-import { CssBaseline, MuiThemeProvider, createMuiTheme } from '@material-ui/core';
-import * as React from 'react';
+import { CssBaseline, MuiThemeProvider, createMuiTheme } from '@material-ui/core'
+import * as React from 'react'
 
 // A theme with custom primary and secondary color.
 // It's optional.
@@ -18,10 +18,10 @@ const theme = createMuiTheme({
       contrastText: '#fff',
     },
   },
-});
+})
 
 function withRoot(Component: React.ComponentType) {
-  function WithRoot(props: object) {
+  function addMuiTheme(props: object) {
     // MuiThemeProvider makes the theme available down the React tree
     // thanks to React context.
     return (
@@ -30,10 +30,10 @@ function withRoot(Component: React.ComponentType) {
         <CssBaseline />
         <Component {...props} />
       </MuiThemeProvider>
-    );
+    )
   }
 
-  return WithRoot;
+  return addMuiTheme
 }
 
-export default withRoot;
+export default withRoot

@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
 import { getSpecificModuleRedux } from '../../helper/module'
 
@@ -9,18 +9,19 @@ const reducer = combineReducers({
 })
 
 export interface RootState {
-  
+
 }
 
 export const rootReducer = (state: RootState, action: any) => {
-  const { type } = action;
+  const { type } = action
   switch (type) {
     case 'RS':
     case 'LOGOUT':
+      // tslint:disable-next-line:no-parameter-reassignment
       state = {}
-      break;
+      break
     default:
-      break;
+      break
   }
-  return reducer(state, action);
-};
+  return reducer(state, action)
+}

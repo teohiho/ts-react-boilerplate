@@ -1,6 +1,6 @@
 
-import { createStore, compose } from 'redux';
-import { rootReducer } from './reducer';
+import { createStore, compose } from 'redux'
+import { rootReducer } from './reducer'
 
 
 const composeEnhancers =
@@ -8,17 +8,17 @@ const composeEnhancers =
   (<any>window).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
   (<any>window).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
       // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-    }) : compose;
+    }) : compose
 const enhancer = composeEnhancers(
 // other store enhancers if any
-);
+)
 const preloadedState = {}
 
 export default function configureStore(onComplete?: Function) {
   const store = createStore(
     rootReducer,
     preloadedState,
-    enhancer
-  );
-  return { store };
+    enhancer,
+  )
+  return { store }
 }

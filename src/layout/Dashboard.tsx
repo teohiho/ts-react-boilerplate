@@ -1,16 +1,16 @@
-import * as React from 'react';
-import { connect, Dispatch } from 'react-redux';
-import { withStyles, WithStyles } from '@material-ui/core';
-import { RouteComponentProps } from 'react-router';
-import dashboardStyle from './Dashboard.style';
-import { SlideBar, Header } from '../tpl/';
-import { imageResource } from '../theme/default';
+import * as React from 'react'
+import { connect, Dispatch } from 'react-redux'
+import { withStyles, WithStyles } from '@material-ui/core'
+import { RouteComponentProps } from 'react-router'
+import dashboardStyle from './Dashboard.style'
+import { SlideBar, Header } from '../tpl/'
+import { imageResource } from '../theme/default'
 
 export interface IDashboardStateProps {
 }
 
 export interface IDashboardDispatchProps {
-  
+
 }
 
 export namespace Dashboard {
@@ -30,19 +30,19 @@ class Dashboard extends React.Component<Dashboard.Props, Dashboard.State> {
   public handleDrawerToggle = () => {
     this.setState({
       drawerOpen: !this.state.drawerOpen,
-    });
-  };
+    })
+  }
   private renderRouter() {
     if (this.props.renderRouter) return this.props.renderRouter()
     return this.props.children
   }
   public render() {
-    const { routes, classes, ...routeHistory } = this.props;
+    const { routes, classes, ...routeHistory } = this.props
     return (
       <div className={classes.wrapper}>
         <SlideBar
           routes={routes}
-          logoText={"Track It For Life"}
+          logoText={'Track It For Life'}
           // logo={logo}
           image={imageResource.slideBar[1]}
           handleDrawerToggle={this.handleDrawerToggle}
@@ -59,7 +59,7 @@ class Dashboard extends React.Component<Dashboard.Props, Dashboard.State> {
           {this.renderRouter()}
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -67,15 +67,15 @@ class Dashboard extends React.Component<Dashboard.Props, Dashboard.State> {
 const mapStateToProps = (state: any): IDashboardStateProps => {
   return {
     // ...mapStateToProps
-  };
-};
+  }
+}
 
 const mapDispatchToProps = (dispatch: Dispatch<any>): IDashboardDispatchProps => {
   return {
     // ...mapDispatchToProps
-  };
-};
+  }
+}
 
-export default withStyles(dashboardStyle)<Dashboard.Props>(connect(mapStateToProps, mapDispatchToProps)(Dashboard));
+export default withStyles(dashboardStyle)<Dashboard.Props>(connect(mapStateToProps, mapDispatchToProps)(Dashboard))
 
 

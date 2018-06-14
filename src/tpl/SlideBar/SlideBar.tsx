@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { connect, Dispatch } from 'react-redux';
-import * as cx from "classnames";
-import { NavLink } from "react-router-dom";
+import * as React from 'react'
+import { connect, Dispatch } from 'react-redux'
+import * as cx from 'classnames'
+import { NavLink } from 'react-router-dom'
 import {
   withStyles,
   WithStyles,
@@ -11,12 +11,12 @@ import {
   ListItem,
   // ListItemIcon,
   ListItemText,
-} from "@material-ui/core";
-import styles from './SlideBar.style';
-import { RouteComponentProps } from 'react-router';
+} from '@material-ui/core'
+import styles from './SlideBar.style'
+import { RouteComponentProps } from 'react-router'
 
 interface ISlideBarStateProps {
-  
+
 }
 
 interface ISlideBarDispatchProps {}
@@ -37,8 +37,8 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
   private renderBrand() {
     const { classes,
       // logo,
-      logoText
-     } = this.props;
+      logoText,
+     } = this.props
     return (
       <div className={classes.logo}>
         <a href="/dashboard" className={classes.logoLink}>
@@ -51,21 +51,21 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
     )
   }
   private activeRoute(routeName: string) {
-    return this.props.location.pathname.indexOf(routeName) > -1 ? true : false;
+    return this.props.location.pathname.indexOf(routeName) > -1 ? true : false
     // return true;
   }
   private renderLink() {
-    const { classes, routes, color } = this.props;
+    const { classes, routes, color } = this.props
     return (
       <List >
         {routes.map((prop, key) => {
-          if (prop.redirect) return null;
+          if (prop.redirect) return null
           const listItemClasses = cx({
-            [" " + classes[color]]: this.activeRoute(prop.path)
-          });
+            [' ' + classes[color]]: this.activeRoute(prop.path),
+          })
           const whiteFontClasses = cx({
-            [" " + classes.whiteFont]: this.activeRoute(prop.path)
-          });
+            [' ' + classes.whiteFont]: this.activeRoute(prop.path),
+          })
           return (
             <NavLink
               to={prop.path}
@@ -84,13 +84,13 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
                 />
               </ListItem>
             </NavLink>
-          );
+          )
         })}
       </List>
-    );
+    )
   }
   public render() {
-    const { classes, image, open, handleDrawerToggle } = this.props;
+    const { classes, image, open, handleDrawerToggle } = this.props
     return (
       <div className={classes.container} >
         <Hidden mdUp>
@@ -99,11 +99,11 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
           anchor="left"
           open={open}
           classes={{
-            paper: classes.drawerPaper
+            paper: classes.drawerPaper,
           }}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true // Better open performance on mobile.
+            keepMounted: true, // Better open performance on mobile.
           }}
         >
           {this.renderBrand()}
@@ -115,7 +115,7 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
           {image !== undefined ? (
             <div
               className={classes.background}
-              style={{ backgroundImage: "url(" + image + ")" }}
+              style={{ backgroundImage: 'url(' + image + ')' }}
             />
           ) : null}
         </Drawer>
@@ -126,7 +126,7 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
           variant="permanent"
           open
           classes={{
-            paper: classes.drawerPaper
+            paper: classes.drawerPaper,
           }}
         >
           {this.renderBrand()}
@@ -134,28 +134,28 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
           {image !== undefined ? (
             <div
               className={classes.background}
-              style={{ backgroundImage: "url(" + image + ")" }}
+              style={{ backgroundImage: 'url(' + image + ')' }}
             />
           ) : null}
         </Drawer>
       </Hidden>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state: any): ISlideBarStateProps => {
   return {
     // ...mapStateToProps
-  };
-};
+  }
+}
 
 const mapDispatchToProps = (dispatch: Dispatch<any>): ISlideBarDispatchProps => {
   return {
     // ...mapDispatchToProps
-  };
-};
+  }
+}
 
 // export default (withStyles((theme) => ({ background: {} }))(connect(mapStateToProps, mapDispatchToProps)(SlideBar)));
-export default (withStyles<'drawerPaper'& 'logo'>(styles)<ISlideBarProps>(connect(mapStateToProps, mapDispatchToProps)(SlideBar)));
+export default (withStyles<'drawerPaper'& 'logo'>(styles)<ISlideBarProps>(connect(mapStateToProps, mapDispatchToProps)(SlideBar)))
 

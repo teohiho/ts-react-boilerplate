@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { connect, Dispatch } from 'react-redux';
+import * as React from 'react'
+import { connect, Dispatch } from 'react-redux'
 import {
   withStyles,
   WithStyles,
@@ -8,12 +8,12 @@ import {
   Button,
   Hidden,
   IconButton,
-} from "@material-ui/core";
-import * as cx from 'classnames';
-import { RouteComponentProps } from 'react-router';
+} from '@material-ui/core'
+import * as cx from 'classnames'
+import { RouteComponentProps } from 'react-router'
 
-import styles from './Header.style';
-import MenuIcon from '@material-ui/icons/Menu';
+import styles from './Header.style'
+import MenuIcon from '@material-ui/icons/Menu'
 
 export interface IHeaderStateProps {
 }
@@ -36,7 +36,7 @@ export namespace Header {
 
 class Header extends React.Component<Header.Props, Header.State> {
   private makeBrand() {
-    const { routes, location: { pathname } } = this.props;
+    const { routes, location: { pathname } } = this.props
     for (const prop of routes) {
       if (prop.path === pathname) {
         return prop.navBarName
@@ -46,10 +46,10 @@ class Header extends React.Component<Header.Props, Header.State> {
   }
   public render() {
     // const { classes, image, open, handleDrawerToggle } = this.props;
-    const { classes, color, handleDrawerToggle } = this.props;
+    const { classes, color, handleDrawerToggle } = this.props
     const appBarClasses = cx({
-      [" " + classes[color]]: color
-    });
+      [' ' + classes[color]]: color,
+    })
     return (
       <AppBar position={'static'}>
         <Toolbar className={classes.container + appBarClasses}>
@@ -69,7 +69,7 @@ class Header extends React.Component<Header.Props, Header.State> {
           <Hidden smDown implementation="css">
             {/* <HeaderLinks /> */}
           </Hidden>
-         
+
         </Toolbar>
       </AppBar>
     )
@@ -79,15 +79,15 @@ class Header extends React.Component<Header.Props, Header.State> {
 const mapStateToProps = (state: any): IHeaderStateProps => {
   return {
     // ...mapStateToProps
-  };
-};
+  }
+}
 
 const mapDispatchToProps = (dispatch: Dispatch<any>): IHeaderDispatchProps => {
   return {
     // ...mapDispatchToProps
-  };
-};
+  }
+}
 
 // export default (withStyles((theme) => ({ background: {} }))(connect(mapStateToProps, mapDispatchToProps)(Header)));
-export default (withStyles(styles)<Header.Props>(connect(mapStateToProps, mapDispatchToProps)(Header)));
+export default (withStyles(styles)<Header.Props>(connect(mapStateToProps, mapDispatchToProps)(Header)))
 
