@@ -1,10 +1,10 @@
 
 const images = {
   slideBar: [
-    require('@asset/img/sidebar-1.jpg'),
-    require('@asset/img/sidebar-2.jpg'),
-    require('@asset/img/sidebar-3.jpg'),
-    require('@asset/img/sidebar-4.jpg'),
+    require('img/sidebar-1.jpg'),
+    require('img/sidebar-2.jpg'),
+    require('img/sidebar-3.jpg'),
+    require('img/sidebar-4.jpg'),
   ],
 }
 

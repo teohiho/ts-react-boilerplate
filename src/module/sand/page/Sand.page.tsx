@@ -28,7 +28,6 @@ export namespace Sand {
 class Sand extends React.Component<Sand.Props, Sand.State> {
   public render() {
     // const { classes, image, open, handleDrawerToggle } = this.props;
-
     return (
       <img src={imageResource.slideBar[0]} alt="fireSpot"/>
     )
