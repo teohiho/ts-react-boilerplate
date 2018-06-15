@@ -1,7 +1,7 @@
 
 import { createStore, compose } from 'redux'
-import { rootReducer } from './reducer'
-
+import { appReducer } from './reducer'
+import { persistStore } from 'redux-persist'
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -16,9 +16,11 @@ const preloadedState = {}
 
 export default function configureStore(onComplete?: Function) {
   const store = createStore(
-    rootReducer,
+    appReducer,
     preloadedState,
     enhancer,
   )
-  return { store }
+  const persistor = persistStore(store)
+
+  return { store, persistor }
 }

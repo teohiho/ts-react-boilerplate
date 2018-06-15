@@ -1,11 +1,11 @@
-import SandPage from './Sand.page'
+import SamplePage from './Sample.page'
 
 export const page = {
   route: {
-    path: '/sandbox',
+    path: '/sample',
     exact: true,
-    component: SandPage,
-    sidebarName: 'Sandbox',
-    navBarName: 'Sandbox',
+    component: SamplePage,
+    sidebarName: 'Sample',
+    navBarName: 'Sample',
   },
 }
