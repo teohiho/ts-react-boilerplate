@@ -55,14 +55,6 @@ class AppRouter extends React.Component<AppRouter.Props, AppRouter.State> {
 }
 const styles = (theme: Theme) => createStyles({
   body: {
-    // backgroundColor: theme.palette.background.default,
-    // width: '100%',
-    // height: 'calc(100% - 56px)',
-    // marginTop: 56,
-    // [theme.breakpoints.up('sm')]: {
-    //     height: 'calc(100% - 64px)',
-    //     marginTop: 64,
-    // },
   },
 })
 const mapStateToProps = (state: TRootState, props: any) => ({

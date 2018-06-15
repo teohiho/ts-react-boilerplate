@@ -8,9 +8,9 @@ const reducer = combineReducers({
   ...moduleReducer,
 })
 
-export type TRootState = Readonly<{
+export type TRootState = {
   app: TAppState,
-}>
+}
 
 export const rootReducer = (state: TRootState, action: any) => {
   const { type } = action
@@ -18,7 +18,7 @@ export const rootReducer = (state: TRootState, action: any) => {
     case 'RS':
     case 'LOGOUT':
       // state = {}
-      return undefined
+      return {}
       break
     default:
       break

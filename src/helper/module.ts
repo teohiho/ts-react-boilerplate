@@ -1,10 +1,10 @@
-import { compose, map, path, filter, isNil, values, mergeAll, pick } from 'ramda'
+import { compose, map, path, filter, isNil, values, mergeAll, pick, mapObjIndexed } from 'ramda'
 // tslint:disable-next-line:no-duplicate-imports
 
 import { module } from '../module/module'
 
 interface IOptionType {
-  type?: 'array' | 'flatten' | 'list'
+  type: 'array' | 'flatten' | 'list'
 }
 interface IReduxType {
   reducer?: Function,
@@ -21,15 +21,15 @@ interface IModuleType {
   redux?: IReduxType,
   page?: IPageListType
 }
-interface IListModule {
-  [key: string]: IModuleType
-}
 
 type ReduxKey = 'reducer' | 'action' | 'saga'
 
-export const pathDict = (data: typeof module, rootPath: string[], options: IOptionType = {}) => {
+
+// export const pathDict = (data: typeof module, rootPath: string[], options: IOptionType = {}) => {
+// function pathDict(data: typeof module, rootPath: string[], options: {type: 'array'}): any[]
+function pathDict(data: typeof module, rootPath: string[], options: IOptionType = { type: 'list' }) {
   const { type } = options
-  const getListData = map((eachModule: IModuleType) => path(rootPath)(eachModule))
+  const getListData = mapObjIndexed((eachModuleValue: IModuleType) => path(rootPath)(eachModuleValue))
   const removeUndefinedItem = filter((item: any) => !isNil(item))
   const listCompose = compose(removeUndefinedItem, getListData)
   switch (type) {
@@ -42,13 +42,6 @@ export const pathDict = (data: typeof module, rootPath: string[], options: IOpti
 
 
 export const getSpecificModuleRedux = (key: ReduxKey, options?: IOptionType) => pathDict(module, ['redux', key], options)
-export const getPageList = () => pathDict(module, ['page', 'route'], { type: 'array' })
+export const getPageList = () => <any[]>pathDict(module, ['page', 'route'], { type: 'array' })
 export default { getSpecificModuleRedux, getPageList }
 
-
-const reducerData = getSpecificModuleRedux('reducer')
-
-
-const pickAB = pick<'1', 'general'>()(['a', 'b'])
-
-pickAB({ a: 1, c: 3 })

@@ -1,11 +1,11 @@
 import actionType from './actionType'
 
-export enum ActionType {
-  CHANGE_THEME,
-}
+// export enum ActionType {
+//   CHANGE_THEME,
+// }
 
-export interface IActionApp<T> {
-  type: ActionType
+export interface IAppAction<T> {
+  type: 'CHANGE_THEME'
 }
 
 

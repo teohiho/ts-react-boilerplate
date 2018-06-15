@@ -1,5 +1,5 @@
 import actionType from './actionType'
-import { IActionApp } from './action'
+import { IAppAction } from './action'
 
 export type TTheme = 'light' | 'dark'
 
@@ -9,13 +9,13 @@ export type TAppState = Readonly<{
   }>,
 }>
 
-
 const initialState: TAppState = {
   theme: {
     paletteType: 'light',
   },
 }
-const reducer = (state: TAppState = initialState, action: IActionApp<any>) => {
+
+const reducer = (state: TAppState = initialState, action: IAppAction<any>) => {
   switch (action.type) {
     case actionType.CHANGE_THEME: {
       return {
