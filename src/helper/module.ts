@@ -42,6 +42,6 @@ function pathDict(data: typeof module, rootPath: string[], options: IOptionType 
 
 
 export const getSpecificModuleRedux = (key: ReduxKey, options?: IOptionType) => pathDict(module, ['redux', key], options)
-export const getPageList = () => <any[]>pathDict(module, ['page', 'route'], { type: 'array' })
+export const getPageList = () => <IPageType[]>pathDict(module, ['page', 'route'], { type: 'array' })
 export default { getSpecificModuleRedux, getPageList }
 

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Card, CardHeader, CardContent, WithStyles, withStyles } from '@material-ui/core'
+import { WithStyles, withStyles } from '@material-ui/core'
 import { connect, Dispatch } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 import sampleStyle from './Sample.style'

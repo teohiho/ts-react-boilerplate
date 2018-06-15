@@ -1,10 +1,11 @@
 import * as React from 'react'
-import { Card, CardHeader, CardContent, WithStyles, withStyles, Tabs, Tab } from '@material-ui/core'
+import { CardHeader, CardContent, WithStyles, withStyles, Tabs, Tab } from '@material-ui/core'
 import { connect, Dispatch } from 'react-redux'
 import { BugReport, Code, Cloud } from '@material-ui/icons'
 
 import { TRootState } from 'conf/redux/reducer'
-import taskcardStyle from './TaskCard.style'
+import taskCardStyle from './TaskCard.style'
+import { AppCard } from './Card'
 
 export interface ITaskCardStateProps {
 }
@@ -13,7 +14,7 @@ export interface ITaskCardDispatchProps {
 
 }
 export namespace TaskCard {
-  export interface Props extends WithStyles<typeof taskcardStyle>, ITaskCardStateProps, ITaskCardDispatchProps {
+  export interface Props extends WithStyles<typeof taskCardStyle>, ITaskCardStateProps, ITaskCardDispatchProps {
 
   }
 
@@ -45,7 +46,7 @@ class TaskCard extends React.Component<TaskCard.Props, TaskCard.State> {
     ]
     return (
       <div>
-        <Card>
+        <AppCard>
           <CardHeader
             classes={{
               root: classes.cardHeader,
@@ -83,7 +84,7 @@ class TaskCard extends React.Component<TaskCard.Props, TaskCard.State> {
           <CardContent>
 
           </CardContent>
-        </Card>
+        </AppCard>
       </div>
   )
   }
@@ -96,4 +97,4 @@ const mapDispatchToProps = (dispatch: Dispatch<any>, props: TaskCard.Props): any
   // ...mapDispatchToProps
 })
 
-export default (withStyles(taskcardStyle)<TaskCard.Props>(connect(mapStateToProps, mapDispatchToProps)(TaskCard)))
+export default (withStyles(taskCardStyle)<TaskCard.Props>(connect(mapStateToProps, mapDispatchToProps)(TaskCard)))

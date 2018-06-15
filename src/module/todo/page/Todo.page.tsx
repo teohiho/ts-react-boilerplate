@@ -1,12 +1,10 @@
 import * as React from 'react'
-import { Card, CardHeader, CardContent, WithStyles, withStyles, Tabs, Tab } from '@material-ui/core'
+import { WithStyles, withStyles, Grid } from '@material-ui/core'
 import { connect, Dispatch } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
-import { BugReport, Code, Cloud } from '@material-ui/icons'
 
 
 import { TRootState } from '../../../conf/redux/reducer'
-import { todo } from '../todo'
 import todoStyle from './Todo.style'
 import TaskCard from 'tpl/Card/TaskCard'
 
@@ -24,6 +22,7 @@ export namespace Todo {
   export interface State {
   }
 }
+
 class Todo extends React.Component<Todo.Props, Todo.State> {
   state = {
     value: 0,
@@ -33,41 +32,19 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
   }
   public render(): JSX.Element {
     const { classes } = this.props
-    const data = [
-      {
-        tags: ['Home'],
-        title: 'Play football',
-        completed: false,
-      },
-      {
-        tags: ['Home'],
-        title: 'Play game',
-        completed: false,
-      },
-      {
-        tags: ['Work'],
-        title: 'Working typescript',
-        completed: false,
-      },
-      {
-        tags: ['Work'],
-        title: 'Working test for react',
-        completed: false,
-      },
-      {
-        tags: ['Work'],
-        title: 'Handle styles',
-        completed: false,
-      },
-    ]
     return (
-      <div>
-        <TaskCard />
+      <div className={classes.container}>
+        <Grid container>
+          <Grid xs={12} sm={12} md={6}>
+            <TaskCard />
+          </Grid>
+        </Grid>
       </div>
   )
   }
 }
 const mapStateToProps = (state: TRootState): ITodoStateProps => ({
+  tasks: state.todo.tasks,
   // ...mapStateToProps
 })
 

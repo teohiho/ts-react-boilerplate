@@ -2,7 +2,7 @@ import { Theme } from '@material-ui/core'
 import createStyles from '@material-ui/core/styles/createStyles'
 import { cardHeader, defaultFont, primaryBoxShadow } from 'theme/default'
 
-const taskcardStyle = (theme: Theme) => createStyles({
+const taskCardStyle = (theme: Theme) => createStyles({
   container: {
     padding: theme.spacing.unit * 10,
   },
@@ -65,4 +65,4 @@ const taskcardStyle = (theme: Theme) => createStyles({
     color: 'white',
   },
 })
-export default taskcardStyle
+export default taskCardStyle
