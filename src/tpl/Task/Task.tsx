@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {  WithStyles, withStyles, Table, TableBody, TableRow, TableCell, Checkbox, Tooltip, IconButton } from '@material-ui/core'
 import { connect, Dispatch } from 'react-redux'
-import { RouteComponentProps } from 'react-router'
 
 // @material-ui/icons
 import Edit from '@material-ui/icons/Edit'
@@ -18,7 +17,7 @@ export interface ITaskDispatchProps {
 
 }
 export namespace Task {
-  export interface Props extends RouteComponentProps<void>, WithStyles<typeof taskStyle>, ITaskStateProps, ITaskDispatchProps {
+  export interface Props extends WithStyles<typeof taskStyle>, ITaskStateProps, ITaskDispatchProps {
     tasksIndexes: number[],
     checkedIndexes: number[],
     tasks: string[],
