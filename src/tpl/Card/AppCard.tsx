@@ -3,7 +3,7 @@ import { WithStyles, withStyles } from '@material-ui/core'
 import { connect, Dispatch } from 'react-redux'
 import * as classNames from 'classnames'
 
-import cardStyle from './Card.style'
+import cardStyle from './AppCard.style'
 import { TRootState } from 'conf/redux/reducer'
 
 export interface ICardStateProps {

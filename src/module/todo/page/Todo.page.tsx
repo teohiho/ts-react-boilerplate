@@ -9,7 +9,6 @@ import Cloud from '@material-ui/icons/Cloud'
 
 import { TRootState } from '../../../conf/redux/reducer'
 import todoStyle from './Todo.style'
-import TaskCard from 'tpl/Card/TaskCard'
 import AppTab from 'tpl/Tab/AppTab'
 import { Task } from 'tpl'
 
@@ -41,10 +40,9 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
       <div className={classes.container}>
         <Grid container>
           <Grid xs={12} sm={12} md={6}>
-            {/* <TaskCard /> */}
             <AppTab
                title="Tasks:"
-               headerColor="#121111"
+               headerColor="info"
                tabs={[
                 {
                   tabName: 'Bugs',

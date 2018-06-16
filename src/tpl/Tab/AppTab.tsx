@@ -5,8 +5,9 @@ import * as classNames from 'classnames'
 
 import appTabStyle from './AppTab.style'
 import { TRootState } from 'conf/redux/reducer'
-import { AppCard } from '../Card/Card'
+import { AppCard } from '../Card/AppCard'
 import CardHeader from '../Card/CardHeader'
+import CardBody from '../Card/CardBody'
 
 export interface IAppTabStateProps {
 }
@@ -48,7 +49,7 @@ class AppTab extends React.Component<AppTab.Props, AppTab.State> {
         [classes.cardTitleRTL]: rtlActive,
       })
     return (
-        <AppCard plain={true}>
+        <AppCard plain={false}>
             <CardHeader color={headerColor} plain={plainTabs}>
             {title !== undefined ? (
                 <div className={cardTitle}>{title}</div>
@@ -87,14 +88,14 @@ class AppTab extends React.Component<AppTab.Props, AppTab.State> {
                 })}
             </Tabs>
             </CardHeader>
-            {/* <CardBody>
+            <CardBody>
             {tabs.map((prop, key) => {
                 if (key === this.state.value) {
                 return <div key={key}>{prop.tabContent}</div>
                 }
                 return null
             })}
-            </CardBody> */}
+            </CardBody>
       </AppCard>
   )
   }

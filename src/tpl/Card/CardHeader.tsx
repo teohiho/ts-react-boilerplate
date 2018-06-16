@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { AppCard, CardContent, WithStyles, withStyles } from '@material-ui/core'
+import { CardContent, WithStyles, withStyles } from '@material-ui/core'
 import { connect, Dispatch } from 'react-redux'
 import * as classNames from 'classnames'
 
@@ -15,8 +15,8 @@ export interface ICardHeaderDispatchProps {
 }
 export namespace CardHeader {
   export interface Props extends WithStyles<typeof cardHeaderStyle>, ICardHeaderStateProps, ICardHeaderDispatchProps {
-    className?: string,
-    color?: string,
+    className?: any,
+    color?: 'warning' | 'success' | 'danger' | 'info' | 'primary' | 'rose' | any,
     plain?: boolean,
     stats?: boolean,
     icon?: boolean,
@@ -38,11 +38,11 @@ class CardHeader extends React.Component<CardHeader.Props, CardHeader.State> {
       ...rest } = this.props
     const cardHeaderClasses = classNames({
       [classes.cardHeader]: true,
-      // [classes[color + 'CardHeader']]: color,
+      [classes[color + 'CardHeader']]: color,
       [classes.cardHeaderPlain]: plain,
       [classes.cardHeaderStats]: stats,
       [classes.cardHeaderIcon]: icon,
-      // [className]: className !== undefined,
+      [className]: className !== undefined,
     })
     return (
       <div className={cardHeaderClasses} {...rest}>
