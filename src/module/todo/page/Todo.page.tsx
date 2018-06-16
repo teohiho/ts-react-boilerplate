@@ -11,8 +11,10 @@ import { TRootState } from '../../../conf/redux/reducer'
 import todoStyle from './Todo.style'
 import AppTab from 'tpl/Tab/AppTab'
 import { Task } from 'tpl'
+import { TTask } from '../logic.redux/initialState'
 
 export interface ITodoStateProps {
+  tasks: TTask[]
 }
 
 export interface ITodoDispatchProps {
@@ -34,8 +36,14 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
   handleChange = (event: any, value: number) => {
     this.setState({ value })
   }
+  renderTabData = () => {
+    const { tasks } = this.props
+
+
+  }
   public render(): JSX.Element {
     const { classes } = this.props
+
     return (
       <div className={classes.container}>
         <Grid container>
@@ -49,40 +57,72 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
                   tabIcon: BugReport,
                   tabContent: (
                     <Task
-                      checkedIndexes={[0, 3]}
-                      tasksIndexes={[0, 1, 2, 3]}
-                      tasks={['a', 'b']}
+                      tasks={[
+                        {
+                          id: '1',
+                          tags: ['Home'],
+                          title: 'Play football',
+                          completed: false,
+                        },
+                        {
+                          id: '2',
+                          tags: ['Home'],
+                          title: 'Play game',
+                          completed: false,
+                        },
+                        {
+                          id: '3',
+                          tags: ['Work'],
+                          title: 'Working typescript',
+                          completed: false,
+                        },
+                        {
+                          id: '4',
+                          tags: ['Work'],
+                          title: 'Working test for react',
+                          completed: false,
+                        },
+                        {
+                          id: '5',
+                          tags: ['Work'],
+                          title: 'Handle styles',
+                          completed: false,
+                        },
+                      ]}
+                      // checkedIndexes={[0, 3]}
+                      // tasksIndexes={[0, 1, 2, 3]}
+                      // tasks={['a', 'b']}
                     />
                   ),
                 },
-                {
-                  tabName: 'Website',
-                  tabIcon: Code,
-                  tabContent: (
-                    <Task
-                      checkedIndexes={[0]}
-                      tasksIndexes={[0, 1]}
-                      tasks={['a', 'b']}
-                    />
-                  ),
-                },
-                {
-                  tabName: 'Server',
-                  tabIcon: Cloud,
-                  tabContent: (
-                    <Task
-                      checkedIndexes={[1]}
-                      tasksIndexes={[0, 1, 2]}
-                      tasks={['a', 'b']}
-                    />
-                  ),
-                },
+                // {
+                //   tabName: 'Website',
+                //   tabIcon: Code,
+                //   tabContent: (
+                //     <Task
+                //       checkedIndexes={[0]}
+                //       tasksIndexes={[0, 1]}
+                //       tasks={['a', 'b']}
+                //     />
+                //   ),
+                // },
+                // {
+                //   tabName: 'Server',
+                //   tabIcon: Cloud,
+                //   tabContent: (
+                //     <Task
+                //       checkedIndexes={[1]}
+                //       tasksIndexes={[0, 1, 2]}
+                //       tasks={['a', 'b']}
+                //     />
+                //   ),
+                // },
               ]}
             />
           </Grid>
         </Grid>
       </div>
-  )
+    )
   }
 }
 const mapStateToProps = (state: TRootState): ITodoStateProps => ({
