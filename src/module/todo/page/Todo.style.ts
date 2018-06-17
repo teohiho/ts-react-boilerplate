@@ -37,6 +37,9 @@ const todoStyle = (theme: Theme) => createStyles({
   labelIcon: {
 
   },
+  todoContainer: {
+    position: 'relative',
+  },
   label: {
     lineHeight: '19px',
     textTransform: 'uppercase',
@@ -64,6 +67,13 @@ const todoStyle = (theme: Theme) => createStyles({
   tabIconSelected: {
     float: 'left',
     color: 'white',
+  },
+  absolute: {
+    position: 'absolute',
+    bottom: 0,
+    right: -30,
+    // bottom: theme.spacing.unit,
+    // right: theme.spacing.unit,
   },
 })
 export default todoStyle

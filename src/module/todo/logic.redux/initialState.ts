@@ -36,15 +36,21 @@ export const initialState = from({
   ],
 })
 
-export type TTask = Readonly<{
+// export type TTask = Readonly<{
+//   tags: string[],
+//   title: string,
+//   completed: boolean,
+//   id: string,
+// }>
+export type TTask = {
   tags: string[],
   title: string,
   completed: boolean,
   id: string,
-}>
+}
 
 export type TTodoState = ImmutableObject<
-  Readonly<{
+  {
     tasks: TTask[],
-  }>
+  }
 >

@@ -107,5 +107,8 @@ const taskStyle = (theme: Theme) => createStyles({
         border: '1px solid rgba(0, 0, 0, .54)',
         borderRadius: '50%',
       },
+      createTaskField: {
+          width: '100%',
+      },
 })
 export default taskStyle
