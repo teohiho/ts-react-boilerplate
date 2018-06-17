@@ -14,11 +14,12 @@ import { TRootState } from '../../../conf/redux/reducer'
 import todoStyle from './Todo.style'
 import AppTab from 'tpl/Tab/AppTab'
 import { Task } from 'tpl'
-import { TTask } from '../logic.redux/initialState'
+import { TTask, TTag, TTags } from '../logic.redux/initialState'
 import CardNewTask from './component/CardNewTask'
 
 export interface ITodoStateProps {
-  tasks: TTask[]
+  tasks: TTask[],
+  tags: TTags,
 }
 
 export interface ITodoDispatchProps {
@@ -32,32 +33,7 @@ export namespace Todo {
   export interface State {
   }
 }
-const addProperties = mapObjIndexed((value: TTask[], key) => {
-  switch (key) {
-    case 'Home': return {
-      tabName: key,
-      tabIcon: BugReport,
-      tabContent: (
-        <Task tasks={value} tag={key} />
-      ),
-    }
-    case 'Work': return {
-      tabName: 'Work',
-      tabIcon: Code,
-      tabContent: (
-        <Task tasks={value} tag={key} />
-      ),
-    }
-    default: break
- }
-  return {
-    tabName: 'Other',
-    tabIcon: Code,
-    tabContent: (
-      <Task tasks={value} tag={'Other'} />
-    ),
-  }
-})
+
 
 class Todo extends React.Component<Todo.Props, Todo.State> {
   state = {
@@ -67,9 +43,35 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
     this.setState({ value })
   }
   renderTabData = () => {
-    const { tasks } = this.props
+    const { tasks, tags } = this.props
     const tagGroup = groupBy<TTask>(task => task.tags[0])
-    console.log('Tag group', tagGroup)
+    console.log('Tag group', tagGroup(tasks), tags)
+    const addProperties = mapObjIndexed((value: TTask[], key) => {
+      switch (tags[key].title) {
+        case 'Home': return {
+          tabName: tags[key].title,
+          tabIcon: BugReport,
+          tabContent: (
+            <Task tasks={value} tag={key} />
+          ),
+        }
+        case 'Work': return {
+          tabName: tags[key].title,
+          tabIcon: Code,
+          tabContent: (
+            <Task tasks={value} tag={key} />
+          ),
+        }
+        default: break
+     }
+      return {
+        tabName: 'Other',
+        tabIcon: Code,
+        tabContent: (
+          <Task tasks={value} tag={'Other'} />
+        ),
+      }
+    })
     return compose(values, addProperties, tagGroup)(tasks)
   }
   public render(): JSX.Element {
@@ -106,6 +108,7 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
 }
 const mapStateToProps = (state: TRootState): ITodoStateProps => ({
   tasks: state.todo.tasks,
+  tags: state.todo.tags,
   // ...mapStateToProps
 })
 

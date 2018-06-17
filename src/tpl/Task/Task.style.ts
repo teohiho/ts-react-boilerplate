@@ -73,7 +73,9 @@ const taskStyle = (theme: Theme) => createStyles({
         lineBreak: 'auto',
     },
 
-
+    rootCheck: {
+      width: '30px',
+    },
 
     checked: {
         color: primaryColor + '!important',
@@ -109,6 +111,10 @@ const taskStyle = (theme: Theme) => createStyles({
       },
       createTaskField: {
           width: '100%',
+      },
+      editTextField: {
+        // alignContent: 'center',
+        fontSize: '14px',
       },
 })
 export default taskStyle

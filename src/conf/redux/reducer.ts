@@ -16,13 +16,14 @@ export type TRootState = {
   todo: TTodoState,
 }
 
-const rootReducer = (state: TRootState, action: any) => {
+const rootReducer = (state: any, action: any) => {
   const { type } = action
   switch (type) {
     case 'RS':
     case 'LOGOUT':
-      // state = {}
-      return {}
+      // tslint:disable-next-line:no-parameter-reassignment
+      state = undefined
+      // return {}
       break
     default:
       break

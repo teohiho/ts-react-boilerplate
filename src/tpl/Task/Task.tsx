@@ -3,6 +3,7 @@ import {  WithStyles, withStyles, Table, TableBody, TableRow, TableCell, Checkbo
 import { connect, Dispatch } from 'react-redux'
 import { range } from 'ramda'
 import { v4 } from 'uuid'
+import * as cs from 'classnames'
 
 // @material-ui/icons
 import Edit from '@material-ui/icons/Edit'
@@ -41,8 +42,9 @@ export namespace Task {
 }
 class Task extends React.Component<Task.Props, Task.State> {
   state = {
-    checked: this.props.checkedIndexes,
     newTaskText: '',
+    editTaskId: '',
+    editTaskText: '',
   }
 
   private onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,7 +53,26 @@ class Task extends React.Component<Task.Props, Task.State> {
       newTaskText: value,
     })
   }
-
+  private onChangeEdit = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target
+    this.setState({
+      editTaskText: value,
+    })
+  }
+  private onKeyPressEdit = (event: React.KeyboardEvent<HTMLDivElement>, task: TTask) => {
+    const { editTaskText } = this.state
+    if (event.key === 'Enter') {
+      // Do code here
+      this.props.updateTask(task.id, {
+        ...task,
+        title: editTaskText,
+      })
+      this.setState({
+        editTaskId: '',
+      })
+      event.preventDefault()
+    }
+  }
   private onKeyPress = (event: React.KeyboardEvent<HTMLDivElement>, tag: string) => {
     if (event.key === 'Enter') {
       // Do code here
@@ -80,7 +101,7 @@ class Task extends React.Component<Task.Props, Task.State> {
           <TableBody>
             {taskOrder.map(value => (
               <TableRow key={value} className={classes.tableRow}>
-                <TableCell className={classes.tableCell}>
+                <TableCell className={cs(classes.tableCell, classes.rootCheck)}>
                   <Checkbox
                     checked={tasks[value].completed}
                     tabIndex={-1}
@@ -96,7 +117,10 @@ class Task extends React.Component<Task.Props, Task.State> {
                     />
                 </TableCell>
                 <TableCell className={classes.tableCell}>
-                  {tasks[value].title}
+                  { tasks[value].id !== this.state.editTaskId
+                    ? tasks[value].title
+                    : <TextField value={this.state.editTaskText} onChange={this.onChangeEdit} onKeyPress={event => this.onKeyPressEdit(event, tasks[value])} className={classes.editTextField} />
+                  }
                 </TableCell>
                 <TableCell className={classes.tableActions}>
                   <Tooltip
@@ -113,7 +137,10 @@ class Task extends React.Component<Task.Props, Task.State> {
                         className={
                           classes.tableActionButtonIcon + ' ' + classes.edit
                         }
-                        // onClick={() => this.props.onDeleteTask(tasks[value].id)}
+                        onClick={() => this.setState({
+                          editTaskId: tasks[value].id,
+                          editTaskText: tasks[value].title,
+                        })}
                         />
                     </IconButton>
                   </Tooltip>
