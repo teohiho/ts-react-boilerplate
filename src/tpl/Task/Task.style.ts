@@ -13,11 +13,15 @@ const taskStyle = (theme: Theme) => createStyles({
       position: 'relative',
       borderBottom: '1px solid #dddddd',
     },
+    textRoot: {
+      width: '100%',
+    },
     tableActions: {
       display: 'flex',
       border: 'none',
       padding: '12px 8px !important',
       verticalAlign: 'middle',
+      width: '10px',
     },
     tableCell: {
       ...defaultFont,
