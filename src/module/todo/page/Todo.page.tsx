@@ -38,14 +38,14 @@ const addProperties = mapObjIndexed((value: TTask[], key) => {
       tabName: key,
       tabIcon: BugReport,
       tabContent: (
-        <Task tasks={value} />
+        <Task tasks={value} tag={key} />
       ),
     }
     case 'Work': return {
       tabName: 'Work',
       tabIcon: Code,
       tabContent: (
-        <Task tasks={value} />
+        <Task tasks={value} tag={key} />
       ),
     }
     default: break
@@ -54,7 +54,7 @@ const addProperties = mapObjIndexed((value: TTask[], key) => {
     tabName: 'Other',
     tabIcon: Code,
     tabContent: (
-      <Task tasks={value} />
+      <Task tasks={value} tag={'Other'} />
     ),
   }
 })

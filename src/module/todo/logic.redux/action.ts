@@ -20,9 +20,11 @@ export const addTask = (task: TTask) => {
   }
 }
 
-export const deleteTask = (task: number) => {
+export const deleteTask = (id: string) => {
   return {
       type: actionType.DELETE_TASK,
-      payload: task,
+      payload: {
+        id,
+      },
   }
 }

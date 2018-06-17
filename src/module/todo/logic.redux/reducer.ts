@@ -15,7 +15,7 @@ const reducer = (state: TTodoState = initialState, action: ITodoAction<TTask>) =
     }
     case actionType.DELETE_TASK: {
       const taskCurrentIndex = state.tasks.findIndex(task => task.id === action.payload.id)
-      return state.setIn(['task'], state.tasks.splice(0, taskCurrentIndex).concat(state.tasks.splice(taskCurrentIndex + 1)))
+      return state.setIn(['tasks'], state.tasks.slice(0, taskCurrentIndex).concat(state.tasks.slice(taskCurrentIndex + 1)))
     }
     default: return state
   }
