@@ -51,7 +51,7 @@
     "lint-fix": "tslint --fix 'src/**/*.{ts,tsx}'",
     "build": "react-scripts-ts build",
     "build:lang": "node ./src/i18n/translator.js",
-    "build:lang-ts": "ts-node ./src/i18n/translator.ts",
+    "build:lang-ts": "./node_modules/typescript/bin/tsc src/i18n/translator.ts",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
   }
