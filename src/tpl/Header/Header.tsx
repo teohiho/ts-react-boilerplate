@@ -14,6 +14,7 @@ import { RouteComponentProps } from 'react-router'
 
 import styles from './Header.style'
 import MenuIcon from '@material-ui/icons/Menu'
+import { FormattedMessage } from 'react-intl'
 
 export interface IHeaderStateProps {
 }
@@ -39,6 +40,9 @@ class Header extends React.Component<Header.Props, Header.State> {
     const { routes, location: { pathname } } = this.props
     for (const prop of routes) {
       if (prop.path === pathname) {
+        if (prop.navBarI18nId) {
+          return <FormattedMessage id={prop.navBarI18nId} />
+        }
         return prop.navBarName
       }
     }

@@ -20,7 +20,6 @@ const todoStyle = (theme: Theme) => createStyles({
     padding: '10px 10px 10px 0',
     lineHeight: '24px',
     fontSize: '14px',
-    color: '#FFFFFF',
   },
   cardHeaderContent: {
     flex: 'none',
@@ -36,6 +35,17 @@ const todoStyle = (theme: Theme) => createStyles({
   },
   labelIcon: {
 
+  },
+  addButton: {
+    width: '40px',
+    height: '40px',
+  },
+  addButtonContainer: {
+    // borderRightWidth: '10px',
+    // borderRightColor: 'red',
+    borderRight: '1px solid #1234',
+    marginRight: '5px',
+    paddingRight: '5px',
   },
   todoContainer: {
     position: 'relative',

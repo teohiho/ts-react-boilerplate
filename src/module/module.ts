@@ -5,7 +5,7 @@ import { app } from './app/app'
 
 export const module = {
   app,
-  home,
+  // home,
   todo,
-  sand,
+  // sand,
 }

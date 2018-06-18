@@ -21,7 +21,8 @@ export namespace AppTab {
     plainTabs?:  boolean,
     tabs: any[],
     title?: string,
-    rtlActive?: boolean
+    rtlActive?: boolean,
+    renderLeft?: () => void
   }
 
   export interface State {
@@ -43,6 +44,7 @@ class AppTab extends React.Component<AppTab.Props, AppTab.State> {
         tabs,
         title,
         rtlActive,
+        renderLeft,
       } = this.props
       const cardTitle = classNames({
         [classes.cardTitle]: true,
@@ -54,12 +56,17 @@ class AppTab extends React.Component<AppTab.Props, AppTab.State> {
             {title !== undefined ? (
                 <div className={cardTitle}>{title}</div>
             ) : null}
+            {renderLeft
+                ? (<div className={cardTitle}> {renderLeft()} </div>)
+                : null
+            }
             <Tabs
                 value={this.state.value}
                 onChange={this.handleChange}
                 classes={{
-                root: classes.tabsRoot,
-                indicator: classes.displayNone,
+                    root: classes.tabsRoot,
+                    indicator: classes.displayNone,
+                    scrollButtons: classes.scrollableTab,
                 }}
                 scrollable
                 scrollButtons="auto"

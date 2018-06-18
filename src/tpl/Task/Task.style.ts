@@ -10,8 +10,12 @@ const taskStyle = (theme: Theme) => createStyles({
       overflow: 'visible',
     },
     tableRow: {
-      position: 'relative',
+      // position: 'relative',
       borderBottom: '1px solid #dddddd',
+      display: 'flex',
+      // flex: 1,
+      flexDirection: 'row',
+      height: 'auto',
     },
     textRoot: {
       width: '100%',
@@ -21,14 +25,14 @@ const taskStyle = (theme: Theme) => createStyles({
       border: 'none',
       padding: '12px 8px !important',
       verticalAlign: 'middle',
-      width: '10px',
+      // width: '10px',
     },
     tableCell: {
       ...defaultFont,
-      padding: '8px',
-      verticalAlign: 'middle',
-      border: 'none',
-      lineHeight: '1.42857143',
+      // padding: '8px',
+      // verticalAlign: 'middle',
+      // border: 'none',
+      // lineHeight: '1.42857143',
       fontSize: '14px',
     },
     tableActionButton: {
@@ -55,7 +59,7 @@ const taskStyle = (theme: Theme) => createStyles({
         padding: '10px 15px',
         minWidth: '130px',
         color: '#555555',
-        lineHeight: '1.7em',
+        // lineHeight: '1.7em',
         background: '#FFFFFF',
         border: 'none',
         borderRadius: '3px',
@@ -78,7 +82,9 @@ const taskStyle = (theme: Theme) => createStyles({
     },
 
     rootCheck: {
-      width: '30px',
+      // width: '5px',
+      padding: 0,
+      borderBottom: '0px',
     },
 
     checked: {
@@ -119,6 +125,12 @@ const taskStyle = (theme: Theme) => createStyles({
       editTextField: {
         // alignContent: 'center',
         fontSize: '14px',
+        flex: 1,
+        padding: 0,
+        display: 'flex',
+        alignItems: 'center',
+        borderBottom: '0px',
+        color: 'black',
       },
 })
 export default taskStyle

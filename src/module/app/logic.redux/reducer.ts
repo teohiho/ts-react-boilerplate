@@ -8,6 +8,9 @@ const reducer = (state: TAppState = initialState, action: IAppAction<any>) => {
       const newStyle = state.theme.paletteType === 'light' ? 'dark' : 'light'
       return state.setIn(['theme', 'paletteType'], newStyle)
     }
+    case actionType.CHANGE_LANGUAGE: {
+      return state.setIn(['lang'], action.lang)
+    }
     default: return state
   }
 }

@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core'
 import styles from './SlideBar.style'
 import { RouteComponentProps } from 'react-router'
+import { FormattedMessage } from 'react-intl'
 
 interface ISlideBarStateProps {
 
@@ -66,6 +67,9 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
           const whiteFontClasses = cx({
             [' ' + classes.whiteFont]: this.activeRoute(prop.path),
           })
+          const sidebarName = prop.sidebarI18nId
+            ? <FormattedMessage id={prop.sidebarI18nId} />
+            : prop.sidebarName
           return (
             <NavLink
               to={prop.path}
@@ -78,7 +82,7 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
                   <prop.icon />
                 </ListItemIcon> */}
                 <ListItemText
-                  primary={prop.sidebarName}
+                  primary={sidebarName}
                   className={classes.itemText + whiteFontClasses}
                   disableTypography={true}
                 />

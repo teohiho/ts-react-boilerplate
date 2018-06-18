@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { WithStyles, withStyles, Grid, Tooltip, Button } from '@material-ui/core'
+import { WithStyles, withStyles, Grid, Tooltip, Button, Modal } from '@material-ui/core'
 import { connect, Dispatch } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 import { groupBy, mapObjIndexed, mergeAll, compose, values } from 'ramda'
@@ -16,6 +16,7 @@ import AppTab from 'tpl/Tab/AppTab'
 import { Task } from 'tpl'
 import { TTask, TTag, TTags } from '../logic.redux/initialState'
 import CardNewTask from './component/CardNewTask'
+import { unstable_renderSubtreeIntoContainer } from 'react-dom'
 
 export interface ITodoStateProps {
   tasks: TTask[],
@@ -83,23 +84,16 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
         <Grid container>
           <Grid xs={12} sm={12} md={6} className={classes.todoContainer}>
             <AppTab
-               title="Tasks:"
-               headerColor="info"
-               tabs={tabs}
+              renderLeft={() => (
+                <div className={classes.addButtonContainer}>
+                  <Button variant="fab" color="primary" className={classes.addButton}>
+                    <AddIcon />
+                  </Button>
+                </div>
+              )}
+              headerColor="info"
+              tabs={tabs}
             />
-            <Tooltip title="Add new task">
-              <Button variant="fab" color="secondary" className={classes.absolute}>
-                <AddIcon />
-              </Button>
-            </Tooltip>
-          </Grid>
-          <Grid xs={12} sm={12} md={7} className={classes.todoContainer}>
-            {/* <AppTab
-               title="Add task"
-               headerColor="info"
-               tabs={tabs}
-            /> */}
-            <CardNewTask />
           </Grid>
         </Grid>
       </div>

@@ -4,7 +4,7 @@ import createStyles from '@material-ui/core/styles/createStyles'
 const appTabStyle = (theme: Theme) => createStyles({
     cardTitle: {
         float: 'left',
-        padding: '10px 10px 10px 0px',
+        // padding: '10px 10px 10px 0px',
         lineHeight: '24px',
       },
       cardTitleRTL: {
@@ -13,6 +13,10 @@ const appTabStyle = (theme: Theme) => createStyles({
       },
       displayNone: {
         display: 'none !important',
+      },
+      scrollableTab: {
+        flex: 0,
+        // flex: '0 0 0px',
       },
       tabsRoot: {
         minHeight: 'unset !important',

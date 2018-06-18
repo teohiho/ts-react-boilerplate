@@ -1,73 +1,44 @@
 import * as React from 'react'
+import { WithStyles, withStyles, Typography } from '@material-ui/core'
+import { connect, Dispatch } from 'react-redux'
+import { RouteComponentProps } from 'react-router'
+import homeStyle from './Home.style'
+import { TRootState } from 'conf/redux/reducer'
 
-interface ComponentNameProps {}
+export interface ISampleStateProps {
+}
 
-interface ComponentNameState {}
+export interface ISampleDispatchProps {
 
-class ComponentName extends React.Component<ComponentNameProps, ComponentNameState> {
+}
+export namespace Sample {
+  export interface Props extends RouteComponentProps<void>, WithStyles<typeof homeStyle>, ISampleStateProps, ISampleDispatchProps {
+
+  }
+
+  export interface State {
+  }
+}
+class Sample extends React.Component<Sample.Props, Sample.State> {
   public render(): JSX.Element {
+    const { classes } = this.props
     return (
-      <div>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
-        <h1>Home</h1>
+      <div className={classes.root}>
+       <Typography>Typography</Typography>
+      {'This text is raw'}
+      <div className={classes.textEffect}>
+        {'This text is effected'}
+      </div>
       </div>
   )
   }
 }
+const mapStateToProps = (state: TRootState): ISampleStateProps => ({
+  // ...mapStateToProps
+})
 
-export default ComponentName
+const mapDispatchToProps = (dispatch: Dispatch<any>, props: Sample.Props): any => ({
+  // ...mapDispatchToProps
+})
+
+export default (withStyles(homeStyle)<Sample.Props>(connect(mapStateToProps, mapDispatchToProps)(Sample)))

@@ -83,6 +83,9 @@ class Task extends React.Component<Task.Props, Task.State> {
         tags: [tag],
         id: v4(),
       })
+      this.setState({
+        newTaskText: '',
+      })
       event.preventDefault()
     }
   }
@@ -101,7 +104,9 @@ class Task extends React.Component<Task.Props, Task.State> {
           <TableBody>
             {taskOrder.map(value => (
               <TableRow key={value} className={classes.tableRow}>
-                <TableCell className={cs(classes.tableCell, classes.rootCheck)}>
+                <TableCell classes={{
+                    root: cs(classes.rootCheck),
+                    }}>
                   <Checkbox
                     checked={tasks[value].completed}
                     tabIndex={-1}
@@ -113,13 +118,21 @@ class Task extends React.Component<Task.Props, Task.State> {
                     icon={<Check className={classes.uncheckedIcon} />}
                     classes={{
                       checked: classes.checked,
+                      // root: classes.rootCheck,
                     }}
                     />
                 </TableCell>
-                <TableCell className={classes.tableCell}>
+                <TableCell classes={{
+                    root: cs(classes.editTextField),
+                  }}>
                   { tasks[value].id !== this.state.editTaskId
                     ? tasks[value].title
-                    : <TextField value={this.state.editTaskText} onChange={this.onChangeEdit} onKeyPress={event => this.onKeyPressEdit(event, tasks[value])} className={classes.editTextField} />
+                    : <TextField
+                      value={this.state.editTaskText}
+                      onChange={this.onChangeEdit}
+                      autoFocus={true}
+                      onKeyPress={event => this.onKeyPressEdit(event, tasks[value])}
+                      className={classes.editTextField} />
                   }
                 </TableCell>
                 <TableCell className={classes.tableActions}>

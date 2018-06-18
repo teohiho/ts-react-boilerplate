@@ -1,0 +1,18 @@
+{
+  "en": {
+    "Setting.title": "Setting",
+    "Setting.theme": "Theme",
+    "Setting.darkTheme": "Dark",
+    "Home.title": "Home",
+    "Sample.title": "Sample",
+    "Todo.title": "Todo"
+  },
+  "vi": {
+    "Setting.title": "Cài đặt",
+    "Setting.theme": "Giao diện",
+    "Setting.darkTheme": "Tối",
+    "Home.title": "Trang chính",
+    "Sample.title": "Mẫu",
+    "Todo.title": "Tác vụ"
+  }
+}

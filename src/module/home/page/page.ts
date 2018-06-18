@@ -2,10 +2,12 @@ import HomePage from './Home.page'
 
 export const page = {
   route: {
-    path: '/dashboard',
+    path: '/home',
     exact: true,
     component: HomePage,
-    sidebarName: 'Dashboard',
-    navBarName: 'Dashboard',
+    sidebarName: 'Home',
+    sidebarI18nId: 'Home.title',
+    navBarName: 'Home',
+    navBarI18nId: 'Home.title',
   },
 }
