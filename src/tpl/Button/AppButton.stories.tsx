@@ -9,5 +9,5 @@ import AppButton from './AppButton'
 
 
 storiesOf('Button', module)
-  .add('pure', withInfo({ inline: true })(() => <AppButton  />),
+  .add('pure', withInfo({ inline: true })(() => <AppButton />),
 )

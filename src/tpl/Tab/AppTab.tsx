@@ -15,11 +15,16 @@ export interface IAppTabStateProps {
 export interface IAppTabDispatchProps {
 
 }
+export interface ITab {
+    tabName: string,
+    tabIcon?: any,
+    tabContent?: any
+}
 export namespace AppTab {
   export interface Props extends WithStyles<typeof appTabStyle>, IAppTabStateProps, IAppTabDispatchProps {
     headerColor?: string,
     plainTabs?:  boolean,
-    tabs: any[],
+    tabs: ITab[],
     title?: string,
     rtlActive?: boolean,
     renderLeft?: () => void
@@ -107,12 +112,6 @@ class AppTab extends React.Component<AppTab.Props, AppTab.State> {
   )
   }
 }
-const mapStateToProps = (state: TRootState): IAppTabStateProps => ({
-  // ...mapStateToProps
-})
 
-const mapDispatchToProps = (dispatch: Dispatch<any>, props: AppTab.Props): any => ({
-  // ...mapDispatchToProps
-})
 
-export default (withStyles(appTabStyle)<AppTab.Props>(connect(mapStateToProps, mapDispatchToProps)(AppTab)))
+export default (withStyles(appTabStyle)<AppTab.Props>(AppTab))
