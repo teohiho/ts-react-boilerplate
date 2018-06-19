@@ -9,7 +9,7 @@ import createStyles from '@material-ui/core/styles/createStyles'
 import DashBoard from '../layout/Dashboard'
 import { TRootState } from '../conf/redux/reducer'
 import {
-  // BrowserRouter,
+  BrowserRouter,
   Route,
   Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
@@ -29,8 +29,12 @@ export namespace AppRouter {
 
 class AppRouter extends React.Component<AppRouter.Props, AppRouter.State> {
   renderDashBoard = (props: any) => {
+    console.log('props renderDashBoard', props)
     const routesRender = pages.map((page: any, index: number) => (
-      <Route {...page} key={index} />
+      <Route
+        {...page}
+        key={index}
+        />
     ))
     return (
       <DashBoard routes={pages} {...props} >
@@ -46,7 +50,8 @@ class AppRouter extends React.Component<AppRouter.Props, AppRouter.State> {
       <div className={this.props.classes.body}>
         <Router history={hist}>
           <Switch>
-            <Route path={'/'} render={this.renderDashBoard} />
+            <Route path={''} render={this.renderDashBoard}>
+            </Route>
           </Switch>
         </Router>
       </div>
