@@ -112,10 +112,6 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
         >
           {this.renderBrand()}
           <div className={classes.sidebarWrapper}>{this.renderLink()}</div>
-          {/* <div >
-            <HeaderLinks />
-            {this.renderLink()}
-          </div> */}
           {image !== undefined ? (
             <div
               className={classes.background}
@@ -148,18 +144,5 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
   }
 }
 
-const mapStateToProps = (state: any): ISlideBarStateProps => {
-  return {
-    // ...mapStateToProps
-  }
-}
-
-const mapDispatchToProps = (dispatch: Dispatch<any>): ISlideBarDispatchProps => {
-  return {
-    // ...mapDispatchToProps
-  }
-}
-
-// export default (withStyles((theme) => ({ background: {} }))(connect(mapStateToProps, mapDispatchToProps)(SlideBar)));
-export default (withStyles<'drawerPaper'& 'logo'>(styles)<ISlideBarProps>(connect(mapStateToProps, mapDispatchToProps)(SlideBar)))
+export default (withStyles<'drawerPaper'& 'logo'>(styles)<ISlideBarProps>(SlideBar))
 
