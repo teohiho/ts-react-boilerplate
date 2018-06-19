@@ -5,15 +5,17 @@
     "Setting.darkTheme": "Dark",
     "Dashboard.title": "Dashboard",
     "Home.title": "Home",
+    "Man.title": "Man English",
     "Sample.title": "Sample",
     "Todo.title": "Todo"
   },
   "vi": {
-    "Setting.title": "Cài đặt1",
+    "Setting.title": "Cài đặt",
     "Setting.theme": "Giao diện",
     "Setting.darkTheme": "Tối",
     "Dashboard.title": "Bảng điều khiển",
     "Home.title": "Trang chính",
+    "Man.title": "Man Vietnam",
     "Sample.title": "Mẫu",
     "Todo.title": "Tác vụ"
   }

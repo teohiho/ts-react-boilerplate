@@ -2,7 +2,7 @@ import Dashboard from './Dashboard.page'
 
 export const page = {
   route: {
-    path: '/sample',
+    path: '/dashboard',
     exact: true,
     component: Dashboard,
     sidebarName: 'Dashboard',
