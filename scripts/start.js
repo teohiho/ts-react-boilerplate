@@ -30,7 +30,7 @@ const openBrowser = require('react-dev-utils/openBrowser');
 const paths = require('../config/paths');
 const config = require('../config/webpack.config.dev');
 const createDevServerConfig = require('../config/webpackDevServer.config');
-
+const i18nSetting = require('../src/i18n/translator')
 const useYarn = fs.existsSync(paths.yarnLockFile);
 const isInteractive = process.stdout.isTTY;
 
@@ -71,6 +71,19 @@ choosePort(HOST, DEFAULT_PORT)
     const urls = prepareUrls(protocol, HOST, port);
     // Create a webpack compiler that is configured with custom messages.
     const compiler = createCompiler(webpack, config, appName, urls, useYarn);
+
+    // Catch the event hot load
+    compiler.plugin('invalid', () => {
+      if (isInteractive) {
+        clearConsole();
+      }
+      console.log('Compiling...and generating language');
+      i18nSetting.generateData().then(() => {
+        console.log('Generate done')
+      })
+    });
+
+
     // Load proxy config
     const proxySetting = require(paths.appPackageJson).proxy;
     const proxyConfig = prepareProxy(proxySetting, paths.appPublic);

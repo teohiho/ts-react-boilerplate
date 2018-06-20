@@ -256,7 +256,8 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    // Perform type checking and linting in a separate process to speed up compilation
+    // Perform type checking and linting in a separate process to speed up 
+    
     new ForkTsCheckerWebpackPlugin({
       async: false,
       watch: paths.appSrc,
