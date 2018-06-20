@@ -5,7 +5,6 @@
     "Setting.darkTheme": "Dark",
     "Dashboard.title": "Dashboard",
     "Home.title": "Home",
-    "Man.title": "Man English",
     "Sample.title": "Sample",
     "Todo.title": "Todo"
   },
@@ -15,7 +14,6 @@
     "Setting.darkTheme": "Tối",
     "Dashboard.title": "Bảng điều khiển",
     "Home.title": "Trang chính",
-    "Man.title": "Man Vietnam",
     "Sample.title": "Mẫu",
     "Todo.title": "Tác vụ"
   }
