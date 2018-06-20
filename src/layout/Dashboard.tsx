@@ -64,18 +64,6 @@ class Dashboard extends React.Component<Dashboard.Props, Dashboard.State> {
 }
 
 
-const mapStateToProps = (state: any): IDashboardStateProps => {
-  return {
-    // ...mapStateToProps
-  }
-}
-
-const mapDispatchToProps = (dispatch: Dispatch<any>): IDashboardDispatchProps => {
-  return {
-    // ...mapDispatchToProps
-  }
-}
-
-export default withStyles(dashboardStyle)<Dashboard.Props>(connect(mapStateToProps, mapDispatchToProps)(Dashboard))
+export default withStyles(dashboardStyle)<Dashboard.Props>((Dashboard))
 
 
