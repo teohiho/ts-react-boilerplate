@@ -96,6 +96,14 @@ class Task extends React.Component<Task.Props, Task.State> {
     return (
       <div>
         <TextField
+          inputProps={{
+            className: classes.inputNewTask,
+          }}
+          InputLabelProps={{
+            style: {
+              color: 'black',
+            },
+          }}
           className={classes.createTaskField}
           label={'New Task'}
           onChange={this.onChange}
@@ -105,7 +113,7 @@ class Task extends React.Component<Task.Props, Task.State> {
             {taskOrder.map(value => (
               <TableRow key={value} className={classes.tableRow}>
                 <TableCell classes={{
-                    root: cs(classes.rootCheck),
+                    root: cs(classes.rootCellCheck),
                     }}>
                   <Checkbox
                     checked={tasks[value].completed}
@@ -118,7 +126,7 @@ class Task extends React.Component<Task.Props, Task.State> {
                     icon={<Check className={classes.uncheckedIcon} />}
                     classes={{
                       checked: classes.checked,
-                      // root: classes.rootCheck,
+                      root: classes.rootCheck,
                     }}
                     />
                 </TableCell>

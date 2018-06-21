@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "outDir": "build/dist",
-    // "module": "commonjs",
-    "module": "esnext",
+    "module": "commonjs",
+    // "module": "esnext",
+    // "module": "es2015",
     "target": "es5",
     "lib": ["es6", "dom"],
     "sourceMap": true,
@@ -10,7 +11,10 @@
     "jsx": "react",
     // "strict": true,
     "moduleResolution": "node",
-    "rootDir": "src",
+
+    // If lib in node_modules has problems
+    "skipLibCheck": true,
+    "rootDir": "./",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,

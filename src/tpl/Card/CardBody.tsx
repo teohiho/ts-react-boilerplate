@@ -45,12 +45,5 @@ class CardBody extends React.Component<CardBody.Props, CardBody.State> {
     )
   }
 }
-const mapStateToProps = (state: TRootState): ICardBodyStateProps => ({
-  // ...mapStateToProps
-})
 
-const mapDispatchToProps = (dispatch: Dispatch<any>, props: CardBody.Props): any => ({
-  // ...mapDispatchToProps
-})
-
-export default (withStyles(CardBodyStyle)<CardBody.Props>(connect(mapStateToProps, mapDispatchToProps)(CardBody)))
+export default (withStyles(CardBodyStyle)<CardBody.Props>(CardBody))

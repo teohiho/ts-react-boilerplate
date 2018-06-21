@@ -23,7 +23,7 @@ const taskStyle = (theme: Theme) => createStyles({
     tableActions: {
       display: 'flex',
       border: 'none',
-      padding: '12px 8px !important',
+      padding: '12px 0px !important',
       verticalAlign: 'middle',
       // width: '10px',
     },
@@ -81,12 +81,14 @@ const taskStyle = (theme: Theme) => createStyles({
         lineBreak: 'auto',
     },
 
-    rootCheck: {
+    rootCellCheck: {
       // width: '5px',
       padding: 0,
       borderBottom: '0px',
     },
-
+    rootCheck: {
+      justifyContent: 'left',
+    },
     checked: {
         color: primaryColor + '!important',
       },
@@ -102,6 +104,9 @@ const taskStyle = (theme: Theme) => createStyles({
         padding: '10px',
         border: '1px solid rgba(0, 0, 0, .54)',
         borderRadius: '3px',
+      },
+      inputNewTask: {
+        color: 'black',
       },
       radio: {
         color: primaryColor + '!important',

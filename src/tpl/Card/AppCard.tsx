@@ -48,12 +48,6 @@ class Card extends React.Component<Card.Props, Card.State> {
     )
   }
 }
-const mapStateToProps = (state: TRootState): ICardStateProps => ({
-  // ...mapStateToProps
-})
 
-const mapDispatchToProps = (dispatch: Dispatch<any>, props: Card.Props): any => ({
-  // ...mapDispatchToProps
-})
 
-export const AppCard =  (withStyles(cardStyle)<Card.Props>(connect(mapStateToProps, mapDispatchToProps)(Card)))
+export const AppCard = (withStyles(cardStyle)<Card.Props>(Card))

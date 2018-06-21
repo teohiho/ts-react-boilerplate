@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { WithStyles, withStyles } from '@material-ui/core'
+import { WithStyles, withStyles, Button } from '@material-ui/core'
 import { connect, Dispatch } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 import sampleStyle from './Sample.style'
@@ -24,6 +24,7 @@ class Sample extends React.Component<Sample.Props, Sample.State> {
     return (
       <div>
        <span>Sample</span>
+
       </div>
   )
   }

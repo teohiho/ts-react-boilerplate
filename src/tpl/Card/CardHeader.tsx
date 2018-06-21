@@ -51,12 +51,4 @@ class CardHeader extends React.Component<CardHeader.Props, CardHeader.State> {
   )
   }
 }
-const mapStateToProps = (state: TRootState): ICardHeaderStateProps => ({
-  // ...mapStateToProps
-})
-
-const mapDispatchToProps = (dispatch: Dispatch<any>, props: CardHeader.Props): any => ({
-  // ...mapDispatchToProps
-})
-
-export default (withStyles(cardHeaderStyle)<CardHeader.Props>(connect(mapStateToProps, mapDispatchToProps)(CardHeader)))
+export default (withStyles(cardHeaderStyle)<CardHeader.Props>(CardHeader))

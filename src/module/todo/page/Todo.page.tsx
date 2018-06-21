@@ -46,7 +46,6 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
   renderTabData = () => {
     const { tasks, tags } = this.props
     const tagGroup = groupBy<TTask>(task => task.tags[0])
-    console.log('Tag group', tagGroup(tasks), tags)
     const addProperties = mapObjIndexed((value: TTask[], key) => {
       switch (tags[key].title) {
         case 'Home': return {
@@ -79,6 +78,7 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
     const { classes } = this.props
     const { tasks } = this.props
     const tabs = this.renderTabData()
+    console.log('RENDER Todo')
     return (
       <div className={classes.container}>
         <Grid container>

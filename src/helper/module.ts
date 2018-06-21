@@ -25,8 +25,6 @@ interface IModuleType {
 type ReduxKey = 'reducer' | 'action' | 'saga'
 
 
-// export const pathDict = (data: typeof module, rootPath: string[], options: IOptionType = {}) => {
-// function pathDict(data: typeof module, rootPath: string[], options: {type: 'array'}): any[]
 function pathDict(data: typeof module, rootPath: string[], options: IOptionType = { type: 'list' }) {
   const { type } = options
   const getListData = mapObjIndexed((eachModuleValue: IModuleType) => path(rootPath)(eachModuleValue))

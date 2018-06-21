@@ -69,6 +69,8 @@ class Setting extends React.Component<Setting.Props, Setting.State> {
   public render() {
     const { classes, lang, switchTheme, paletteType, switchLang } = this.props
     const newLang = lang === 'vi' ? 'en' : 'vi'
+    console.log('RENDER PAGE')
+
     return (
       <div>
         <FormGroup classes={{ root: classes.root }}>
