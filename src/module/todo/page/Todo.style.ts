@@ -48,7 +48,7 @@ const todoStyle = (theme: Theme) => createStyles({
     paddingRight: '5px',
   },
   todoContainer: {
-    position: 'relative',
+    // position: 'relative',
   },
   label: {
     lineHeight: '19px',
@@ -56,6 +56,26 @@ const todoStyle = (theme: Theme) => createStyles({
     fontSize: '12px',
     fontWeight: 'bold',
     color: '#c3c3c3',
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200,
+  },
+  modal: {
+    position: 'absolute',
+    backgroundColor: theme.palette.background.paper,
+    width: theme.spacing.unit * 70,
+    height: theme.spacing.unit * 20,
+    top: '30%',
+    left: '30%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    fontSize: '2rem',
+    display: 'flex',
+    flexDirection: 'column',
+    borderRadius: '12px',
   },
   textColorInheritSelected: {
     backgroundColor: 'rgba(255, 255, 255, 0.2)',

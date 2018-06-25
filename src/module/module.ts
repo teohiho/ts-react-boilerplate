@@ -7,7 +7,6 @@ import { dashboard } from './dashboard/dashboard'
 export const module = {
   dashboard,
   app,
-  // home,
+  home,
   todo,
-  // sand,
 }

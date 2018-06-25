@@ -1,6 +1,7 @@
 import { RouteComponentProps, Switch } from 'react-router'
 import * as React from 'react'
 import { connect } from 'react-redux'
+import { map, mapObjIndexed, values, compose, omit } from 'ramda'
 
 import { getPageList } from '../helper/module'
 import { Theme, withStyles, WithStyles } from '@material-ui/core'
@@ -17,7 +18,6 @@ const hist = createBrowserHistory()
 
 const pages = getPageList()
 
-
 export namespace AppRouter {
   export interface Props extends RouteComponentProps<void>, WithStyles<typeof styles> {
   }
@@ -29,15 +29,21 @@ export namespace AppRouter {
 
 class AppRouter extends React.Component<AppRouter.Props, AppRouter.State> {
   renderDashBoard = (props: any) => {
-    console.log('props renderDashBoard', props)
-    const routesRender = pages.map((page: any, index: number) => (
+
+    const convertRouteComponent = mapObjIndexed((page: any, key: string) => (
       <Route
         {...page}
-        key={index}
+        key={key}
         />
     ))
+    const routesRender = compose(values, convertRouteComponent)(pages)
+
+    const pageIgnore = [
+      'todoSingle',
+    ]
+    const slidebarRoutes = compose(values, omit(pageIgnore))(pages)
     return (
-      <DashBoard routes={pages} {...props} >
+      <DashBoard routes={values(pages)} {...props} >
         <Switch>
           {routesRender}
         </Switch>

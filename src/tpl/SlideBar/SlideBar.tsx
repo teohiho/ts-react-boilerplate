@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { connect, Dispatch } from 'react-redux'
 import * as cx from 'classnames'
 import { NavLink } from 'react-router-dom'
 import {
@@ -15,7 +14,7 @@ import {
 import styles from './SlideBar.style'
 import { RouteComponentProps } from 'react-router'
 import { FormattedMessage } from 'react-intl'
-
+import { split } from 'ramda'
 interface ISlideBarStateProps {
 
 }
@@ -52,7 +51,9 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
     )
   }
   private activeRoute(routeName: string) {
-    return this.props.location.pathname.indexOf(routeName) > -1 ? true : false
+    const { pathname } = this.props.location
+    return split('/')(routeName)[1] === split('/')(pathname)[1]
+    // return this.props.location.pathname === routeName
     // return true;
   }
   private renderLink() {
@@ -70,6 +71,7 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
           const sidebarName = prop.sidebarI18nId
             ? <FormattedMessage id={prop.sidebarI18nId} />
             : prop.sidebarName
+          if (!sidebarName) return null
           return (
             <NavLink
               to={prop.path}

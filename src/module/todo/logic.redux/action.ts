@@ -1,4 +1,4 @@
-import { TTask } from './initialState'
+import { TTask, TTag } from './initialState'
 import actionType from './actionType'
 
 export interface ITodoAction<T> {
@@ -17,6 +17,13 @@ export const addTask = (task: TTask) => {
   return {
       type: actionType.ADD_TASK,
       payload: task,
+  }
+}
+
+export const addTag = (tag: TTag) => {
+  return {
+      type: actionType.ADD_TAG,
+      payload: tag,
   }
 }
 

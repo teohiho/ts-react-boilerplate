@@ -22,10 +22,10 @@ describe('todos reducer', () => {
       }),
     ).toEqual({
       ...initialState,
-      tasks: [
+      tasks: {
         ...initialState.tasks,
-        sampleTest,
-      ],
+        [sampleTest.id]: sampleTest,
+      },
     })
     })
 })

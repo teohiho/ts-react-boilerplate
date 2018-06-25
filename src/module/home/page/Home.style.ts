@@ -10,5 +10,6 @@ const sampleStyle = (theme: Theme) => createStyles({
   textEffect: {
     color: theme.palette.text.primary,
   },
+
 })
 export default sampleStyle

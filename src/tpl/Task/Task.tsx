@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {  WithStyles, withStyles, Table, TableBody, TableRow, TableCell, Checkbox, Tooltip, IconButton, TextField } from '@material-ui/core'
+import {  WithStyles, withStyles, Table, TableBody, TableRow, TableCell, Checkbox, Tooltip, IconButton, TextField, Button } from '@material-ui/core'
 import { connect, Dispatch } from 'react-redux'
 import { range } from 'ramda'
 import { v4 } from 'uuid'
@@ -14,6 +14,7 @@ import taskStyle from './Task.style'
 import { TRootState } from 'conf/redux/reducer'
 import { TTask } from 'module/todo/logic.redux/initialState'
 import { updateTask, addTask, deleteTask } from 'module/todo/logic.redux/action'
+import { Link } from 'react-router-dom'
 
 export interface ITaskStateProps {
 
@@ -110,17 +111,17 @@ class Task extends React.Component<Task.Props, Task.State> {
           onKeyPress={event => this.onKeyPress(event, tag)} />
         <Table className={classes.table}>
           <TableBody>
-            {taskOrder.map(value => (
-              <TableRow key={value} className={classes.tableRow}>
+            {taskOrder.map(index => (
+              <TableRow key={index} className={classes.tableRow}>
                 <TableCell classes={{
                     root: cs(classes.rootCellCheck),
                     }}>
                   <Checkbox
-                    checked={tasks[value].completed}
+                    checked={tasks[index].completed}
                     tabIndex={-1}
-                    onClick={() => this.props.updateTask(tasks[value].id, {
-                      ...tasks[value],
-                      completed: ! tasks[value].completed,
+                    onClick={() => this.props.updateTask(tasks[index].id, {
+                      ...tasks[index],
+                      completed: ! tasks[index].completed,
                     })}
                     checkedIcon={<Check className={classes.checkedIcon} />}
                     icon={<Check className={classes.uncheckedIcon} />}
@@ -133,23 +134,22 @@ class Task extends React.Component<Task.Props, Task.State> {
                 <TableCell classes={{
                     root: cs(classes.editTextField),
                   }}>
-                  { tasks[value].id !== this.state.editTaskId
-                    ? tasks[value].title
+                  <Link to={{
+                    pathname: `/todo/${tasks[index].id}`,
+                  }}
+                   >
+                  { tasks[index].id !== this.state.editTaskId
+                    ? tasks[index].title
                     : <TextField
                       value={this.state.editTaskText}
                       onChange={this.onChangeEdit}
                       autoFocus={true}
-                      onKeyPress={event => this.onKeyPressEdit(event, tasks[value])}
+                      onKeyPress={event => this.onKeyPressEdit(event, tasks[index])}
                       className={classes.editTextField} />
                   }
+                  </Link>
                 </TableCell>
                 <TableCell className={classes.tableActions}>
-                  <Tooltip
-                    id="tooltip-top"
-                    title="Edit Task"
-                    placement="top"
-                    classes={{ tooltip: classes.tooltip }}
-                    >
                     <IconButton
                       aria-label="Edit"
                       className={classes.tableActionButton}
@@ -158,19 +158,15 @@ class Task extends React.Component<Task.Props, Task.State> {
                         className={
                           classes.tableActionButtonIcon + ' ' + classes.edit
                         }
-                        onClick={() => this.setState({
-                          editTaskId: tasks[value].id,
-                          editTaskText: tasks[value].title,
-                        })}
+                        onClick={() => {
+                          console.log('ON CLICK', tasks[index])
+                          this.setState({
+                          editTaskId: tasks[index].id,
+                          editTaskText: tasks[index].title,
+                        })
+                      }}
                         />
                     </IconButton>
-                  </Tooltip>
-                  <Tooltip
-                    id="tooltip-top-start"
-                    title="Remove"
-                    placement="top"
-                    classes={{ tooltip: classes.tooltip }}
-                    >
                     <IconButton
                       aria-label="Close"
                       className={classes.tableActionButton}
@@ -179,10 +175,9 @@ class Task extends React.Component<Task.Props, Task.State> {
                         className={
                           classes.tableActionButtonIcon + ' ' + classes.close
                         }
-                        onClick={() => this.props.onDeleteTask(tasks[value].id)}
+                        onClick={() => this.props.onDeleteTask(tasks[index].id)}
                         />
                     </IconButton>
-                  </Tooltip>
                 </TableCell>
               </TableRow>
             ))}

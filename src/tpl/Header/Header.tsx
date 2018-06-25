@@ -15,6 +15,7 @@ import { RouteComponentProps } from 'react-router'
 import styles from './Header.style'
 import MenuIcon from '@material-ui/icons/Menu'
 import { FormattedMessage } from 'react-intl'
+import * as pathToExp from 'path-to-regexp'
 
 export interface IHeaderStateProps {
 }
@@ -34,12 +35,15 @@ export namespace Header {
   export interface State {
   }
 }
-
 class Header extends React.Component<Header.Props, Header.State> {
+  isPathInRoute(pathname: string, routePath: string) {
+    const re = pathToExp(routePath)
+    return re.exec(pathname)
+  }
   private makeBrand() {
     const { routes, location: { pathname } } = this.props
     for (const prop of routes) {
-      if (prop.path === pathname) {
+      if (this.isPathInRoute(pathname, prop.path)) {
         if (prop.navBarI18nId) {
           return <FormattedMessage id={prop.navBarI18nId} />
         }

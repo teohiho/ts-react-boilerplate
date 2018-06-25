@@ -1,4 +1,4 @@
-import { compose, map, path, filter, isNil, values, mergeAll, pick, mapObjIndexed } from 'ramda'
+import { compose, map, path, filter, isNil, flatten, values, mergeAll, pick, mapObjIndexed } from 'ramda'
 // tslint:disable-next-line:no-duplicate-imports
 
 import { module } from '../module/module'
@@ -31,7 +31,7 @@ function pathDict(data: typeof module, rootPath: string[], options: IOptionType 
   const removeUndefinedItem = filter((item: any) => !isNil(item))
   const listCompose = compose(removeUndefinedItem, getListData)
   switch (type) {
-    case 'array': return compose(values, listCompose)(data)
+    case 'array': return compose(flatten, values, listCompose)(data)
     case 'flatten': return compose(mergeAll, values, listCompose)(data)
     case 'list':
     default: return listCompose(data)
@@ -40,6 +40,6 @@ function pathDict(data: typeof module, rootPath: string[], options: IOptionType 
 
 
 export const getSpecificModuleRedux = (key: ReduxKey, options?: IOptionType) => pathDict(module, ['redux', key], options)
-export const getPageList = () => <IPageType[]>pathDict(module, ['page', 'route'], { type: 'array' })
+export const getPageList = () => <IPageType>pathDict(module, ['page', 'route'], { type: 'flatten' })
 export default { getSpecificModuleRedux, getPageList }
 
