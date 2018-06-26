@@ -7,7 +7,7 @@ import { TTask } from 'module/todo/logic.redux/initialState'
 import { Task } from 'tpl'
 
 export interface ITabReduxStateProps {
-  tasks: TTask[],
+  tasks: string[],
   tag: string
 }
 export interface ITabReduxConnectedExtendedProps {

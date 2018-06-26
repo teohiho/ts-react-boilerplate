@@ -9,24 +9,24 @@ const taskStyle = (theme: Theme) => createStyles({
       marginBottom: '0',
       overflow: 'visible',
     },
-    tableRow: {
-      // position: 'relative',
-      borderBottom: '1px solid #dddddd',
-      display: 'flex',
-      // flex: 1,
-      flexDirection: 'row',
-      height: 'auto',
-    },
+    // tableRow: {
+    //   // position: 'relative',
+    //   borderBottom: '1px solid #dddddd',
+    //   display: 'flex',
+    //   // flex: 1,
+    //   flexDirection: 'row',
+    //   height: 'auto',
+    // },
     textRoot: {
       width: '100%',
     },
-    tableActions: {
-      display: 'flex',
-      border: 'none',
-      padding: '12px 0px !important',
-      verticalAlign: 'middle',
-      // width: '10px',
-    },
+    // tableActions: {
+    //   display: 'flex',
+    //   border: 'none',
+    //   padding: '12px 0px !important',
+    //   verticalAlign: 'middle',
+    //   // width: '10px',
+    // },
     tableCell: {
       ...defaultFont,
       // padding: '8px',
@@ -35,24 +35,24 @@ const taskStyle = (theme: Theme) => createStyles({
       // lineHeight: '1.42857143',
       fontSize: '14px',
     },
-    tableActionButton: {
-      width: '27px',
-      height: '27px',
-    },
-    tableActionButtonIcon: {
-      width: '17px',
-      height: '17px',
-    },
-    edit: {
-      backgroundColor: 'transparent',
-      color: primaryColor,
-      boxShadow: 'none',
-    },
-    close: {
-      backgroundColor: 'transparent',
-      color: dangerColor,
-      boxShadow: 'none',
-    },
+    // tableActionButton: {
+    //   width: '27px',
+    //   height: '27px',
+    // },
+    // tableActionButtonIcon: {
+    //   width: '17px',
+    //   height: '17px',
+    // },
+    // edit: {
+    //   backgroundColor: 'transparent',
+    //   color: primaryColor,
+    //   boxShadow: 'none',
+    // },
+    // close: {
+    //   backgroundColor: 'transparent',
+    //   color: dangerColor,
+    //   boxShadow: 'none',
+    // },
 
 
     tooltip: {
@@ -81,30 +81,30 @@ const taskStyle = (theme: Theme) => createStyles({
         lineBreak: 'auto',
     },
 
-    rootCellCheck: {
-      // width: '5px',
-      padding: 0,
-      borderBottom: '0px',
-    },
-    rootCheck: {
-      justifyContent: 'left',
-    },
-    checked: {
-        color: primaryColor + '!important',
-      },
-      checkedIcon: {
-        width: '20px',
-        height: '20px',
-        border: '1px solid rgba(0, 0, 0, .54)',
-        borderRadius: '3px',
-      },
-      uncheckedIcon: {
-        width: '0px',
-        height: '0px',
-        padding: '10px',
-        border: '1px solid rgba(0, 0, 0, .54)',
-        borderRadius: '3px',
-      },
+    // rootCellCheck: {
+    //   // width: '5px',
+    //   padding: 0,
+    //   borderBottom: '0px',
+    // },
+    // rootCheck: {
+    //   justifyContent: 'left',
+    // },
+    // checked: {
+    //     color: primaryColor + '!important',
+    //   },
+      // checkedIcon: {
+      //   width: '20px',
+      //   height: '20px',
+      //   border: '1px solid rgba(0, 0, 0, .54)',
+      //   borderRadius: '3px',
+      // },
+      // uncheckedIcon: {
+      //   width: '0px',
+      //   height: '0px',
+      //   padding: '10px',
+      //   border: '1px solid rgba(0, 0, 0, .54)',
+      //   borderRadius: '3px',
+      // },
       inputNewTask: {
         color: 'black',
       },
@@ -127,15 +127,15 @@ const taskStyle = (theme: Theme) => createStyles({
       createTaskField: {
           width: '100%',
       },
-      editTextField: {
-        // alignContent: 'center',
-        fontSize: '14px',
-        flex: 1,
-        padding: 0,
-        display: 'flex',
-        alignItems: 'center',
-        borderBottom: '0px',
-        color: 'black',
-      },
+      // editTextField: {
+      //   // alignContent: 'center',
+      //   fontSize: '14px',
+      //   flex: 1,
+      //   padding: 0,
+      //   display: 'flex',
+      //   alignItems: 'center',
+      //   borderBottom: '0px',
+      //   color: 'black',
+      // },
 })
 export default taskStyle
