@@ -57,7 +57,6 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
   }
   private renderTabData = () => {
     const { tagsIndex, tags } = this.props
-    console.log('>>>', this.props)
     return tagsIndex.map(tagId => ({
       tabName: tags[tagId].title,
       tabIcon: this.renderTabIcon(tagId),

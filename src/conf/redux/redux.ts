@@ -1,7 +1,8 @@
 
-import { createStore, compose } from 'redux'
+import { createStore, compose, applyMiddleware } from 'redux'
 import { appReducer } from './reducer'
 import { persistStore } from 'redux-persist'
+import * as LogRocket from 'logrocket'
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -10,7 +11,11 @@ const composeEnhancers =
       // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
     }) : compose
 const enhancer = composeEnhancers(
-// other store enhancers if any
+  // other store enhancers if any
+  applyMiddleware(
+    // Add saga, debug...
+    LogRocket.reduxMiddleware(),
+  ),
 )
 const preloadedState = {}
 
