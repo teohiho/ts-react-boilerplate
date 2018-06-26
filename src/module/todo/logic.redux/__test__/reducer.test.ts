@@ -26,6 +26,10 @@ describe('todos reducer', () => {
         ...initialState.tasks,
         [sampleTest.id]: sampleTest,
       },
+      tasksIndex: [
+        ...initialState.tasksIndex,
+        sampleTest.id,
+      ],
     })
     })
 })

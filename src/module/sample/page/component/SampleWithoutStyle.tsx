@@ -2,7 +2,6 @@ import * as React from 'react'
 import { WithStyles, withStyles, Button } from '@material-ui/core'
 import { connect, Dispatch } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
-import sampleStyle from './Sample.style'
 import { TRootState } from 'conf/redux/reducer'
 
 export interface ISampleStateProps {
@@ -15,7 +14,7 @@ export interface ISampleConnectedExtendedProps extends RouteComponentProps<void>
 export interface ISampleDispatchProps {
 }
 export namespace Sample {
-  export interface Props extends WithStyles<typeof sampleStyle>, ISampleStateProps, ISampleDispatchProps, ISampleConnectedExtendedProps {
+  export interface Props extends ISampleStateProps, ISampleDispatchProps, ISampleConnectedExtendedProps {
 
   }
   export interface State {
@@ -43,4 +42,4 @@ const mapDispatchToProps = (dispatch: Dispatch<any>, ownProps: ISampleConnectedE
   // ...mapDispatchToProps
 })
 
-export default withStyles(sampleStyle)(connect(mapStateToProps, mapDispatchToProps)(Sample))
+export default connect(mapStateToProps, mapDispatchToProps)(Sample)

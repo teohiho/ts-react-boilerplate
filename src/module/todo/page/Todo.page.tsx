@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { WithStyles, withStyles, Grid, Tooltip, Button, Modal, TextField, Typography } from '@material-ui/core'
+import { WithStyles, withStyles, Grid, Tooltip, Button, Modal, TextField, Typography, Icon } from '@material-ui/core'
 import { connect, Dispatch } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 import { groupBy, mapObjIndexed, mergeAll, compose, values, map, pick, indexOf } from 'ramda'
@@ -19,11 +19,12 @@ import CardNewTask from './component/CardNewTask'
 import { unstable_renderSubtreeIntoContainer } from 'react-dom'
 import { addTag } from '../logic.redux/action'
 import { v4 } from 'uuid'
+import TabRedux from './component/TabRedux'
 
 export interface ITodoStateProps {
-  tasks: TTasks,
+  // tasks: TTasks,
   tags: TTags,
-  tasksIndex: string[],
+  // tasksIndex: string[],
   tagsIndex: string[]
 }
 
@@ -39,7 +40,6 @@ export namespace Todo {
   }
 }
 
-
 class Todo extends React.Component<Todo.Props, Todo.State> {
   state = {
     value: 0,
@@ -49,50 +49,20 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
   handleChange = (event: any, value: number) => {
     this.setState({ value })
   }
-  renderTabData = () => {
-    const { tasks, tags, tasksIndex, tagsIndex } = this.props
-    const convertTasks = map((key: string) => tasks[key])
-    const tagGroup = groupBy<TTask>(task => task.tags[0])
-    const addProperties = mapObjIndexed((tasksByGroup: TTask[], key) => {
-      switch (tags[key].title) {
-        case 'Home': return {
-          tabName: tags[key].title,
-          tabIcon: BugReport,
-          tabContent: (
-            <Task tasks={tasksByGroup} tag={key} />
-          ),
-        }
-        case 'Work': return {
-          tabName: tags[key].title,
-          tabIcon: Code,
-          tabContent: (
-            <Task tasks={tasksByGroup} tag={key} />
-          ),
-        }
-        default: break
-     }
-      return {
-        tabName: 'Other',
-        tabIcon: Code,
-        tabContent: (
-          <Task tasks={tasksByGroup} tag={'Other'} />
-        ),
-      }
-    })
-    const tabObj = compose(pick(tagsIndex), addProperties, tagGroup, convertTasks)(tasksIndex)
-    const addTabByTag = map((tagKey: string) => {
-      if (!tabObj[tagKey]) {
-        return {
-          tabName: tags[tagKey].title,
-          tabIcon: BugReport,
-          tabContent: (
-            <Task tasks={[]} tag={tagKey} />
-          ),
-        }
-      }
-      return tabObj[tagKey]
-    })(tagsIndex)
-    return addTabByTag
+  private renderTabIcon(tagKey: string) {
+    switch (tagKey) {
+      case '':
+      default: return BugReport
+    }
+  }
+  private renderTabData = () => {
+    const { tagsIndex, tags } = this.props
+    console.log('>>>', this.props)
+    return tagsIndex.map(tagId => ({
+      tabName: tags[tagId].title,
+      tabIcon: this.renderTabIcon(tagId),
+      tabContent: <TabRedux tagId={tagId} />,
+    }))
   }
   private showModal = () => {
     this.setState({ modalOpen: true })
@@ -122,7 +92,6 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
   }
   public render(): JSX.Element {
     const { classes } = this.props
-    const { tasks } = this.props
     const tabs = this.renderTabData()
     return (
       <div className={classes.container}>
@@ -166,8 +135,8 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
   }
 }
 const mapStateToProps = (state: TRootState): ITodoStateProps => ({
-  tasks: state.todo.tasks,
-  tasksIndex: state.todo.tasksIndex,
+  // tasks: state.todo.tasks,
+  // tasksIndex: state.todo.tasksIndex,
   tags: state.todo.tags,
   tagsIndex: state.todo.tagsIndex,
   // ...mapStateToProps
