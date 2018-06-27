@@ -40,7 +40,7 @@ export namespace Todo {
   }
 }
 
-class Todo extends React.Component<Todo.Props, Todo.State> {
+class Todo extends React.PureComponent<Todo.Props, Todo.State> {
   state = {
     value: 0,
     modalOpen: false,
@@ -55,6 +55,10 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
       default: return Code
     }
   }
+  // shouldComponentUpdate() {
+  //   return false
+  // }
+
   private renderTabData = () => {
     const { tagsIndex, tags } = this.props
     return tagsIndex.map(tagId => ({
@@ -102,10 +106,6 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
           open={this.state.modalOpen}
           onClose={this.hideModal}
         >
-          {/* <div className={classes.modal}> */}
-            {/* <>
-              {`Add tag\n`}
-            </> */}
             <DialogTitle id="form-dialog-title">Add tag</DialogTitle>
             <DialogContent>
               <TextField
@@ -151,6 +151,7 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
 const mapStateToProps = (state: TRootState): ITodoStateProps => ({
   tags: state.todo.tags,
   tagsIndex: state.todo.tagsIndex,
+
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<any>, props: Todo.Props): any => ({

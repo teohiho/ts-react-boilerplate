@@ -5,7 +5,7 @@
     // "module": "esnext",
     // "module": "es2015",
     "target": "es5",
-    "lib": ["es6", "dom"],
+    "lib": ["es2017", "dom"],
     "sourceMap": true,
     "allowJs": true,
     "jsx": "react",
@@ -15,6 +15,7 @@
     // If lib in node_modules has problems
     "skipLibCheck": true,
     "rootDir": "./",
+    "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,

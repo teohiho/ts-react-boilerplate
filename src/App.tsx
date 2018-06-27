@@ -24,7 +24,6 @@ export namespace App {
     }
 }
 
-
 class App extends React.Component<App.Props, App.State> {
     componentDidMount() {
         const sampleUser = {

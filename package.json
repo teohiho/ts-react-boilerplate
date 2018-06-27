@@ -39,6 +39,7 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-test-renderer": "^16.4.1",
+    "recompose": "^0.27.1",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.10.0",
@@ -109,10 +110,10 @@
     "lint:auto-fix": "tslint --fix 'src/**/*.{ts,tsx}'",
     "build": "node scripts/build.js",
     "build:lang": "node ./src/i18n/translator.js",
-    "build:lang-ts": "./node_modules/typescript/bin/tsc src/i18n/translator.ts",
+    "build:lang-ts": "ts-node src/i18n/translator.ts",
     "test": "node scripts/test.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build:storybook": "build-storybook"
   },
   "jest": {
     "moduleDirectories": [

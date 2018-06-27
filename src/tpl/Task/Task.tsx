@@ -110,9 +110,7 @@ class Task extends React.Component<Task.Props, Task.State> {
         <Table className={classes.table}>
           <TableBody>
             {taskOrder.map(index => (
-              <div key={index}>
-                <TaskRow taskId={index} />
-              </div>
+                <TaskRow taskId={index} key={index} />
             ))}
           </TableBody>
         </Table>
