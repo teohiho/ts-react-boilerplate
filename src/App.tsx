@@ -10,7 +10,9 @@ import { MuiThemeProvider, CssBaseline } from '@material-ui/core'
 import { getTheme } from './theme/themeHelper'
 import { TRootState } from './conf/redux/reducer'
 import { TTheme } from './module/app/logic.redux/initalState'
+import { registerUserLogger } from './conf/debug/logrocket'
 const messages = require('./i18n/build.json')
+const log = require('./conf/debug/logrocket')
 
 addLocaleData([...en, ...vi])
 
@@ -22,8 +24,16 @@ export namespace App {
     }
 }
 
-
 class App extends React.Component<App.Props, App.State> {
+    componentDidMount() {
+        const sampleUser = {
+            id: 'Test-12345',
+            name: 'Test Name',
+            email: 'TestEmail@gmail.com',
+        }
+        registerUserLogger(sampleUser)
+    }
+
     render() {
         const { paletteType, lang } = this.props
         return (

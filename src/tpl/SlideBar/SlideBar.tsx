@@ -1,6 +1,10 @@
-import * as React from 'react'
 import * as cx from 'classnames'
+import * as React from 'react'
+import styles from './SlideBar.style'
+import { FormattedMessage } from 'react-intl'
 import { NavLink } from 'react-router-dom'
+import { RouteComponentProps } from 'react-router'
+import { split } from 'ramda'
 import {
   withStyles,
   WithStyles,
@@ -11,10 +15,7 @@ import {
   // ListItemIcon,
   ListItemText,
 } from '@material-ui/core'
-import styles from './SlideBar.style'
-import { RouteComponentProps } from 'react-router'
-import { FormattedMessage } from 'react-intl'
-import { split } from 'ramda'
+import AppLink from './component/AppLink'
 interface ISlideBarStateProps {
 
 }
@@ -33,6 +34,7 @@ interface ISlideBarProps extends RouteComponentProps<void>, WithStyles<typeof st
 
 interface ISlideBarState {}
 
+
 class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
   private renderBrand() {
     const { classes,
@@ -42,9 +44,6 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
     return (
       <div className={classes.logo}>
         <a href="/dashboard" className={classes.logoLink}>
-          {/* <div className={classes.logoImage}>
-            <img src={logo} alt="logo" className={classes.img} />
-          </div> */}
           {logoText}
         </a>
       </div>
@@ -59,39 +58,16 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
   private renderLink() {
     const { classes, routes, color } = this.props
     return (
-      <List >
-        {routes.map((prop, key) => {
-          if (prop.redirect) return null
-          const listItemClasses = cx({
-            [' ' + classes[color]]: this.activeRoute(prop.path),
-          })
-          const whiteFontClasses = cx({
-            [' ' + classes.whiteFont]: this.activeRoute(prop.path),
-          })
-          const sidebarName = prop.sidebarI18nId
-            ? <FormattedMessage id={prop.sidebarI18nId} />
-            : prop.sidebarName
-          if (!sidebarName) return null
-          return (
-            <NavLink
-              to={prop.path}
-              className={classes.item}
-              activeClassName="active"
-              key={key}
-            >
-              <ListItem button className={classes.itemLink + listItemClasses}>
-                {/* <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
-                  <prop.icon />
-                </ListItemIcon> */}
-                <ListItemText
-                  primary={sidebarName}
-                  className={classes.itemText + whiteFontClasses}
-                  disableTypography={true}
-                />
-              </ListItem>
-            </NavLink>
-          )
-        })}
+      <List>
+        {routes.map((prop, key) =>
+          <AppLink
+            color={color}
+            isActive={this.activeRoute(prop.path)}
+            sidebarI18nId={prop.sidebarI18nId}
+            sidebarName={prop.sidebarName}
+            path={prop.path}
+          />,
+        )}
       </List>
     )
   }

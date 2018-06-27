@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { WithStyles, withStyles, Grid, Tooltip, Button, Modal, TextField, Typography, Icon } from '@material-ui/core'
+import { WithStyles, withStyles, Grid, Tooltip, Button, Modal, TextField, Typography, Icon, Dialog, DialogTitle, DialogContent, DialogActions } from '@material-ui/core'
 import { connect, Dispatch } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 import { groupBy, mapObjIndexed, mergeAll, compose, values, map, pick, indexOf } from 'ramda'
@@ -40,7 +40,7 @@ export namespace Todo {
   }
 }
 
-class Todo extends React.Component<Todo.Props, Todo.State> {
+class Todo extends React.PureComponent<Todo.Props, Todo.State> {
   state = {
     value: 0,
     modalOpen: false,
@@ -52,12 +52,15 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
   private renderTabIcon(tagKey: string) {
     switch (tagKey) {
       case '':
-      default: return BugReport
+      default: return Code
     }
   }
+  // shouldComponentUpdate() {
+  //   return false
+  // }
+
   private renderTabData = () => {
     const { tagsIndex, tags } = this.props
-    console.log('>>>', this.props)
     return tagsIndex.map(tagId => ({
       tabName: tags[tagId].title,
       tabIcon: this.renderTabIcon(tagId),
@@ -76,17 +79,21 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
       tagText: value,
     })
   }
+  private onSubmitNewTag = () => {
+    const { tagText } = this.state
+    this.props.addTag({
+      id: v4(),
+      title: tagText,
+    })
+    this.setState({
+      tagText: '',
+      modalOpen: false,
+    })
+  }
   private onKeyPressEdit = (event: React.KeyboardEvent<HTMLDivElement>) => {
     const { tagText } = this.state
     if (event.key === 'Enter') {
-      this.props.addTag({
-        id: v4(),
-        title: tagText,
-      })
-      this.setState({
-        tagText: '',
-        modalOpen: false,
-      })
+      this.onSubmitNewTag()
       event.preventDefault()
     }
   }
@@ -95,26 +102,33 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
     const tabs = this.renderTabData()
     return (
       <div className={classes.container}>
-        <Modal
+        <Dialog
           open={this.state.modalOpen}
           onClose={this.hideModal}
         >
-          <div className={classes.modal}>
-            <>
-              {`Add tag\n`}
-            </>
-            <TextField
-              id="tag"
-              label="Tag"
-              className={classes.textField}
-              placeholder={'Home'}
-              value={this.state.tagText}
-              onChange={this.onChangeTagText}
-              onKeyPress={this.onKeyPressEdit}
-              margin="normal"
-            />
-          </div>
-        </Modal>
+            <DialogTitle id="form-dialog-title">Add tag</DialogTitle>
+            <DialogContent>
+              <TextField
+                id="tag"
+                label="Tag"
+                className={classes.textField}
+                placeholder={'Home'}
+                value={this.state.tagText}
+                onChange={this.onChangeTagText}
+                onKeyPress={this.onKeyPressEdit}
+                margin="normal"
+              />
+            </DialogContent>
+            <DialogActions>
+            <Button onClick={this.hideModal} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={this.onSubmitNewTag} color="primary">
+              Add
+            </Button>
+          </DialogActions>
+          {/* </div> */}
+        </Dialog>
         <Grid container>
           <Grid item xs={12} sm={12} md={6} className={classes.todoContainer}>
             <AppTab
@@ -135,11 +149,9 @@ class Todo extends React.Component<Todo.Props, Todo.State> {
   }
 }
 const mapStateToProps = (state: TRootState): ITodoStateProps => ({
-  // tasks: state.todo.tasks,
-  // tasksIndex: state.todo.tasksIndex,
   tags: state.todo.tags,
   tagsIndex: state.todo.tagsIndex,
-  // ...mapStateToProps
+
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<any>, props: Todo.Props): any => ({

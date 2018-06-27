@@ -15,9 +15,11 @@ import { TRootState } from 'conf/redux/reducer'
 import { TTask } from 'module/todo/logic.redux/initialState'
 import { updateTask, addTask, deleteTask } from 'module/todo/logic.redux/action'
 import { Link } from 'react-router-dom'
+import AppTextField from '../TextField/AppTextField'
+import TaskRow from './component/TaskRow'
 
 export interface ITaskStateProps {
-
+  tasksIndex: string[]
 }
 
 export interface ITaskDispatchProps {
@@ -29,7 +31,7 @@ export interface ITaskDispatchProps {
 export interface ITaskProps {
   tasksIndexes?: number[],
   checkedIndexes?: number[],
-  tasks: TTask[],
+  tasks: string[],
   tag: string
 }
 export namespace Task {
@@ -90,105 +92,35 @@ class Task extends React.Component<Task.Props, Task.State> {
       event.preventDefault()
     }
   }
-
+  private onSubmitNewTask = (text: string) => {
+    const { tag } = this.props
+    this.props.newTask({
+      completed: false,
+      title: text,
+      tags: [tag],
+      id: v4(),
+    })
+  }
   public render(): JSX.Element {
-    const { classes, tasksIndexes, tasks, tag } = this.props
-    const taskOrder: number[] = tasksIndexes ? tasksIndexes : range(0, tasks.length)
+    const { classes, tasksIndex, tasks, tag } = this.props
+    const taskOrder = tasksIndex
     return (
       <div>
-        <TextField
-          inputProps={{
-            className: classes.inputNewTask,
-          }}
-          InputLabelProps={{
-            style: {
-              color: 'black',
-            },
-          }}
-          className={classes.createTaskField}
-          label={'New Task'}
-          onChange={this.onChange}
-          onKeyPress={event => this.onKeyPress(event, tag)} />
+        <AppTextField onSubmit={this.onSubmitNewTask} label="New Task" />
         <Table className={classes.table}>
           <TableBody>
             {taskOrder.map(index => (
-              <TableRow key={index} className={classes.tableRow}>
-                <TableCell classes={{
-                    root: cs(classes.rootCellCheck),
-                    }}>
-                  <Checkbox
-                    checked={tasks[index].completed}
-                    tabIndex={-1}
-                    onClick={() => this.props.updateTask(tasks[index].id, {
-                      ...tasks[index],
-                      completed: ! tasks[index].completed,
-                    })}
-                    checkedIcon={<Check className={classes.checkedIcon} />}
-                    icon={<Check className={classes.uncheckedIcon} />}
-                    classes={{
-                      checked: classes.checked,
-                      root: classes.rootCheck,
-                    }}
-                    />
-                </TableCell>
-                <TableCell classes={{
-                    root: cs(classes.editTextField),
-                  }}>
-                  <Link to={{
-                    pathname: `/todo/${tasks[index].id}`,
-                  }}
-                   >
-                  { tasks[index].id !== this.state.editTaskId
-                    ? tasks[index].title
-                    : <TextField
-                      value={this.state.editTaskText}
-                      onChange={this.onChangeEdit}
-                      autoFocus={true}
-                      onKeyPress={event => this.onKeyPressEdit(event, tasks[index])}
-                      className={classes.editTextField} />
-                  }
-                  </Link>
-                </TableCell>
-                <TableCell className={classes.tableActions}>
-                    <IconButton
-                      aria-label="Edit"
-                      className={classes.tableActionButton}
-                      >
-                      <Edit
-                        className={
-                          classes.tableActionButtonIcon + ' ' + classes.edit
-                        }
-                        onClick={() => {
-                          console.log('ON CLICK', tasks[index])
-                          this.setState({
-                          editTaskId: tasks[index].id,
-                          editTaskText: tasks[index].title,
-                        })
-                      }}
-                        />
-                    </IconButton>
-                    <IconButton
-                      aria-label="Close"
-                      className={classes.tableActionButton}
-                      >
-                      <Close
-                        className={
-                          classes.tableActionButtonIcon + ' ' + classes.close
-                        }
-                        onClick={() => this.props.onDeleteTask(tasks[index].id)}
-                        />
-                    </IconButton>
-                </TableCell>
-              </TableRow>
+                <TaskRow taskId={index} key={index} />
             ))}
           </TableBody>
         </Table>
-      </div>
+      </div >
     )
   }
 }
 const mapStateToProps = (state: TRootState): ITaskStateProps => ({
   // ...mapStateToProps
+  tasksIndex: state.todo.tasksIndex,
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<any>, props: Task.Props): any => ({

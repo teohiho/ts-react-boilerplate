@@ -39,6 +39,7 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-test-renderer": "^16.4.1",
+    "recompose": "^0.27.1",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.10.0",
@@ -89,10 +90,13 @@
     "@types/uuid": "^3.4.3",
     "@types/webpack-env": "^1.13.6",
     "babel-core": "^6.26.3",
+    "babel-plugin-add-react-displayname": "^0.0.5",
     "babel-runtime": "^6.26.0",
     "csstype": "^2.5.5",
     "fork-ts-checker-webpack-plugin": "^0.4.2",
     "glob": "^7.1.2",
+    "logrocket": "^0.6.16",
+    "logrocket-react": "^1.0.0",
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "redux-devtools-extension": "^2.13.2",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
@@ -106,10 +110,10 @@
     "lint:auto-fix": "tslint --fix 'src/**/*.{ts,tsx}'",
     "build": "node scripts/build.js",
     "build:lang": "node ./src/i18n/translator.js",
-    "build:lang-ts": "./node_modules/typescript/bin/tsc src/i18n/translator.ts",
+    "build:lang-ts": "ts-node src/i18n/translator.ts",
     "test": "node scripts/test.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build:storybook": "build-storybook"
   },
   "jest": {
     "moduleDirectories": [
