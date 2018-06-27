@@ -40,7 +40,7 @@ export namespace Todo {
   }
 }
 
-class Todo extends React.PureComponent<Todo.Props, Todo.State> {
+class Todo extends React.Component<Todo.Props, Todo.State> {
   state = {
     value: 0,
     modalOpen: false,

@@ -122,7 +122,8 @@ class TaskRow extends React.Component<TaskRow.Props, TaskRow.State> {
 
 const mapStateToProps = (state: TRootState, ownProps: ITaskRowConnectedExtendedProps): ITaskRowStateProps => ({
   // ...mapStateToProps
-  task: getTaskById(state, ownProps),
+  // task: getTaskById(state, ownProps),
+  task: state.todo.tasks[ownProps.taskId],
 })
 
 const mapDispatchToProps = (dispatch: Dispatch, ownProps: ITaskRowConnectedExtendedProps): ITaskRowDispatchProps => ({

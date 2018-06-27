@@ -47,7 +47,7 @@ export namespace AppTextField {
 }
 class AppTextField extends React.Component<AppTextField.Props, AppTextField.State> {
   state = {
-    text: this.props.value,
+    text: this.props.value || '',
   }
   // static getDerivedStateFromProps(props: IAppTextFieldConnectedExtendedProps, state: AppTextField.State) {
   //   console.log('>>>>PROPS', props, state)
@@ -79,7 +79,7 @@ class AppTextField extends React.Component<AppTextField.Props, AppTextField.Stat
     const { classes, onSubmit, ...restInput } = this.props
     const { text } = this.state
     return (
-      <TextField
+        <TextField
           {...restInput}
           inputProps={{
             className: classes.input,

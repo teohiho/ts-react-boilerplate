@@ -66,6 +66,7 @@ class SlideBar extends React.Component<ISlideBarProps, ISlideBarState> {
             sidebarI18nId={prop.sidebarI18nId}
             sidebarName={prop.sidebarName}
             path={prop.path}
+            key={key}
           />,
         )}
       </List>

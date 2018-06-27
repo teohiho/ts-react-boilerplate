@@ -109,7 +109,7 @@ class Task extends React.Component<Task.Props, Task.State> {
         <AppTextField onSubmit={this.onSubmitNewTask} label="New Task" />
         <Table className={classes.table}>
           <TableBody>
-            {taskOrder.map(index => (
+            {tasks.map(index => (
                 <TaskRow taskId={index} key={index} />
             ))}
           </TableBody>

@@ -6,6 +6,7 @@ import * as classNames from 'classnames'
 
 import cardHeaderStyle from './CardHeader.style'
 import { TRootState } from 'conf/redux/reducer'
+import { equals } from 'ramda'
 
 export interface ICardHeaderStateProps {
 }
@@ -20,12 +21,17 @@ export namespace CardHeader {
     plain?: boolean,
     stats?: boolean,
     icon?: boolean,
+    tabSeletedId?: number
   }
 
   export interface State {
   }
 }
 class CardHeader extends React.Component<CardHeader.Props, CardHeader.State> {
+  shouldComponentUpdate(nextProps: any) {
+    return nextProps.tabSeletedId !== this.props.tabSeletedId
+  }
+
   public render(): JSX.Element {
     const {
       classes,
