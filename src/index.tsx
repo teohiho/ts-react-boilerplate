@@ -6,12 +6,12 @@ const rootEl = document.getElementById('root')
 ReactDOM.render(<ReduxRoot />, rootEl)
 
 if (module.hot) {
-    module.hot.accept('./ReduxRoot', () => {
-        // hot reload
-        const NextApp = require('./ReduxRoot').default
-        ReactDOM.render(
-            <NextApp />,
-            rootEl,
-        )
-    })
+	module.hot.accept('./ReduxRoot', () => {
+		// hot reload
+		const NextApp = require('./ReduxRoot').default
+		ReactDOM.render(
+			<NextApp />,
+			rootEl,
+		)
+	})
 }

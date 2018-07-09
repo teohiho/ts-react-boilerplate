@@ -1,5 +1,5 @@
+import { Button, WithStyles, withStyles } from '@material-ui/core'
 import * as React from 'react'
-import { WithStyles, withStyles, Button } from '@material-ui/core'
 import sampleStyle from './SampleWithoutConnect.style'
 
 export interface ISampleConnectedExtendedProps {
@@ -18,10 +18,10 @@ class Sample extends React.Component<Sample.Props, Sample.State> {
 
   }
   public render(): JSX.Element {
-    return (
-      <div>
-       <span>Sample</span>
-      </div>
+	return (
+		<div>
+		<span>Sample</span>
+		</div>
   )
   }
 }

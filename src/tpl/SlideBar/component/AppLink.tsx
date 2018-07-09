@@ -1,6 +1,3 @@
-import * as cx from 'classnames'
-import * as React from 'react'
-import AppLinkStyle from './AppLink.style'
 import {
   Button,
   List,
@@ -9,8 +6,11 @@ import {
   WithStyles,
   withStyles,
   } from '@material-ui/core'
+import * as cx from 'classnames'
+import * as React from 'react'
 import { FormattedMessage } from 'react-intl'
 import { NavLink } from 'react-router-dom'
+import AppLinkStyle from './AppLink.style'
 
 
 export interface IAppLinkConnectedExtendedProps {
@@ -35,33 +35,33 @@ class AppLink extends React.PureComponent<AppLink.Props, AppLink.State> {
   }
 
   public render() {
-    const {  classes, color, isActive, redirect, sidebarI18nId, sidebarName, path } = this.props
-    if (redirect) return null
-    const listItemClasses = cx({
-      [' ' + classes[color]]: isActive,
-    })
-    const whiteFontClasses = cx({
-      [' ' + classes.whiteFont]: isActive,
-    })
-    const sidebarNameUpdated = sidebarI18nId
-      ? <FormattedMessage id={sidebarI18nId} />
-      : sidebarName
-    if (!sidebarName) return null
-    return (
-      <NavLink
-        to={path}
-        className={classes.item}
-        activeClassName="active"
-      >
-        <ListItem button className={classes.itemLink + listItemClasses}>
-          <ListItemText
-            primary={sidebarNameUpdated}
-            className={classes.itemText + whiteFontClasses}
-            disableTypography={true}
-          />
-        </ListItem>
-      </NavLink>
-    )
+	const {  classes, color, isActive, redirect, sidebarI18nId, sidebarName, path } = this.props
+	if (redirect) return null
+	const listItemClasses = cx({
+		[' ' + classes[color]]: isActive,
+	})
+	const whiteFontClasses = cx({
+		[' ' + classes.whiteFont]: isActive,
+	})
+	const sidebarNameUpdated = sidebarI18nId
+		? <FormattedMessage id={sidebarI18nId} />
+		: sidebarName
+	if (!sidebarName) return null
+	return (
+		<NavLink
+		to={path}
+		className={classes.item}
+		activeClassName="active"
+		>
+		<ListItem button className={classes.itemLink + listItemClasses}>
+			<ListItemText
+			primary={sidebarNameUpdated}
+			className={classes.itemText + whiteFontClasses}
+			disableTypography={true}
+			/>
+		</ListItem>
+		</NavLink>
+	)
   }
 }
 

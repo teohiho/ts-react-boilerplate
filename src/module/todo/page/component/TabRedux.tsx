@@ -1,10 +1,10 @@
-import * as React from 'react'
-import { WithStyles, withStyles, Button } from '@material-ui/core'
-import { connect, Dispatch } from 'react-redux'
+import { Button, WithStyles, withStyles } from '@material-ui/core'
 import { TRootState } from 'conf/redux/reducer'
-import { getTasksByTag, getTagId } from '../../logic.redux/reselect'
 import { TTask } from 'module/todo/logic.redux/initialState'
+import * as React from 'react'
+import { connect, Dispatch } from 'react-redux'
 import { Task } from 'tpl'
+import { getTagId, getTasksByTag } from '../../logic.redux/reselect'
 
 export interface ITabReduxStateProps {
   tasks: string[],

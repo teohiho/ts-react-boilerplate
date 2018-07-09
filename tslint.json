@@ -6,7 +6,8 @@
     "jsRules": {},
     "rules": {
         "indent": [
-            "tab"
+            true,
+            "tabs", 4
         ],
         "ter-indent": [
             false
@@ -21,9 +22,7 @@
             "single",
             "jsx-double"
         ],
-        "ordered-imports": [
-            false
-        ],
+        "ordered-imports": true,
         "interface-name": [
             false
         ],

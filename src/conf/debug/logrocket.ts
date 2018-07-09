@@ -14,8 +14,8 @@ type TUser = {
 }
 export const registerUserLogger = (user: TUser) => {
   LogRocket.identify(user.id, {
-    ...user,
-    // Add your own custom user variables here, ie:
-    subscriptionType: 'pro',
+	...user,
+	// Add your own custom user variables here, ie:
+	subscriptionType: 'pro',
   })
 }

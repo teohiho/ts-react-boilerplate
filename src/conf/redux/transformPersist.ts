@@ -16,11 +16,11 @@ const toImmutable = (raw: any) => Immutable(raw)
 // the transform interface that redux-persist is expecting
 export const transformPersist =  {
   out: (state: any) => {
-    // console.log({ retrieving: state })
-    return toImmutable(state)
+	// console.log({ retrieving: state })
+	return toImmutable(state)
   },
   in: (raw: any) => {
-    // console.log({ storing: raw })
-    return fromImmutable(raw)
+	// console.log({ storing: raw })
+	return fromImmutable(raw)
   },
 }

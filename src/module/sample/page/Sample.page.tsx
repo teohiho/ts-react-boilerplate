@@ -1,9 +1,9 @@
+import { Button, WithStyles, withStyles } from '@material-ui/core'
+import { TRootState } from 'conf/redux/reducer'
 import * as React from 'react'
-import { WithStyles, withStyles, Button } from '@material-ui/core'
 import { connect, Dispatch } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 import sampleStyle from './Sample.style'
-import { TRootState } from 'conf/redux/reducer'
 
 export interface ISampleStateProps {
   dataSampleComponent: string,
@@ -26,10 +26,10 @@ class Sample extends React.Component<Sample.Props, Sample.State> {
 
   }
   public render(): JSX.Element {
-    return (
-      <div>
-       <span>Sample</span>
-      </div>
+	return (
+		<div>
+		<span>Sample</span>
+		</div>
   )
   }
 }

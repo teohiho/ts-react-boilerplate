@@ -1,4 +1,4 @@
-import { compose, map, path, filter, isNil, flatten, values, mergeAll, pick, mapObjIndexed } from 'ramda'
+import { compose, filter, flatten, isNil, map, mapObjIndexed, mergeAll, path, pick, values } from 'ramda'
 // tslint:disable-next-line:no-duplicate-imports
 
 import { module } from '../module/module'
@@ -31,10 +31,10 @@ function pathDict(data: typeof module, rootPath: string[], options: IOptionType 
   const removeUndefinedItem = filter((item: any) => !isNil(item))
   const listCompose = compose(removeUndefinedItem, getListData)
   switch (type) {
-    case 'array': return compose(flatten, values, listCompose)(data)
-    case 'flatten': return compose(mergeAll, values, listCompose)(data)
-    case 'list':
-    default: return listCompose(data)
+	case 'array': return compose(flatten, values, listCompose)(data)
+	case 'flatten': return compose(mergeAll, values, listCompose)(data)
+	case 'list':
+	default: return listCompose(data)
   }
 }
 

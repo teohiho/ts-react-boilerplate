@@ -21,6 +21,6 @@ export const getPalette = (paletteType: TTheme = 'light') => ({
   //   hint: 'rgba(0, 0, 0, 0.38)',
   // },
   background: {
-    default: paletteType === 'light' ? '#e5e5e5' : '#08294b',
+	default: paletteType === 'light' ? '#e5e5e5' : '#08294b',
   },
 })

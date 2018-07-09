@@ -1,69 +1,69 @@
 import {
-  Theme,
   createStyles,
+  Theme,
 } from '@material-ui/core'
 import {
   container,
-  defaultFont,
-  primaryColor,
+  dangerColor,
   defaultBoxShadow,
+  defaultFont,
   infoColor,
+  primaryColor,
   successColor,
   warningColor,
-  dangerColor,
 } from '../../theme/default'
 
 const themeStyle = (theme: Theme) => createStyles({
   appBar: {
-    height: '30px',
-    minHeight: '30px',
+	height: '30px',
+	minHeight: '30px',
   },
   container: {
-    // ...container,
-    height: '70px',
-    minHeight: '30px',
+	// ...container,
+	height: '70px',
+	minHeight: '30px',
   },
   flex: {
-    flex: 1,
+	flex: 1,
   },
   title: {
-    ...defaultFont,
-    // lineHeight: "30px",
-    fontSize: '23px',
-    borderRadius: '3px',
-    textTransform: 'none',
-    color: 'inherit',
-    '&:hover,&:focus': {
-      background: 'transparent',
-    },
+	...defaultFont,
+	// lineHeight: "30px",
+	fontSize: '23px',
+	borderRadius: '3px',
+	textTransform: 'none',
+	color: 'inherit',
+	'&:hover,&:focus': {
+		background: 'transparent',
+	},
   },
   appResponsive: {
-    // top: "8px"
+	// top: "8px"
   },
   primary: {
-    backgroundColor: primaryColor,
-    color: '#FFFFFF',
-    // ...defaultBoxShadow
+	backgroundColor: primaryColor,
+	color: '#FFFFFF',
+	// ...defaultBoxShadow
   },
   info: {
-    backgroundColor: infoColor,
-    color: '#FFFFFF',
-    ...defaultBoxShadow,
+	backgroundColor: infoColor,
+	color: '#FFFFFF',
+	...defaultBoxShadow,
   },
   success: {
-    backgroundColor: successColor,
-    color: '#FFFFFF',
-    ...defaultBoxShadow,
+	backgroundColor: successColor,
+	color: '#FFFFFF',
+	...defaultBoxShadow,
   },
   warning: {
-    backgroundColor: warningColor,
-    color: '#FFFFFF',
-    ...defaultBoxShadow,
+	backgroundColor: warningColor,
+	color: '#FFFFFF',
+	...defaultBoxShadow,
   },
   danger: {
-    backgroundColor: dangerColor,
-    color: '#FFFFFF',
-    ...defaultBoxShadow,
+	backgroundColor: dangerColor,
+	color: '#FFFFFF',
+	...defaultBoxShadow,
   },
 })
 

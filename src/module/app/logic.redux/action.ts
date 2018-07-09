@@ -12,13 +12,13 @@ export interface IAppAction<T> {
 
 export const changeTheme = () => {
   return {
-    type: actionType.CHANGE_THEME,
+	type: actionType.CHANGE_THEME,
   }
 }
 
 export const changeLanguage = (lang: string) => {
   return {
-    lang,
-    type: actionType.CHANGE_LANGUAGE,
+	lang,
+	type: actionType.CHANGE_LANGUAGE,
   }
 }

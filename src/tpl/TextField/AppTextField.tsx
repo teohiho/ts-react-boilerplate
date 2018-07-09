@@ -1,8 +1,8 @@
-import * as React from 'react'
-import { WithStyles, withStyles, Button, TextField, StandardProps } from '@material-ui/core'
-import ApptextfieldStyle from './AppTextField.style'
-import { TextFieldProps, TextFieldClassKey } from '@material-ui/core/TextField'
+import { Button, StandardProps, TextField, WithStyles, withStyles } from '@material-ui/core'
 import { FormControlProps } from '@material-ui/core/FormControl'
+import { TextFieldClassKey, TextFieldProps } from '@material-ui/core/TextField'
+import * as React from 'react'
+import ApptextfieldStyle from './AppTextField.style'
 
 interface TextFieldOnly {
   autoComplete?: string
@@ -42,12 +42,12 @@ export namespace AppTextField {
 
   }
   export interface State {
-    text: string | undefined
+	text: string | undefined
   }
 }
 class AppTextField extends React.Component<AppTextField.Props, AppTextField.State> {
   state = {
-    text: this.props.value || '',
+	text: this.props.value || '',
   }
   // static getDerivedStateFromProps(props: IAppTextFieldConnectedExtendedProps, state: AppTextField.State) {
   //   console.log('>>>>PROPS', props, state)
@@ -59,42 +59,42 @@ class AppTextField extends React.Component<AppTextField.Props, AppTextField.Stat
   //   return null
   // }
   private onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target
-    this.setState({
-      text: value,
-    })
+	const { value } = event.target
+	this.setState({
+		text: value,
+	})
   }
   private onKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    const { onSubmit } = this.props
-    const { text } = this.state
-    if (event.key === 'Enter') {
-      this.props.onSubmit && this.props.onSubmit(text)
-      this.setState({
-        text: '',
-      })
-      event.preventDefault()
-    }
+	const { onSubmit } = this.props
+	const { text } = this.state
+	if (event.key === 'Enter') {
+		this.props.onSubmit && this.props.onSubmit(text)
+		this.setState({
+		text: '',
+		})
+		event.preventDefault()
+	}
   }
   public render(): JSX.Element {
-    const { classes, onSubmit, ...restInput } = this.props
-    const { text } = this.state
-    return (
-        <TextField
-          {...restInput}
-          inputProps={{
-            className: classes.input,
-          }}
-          InputLabelProps={{
-            style: {
-              color: 'black',
-            },
-          }}
-          value={text}
-          className={classes.container}
-          onChange={this.onChange}
-          onKeyPress={this.onKeyPress}
-        />
-    )
+	const { classes, onSubmit, ...restInput } = this.props
+	const { text } = this.state
+	return (
+		<TextField
+			{...restInput}
+			inputProps={{
+			className: classes.input,
+			}}
+			InputLabelProps={{
+			style: {
+				color: 'black',
+			},
+			}}
+			value={text}
+			className={classes.container}
+			onChange={this.onChange}
+			onKeyPress={this.onKeyPress}
+		/>
+	)
   }
 }
 

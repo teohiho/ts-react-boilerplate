@@ -1,9 +1,9 @@
+import { Typography, WithStyles, withStyles } from '@material-ui/core'
+import { TRootState } from 'conf/redux/reducer'
 import * as React from 'react'
-import { WithStyles, withStyles, Typography } from '@material-ui/core'
 import { connect, Dispatch } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 import homeStyle from './Home.style'
-import { TRootState } from 'conf/redux/reducer'
 
 export interface ISampleStateProps {
 }
@@ -21,16 +21,16 @@ export namespace Sample {
 }
 class Sample extends React.Component<Sample.Props, Sample.State> {
   public render(): JSX.Element {
-    const { classes } = this.props
-    return (
-      <div className={classes.root}>
-       <Typography>Typography</Typography>
-      {'This text is raw'}
-      <div className={classes.textEffect}>
-        {'This text is effected'}
-        <h1 className={classes.textEffect}>Cool stuff</h1>
-      </div>
-      </div>
+	const { classes } = this.props
+	return (
+		<div className={classes.root}>
+		<Typography>Typography</Typography>
+		{'This text is raw'}
+		<div className={classes.textEffect}>
+		{'This text is effected'}
+		<h1 className={classes.textEffect}>Cool stuff</h1>
+		</div>
+		</div>
   )
   }
 }

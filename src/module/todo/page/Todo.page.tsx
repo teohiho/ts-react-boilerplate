@@ -1,25 +1,25 @@
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, Icon, Modal, TextField, Tooltip, Typography, withStyles, WithStyles } from '@material-ui/core'
+import { compose, groupBy, indexOf, map, mapObjIndexed, mergeAll, pick, values } from 'ramda'
 import * as React from 'react'
-import { WithStyles, withStyles, Grid, Tooltip, Button, Modal, TextField, Typography, Icon, Dialog, DialogTitle, DialogContent, DialogActions } from '@material-ui/core'
 import { connect, Dispatch } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
-import { groupBy, mapObjIndexed, mergeAll, compose, values, map, pick, indexOf } from 'ramda'
 
-import BugReport from '@material-ui/icons/BugReport'
-import Code from '@material-ui/icons/Code'
-import Cloud from '@material-ui/icons/Cloud'
 import AddIcon from '@material-ui/icons/Add'
+import BugReport from '@material-ui/icons/BugReport'
+import Cloud from '@material-ui/icons/Cloud'
+import Code from '@material-ui/icons/Code'
 
 
-import { TRootState } from '../../../conf/redux/reducer'
-import todoStyle from './Todo.style'
-import AppTab from 'tpl/Tab/AppTab'
-import { Task } from 'tpl'
-import { TTask, TTag, TTags, TTasks } from '../logic.redux/initialState'
-import CardNewTask from './component/CardNewTask'
 import { unstable_renderSubtreeIntoContainer } from 'react-dom'
-import { addTag } from '../logic.redux/action'
+import { Task } from 'tpl'
+import AppTab from 'tpl/Tab/AppTab'
 import { v4 } from 'uuid'
+import { TRootState } from '../../../conf/redux/reducer'
+import { addTag } from '../logic.redux/action'
+import { TTag, TTags, TTask, TTasks } from '../logic.redux/initialState'
+import CardNewTask from './component/CardNewTask'
 import TabRedux from './component/TabRedux'
+import todoStyle from './Todo.style'
 
 export interface ITodoStateProps {
   // tasks: TTasks,
@@ -42,110 +42,110 @@ export namespace Todo {
 
 class Todo extends React.Component<Todo.Props, Todo.State> {
   state = {
-    value: 0,
-    modalOpen: false,
-    tagText: '',
+	value: 0,
+	modalOpen: false,
+	tagText: '',
   }
   handleChange = (event: any, value: number) => {
-    this.setState({ value })
+	this.setState({ value })
   }
   private renderTabIcon(tagKey: string) {
-    switch (tagKey) {
-      case '':
-      default: return Code
-    }
+	switch (tagKey) {
+		case '':
+		default: return Code
+	}
   }
   // shouldComponentUpdate() {
   //   return false
   // }
 
   private renderTabData = () => {
-    const { tagsIndex, tags } = this.props
-    return tagsIndex.map(tagId => ({
-      tabName: tags[tagId].title,
-      tabIcon: this.renderTabIcon(tagId),
-      tabContent: <TabRedux tagId={tagId} />,
-    }))
+	const { tagsIndex, tags } = this.props
+	return tagsIndex.map(tagId => ({
+		tabName: tags[tagId].title,
+		tabIcon: this.renderTabIcon(tagId),
+		tabContent: <TabRedux tagId={tagId} />,
+	}))
   }
   private showModal = () => {
-    this.setState({ modalOpen: true })
+	this.setState({ modalOpen: true })
   }
   private hideModal = () => {
-    this.setState({ modalOpen: false })
+	this.setState({ modalOpen: false })
   }
   private onChangeTagText = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target
-    this.setState({
-      tagText: value,
-    })
+	const { value } = event.target
+	this.setState({
+		tagText: value,
+	})
   }
   private onSubmitNewTag = () => {
-    const { tagText } = this.state
-    this.props.addTag({
-      id: v4(),
-      title: tagText,
-    })
-    this.setState({
-      tagText: '',
-      modalOpen: false,
-    })
+	const { tagText } = this.state
+	this.props.addTag({
+		id: v4(),
+		title: tagText,
+	})
+	this.setState({
+		tagText: '',
+		modalOpen: false,
+	})
   }
   private onKeyPressEdit = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    const { tagText } = this.state
-    if (event.key === 'Enter') {
-      this.onSubmitNewTag()
-      event.preventDefault()
-    }
+	const { tagText } = this.state
+	if (event.key === 'Enter') {
+		this.onSubmitNewTag()
+		event.preventDefault()
+	}
   }
   public render(): JSX.Element {
-    const { classes } = this.props
-    const tabs = this.renderTabData()
-    return (
-      <div className={classes.container}>
-        <Dialog
-          open={this.state.modalOpen}
-          onClose={this.hideModal}
-        >
-            <DialogTitle id="form-dialog-title">Add tag</DialogTitle>
-            <DialogContent>
-              <TextField
-                id="tag"
-                label="Tag"
-                className={classes.textField}
-                placeholder={'Home'}
-                value={this.state.tagText}
-                onChange={this.onChangeTagText}
-                onKeyPress={this.onKeyPressEdit}
-                margin="normal"
-              />
-            </DialogContent>
-            <DialogActions>
-            <Button onClick={this.hideModal} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={this.onSubmitNewTag} color="primary">
-              Add
-            </Button>
-          </DialogActions>
-          {/* </div> */}
-        </Dialog>
-        <Grid container>
-          <Grid item xs={12} sm={12} md={6} className={classes.todoContainer}>
-            <AppTab
-              renderLeft={() => (
-                <div className={classes.addButtonContainer}>
-                  <Button variant="fab" color="primary" className={classes.addButton} onClick={this.showModal}>
-                    <AddIcon />
-                  </Button>
-                </div>
-              )}
-              headerColor="info"
-              tabs={tabs}
-            />
-          </Grid>
-        </Grid>
-      </div>
-    )
+	const { classes } = this.props
+	const tabs = this.renderTabData()
+	return (
+		<div className={classes.container}>
+		<Dialog
+			open={this.state.modalOpen}
+			onClose={this.hideModal}
+		>
+			<DialogTitle id="form-dialog-title">Add tag</DialogTitle>
+			<DialogContent>
+				<TextField
+				id="tag"
+				label="Tag"
+				className={classes.textField}
+				placeholder={'Home'}
+				value={this.state.tagText}
+				onChange={this.onChangeTagText}
+				onKeyPress={this.onKeyPressEdit}
+				margin="normal"
+				/>
+			</DialogContent>
+			<DialogActions>
+			<Button onClick={this.hideModal} color="primary">
+				Cancel
+			</Button>
+			<Button onClick={this.onSubmitNewTag} color="primary">
+				Add
+			</Button>
+			</DialogActions>
+			{/* </div> */}
+		</Dialog>
+		<Grid container>
+			<Grid item xs={12} sm={12} md={6} className={classes.todoContainer}>
+			<AppTab
+				renderLeft={() => (
+				<div className={classes.addButtonContainer}>
+					<Button variant="fab" color="primary" className={classes.addButton} onClick={this.showModal}>
+					<AddIcon />
+					</Button>
+				</div>
+				)}
+				headerColor="info"
+				tabs={tabs}
+			/>
+			</Grid>
+		</Grid>
+		</div>
+	)
   }
 }
 const mapStateToProps = (state: TRootState): ITodoStateProps => ({

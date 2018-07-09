@@ -1,11 +1,11 @@
-import * as React from 'react'
 import { WithStyles, withStyles } from '@material-ui/core'
-import { connect, Dispatch } from 'react-redux'
-import CardNewTaskStyle from './CardNewTask.style'
 import { TRootState } from 'conf/redux/reducer'
+import * as React from 'react'
+import { connect, Dispatch } from 'react-redux'
 import { AppCard } from 'tpl'
-import CardHeader from 'tpl/Card/CardHeader'
 import CardBody from 'tpl/Card/CardBody'
+import CardHeader from 'tpl/Card/CardHeader'
+import CardNewTaskStyle from './CardNewTask.style'
 
 export interface ICardNewTaskStateProps {
 }
@@ -23,18 +23,18 @@ export namespace CardNewTask {
 }
 class CardNewTask extends React.Component<CardNewTask.Props, CardNewTask.State> {
   public render(): JSX.Element {
-    return (
-      <div>
-        <AppCard
-            chart
-            title="Add new"
-        >
-            <CardHeader color={'primary'} plain={false} >
-                {'Add new'}
-            </CardHeader>
-            <CardBody />
-        </AppCard>
-      </div>
+	return (
+		<div>
+		<AppCard
+			chart
+			title="Add new"
+		>
+			<CardHeader color={'primary'} plain={false} >
+				{'Add new'}
+			</CardHeader>
+			<CardBody />
+		</AppCard>
+		</div>
   )
   }
 }

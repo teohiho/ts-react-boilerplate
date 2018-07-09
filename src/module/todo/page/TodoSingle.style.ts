@@ -4,7 +4,7 @@ import { cardHeader, defaultFont, primaryBoxShadow } from 'theme/default'
 
 const todoStyle = (theme: Theme) => createStyles({
   container: {
-    padding: theme.spacing.unit * 10,
+	padding: theme.spacing.unit * 10,
   },
 })
 export default todoStyle
