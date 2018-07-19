@@ -12,7 +12,7 @@ const reducer = combineReducers({
 })
 
 export type TRootState = {
-  app: TAppState,
+  setting: TAppState,
   todo: TTodoState,
 }
 

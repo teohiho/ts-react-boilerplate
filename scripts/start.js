@@ -30,7 +30,8 @@ const openBrowser = require('react-dev-utils/openBrowser');
 const paths = require('../config/paths');
 const config = require('../config/webpack.config.dev');
 const createDevServerConfig = require('../config/webpackDevServer.config');
-const i18nSetting = require('../src/i18n/translator')
+// const i18nSetting = require('../src/i18n/translator')
+const { generateData } = require('./generate-i18n')
 const useYarn = fs.existsSync(paths.yarnLockFile);
 const isInteractive = process.stdout.isTTY;
 
@@ -78,7 +79,7 @@ choosePort(HOST, DEFAULT_PORT)
         clearConsole();
       }
       console.log('Compiling...and generating language');
-      i18nSetting.generateData().then(() => {
+      generateData().then(() => {
         console.log('Generate done')
       })
     });

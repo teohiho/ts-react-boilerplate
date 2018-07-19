@@ -1,5 +1,5 @@
 import { page } from './page/page'
 
-export const hien2 = {
+export const blueprint = {
   page,
 }

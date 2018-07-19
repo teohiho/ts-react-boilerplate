@@ -111,8 +111,8 @@ class Setting extends React.Component<Setting.Props, Setting.State> {
 
 const mapStateToProps = (state: TRootState): ISettingStateProps => ({
 	// ...mapStateToProps
-	lang: state.app.lang,
-	paletteType: state.app.theme.paletteType,
+	lang: state.setting.lang,
+	paletteType: state.setting.theme.paletteType,
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<any>, props: Setting.Props): any => ({

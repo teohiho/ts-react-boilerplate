@@ -11,7 +11,7 @@ import { TRootState } from 'conf/redux/reducer'
 import { AppRoute } from 'router/router'
 import { getTheme } from 'theme/themeHelper'
 import { TTheme } from './module/setting/logic.redux/initalState'
-const messages = require('./i18n/build.json')
+const messages = require('./i18n/i18n.__generate__.json')
 const log = require('./conf/debug/logrocket')
 
 addLocaleData([...en, ...vi])
@@ -64,8 +64,8 @@ export interface ISandDispatchProps {
 
 const mapStateToProps = (state: TRootState): IAppStateProps => {
 	return {
-		paletteType: state.app.theme.paletteType,
-		lang: state.app.lang,
+		paletteType: state.setting.theme.paletteType,
+		lang: state.setting.lang,
    }
 }
 

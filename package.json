@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@blueprintjs/core": "^3.0.1",
     "@material-ui/core": "^1.2.2",
     "@material-ui/icons": "^1.1.0",
     "@storybook/addon-storyshots": "^3.4.1",
@@ -83,6 +84,7 @@
     "@types/react-redux": "^6.0.2",
     "@types/react-router": "^4.0.26",
     "@types/react-router-dom": "^4.2.7",
+    "@types/recompose": "^0.26.1",
     "@types/redux": "^3.6.0",
     "@types/redux-logger": "^3.0.6",
     "@types/seamless-immutable": "^7.1.1",
@@ -109,11 +111,10 @@
     "start": "node scripts/start.js",
     "lint:auto-fix": "tslint --fix 'src/**/*.{ts,tsx}'",
     "build": "node scripts/build.js",
-    "build:lang": "node ./src/i18n/translator.js",
-    "build:lang-ts": "ts-node src/i18n/translator.ts",
+    "build:lang": "node ./scripts/build-i18n.js",
+    "build:storybook": "build-storybook",
     "test": "node scripts/test.js",
-    "storybook": "start-storybook -p 6006",
-    "build:storybook": "build-storybook"
+    "storybook": "start-storybook -p 6006"
   },
   "jest": {
     "moduleDirectories": [
