@@ -11,7 +11,7 @@ import {
   primaryColor,
   successColor,
   warningColor,
-} from '../../theme/default'
+} from 'theme/default'
 
 const themeStyle = (theme: Theme) => createStyles({
   appBar: {

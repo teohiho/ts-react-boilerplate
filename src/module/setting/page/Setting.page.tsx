@@ -11,7 +11,7 @@ import {
   WithStyles,
 } from '@material-ui/core'
 import Switch from '@material-ui/core/Switch'
-import { Language, Palette, Wifi  } from '@material-ui/icons'
+import { Language, Palette, Wifi } from '@material-ui/icons'
 import { TRootState } from 'conf/redux/reducer'
 import * as React from 'react'
 import { FormattedMessage } from 'react-intl'
@@ -121,5 +121,5 @@ const mapDispatchToProps = (dispatch: Dispatch<any>, props: Setting.Props): any 
 	switchLang: (lang: string) => dispatch(changeLanguage(lang)),
 })
 
-export default (withStyles(styles)<Setting.Props>(connect(mapStateToProps, mapDispatchToProps)(Setting)))
+export default withStyles(styles)<Setting.Props>(connect(mapStateToProps, mapDispatchToProps)(Setting))
 

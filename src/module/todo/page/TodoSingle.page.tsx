@@ -1,22 +1,27 @@
-import { Button, Grid, Modal, Tooltip, Typography, WithStyles, withStyles } from '@material-ui/core'
-import { compose, groupBy, mapObjIndexed, mergeAll, values } from 'ramda'
+import {
+	Typography,
+	WithStyles,
+	withStyles,
+	} from '@material-ui/core'
+import { TRootState } from 'conf/redux/reducer'
+import {
+	compose,
+	groupBy,
+	mapObjIndexed,
+	mergeAll,
+	values,
+	} from 'ramda'
 import * as React from 'react'
 import { connect, Dispatch } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
-
-import AddIcon from '@material-ui/icons/Add'
-import BugReport from '@material-ui/icons/BugReport'
-import Cloud from '@material-ui/icons/Cloud'
-import Code from '@material-ui/icons/Code'
-
-
-import { unstable_renderSubtreeIntoContainer } from 'react-dom'
-import { Task } from 'tpl'
-import AppTab from 'tpl/Tab/AppTab'
-import { TRootState } from '../../../conf/redux/reducer'
-import { TTag, TTags, TTask, TTasks } from '../logic.redux/initialState'
-import CardNewTask from './component/CardNewTask'
+import {
+	TTask,
+	TTasks,
+	} from '../logic.redux/initialState'
 import TodoSingleStyle from './TodoSingle.style'
+
+
+
 
 export interface ITodoSingleStateProps {
   tasks: TTasks,
@@ -27,7 +32,8 @@ export interface ITodoSingleDispatchProps {
 
 }
 export namespace TodoSingle {
-  export interface Props extends RouteComponentProps<void>, WithStyles<typeof TodoSingleStyle>, ITodoSingleStateProps, ITodoSingleDispatchProps {
+  export interface Props extends RouteComponentProps<void>,
+  	WithStyles<typeof TodoSingleStyle>, ITodoSingleStateProps, ITodoSingleDispatchProps {
 
   }
 

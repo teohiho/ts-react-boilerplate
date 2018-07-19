@@ -1,7 +1,7 @@
 import { compose, filter, flatten, isNil, map, mapObjIndexed, mergeAll, path, pick, values } from 'ramda'
 // tslint:disable-next-line:no-duplicate-imports
 
-import { module } from '../module/module'
+import { module } from '../module'
 
 interface IOptionType {
   type: 'array' | 'flatten' | 'list'

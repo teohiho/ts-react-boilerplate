@@ -2,8 +2,8 @@ import { withStyles, WithStyles } from '@material-ui/core'
 import * as React from 'react'
 import { connect, Dispatch } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
-import { imageResource } from '../theme/default'
-import { Header, SlideBar } from '../tpl/'
+import { imageResource } from 'theme/default'
+import { Header, SlideBar } from 'tpl'
 import dashboardStyle from './Dashboard.style'
 
 export interface IDashboardStateProps {

@@ -3,10 +3,10 @@ import Close from '@material-ui/icons/Close'
 import Edit from '@material-ui/icons/Edit'
 import { TRootState } from 'conf/redux/reducer'
 import { TTask } from 'module/todo/logic.redux/initialState'
+import { getTaskById } from 'module/todo/logic.redux/reselect'
 import * as React from 'react'
 import { connect, Dispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getTaskById } from '../../../module/todo/logic.redux/reselect'
 import TaskRowStyle from './TaskRow.style'
 
 import Check from '@material-ui/icons/Check'
@@ -27,7 +27,8 @@ export interface ITaskRowDispatchProps {
   deleteTask: (id: string) => void,
 }
 export namespace TaskRow {
-  export interface Props extends WithStyles<typeof TaskRowStyle>, ITaskRowStateProps, ITaskRowDispatchProps, ITaskRowConnectedExtendedProps {
+  export interface Props extends WithStyles<typeof TaskRowStyle>,
+  	ITaskRowStateProps, ITaskRowDispatchProps, ITaskRowConnectedExtendedProps {
 
   }
   export interface State {

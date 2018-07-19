@@ -13,11 +13,12 @@ interface IGenerateActionTypeOption<T>{
 }
 
 
-const generateActionTypeList = <T extends string, U = { [K in T]: string}>(nameModule: string, options: IGenerateActionTypeOption<T>): U => {
-  const { actionType, appName, groupName } = options
-  const rules = getRule(actionType, groupName)
-  const getActionType = makeGetActionType(nameModule, appName)
-  return R.compose<typeof rules , any, U>(R.mergeAll, R.map((key: string) => ({ [key]: getActionType(key) })))(rules)
+const generateActionTypeList = <T extends string, U = { [K in T]: string}>
+	(nameModule: string, options: IGenerateActionTypeOption<T>): U => {
+		const { actionType, appName, groupName } = options
+		const rules = getRule(actionType, groupName)
+		const getActionType = makeGetActionType(nameModule, appName)
+		return R.compose<typeof rules , any, U>(R.mergeAll, R.map((key: string) => ({ [key]: getActionType(key) })))(rules)
 }
 
 export {

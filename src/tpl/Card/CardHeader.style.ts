@@ -1,6 +1,13 @@
 import { Theme } from '@material-ui/core'
 import createStyles from '@material-ui/core/styles/createStyles'
-import { dangerCardHeader, defaultFont, infoCardHeader, primaryCardHeader, roseCardHeader, successCardHeader, warningCardHeader } from 'theme/default'
+import {
+	dangerCardHeader,
+	infoCardHeader,
+	primaryCardHeader,
+	roseCardHeader,
+	successCardHeader,
+	warningCardHeader,
+	} from 'theme/default'
 
 const cardHeaderStyle = (theme: Theme) => createStyles({
   cardHeader: {
@@ -9,6 +16,7 @@ const cardHeaderStyle = (theme: Theme) => createStyles({
 	borderBottom: 'none',
 	background: 'transparent',
 	zIndex: 3,
+	// tslint:disable-next-line:max-line-length
 	'&$cardHeaderPlain,&$cardHeaderIcon,&$cardHeaderStats,&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader': {
 		margin: '0 15px',
 		padding: '0',

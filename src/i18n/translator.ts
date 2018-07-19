@@ -13,5 +13,6 @@ export const generateData = async () => {
 			(collection, descriptors) => mergeDeepRight(collection, descriptors),
 			{},
 		)
-	await fs.writeFileSync(outputLanguageDataDir + 'build.json', `${JSON.stringify(defaultMessages, null, 2)}`)
+	await fs.writeFileSync(outputLanguageDataDir + 'language.build.json', `${JSON.stringify(defaultMessages, null, 2)}`)
 }
+

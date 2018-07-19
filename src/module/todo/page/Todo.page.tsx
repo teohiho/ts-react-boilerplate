@@ -1,25 +1,53 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, Icon, Modal, TextField, Tooltip, Typography, withStyles, WithStyles } from '@material-ui/core'
-import { compose, groupBy, indexOf, map, mapObjIndexed, mergeAll, pick, values } from 'ramda'
-import * as React from 'react'
-import { connect, Dispatch } from 'react-redux'
-import { RouteComponentProps } from 'react-router'
-
+import {
+	Button,
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogTitle,
+	Grid,
+	Icon,
+	Modal,
+	TextField,
+	Tooltip,
+	Typography,
+	withStyles,
+	WithStyles,
+	} from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 import BugReport from '@material-ui/icons/BugReport'
 import Cloud from '@material-ui/icons/Cloud'
 import Code from '@material-ui/icons/Code'
-
-
+import { TRootState } from 'conf/redux/reducer'
+import {
+	compose,
+	groupBy,
+	indexOf,
+	map,
+	mapObjIndexed,
+	mergeAll,
+	pick,
+	values,
+	} from 'ramda'
+import * as React from 'react'
 import { unstable_renderSubtreeIntoContainer } from 'react-dom'
+import { connect, Dispatch } from 'react-redux'
+import { RouteComponentProps } from 'react-router'
 import { Task } from 'tpl'
 import AppTab from 'tpl/Tab/AppTab'
 import { v4 } from 'uuid'
-import { TRootState } from '../../../conf/redux/reducer'
 import { addTag } from '../logic.redux/action'
-import { TTag, TTags, TTask, TTasks } from '../logic.redux/initialState'
+import {
+	TTag,
+	TTags,
+	TTask,
+	TTasks,
+	} from '../logic.redux/initialState'
 import CardNewTask from './component/CardNewTask'
 import TabRedux from './component/TabRedux'
 import todoStyle from './Todo.style'
+
+
+
 
 export interface ITodoStateProps {
   // tasks: TTasks,
@@ -32,7 +60,8 @@ export interface ITodoDispatchProps {
   addTag: (tag: TTag) => void
 }
 export namespace Todo {
-  export interface Props extends RouteComponentProps<void>, WithStyles<typeof todoStyle>, ITodoStateProps, ITodoDispatchProps {
+  export interface Props extends RouteComponentProps<void>,
+  	WithStyles<typeof todoStyle>, ITodoStateProps, ITodoDispatchProps {
 
   }
 

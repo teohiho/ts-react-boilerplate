@@ -5,15 +5,15 @@ import { RouteComponentProps, Switch } from 'react-router'
 
 import { Theme, withStyles, WithStyles } from '@material-ui/core'
 import createStyles from '@material-ui/core/styles/createStyles'
+import { TRootState } from 'conf/redux/reducer'
 import { createBrowserHistory } from 'history'
+// import { RootState } from '../reducers';
+import DashBoard from 'layout/Dashboard'
+import { getPageList } from 'module/helper/module'
 import {
   BrowserRouter,
   Route,
   Router } from 'react-router-dom'
-import { TRootState } from '../conf/redux/reducer'
-import { getPageList } from '../helper/module'
-// import { RootState } from '../reducers';
-import DashBoard from '../layout/Dashboard'
 const hist = createBrowserHistory()
 
 const pages = getPageList()

@@ -12,7 +12,8 @@ export interface IDashboardDispatchProps {
 
 }
 export namespace Dashboard {
-  export interface Props extends RouteComponentProps<void>, WithStyles<typeof dashboardStyle>, IDashboardStateProps, IDashboardDispatchProps {
+  export interface Props extends RouteComponentProps<void>, WithStyles<typeof dashboardStyle>,
+  	 IDashboardStateProps, IDashboardDispatchProps {
 
   }
 

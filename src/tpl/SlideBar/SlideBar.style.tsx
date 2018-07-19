@@ -13,7 +13,7 @@ import {
   successColor,
   transition,
   warningColor,
-} from '../../theme/default'
+} from 'theme/default'
 // import { StyleRules } from "@material-ui/core/styles";
 
 

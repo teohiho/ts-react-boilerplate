@@ -1,7 +1,7 @@
 import { Button, Tab, Tabs, WithStyles, withStyles } from '@material-ui/core'
 import * as classNames from 'classnames'
 import * as React from 'react'
-import CardHeader from 'tpl/Card/CardHeader'
+import CardHeader from '../../Card/CardHeader'
 import { ITab } from '../AppTab'
 import AppCardHeaderStyle from './AppCardHeader.style'
 

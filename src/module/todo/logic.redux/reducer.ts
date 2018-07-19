@@ -16,7 +16,8 @@ const reducer = (state: TTodoState = initialState, action: ITodoAction<TTask>) =
 	case actionType.DELETE_TASK: {
 		const taskCurrentIndex = state.tasksIndex.findIndex(taskId => taskId === action.payload.id)
 		const taskRemoved = Immutable(state.tasks).without(action.payload.id)
-		return state.setIn(['tasks'], taskRemoved).setIn(['tasksIndex'], state.tasksIndex.slice(0, taskCurrentIndex).concat(state.tasksIndex.slice(taskCurrentIndex + 1)))
+		return state.setIn(['tasks'], taskRemoved)
+			.setIn(['tasksIndex'], state.tasksIndex.slice(0, taskCurrentIndex).concat(state.tasksIndex.slice(taskCurrentIndex + 1)))
 	}
 	case actionType.ADD_TAG: {
 		const tagsMerged = Immutable({ [action.payload.id]: action.payload }).merge(state.tags)

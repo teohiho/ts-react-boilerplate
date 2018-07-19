@@ -6,11 +6,11 @@ import * as vi from 'react-intl/locale-data/vi'
 import { connect, Dispatch } from 'react-redux'
 
 import { CssBaseline, MuiThemeProvider } from '@material-ui/core'
-import { registerUserLogger } from './conf/debug/logrocket'
-import { TRootState } from './conf/redux/reducer'
-import { TTheme } from './module/app/logic.redux/initalState'
-import { AppRoute } from './router/router'
-import { getTheme } from './theme/themeHelper'
+import { registerUserLogger } from 'conf/debug/logrocket'
+import { TRootState } from 'conf/redux/reducer'
+import { AppRoute } from 'router/router'
+import { getTheme } from 'theme/themeHelper'
+import { TTheme } from './module/setting/logic.redux/initalState'
 const messages = require('./i18n/build.json')
 const log = require('./conf/debug/logrocket')
 

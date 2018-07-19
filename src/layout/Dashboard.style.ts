@@ -3,7 +3,7 @@ import createStyles from '@material-ui/core/styles/createStyles'
 import {
   drawerWidth,
   transition,
-} from '../theme/default'
+} from 'theme/default'
 
 const dashboardStyle = (theme: Theme) => createStyles({
   root: {

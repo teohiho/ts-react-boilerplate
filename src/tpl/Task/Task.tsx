@@ -1,22 +1,34 @@
-import {  Button, Checkbox, IconButton, Table, TableBody, TableCell, TableRow, TextField, Tooltip, withStyles, WithStyles } from '@material-ui/core'
-import * as cs from 'classnames'
-import { range } from 'ramda'
-import * as React from 'react'
-import { connect, Dispatch } from 'react-redux'
-import { v4 } from 'uuid'
-
-// @material-ui/icons
+import {
+	Button,
+	Checkbox,
+	IconButton,
+	Table,
+	TableBody,
+	TableCell,
+	TableRow,
+	TextField,
+	Tooltip,
+	withStyles,
+	WithStyles,
+	} from '@material-ui/core'
 import Check from '@material-ui/icons/Check'
 import Close from '@material-ui/icons/Close'
 import Edit from '@material-ui/icons/Edit'
-
+import * as cs from 'classnames'
 import { TRootState } from 'conf/redux/reducer'
 import { addTask, deleteTask, updateTask } from 'module/todo/logic.redux/action'
 import { TTask } from 'module/todo/logic.redux/initialState'
+import { range } from 'ramda'
+import * as React from 'react'
+import { connect, Dispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { v4 } from 'uuid'
 import AppTextField from '../TextField/AppTextField'
 import TaskRow from './component/TaskRow'
 import taskStyle from './Task.style'
+
+// @material-ui/icons
+
 
 export interface ITaskStateProps {
   tasksIndex: string[]
