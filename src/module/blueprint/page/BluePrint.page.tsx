@@ -1,9 +1,8 @@
-import { Button, Card, Elevation, H5, Slider, Spinner } from '@blueprintjs/core'
+import { Button, Card, Elevation, H5, Slider, Spinner, Utils } from '@blueprintjs/core'
 import { DateRange, DateRangePicker } from '@blueprintjs/datetime'
 import * as React from 'react'
 import { compose, pure } from 'recompose'
 import './BluePrint.scss'
-
 const BluePrint = () => (
 	<>
 		<h1>Hello I'm Blue Print </h1>

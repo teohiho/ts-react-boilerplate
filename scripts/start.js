@@ -61,13 +61,15 @@ if (process.env.HOST) {
 
 // We attempt to use the default port but if it is busy, we offer the user to
 // run on a different port. `choosePort()` Promise resolves to the next free port.
+console
 choosePort(HOST, DEFAULT_PORT)
   .then(port => {
     if (port == null) {
       // We have not found a port.
       return;
     }
-    const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
+	const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
+	console.log('???', protocol, HOST, port)
     const appName = require(paths.appPackageJson).name;
     const urls = prepareUrls(protocol, HOST, port);
     // Create a webpack compiler that is configured with custom messages.
@@ -92,7 +94,7 @@ choosePort(HOST, DEFAULT_PORT)
     const serverConfig = createDevServerConfig(
       proxyConfig,
       urls.lanUrlForConfig
-    );
+	);
     const devServer = new WebpackDevServer(compiler, serverConfig);
     // Launch WebpackDevServer.
     devServer.listen(port, HOST, err => {
@@ -100,7 +102,7 @@ choosePort(HOST, DEFAULT_PORT)
         return console.log(err);
       }
       if (isInteractive) {
-        clearConsole();
+        // clearConsole();
       }
       console.log(chalk.cyan('Starting the development server...\n'));
       openBrowser(urls.localUrlForBrowser);
