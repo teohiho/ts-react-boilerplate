@@ -13,6 +13,7 @@ import { getTheme } from 'theme/themeHelper'
 import { TTheme } from './module/setting/logic.redux/initalState'
 const messages = require('./i18n/i18n.__generate__.json')
 const log = require('./conf/debug/logrocket')
+import './index.scss'
 
 addLocaleData([...en, ...vi])
 
