@@ -89,16 +89,6 @@ exports.loadJs = ({ include, exclude } = {}) => ({
 
 exports.loadFile = ({ include, exclude } = {}) => ({
 	module: {
-		// rules: [
-		// 	{
-		// 		// test: /\.(jpg|eot|woff|ttf)$/,
-		// 		exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.scss$/],
-		// 		loader: require.resolve('file-loader'),
-		// 		options: {
-		// 			name: 'static/media/[name].[hash:8].[ext]',
-		// 		}
-		// 	}
-		// ]
 		rules: [
 			{
 				test: /\.(jpg|png)$/,

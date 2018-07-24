@@ -1,9 +1,20 @@
-import { Button, Card, Elevation, H5, Slider, Spinner, Utils } from '@blueprintjs/core'
+import { Button, Card, Elevation, H5, Navbar, NavbarDivider, NavbarGroup, NavbarHeading, Slider, Spinner, Utils } from '@blueprintjs/core'
 import { DateRange, DateRangePicker } from '@blueprintjs/datetime'
+import { withStyles, WithStyles } from '@material-ui/core'
 import * as React from 'react'
+import { RouteComponentProps, RouteProps } from 'react-router'
 import { compose, pure } from 'recompose'
 import './BluePrint.scss'
-const BluePrint = () => (
+import bluePrintStyle from './BluePrint.style'
+import { MyButton } from './Button'
+interface IBluePrintPropsOut {
+
+}
+interface IBluePrintPropsIn extends WithStyles<typeof bluePrintStyle>, RouteComponentProps<any> {
+
+}
+
+const BluePrint = ({ classes, location, match }: IBluePrintPropsIn) => (
 	<>
 		<h1>Hello I'm Blue Print </h1>
 		<Button intent="success" text="button content"  />
@@ -38,7 +49,17 @@ const BluePrint = () => (
 				// onChange={this.handleDateChange}
 			/>
 			<Spinner />
+			<MyButton name={'a'} />
+			<Navbar>
+				<NavbarGroup >
+					<NavbarHeading>Blueprint</NavbarHeading>
+					<NavbarDivider />
+					<Button  icon="home" text="Home" />
+					<Button  icon="document" text="Files" />
+				</NavbarGroup>
+			</Navbar>
 		</Card>
 	</>
 )
-export const BluePrintPage = compose(pure)(BluePrint)
+
+export const BluePrintPage = compose<IBluePrintPropsOut, IBluePrintPropsIn>(withStyles(bluePrintStyle), pure)(BluePrint)
