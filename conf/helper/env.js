@@ -5,11 +5,13 @@ const setEnviroment = (name, defaultValue, targetValue) => {
 	return process.env[name] = value || defaultValue
 }
 
-exports.settingEnv = () => {
+exports.settingEnv = (mode) => {
 	setEnviroment('HTTPS', false)
 	setEnviroment('PORT', 3000, parseInt(process.env.PORT, 10))
 	setEnviroment('HOST', '0.0.0.0')
 	setEnviroment('PUBLIC_URL', '/')
+	setEnviroment('BABEL_ENV', mode)
+	setEnviroment('NODE_ENV', mode)
 	process.env.NODE_PATH = (process.env.NODE_PATH || '')
 		.split(path.delimiter)
 		.filter(folder => folder && !path.isAbsolute(folder))
