@@ -13,7 +13,7 @@ const { getConfiguration } = require('../conf/helper/variable')
 
 const start = () => {
 	const configGlobal = getConfiguration()
-	const compiler = webpack(config());
+	const compiler = webpack(config);
 	// compiler.plugin will run when file changed
 	// compiler.plugin('invalid', () => {
 	// 	console.log('Compiling...and generating language');

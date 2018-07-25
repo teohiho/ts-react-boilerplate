@@ -7,14 +7,6 @@ const part = require("./webpack.module");
 const { appPath } = require('./helper/path')
 const resloveConfig = {
 	resolve: {
-		// This allows you to set a fallback for where Webpack should look for modules.
-		// We placed these paths second because we want `node_modules` to "win"
-		// if there are any conflicts. This matches Node resolution mechanism.
-		// https://github.com/facebookincubator/create-react-app/issues/253
-		modules: ['node_modules', appPath.appNodeModules].concat(
-			// It is guaranteed to exist because we tweak it in `env.js`
-			process.env.NODE_PATH.split(appPath.delimiter).filter(Boolean)
-		),
 		// These are the reasonable defaults supported by the Node ecosystem.
 		// We also include JSX as a common component filename extension to support
 		// some tools, although we do not recommend using it, see:
@@ -62,9 +54,7 @@ exports.commonConfig = merge([
 	part.loadJs(),
 	part.loadAwesomeTypescript(),
 	// part.loadCSS(),
-	part.loadSCSS(),
 	part.loadFile(),
 	resloveConfig,
 	entry
-	// nodeConfig,
 ]);

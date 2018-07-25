@@ -119,19 +119,20 @@ exports.loadFile = ({ include, exclude } = {}) => ({
 exports.extractCSS = ({ include, exclude, use = [] }) => {
 	// Output extracted CSS to a file
 	const plugin = new MiniCssExtractPlugin({
-	  	filename: "[name].css",
+		filename: "css/[name].css",
+		chunkFilename: "[id].css"
 	});
   
 	return {
 		module: {
 			rules: [
 				{
-					test: /\.css$/,
+					test: /\.(sa|sc|c)ss$/,
 					include,
 					exclude,
 		
 					use: [
-					MiniCssExtractPlugin.loader,
+						MiniCssExtractPlugin.loader,
 					].concat(use),
 				},
 			],
