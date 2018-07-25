@@ -1,11 +1,10 @@
 // Configuration of both dev and prod
 const merge = require("webpack-merge");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+// const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
-const part = require("./webpack.part");
-const { appPath } = require('./path')
+const part = require("./webpack.module");
+const { appPath } = require('./helper/path')
 const resloveConfig = {
 	resolve: {
 		// This allows you to set a fallback for where Webpack should look for modules.
@@ -40,7 +39,6 @@ const resloveConfig = {
 			// To fix this, we prevent you from importing files out of src/ -- if you'd like to,
 			// please link the files into your node_modules/ and let module-resolution kick in.
 			// Make sure your source files are compiled, as they will not be processed in any way.
-			new ModuleScopePlugin(appPath.appSrc, [appPath.appPackageJson]),
 			new TsconfigPathsPlugin({ configFile: appPath.appTsConfig }),
 		],
 	},
@@ -57,12 +55,16 @@ const nodeConfig = {
 		child_process: 'empty',
 	},
 }
+const entry = {
+	entry: appPath.appIndexJs,
+}
 exports.commonConfig = merge([
 	part.loadJs(),
-	part.loadTypescript(),
-	part.loadCSS(),
+	part.loadAwesomeTypescript(),
+	// part.loadCSS(),
 	part.loadSCSS(),
 	part.loadFile(),
 	resloveConfig,
-	nodeConfig,
+	entry
+	// nodeConfig,
 ]);

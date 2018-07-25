@@ -1,6 +1,6 @@
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CheckerPlugin } = require('awesome-typescript-loader')
-const { appPath } = require('./path')
+const { appPath } = require('./helper/path')
 
 exports.devServer = ({ host, port } = {}) => ({
 	devServer: {
@@ -116,26 +116,26 @@ exports.loadFile = ({ include, exclude } = {}) => ({
 	}
 })
 
-// exports.extractCSS = ({ include, exclude, use = [] }) => {
-// 	// Output extracted CSS to a file
-// 	const plugin = new MiniCssExtractPlugin({
-// 	  	filename: "[name].css",
-// 	});
+exports.extractCSS = ({ include, exclude, use = [] }) => {
+	// Output extracted CSS to a file
+	const plugin = new MiniCssExtractPlugin({
+	  	filename: "[name].css",
+	});
   
-// 	return {
-// 		module: {
-// 			rules: [
-// 				{
-// 					test: /\.css$/,
-// 					include,
-// 					exclude,
+	return {
+		module: {
+			rules: [
+				{
+					test: /\.css$/,
+					include,
+					exclude,
 		
-// 					use: [
-// 					MiniCssExtractPlugin.loader,
-// 					].concat(use),
-// 				},
-// 			],
-// 		},
-// 		plugins: [plugin],
-// 	};
-// };
+					use: [
+					MiniCssExtractPlugin.loader,
+					].concat(use),
+				},
+			],
+		},
+		plugins: [plugin],
+	};
+};
