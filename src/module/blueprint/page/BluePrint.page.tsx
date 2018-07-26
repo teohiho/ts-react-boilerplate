@@ -1,4 +1,17 @@
-import { Button, Card, Elevation, H5, Navbar, NavbarDivider, NavbarGroup, NavbarHeading, Slider, Spinner, Utils } from '@blueprintjs/core'
+import {
+	Button,
+	Card,
+	Colors,
+	Elevation,
+	H5,
+	Navbar,
+	NavbarDivider,
+	NavbarGroup,
+	NavbarHeading,
+	Slider,
+	Spinner,
+	Utils,
+	} from '@blueprintjs/core'
 import { DateRange, DateRangePicker } from '@blueprintjs/datetime'
 import { withStyles, WithStyles } from '@material-ui/core'
 import * as React from 'react'
@@ -61,5 +74,7 @@ const BluePrint = ({ classes, location, match }: IBluePrintPropsIn) => (
 		</Card>
 	</>
 )
-
+const test = () => {
+	// const a = Colors.
+}
 export const BluePrintPage = compose<IBluePrintPropsOut, IBluePrintPropsIn>(withStyles(bluePrintStyle), pure)(BluePrint)
