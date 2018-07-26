@@ -43,7 +43,7 @@ const pruductionMainConfig = {
 
 
 		// BundleAnalyzerPlugin help you analyze bundle.js size
-		// new BundleAnalyzerPlugin()
+		// new BundleAnalyzerPlugin(),
 
 		// Multi processing for build app: https://survivejs.com/webpack/optimizing/performance/
 

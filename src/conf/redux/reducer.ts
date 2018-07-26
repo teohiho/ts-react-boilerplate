@@ -3,7 +3,7 @@ import { persistReducer } from 'redux-persist'
 
 import { getSpecificModuleRedux } from 'module/helper/module'
 import { TAppState } from 'module/setting/logic.redux/initalState'
-import { TTodoState } from 'module/todo/logic.redux/initialState'
+// import { TTodoState } from 'module/todo/logic.redux/initialState'
 import { PERSIST_CONFIG } from './persist'
 
 const moduleReducer = getSpecificModuleRedux('reducer')
@@ -13,7 +13,7 @@ const reducer = combineReducers({
 
 export type TRootState = {
   setting: TAppState,
-  todo: TTodoState,
+//   todo: TTodoState,
 }
 
 const rootReducer = (state: any, action: any) => {
