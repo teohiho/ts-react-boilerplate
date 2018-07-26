@@ -116,10 +116,16 @@ exports.loadFile = ({ include, exclude } = {}) => ({
 	}
 })
 
+exports.autoprefix = () => ({
+	loader: "postcss-loader",
+	options: {
+	 	plugins: () => [require("autoprefixer")()],
+	},
+});
 exports.extractCSS = ({ include, exclude, use = [] }) => {
 	// Output extracted CSS to a file
 	const plugin = new MiniCssExtractPlugin({
-		filename: "css/[name].css",
+		filename: "static/css/[name].css",
 		chunkFilename: "[id].css"
 	});
   
@@ -133,6 +139,8 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
 		
 					use: [
 						MiniCssExtractPlugin.loader,
+						// " https://survivejs.com/webpack/styling/autoprefixing/
+						// autoprefix() help all brower can read css
 					].concat(use),
 				},
 			],
