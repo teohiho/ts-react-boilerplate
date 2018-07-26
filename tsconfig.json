@@ -23,7 +23,7 @@
 		"noUnusedLocals": false,
 		"baseUrl": "./src",
 		"paths": {
-		"@asset/*": ["./asset/*"]
+			"@asset/*": ["./asset/*"]
 		}
 	},
 	"exclude": [

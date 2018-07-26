@@ -1,16 +1,17 @@
 const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+// var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+var DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 
 const { commonConfig } = require('./webpack.common')
 const parts = require("./webpack.module");
 const { appPath } = require('./helper/path')
 
 
-
 const pruductionMainConfig = {
 	bail: true,
 	mode: 'production',
-	devtool: 'source-map',
+	devtool: 'nosources-source-map',
 	output: {
 		path: appPath.appBuild,
 		publicPath: '/',
@@ -34,7 +35,16 @@ const pruductionMainConfig = {
 				minifyURLs: true,
 			},
 		}),
+		// Check if contain libs different version
+		// How can I reslove that warning: Check this https://github.com/darrenscerri/duplicate-package-checker-webpack-plugin#resolving-duplicate-packages-in-your-bundle
+		// for ex: Yarn install --flat
+		new DuplicatePackageCheckerPlugin(),
+
+
+		// BundleAnalyzerPlugin help you analyze bundle.js size
+		// new BundleAnalyzerPlugin()
 	],
+
 }
 const productionConfig = merge([
 	parts.extractCSS({
