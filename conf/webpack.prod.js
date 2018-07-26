@@ -37,7 +37,7 @@ const pruductionMainConfig = {
 		}),
 		// Check if contain libs different version
 		// How can I reslove that warning: Check this https://github.com/darrenscerri/duplicate-package-checker-webpack-plugin#resolving-duplicate-packages-in-your-bundle
-		// for ex: Yarn install --flat
+		// for ex: yarn install --flat
 		new DuplicatePackageCheckerPlugin(),
 
 

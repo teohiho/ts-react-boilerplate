@@ -25,7 +25,6 @@ const developmentMainConfig = {
 			inject: true,
 			template: appPath.appHtml,
 		}),
-		new BundleAnalyzerPlugin(),
 
 	],
 	// Turn off performance hints during development because we don't do any
