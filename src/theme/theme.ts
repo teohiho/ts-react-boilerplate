@@ -1,4 +1,6 @@
-import * as lightTheme from './default'
+import { getTheme } from './helper/theme'
+import { TTheme } from './light/light'
 export {
-  lightTheme,
+	TTheme,
+	getTheme,
 }

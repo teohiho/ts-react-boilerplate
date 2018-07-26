@@ -74,7 +74,5 @@ const BluePrint = ({ classes, location, match }: IBluePrintPropsIn) => (
 		</Card>
 	</>
 )
-const test = () => {
-	// const a = Colors.
-}
+
 export const BluePrintPage = compose<IBluePrintPropsOut, IBluePrintPropsIn>(withStyles(bluePrintStyle), pure)(BluePrint)

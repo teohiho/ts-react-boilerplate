@@ -1,35 +1,20 @@
-import { compose, map, mapObjIndexed, omit, values } from 'ramda'
+import { compose, mapObjIndexed, omit, values } from 'ramda'
 import * as React from 'react'
-import { connect } from 'react-redux'
-import { RouteComponentProps, Switch } from 'react-router'
+import { Switch } from 'react-router'
 
-import { Theme, withStyles, WithStyles } from '@material-ui/core'
-import createStyles from '@material-ui/core/styles/createStyles'
-import { TRootState } from 'conf/redux/reducer'
 import { createBrowserHistory } from 'history'
 // import { RootState } from '../reducers';
-import DashBoard from 'layout/Dashboard'
+// import DashBoard from 'layout/Dashboard'
 import { getPageList } from 'module/helper/module'
 import {
-  BrowserRouter,
   Route,
   Router } from 'react-router-dom'
+import { compose as recompose, pure } from 'recompose'
+import { DashBoardBluePrint } from '../layout/DashboardBluePrint'
 const hist = createBrowserHistory()
 
 const pages = getPageList()
-
-export namespace AppRouter {
-  export interface Props extends RouteComponentProps<void>, WithStyles<typeof styles> {
-  }
-
-  export interface State {
-	open: boolean
-  }
-}
-
-class AppRouter extends React.Component<AppRouter.Props, AppRouter.State> {
-  renderDashBoard = (props: any) => {
-
+const renderDashBoard = (props: any) => {
 	const convertRouteComponent = mapObjIndexed((page: any, key: string) => (
 		<Route
 		{...page}
@@ -43,32 +28,21 @@ class AppRouter extends React.Component<AppRouter.Props, AppRouter.State> {
 	]
 	const slidebarRoutes = compose(values, omit(pageIgnore))(pages)
 	return (
-		<DashBoard routes={values(pages)} {...props} >
-		<Switch>
-			{routesRender}
-		</Switch>
-		</DashBoard>
+		<DashBoardBluePrint routes={values(pages)} {...props} >
+			<Switch>
+				{routesRender}
+			</Switch>
+		</DashBoardBluePrint>
 	)
-  }
-  render() {
-	// Switch case layout
-	return (
-		<div className={this.props.classes.body}>
+}
+const AppRouteView = () => (
+	<>
 		<Router history={hist}>
 			<Switch>
-			<Route path={''} render={this.renderDashBoard}>
-			</Route>
+				<Route path={''} render={renderDashBoard}>
+				</Route>
 			</Switch>
 		</Router>
-		</div>
-	)
-  }
-}
-const styles = (theme: Theme) => createStyles({
-  body: {
-  },
-})
-const mapStateToProps = (state: TRootState, props: any) => ({
-
-})
-export const AppRoute = withStyles(styles)(connect(mapStateToProps)(AppRouter))
+	</>
+)
+export const AppRoute = recompose(pure)(AppRouteView)

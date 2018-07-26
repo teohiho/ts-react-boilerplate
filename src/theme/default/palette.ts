@@ -1,6 +1,6 @@
-import { TTheme } from 'module/setting/logic.redux/initalState'
+import { TPaletteType } from 'module/setting/logic.redux/initalState'
 
-export const getPalette = (paletteType: TTheme = 'light') => ({
+export const getPalette = (paletteType: TPaletteType = 'light') => ({
   type: paletteType,
   // primary: {
   //   light: '#e5e5e5',

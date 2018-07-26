@@ -1,14 +1,14 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import ReduxRoot from 'ReduxRoot'
+import { AppRedux } from './AppRedux'
 
 const rootEl = document.getElementById('root')
-ReactDOM.render(<ReduxRoot />, rootEl)
+ReactDOM.render(<AppRedux />, rootEl)
 // Read this first https://survivejs.com/webpack/appendices/hmr/
 if (module.hot) {
-	module.hot.accept('./ReduxRoot', () => {
+	module.hot.accept('./AppRedux', () => {
 		// hot reload
-		const NextApp = require('./ReduxRoot').default
+		const NextApp = require('./AppRedux').default
 		ReactDOM.render(
 			<NextApp />,
 			rootEl,

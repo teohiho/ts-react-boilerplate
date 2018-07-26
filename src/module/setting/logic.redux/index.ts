@@ -1,4 +1,4 @@
 import reducer from './reducer'
-export default {
+export const redux = {
   reducer,
 }
