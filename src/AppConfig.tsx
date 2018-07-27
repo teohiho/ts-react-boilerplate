@@ -13,7 +13,6 @@ import { AppRoute } from 'router/router'
 const messages = require('./i18n/i18n.__generate__.json')
 import { TPaletteType } from 'module/setting/logic.redux/initalState'
 import { getTheme } from 'theme/theme'
-import './index.scss'
 settingI18n()
 
 
