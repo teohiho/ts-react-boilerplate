@@ -1,24 +1,32 @@
 import {
 	Alignment,
+	Breadcrumb,
 	Button,
+	Card,
 	Classes,
 	H5,
+	IMenuItemProps,
 	Navbar,
 	NavbarDivider,
 	NavbarGroup,
 	NavbarHeading,
+	OverflowList,
 	Popover,
-	Switch,
+	Tab,
+	Tabs,
 } from '@blueprintjs/core'
+import * as classnames from 'classnames'
 import { css } from 'emotion'
 import * as React from 'react'
 import { compose, pure, withState, withStateHandlers } from 'recompose'
 import './DashboardBluePrint.scss'
+import { MainTab } from './MainTab'
 import { SearchBox } from './SearchBox'
+import { SwitchTheme } from './SwitchTheme'
 import { UserBox } from './UserBox'
 
 const MenuContent = () => (
-	<div>
+	<div className="">
 		This will show Menu Content
 	</div>
 )
@@ -44,6 +52,8 @@ const MenuView = ({ isOpen, popUpMenu }: IMenuPropsIn) => (
 		enforceFocus={false}
 		isOpen={isOpen}
 		content={<MenuContent />}
+		position="bottom-left"
+
 	>
 		<Button className={Classes.MINIMAL} icon="menu" text="Menu" onClick={popUpMenu} />
 	</Popover>
@@ -76,8 +86,7 @@ const DashBoard = () => (
 				</div>
 			</NavbarGroup>
 		</Navbar>
-		will hot pink
-		<h1> Hello World </h1>
+		<MainTab />
 	</div>
 )
 

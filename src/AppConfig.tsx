@@ -42,7 +42,9 @@ const App = ({ theme, lang }: IAppConfigPropsIn) => (
 		messages={messages[lang]}
 	>
 		<ThemeProvider theme={getTheme(theme)}>
-			<AppRoute />
+			<div className={theme === 'dark' ? 'bp3-dark' : ''}>
+				<AppRoute />
+			</div>
 		</ThemeProvider>
 	</IntlProvider>
 )
