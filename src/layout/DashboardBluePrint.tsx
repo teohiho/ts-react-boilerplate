@@ -1,28 +1,18 @@
 import {
-	Alignment,
-	Breadcrumb,
 	Button,
-	Card,
 	Classes,
-	H5,
-	IMenuItemProps,
+	Dialog,
 	Navbar,
 	NavbarDivider,
 	NavbarGroup,
 	NavbarHeading,
-	OverflowList,
 	Popover,
-	Tab,
-	Tabs,
 } from '@blueprintjs/core'
-import * as classnames from 'classnames'
-import { css } from 'emotion'
 import * as React from 'react'
 import { compose, pure, withState, withStateHandlers } from 'recompose'
 import './DashboardBluePrint.scss'
 import { MainTab } from './MainTab'
 import { SearchBox } from './SearchBox'
-import { SwitchTheme } from './SwitchTheme'
 import { UserBox } from './UserBox'
 
 const MenuContent = () => (
@@ -46,17 +36,23 @@ interface IMenuPropsIn extends IMenuPropsOut, IMenuState, IMenuHandler {
 
 }
 const MenuView = ({ isOpen, popUpMenu }: IMenuPropsIn) => (
-	<Popover
-		popoverClassName={Classes.POPOVER_CONTENT_SIZING}
-		portalClassName="foo"
-		enforceFocus={false}
-		isOpen={isOpen}
-		content={<MenuContent />}
-		position="bottom-left"
-
-	>
+	<>
+		<Dialog isOpen={isOpen} className="menuPopup">
+			<MenuContent />
+		</Dialog>
 		<Button className={Classes.MINIMAL} icon="menu" text="Menu" onClick={popUpMenu} />
-	</Popover>
+	</>
+	// <Popover
+	// 	popoverClassName={Classes.POPOVER_CONTENT_SIZING}
+	// 	portalClassName="foo"
+	// 	enforceFocus={false}
+	// 	isOpen={isOpen}
+	// 	content={<MenuContent />}
+	// 	position="bottom-left"
+
+	// >
+	// 	<Button className={Classes.MINIMAL} icon="menu" text="Menu" onClick={popUpMenu} />
+	// </Popover>
 )
 
 const generateState = withStateHandlers(
@@ -71,7 +67,7 @@ const generateState = withStateHandlers(
 const EnhanceMenuView = compose<IMenuPropsIn, IMenuPropsOut>(generateState, pure)(MenuView)
 
 const DashBoard = () => (
-	<div >
+	<div className="dashboard-app">
 	 	<Navbar>
 			<NavbarGroup className="nav">
 				<NavbarHeading>

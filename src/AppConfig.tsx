@@ -3,17 +3,17 @@ import { IntlProvider } from 'react-intl'
 
 import { connect, Dispatch } from 'react-redux'
 
+import { settingConfig } from 'conf/config'
 import { registerUserLogger } from 'conf/debug/logrocket'
-import { settingI18n } from 'conf/i18n/i18n'
 import { TRootState } from 'conf/redux/reducer'
-import { ThemeProvider } from 'emotion-theming'
 import { compose, lifecycle, pure } from 'recompose'
 import { AppRoute } from 'router/router'
 
-const messages = require('./i18n/i18n.__generate__.json')
+import * as classnames from 'classnames'
 import { TPaletteType } from 'module/setting/logic.redux/initalState'
-import { getTheme } from 'theme/theme'
-settingI18n()
+
+const messages = require('./i18n/i18n.__generate__.json')
+settingConfig()
 
 
 export interface IAppConfigPropsIn extends IAppConfigPropsOut {
@@ -36,17 +36,16 @@ const withLifeCircle = lifecycle({
 	},
   })
 
+//  Add theme and language
 const App = ({ theme, lang }: IAppConfigPropsIn) => (
 	<IntlProvider
 		locale={lang}
 		messages={messages[lang]}
 	>
-		<ThemeProvider theme={getTheme(theme)}>
-			<div className={theme === 'dark' ? 'bp3-dark' : ''}>
-				<AppRoute />
-			</div>
-		</ThemeProvider>
-	</IntlProvider>
+		<div className={classnames('app', theme === 'dark' ? 'bp3-dark' : '')}>
+			<AppRoute />
+		</div>
+	</IntlProvider >
 )
 
 const mapStateToProps = (state: TRootState) => ({

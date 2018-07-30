@@ -12,7 +12,12 @@
 	align-items: center;
 }
 
-.menuPopup {
-	left: -1110;
-	position: absolute;
+.menuPopup .bp3-dialog-container {
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.dashboard-app {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
 }
