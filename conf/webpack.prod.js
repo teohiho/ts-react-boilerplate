@@ -91,12 +91,6 @@ const pruductionMainConfig = {
 }
 const productionConfig = merge([
 	parts.extractCSS({
-		// use: "sass-loader",
-		use: [
-			'css-loader',
-			// 'postcss-loader',
-			'sass-loader',
-		],
 	}),
 ])
 module.exports = merge(

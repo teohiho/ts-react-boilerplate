@@ -18,7 +18,9 @@ const developmentMainConfig = {
 		// There are also additional JS chunk files if you use code splitting.
 		chunkFilename: 'static/js/[name].chunk.js',
 	},
-	devtool: 'eval',
+	// devtool: 'eval', //generated code
+	devtool: 'cheap-module-eval-source-map',
+    // devtool: 'source-map',
 	plugins: [
 		// Generates an `index.html` file with the <script> injected.
 		new HtmlWebpackPlugin({
@@ -31,7 +33,7 @@ const developmentMainConfig = {
 	// splitting or minification in interest of speed. These warnings become
 	// cumbersome.
 	performance: {
-		hints: false,
+		hints: "warning",
 	},
 }
 const developmentConfig = merge([
@@ -39,7 +41,7 @@ const developmentConfig = merge([
 ])
 exports.config = merge([
 		commonConfig, 
+		developmentConfig,
 		developmentMainConfig, 
-		developmentConfig
 	]
 )

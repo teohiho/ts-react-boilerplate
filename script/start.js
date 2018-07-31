@@ -26,12 +26,16 @@ const start = () => {
 			disableDotRule: true,
 		},
 	});
-	
-	devServer.listen(configGlobal.port, configGlobal.host, err => {
+	const serverConfig = {
+		hot: true,
+		host: configGlobal.host
+	}
+	devServer.listen(configGlobal.port, serverConfig, err => {
 		if (err) {
 			return console.log(err);
 		}
 		console.log(chalk.cyan('Starting the development server...\n'));
+		console.log(chalk.cyan(`http://0.0.0.0:${configGlobal.port}\n`));
 	});
 }
 

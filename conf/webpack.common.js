@@ -55,6 +55,7 @@ exports.commonConfig = merge([
 	part.loadAwesomeTypescript(),
 	// part.loadCSS(),
 	part.loadFile(),
+	nodeConfig,
 	resloveConfig,
 	entry
 ]);

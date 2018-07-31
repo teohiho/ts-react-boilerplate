@@ -1,5 +1,8 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CheckerPlugin } = require('awesome-typescript-loader')
+const autoprefixer = require('autoprefixer')
+const merge = require("webpack-merge");
+
 const { appPath } = require('./helper/path')
 
 exports.devServer = ({ host, port } = {}) => ({
@@ -11,7 +14,6 @@ exports.devServer = ({ host, port } = {}) => ({
 	  overlay: true,
 	},
 });
-
 
 exports.loadCSS = ({ include, exclude } = {}) => ({
 	module: {
@@ -27,19 +29,60 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
 	},
 });
 
-exports.loadSCSS = ({ include, exclude } = {}) => ({
+const loadSCSS = ({ include, exclude } = {}) => ({
 	module: {
 		rules: [
 			{
-				test: /\.scss$/,
+				test: /\.(sa|sc|c)ss$/,
 				include,
 				exclude,
-				use: ["style-loader", "css-loader", "sass-loader"],
+				use: [
+					{ 
+						loader: 'style-loader',
+						options: {
+							sourceMap: true,
+							
+						}
+					},
+					{ loader: 'css-loader', options: { sourceMap: true } },
+					{ 
+						loader: 'postcss-loader',
+						options: {
+							sourceMap: true,
+							plugins: () => [
+								require('postcss-flexbugs-fixes'),
+								autoprefixer({
+								  browsers: [
+									'>1%',
+									'last 4 versions',
+									'Firefox ESR',
+									'not ie < 9', // React doesn't support IE8 anyway
+								  ],
+								  flexbox: 'no-2009',
+								}),
+								// Help to generate specific css for each component
+								require('postcss-modules')({
+
+								})
+							],	
+						}
+					},
+					// typings-for-css-modules-loader autocreate definition type for scss/css
+					{
+						loader: "typings-for-css-modules-loader",
+						options: {
+							namedExport: true,
+							modules: true,
+							silent: tr
+						}
+					},
+					{ loader: 'sass-loader', options: { sourceMap: true } }
+				],
 			},
 		],
 	},
 });
-
+exports.loadSCSS = loadSCSS
 exports.loadTypescript = ({ include, exclude } = {} ) => ({
 	module: {
 		rules: [
@@ -122,26 +165,51 @@ exports.autoprefix = () => ({
 	 	plugins: () => [require("autoprefixer")()],
 	},
 });
+
 exports.extractCSS = ({ include, exclude, use = [] }) => {
 	// Output extracted CSS to a file
 	const plugin = new MiniCssExtractPlugin({
 		filename: "static/css/[name].css",
 		chunkFilename: "[id].css"
 	});
-  
+	const loadSCSSRule = loadSCSS({ include, exclude }).module.rules[0]
 	return {
 		module: {
 			rules: [
 				{
-					test: /\.(sa|sc|c)ss$/,
-					include,
-					exclude,
-		
+					...loadSCSSRule,
 					use: [
+						{ 
+							loader: 'style-loader',
+							options: {
+								sourceMap: true,
+								
+							}
+						},
 						MiniCssExtractPlugin.loader,
-						// " https://survivejs.com/webpack/styling/autoprefixing/
-						// autoprefix() help all brower can read css
-					].concat(use),
+						{ loader: 'css-loader', options: { sourceMap: true } },
+						{ 
+							loader: 'postcss-loader',
+							options: {
+								sourceMap: true,
+								plugins: () => [
+									require('postcss-flexbugs-fixes'),
+									autoprefixer({
+									  browsers: [
+										'>1%',
+										'last 4 versions',
+										'Firefox ESR',
+										'not ie < 9', // React doesn't support IE8 anyway
+									  ],
+									  flexbox: 'no-2009',
+									}),
+									// Help to generate specific css for each component
+									require('postcss-modules')
+								],	
+							}
+						},
+						{ loader: 'sass-loader', options: { sourceMap: true } }
+					],
 				},
 			],
 		},

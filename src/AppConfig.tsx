@@ -3,14 +3,16 @@ import { IntlProvider } from 'react-intl'
 
 import { connect, Dispatch } from 'react-redux'
 
+import * as classnames from 'classnames'
 import { settingConfig } from 'conf/config'
 import { registerUserLogger } from 'conf/debug/logrocket'
 import { TRootState } from 'conf/redux/reducer'
 import { compose, lifecycle, pure } from 'recompose'
 import { AppRoute } from 'router/router'
 
-import * as classnames from 'classnames'
+
 import { TPaletteType } from 'module/setting/logic.redux/initalState'
+import * as styles from './AppConfig.scss'
 
 const messages = require('./i18n/i18n.__generate__.json')
 settingConfig()
@@ -42,7 +44,7 @@ const App = ({ theme, lang }: IAppConfigPropsIn) => (
 		locale={lang}
 		messages={messages[lang]}
 	>
-		<div className={classnames('app', theme === 'dark' ? 'bp3-dark' : '')}>
+		<div className={classnames(styles.app, theme === 'dark' ? 'bp3-dark' : '')}>
 			<AppRoute />
 		</div>
 	</IntlProvider >
