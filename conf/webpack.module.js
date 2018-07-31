@@ -32,6 +32,39 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
 const loadSCSS = ({ include, exclude } = {}) => ({
 	module: {
 		rules: [
+			// {
+			// 	test: /\.css$/,
+			// 	use: [
+			// 		{ 
+			// 			loader: 'style-loader',
+			// 			options: {
+			// 				sourceMap: true,
+							
+			// 			}
+			// 		},
+			// 		{ loader: 'css-loader', options: { sourceMap: true } },
+			// 		{ 
+			// 			loader: 'postcss-loader',
+			// 			options: {
+			// 				sourceMap: true,
+			// 				plugins: () => [
+			// 					require('postcss-flexbugs-fixes'),
+			// 					// Help to generate specific css for each component
+			// 					require('postcss-modules'),
+			// 					autoprefixer({
+			// 					  browsers: [
+			// 						'>1%',
+			// 						'last 4 versions',
+			// 						'Firefox ESR',
+			// 						'not ie < 9', // React doesn't support IE8 anyway
+			// 					  ],
+			// 					  flexbox: 'no-2009',
+			// 					}),
+			// 				],	
+			// 			}
+			// 		},
+			// 	]
+			// },
 			{
 				test: /\.(sa|sc|c)ss$/,
 				include,
@@ -51,6 +84,8 @@ const loadSCSS = ({ include, exclude } = {}) => ({
 							sourceMap: true,
 							plugins: () => [
 								require('postcss-flexbugs-fixes'),
+								// Help to generate specific css for each component
+								// require('postcss-modules'),
 								autoprefixer({
 								  browsers: [
 									'>1%',
@@ -60,20 +95,7 @@ const loadSCSS = ({ include, exclude } = {}) => ({
 								  ],
 								  flexbox: 'no-2009',
 								}),
-								// Help to generate specific css for each component
-								require('postcss-modules')({
-
-								})
 							],	
-						}
-					},
-					// typings-for-css-modules-loader autocreate definition type for scss/css
-					{
-						loader: "typings-for-css-modules-loader",
-						options: {
-							namedExport: true,
-							modules: true,
-							silent: tr
 						}
 					},
 					{ loader: 'sass-loader', options: { sourceMap: true } }
@@ -194,6 +216,7 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
 								sourceMap: true,
 								plugins: () => [
 									require('postcss-flexbugs-fixes'),
+									require('postcss-modules'),
 									autoprefixer({
 									  browsers: [
 										'>1%',
@@ -204,7 +227,6 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
 									  flexbox: 'no-2009',
 									}),
 									// Help to generate specific css for each component
-									require('postcss-modules')
 								],	
 							}
 						},
