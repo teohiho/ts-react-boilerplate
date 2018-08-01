@@ -1,7 +1,7 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CheckerPlugin } = require('awesome-typescript-loader')
 const autoprefixer = require('autoprefixer')
 const merge = require("webpack-merge");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const { appPath } = require('./helper/path')
 
@@ -166,18 +166,26 @@ exports.autoprefix = () => ({
 
 exports.extractCSS = ({ include, exclude, use = [] }) => {
 	// Output extracted CSS to a file
-	const plugin = new MiniCssExtractPlugin({
-		filename: "static/css/[name].css",
-		chunkFilename: "[id].css"
-	});
-	const loadSCSSRule = loadSCSS({ include, exclude }).module.rules[0]
+	// const plugin = new MiniCssExtractPlugin({
+	// 	filename: "static/css/[name].css",
+	// 	chunkFilename: "[id].css"
+	// });
 	return {
 		module: {
 			rules: [
 				{
-					...loadSCSSRule,
+					test: /\.(sa|sc|c)ss$/,
+					include,
+					exclude,
 					use: [
-						MiniCssExtractPlugin.loader,
+						{
+							loader: MiniCssExtractPlugin.loader,
+							options: {
+							  // you can specify a publicPath here
+							  // by default it use publicPath in webpackOptions.output
+							//   publicPath: '../'
+							}
+						  },
 						{
 							// Handle import/ require css
 							// It help to css for each component
@@ -192,6 +200,7 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
 							loader: 'postcss-loader',
 							options: {
 								sourceMap: true,
+								minimize: true,
 								plugins: () => [
 									require('postcss-flexbugs-fixes'),
 									// Help to generate specific css for each component
@@ -213,6 +222,6 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
 				},
 			],
 		},
-		plugins: [plugin],
+		// plugins: [plugin],
 	};
 };

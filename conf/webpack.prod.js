@@ -1,8 +1,9 @@
 const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const { commonConfig } = require('./webpack.common')
 const parts = require("./webpack.module");
@@ -36,6 +37,13 @@ const pruductionMainConfig = {
 				minifyURLs: true,
 			},
 		}),
+		new MiniCssExtractPlugin({
+			// Options similar to the same options in webpackOptions.output
+			// both options are optional
+			filename: "static/css/[name].css",
+			chunkFilename: "[id].css"
+		}),
+
 		// Check if contain libs different version
 		// How can I reslove that warning: Check this https://github.com/darrenscerri/duplicate-package-checker-webpack-plugin#resolving-duplicate-packages-in-your-bundle
 		// for ex: yarn install --flat
