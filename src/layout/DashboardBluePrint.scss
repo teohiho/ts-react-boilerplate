@@ -1,6 +1,7 @@
 :local(.logo) {
 	height: 40px;
 }
+
 .nav {
 	width: 100%
 }
@@ -12,12 +13,14 @@
 	align-items: center;
 }
 
-.menuPopup .bp3-dialog-container {
-	align-items: flex-start;
-	justify-content: flex-start;
-}
+
 .dashboard-app {
 	display: flex;
 	flex: 1;
 	flex-direction: column;
+}
+
+:local(.menuDiaglogSibling)  +  .bp3-dialog-container {
+	align-items: flex-start;
+	justify-content: flex-start;
 }

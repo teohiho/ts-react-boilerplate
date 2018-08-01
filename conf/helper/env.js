@@ -7,7 +7,7 @@ const setEnviroment = (name, defaultValue, targetValue) => {
 
 exports.settingEnv = (mode) => {
 	setEnviroment('HTTPS', false)
-	setEnviroment('PORT', 3000, parseInt(process.env.PORT, 10))
+	setEnviroment('PORT', 3000)
 	setEnviroment('HOST', '0.0.0.0')
 	setEnviroment('PUBLIC_URL', '/')
 	setEnviroment('BABEL_ENV', mode)

@@ -10,6 +10,7 @@ if (module.hot) {
 	module.hot.accept('./AppRedux', () => {
 		// hot reload
 		const NextApp = require('./AppRedux').default
+		console.log('HOT RELOAD')
 		ReactDOM.render(
 			<NextApp />,
 			rootEl,

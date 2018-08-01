@@ -14,7 +14,7 @@ import { compose, pure, withState, withStateHandlers } from 'recompose'
 import { MainTab } from './MainTab'
 import { SearchBox } from './SearchBox'
 import { UserBox } from './UserBox'
-const  { logo } = require('./DashboardBluePrint.scss')
+const  styles = require('./DashboardBluePrint.scss')
 
 const MenuContent = () => (
 	<div className="">
@@ -38,7 +38,7 @@ interface IMenuPropsIn extends IMenuPropsOut, IMenuState, IMenuHandler {
 }
 const MenuView = ({ isOpen, popUpMenu }: IMenuPropsIn) => (
 	<>
-		<Dialog isOpen={isOpen} className="menuPopup">
+		<Dialog isOpen={isOpen} backdropClassName={styles.menuDiaglogSibling}>
 			<MenuContent />
 		</Dialog>
 		<Button className={Classes.MINIMAL} icon="menu" text="Menu" onClick={popUpMenu} />
@@ -50,7 +50,6 @@ const MenuView = ({ isOpen, popUpMenu }: IMenuPropsIn) => (
 	// 	isOpen={isOpen}
 	// 	content={<MenuContent />}
 	// 	position="bottom-left"
-
 	// >
 	// 	<Button className={Classes.MINIMAL} icon="menu" text="Menu" onClick={popUpMenu} />
 	// </Popover>
@@ -71,7 +70,7 @@ const DashBoard = () => (
 	 	<Navbar>
 			<NavbarGroup className="nav">
 				<NavbarHeading>
-					<img src={'https://demo.trackitforlife.com/static/assets/img/logotext.png'} className={logo}/>
+					<img src={'https://demo.trackitforlife.com/static/assets/img/logotext.png'} className={styles.logo}/>
 				</NavbarHeading>
 				<NavbarDivider />
 				<EnhanceMenuView />

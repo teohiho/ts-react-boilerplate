@@ -32,39 +32,6 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
 const loadSCSS = ({ include, exclude } = {}) => ({
 	module: {
 		rules: [
-			// {
-			// 	test: /\.css$/,
-			// 	use: [
-			// 		{ 
-			// 			loader: 'style-loader',
-			// 			options: {
-			// 				sourceMap: true,
-							
-			// 			}
-			// 		},
-			// 		{ loader: 'css-loader', options: { sourceMap: true } },
-			// 		{ 
-			// 			loader: 'postcss-loader',
-			// 			options: {
-			// 				sourceMap: true,
-			// 				plugins: () => [
-			// 					require('postcss-flexbugs-fixes'),
-			// 					// Help to generate specific css for each component
-			// 					require('postcss-modules'),
-			// 					autoprefixer({
-			// 					  browsers: [
-			// 						'>1%',
-			// 						'last 4 versions',
-			// 						'Firefox ESR',
-			// 						'not ie < 9', // React doesn't support IE8 anyway
-			// 					  ],
-			// 					  flexbox: 'no-2009',
-			// 					}),
-			// 				],	
-			// 			}
-			// 		},
-			// 	]
-			// },
 			{
 				test: /\.(sa|sc|c)ss$/,
 				include,
@@ -78,6 +45,9 @@ const loadSCSS = ({ include, exclude } = {}) => ({
 						}
 					},
 					{
+						// Handle import/ require css
+						// It help to css for each component
+						// https://github.com/webpack-contrib/css-loader#scope
 						loader: 'css-loader', 
 						options: {
 							sourceMap: true ,
@@ -207,22 +177,25 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
 				{
 					...loadSCSSRule,
 					use: [
-						{ 
-							loader: 'style-loader',
-							options: {
-								sourceMap: true,
-								
-							}
-						},
 						MiniCssExtractPlugin.loader,
-						{ loader: 'css-loader', options: { sourceMap: true } },
+						{
+							// Handle import/ require css
+							// It help to css for each component
+							// https://github.com/webpack-contrib/css-loader#scope
+							loader: 'css-loader', 
+							options: {
+								sourceMap: true ,
+								localIdentName: '[path][name]__[local]--[hash:base64:5]',
+							} 
+						},
 						{ 
 							loader: 'postcss-loader',
 							options: {
 								sourceMap: true,
 								plugins: () => [
 									require('postcss-flexbugs-fixes'),
-									require('postcss-modules'),
+									// Help to generate specific css for each component
+									// require('postcss-modules'),
 									autoprefixer({
 									  browsers: [
 										'>1%',
@@ -232,7 +205,6 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
 									  ],
 									  flexbox: 'no-2009',
 									}),
-									// Help to generate specific css for each component
 								],	
 							}
 						},

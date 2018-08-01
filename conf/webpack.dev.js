@@ -1,5 +1,7 @@
 const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin')
+const webpack = require('webpack');
 
 const part = require("./webpack.module");
 const { appPath } = require('./helper/path')
@@ -8,6 +10,17 @@ const { commonConfig } = require('./webpack.common')
 
 const developmentMainConfig = {
 	mode: 'development',
+	devServer: {
+		watchOptions: {
+		  // Delay the rebuild after the first change
+		  aggregateTimeout: 300,
+		},
+		hot: true,
+		overlay: false,
+		open: true,
+		port: 3000,
+		compress: true,
+	},
 	output: {
 		// Add /* filename */ comments to generated require()s in the output.
 		pathinfo: true,
@@ -27,7 +40,9 @@ const developmentMainConfig = {
 			inject: true,
 			template: appPath.appHtml,
 		}),
-
+		new webpack.HotModuleReplacementPlugin(),
+		// display error clearly
+		// new ErrorOverlayPlugin(),
 	],
 	// Turn off performance hints during development because we don't do any
 	// splitting or minification in interest of speed. These warnings become
@@ -39,9 +54,11 @@ const developmentMainConfig = {
 const developmentConfig = merge([
 	part.loadSCSS(),
 ])
-exports.config = merge([
+const config = merge([
 		commonConfig, 
 		developmentConfig,
 		developmentMainConfig, 
 	]
 )
+exports.config = config
+module.exports = config

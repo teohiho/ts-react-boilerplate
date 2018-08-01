@@ -48,7 +48,7 @@ const nodeConfig = {
 	},
 }
 const entry = {
-	entry: appPath.appIndexJs,
+	entry: [appPath.appIndexJs],
 }
 exports.commonConfig = merge([
 	part.loadJs(),

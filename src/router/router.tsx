@@ -3,8 +3,6 @@ import * as React from 'react'
 import { Switch } from 'react-router'
 
 import { createBrowserHistory } from 'history'
-// import { RootState } from '../reducers';
-// import DashBoard from 'layout/Dashboard'
 import { getPageList } from 'module/helper/module'
 import {
   Route,
