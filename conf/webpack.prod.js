@@ -1,12 +1,15 @@
-const merge = require("webpack-merge");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const merge = require("webpack-merge")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin")
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
+const webpack = require('webpack')
 
 const { commonConfig } = require('./webpack.common')
-const parts = require("./webpack.module");
+const parts = require("./webpack.module")
 const { appPath } = require('./helper/path')
 
 
@@ -37,65 +40,82 @@ const pruductionMainConfig = {
 				minifyURLs: true,
 			},
 		}),
-		new MiniCssExtractPlugin({
-			// Options similar to the same options in webpackOptions.output
-			// both options are optional
-			filename: "static/css/[name].css",
-			chunkFilename: "[id].css"
-		}),
-
-		// Check if contain libs different version
-		// How can I reslove that warning: Check this https://github.com/darrenscerri/duplicate-package-checker-webpack-plugin#resolving-duplicate-packages-in-your-bundle
-		// for ex: yarn install --flat
-		new DuplicatePackageCheckerPlugin(),
-
+		
 
 		// BundleAnalyzerPlugin help you analyze bundle.js size
 		// new BundleAnalyzerPlugin(),
 
-		// Multi processing for build app: https://survivejs.com/webpack/optimizing/performance/
-
-
-		// Minify the code
-
-		new UglifyJsPlugin({
-			uglifyOptions: {
-			  parse: {
-				// we want uglify-js to parse ecma 8 code. However we want it to output
-				// ecma 5 compliant code, to avoid issues with older browsers, this is
-				// whey we put `ecma: 5` to the compress and output section
-				// https://github.com/facebook/create-react-app/pull/4234
-				ecma: 8,
-			  },
-			  compress: {
-				ecma: 5,
-				warnings: false,
-				// Disabled because of an issue with Uglify breaking seemingly valid code:
-				// https://github.com/facebook/create-react-app/issues/2376
-				// Pending further investigation:
-				// https://github.com/mishoo/UglifyJS2/issues/2011
-				comparisons: false,
-			  },
-			  mangle: {
-				safari10: true,
-			  },
-			  output: {
-				ecma: 5,
-				comments: false,
-				// Turned on because emoji and regex is not minified properly using default
-				// https://github.com/facebook/create-react-app/issues/2488
-				ascii_only: true,
-			  },
-			},
-			// Use multi-process parallel running to improve the build speed
-			// Default number of concurrent runs: os.cpus().length - 1
-			parallel: true,
-			// Enable file caching
-			cache: true,
-			sourceMap: false,
-		}),   
+		
 	],
+	optimization: {
+		minimize: true,
+		minimizer: [
+			// Multi processing for build app: https://survivejs.com/webpack/optimizing/performance/
+			new MiniCssExtractPlugin({
+				// Options similar to the same options in webpackOptions.output
+				// both options are optional
+				filename: "static/css/[name].css",
+				chunkFilename: "[id].css"
+			}),
+			new webpack.DefinePlugin({ // <-- key to reducing React's size
+				'process.env': {
+					'NODE_ENV': JSON.stringify('production')
+				}
+			}),
+			new webpack.optimize.AggressiveMergingPlugin(),//Merge chunks
+			// Check if contain libs different version
+			// How can I reslove that warning: Check this https://github.com/darrenscerri/duplicate-package-checker-webpack-plugin#resolving-duplicate-packages-in-your-bundle
+			// for ex: yarn install --flat
+			new DuplicatePackageCheckerPlugin(),
+	
 
+			// Minify the JS code
+			new UglifyJsPlugin({
+				uglifyOptions: {
+				parse: {
+					// we want uglify-js to parse ecma 8 code. However we want it to output
+					// ecma 5 compliant code, to avoid issues with older browsers, this is
+					// whey we put `ecma: 5` to the compress and output section
+					// https://github.com/facebook/create-react-app/pull/4234
+					ecma: 8,
+				},
+				compress: {
+					ecma: 5,
+					warnings: false,
+					// Disabled because of an issue with Uglify breaking seemingly valid code:
+					// https://github.com/facebook/create-react-app/issues/2376
+					// Pending further investigation:
+					// https://github.com/mishoo/UglifyJS2/issues/2011
+					comparisons: false,
+				},
+				mangle: {
+					safari10: true,
+				},
+				output: {
+					ecma: 5,
+					comments: false,
+					// Turned on because emoji and regex is not minified properly using default
+					// https://github.com/facebook/create-react-app/issues/2488
+					ascii_only: true,
+				},
+				},
+				// Use multi-process parallel running to improve the build speed
+				// Default number of concurrent runs: os.cpus().length - 1
+				parallel: true,
+				// Enable file caching
+				cache: true,
+				sourceMap: false,
+			}),   
+			new OptimizeCssAssetsPlugin({canPrint: false}),
+			new CompressionPlugin({   
+				asset: "[path].gz[query]",
+				algorithm: "gzip",
+				test: /\.js$|\.css$|\.html$/,
+				threshold: 10240,
+				minRatio: 0.8
+			  })
+		]
+	}
 }
 const productionConfig = merge([
 	parts.extractCSS({}),
