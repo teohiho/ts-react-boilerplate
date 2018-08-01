@@ -77,7 +77,13 @@ const loadSCSS = ({ include, exclude } = {}) => ({
 							
 						}
 					},
-					{ loader: 'css-loader', options: { sourceMap: true } },
+					{
+						loader: 'css-loader', 
+						options: {
+							sourceMap: true ,
+							localIdentName: '[path][name]__[local]--[hash:base64:5]',
+						} 
+					},
 					{ 
 						loader: 'postcss-loader',
 						options: {

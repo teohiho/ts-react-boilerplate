@@ -10,12 +10,11 @@ import {
 } from '@blueprintjs/core'
 import * as React from 'react'
 import { compose, pure, withState, withStateHandlers } from 'recompose'
-// import './DashboardBluePrint.scss'
 // const styles = require('./DashboardBluePrint.scss.json')
-import * as styles from './DashboardBluePrint.scss.json'
 import { MainTab } from './MainTab'
 import { SearchBox } from './SearchBox'
 import { UserBox } from './UserBox'
+const  { logo } = require('./DashboardBluePrint.scss')
 
 const MenuContent = () => (
 	<div className="">
@@ -72,7 +71,7 @@ const DashBoard = () => (
 	 	<Navbar>
 			<NavbarGroup className="nav">
 				<NavbarHeading>
-					<img src={'https://demo.trackitforlife.com/static/assets/img/logotext.png'} className={styles.logo}/>
+					<img src={'https://demo.trackitforlife.com/static/assets/img/logotext.png'} className={logo}/>
 				</NavbarHeading>
 				<NavbarDivider />
 				<EnhanceMenuView />
