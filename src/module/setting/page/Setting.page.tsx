@@ -23,15 +23,12 @@ interface ISettingPagePropsIn extends ISettingPagePropsOut, ISettingPageStateToP
 
 }
 
-const SettingPageView = ({ switchTheme, paletteType }: ISettingPagePropsIn) => {
-	console.log('>>>>')
-	return (
-		<>
-			Setting Theme:
-			<Switch checked={paletteType === 'dark' ? true : false} onChange={switchTheme} />
-		</>
-	)
-}
+const SettingPageView = ({ switchTheme, paletteType }: ISettingPagePropsIn) => (
+	<>
+		Setting Theme:
+		<Switch checked={paletteType === 'dark' ? true : false} onChange={switchTheme} />
+	</>
+)
 
 const mapStateToProps = (state: TRootState) => ({
 	paletteType: state.setting.theme.paletteType,

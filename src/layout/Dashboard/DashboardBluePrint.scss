@@ -20,7 +20,7 @@
 	flex-direction: column;
 }
 
-:local(.menuDiaglogSibling)  +  .bp3-dialog-container {
+:local(.menuDiaglogSibling) + .bp3-dialog-container {
 	align-items: flex-start;
 	justify-content: flex-start;
 }

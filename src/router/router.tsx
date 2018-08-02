@@ -25,7 +25,7 @@ const renderDashBoard = (props: any) => {
 	// 	'todoSingle',
 	// ]
 	// const slidebarRoutes = compose(values, omit(pageIgnore))(pages)
-	console.log(routesRender)
+	// console.log(routesRender)
 	return (
 		<DashBoardBluePrint routes={values(pages)} {...props} >
 			<Switch>

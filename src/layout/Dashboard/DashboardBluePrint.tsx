@@ -17,9 +17,16 @@ import { UserBox } from './UserBox'
 const  styles = require('./DashboardBluePrint.scss')
 
 const MenuContent = () => (
-	<div className="">
-		This will show Menu Content
-	</div>
+	<>
+		<div className="bp3-dialog-header">
+			<span className="bp3-icon-large bp3-icon-inbox"></span>
+			<h4 className="bp3-heading">Dialog header</h4>
+			<button aria-label="Close" className="bp3-dialog-close-button bp3-icon-small-cross"></button>
+		</div>
+		<div className="">
+			This will show Menu Content
+		</div>
+	</>
 )
 
 
@@ -38,7 +45,7 @@ interface IMenuPropsIn extends IMenuPropsOut, IMenuState, IMenuHandler {
 }
 const MenuView = ({ isOpen, popUpMenu }: IMenuPropsIn) => (
 	<>
-		<Dialog isOpen={isOpen} backdropClassName={styles.menuDiaglogSibling}>
+		<Dialog isOpen={isOpen} backdropClassName={styles.menuDiaglogSibling} onClose={popUpMenu}>
 			<MenuContent />
 		</Dialog>
 		<Button className={Classes.MINIMAL} icon="menu" text="Menu" onClick={popUpMenu} />

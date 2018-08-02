@@ -11,7 +11,7 @@ import * as classnames from 'classnames'
 import * as React from 'react'
 import { compose, pure, withStateHandlers } from 'recompose'
 import { SwitchTheme } from './SwitchTheme'
-
+const styles = require('./MainTab.scss')
 
 const renderEnhanceBreadcrumb = (props: IMenuItemProps , index: number) => {
 	if (!props.href) {
@@ -46,7 +46,7 @@ interface IMainTabPropsIn extends IMainTabPropsOut, IMainTabState, IMainTabHandl
 }
 
 const MainTabView = ({ changeTab, selectedTabId, children }: IMainTabPropsIn) => (
-	<Card>
+	<Card className={styles.card}>
 		<Tabs id="TabsExample" selectedTabId={selectedTabId}  onChange={changeTab}>
 			<OverflowList
 				className={Classes.BREADCRUMBS}
