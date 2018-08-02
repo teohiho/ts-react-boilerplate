@@ -20,6 +20,7 @@ const developmentMainConfig = {
 		open: true,
 		port: 3000,
 		compress: true,
+		historyApiFallback: true,
 	},
 	output: {
 		// Add /* filename */ comments to generated require()s in the output.

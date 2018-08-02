@@ -8,7 +8,7 @@ import {
   Route,
   Router } from 'react-router-dom'
 import { compose as recompose, pure } from 'recompose'
-import { DashBoardBluePrint } from '../layout/DashboardBluePrint'
+import { DashBoardBluePrint } from '../layout/Dashboard/DashboardBluePrint'
 const hist = createBrowserHistory()
 
 const pages = getPageList()
@@ -21,10 +21,11 @@ const renderDashBoard = (props: any) => {
 	))
 	const routesRender = compose(values, convertRouteComponent)(pages)
 
-	const pageIgnore = [
-		'todoSingle',
-	]
-	const slidebarRoutes = compose(values, omit(pageIgnore))(pages)
+	// const pageIgnore = [
+	// 	'todoSingle',
+	// ]
+	// const slidebarRoutes = compose(values, omit(pageIgnore))(pages)
+	console.log(routesRender)
 	return (
 		<DashBoardBluePrint routes={values(pages)} {...props} >
 			<Switch>

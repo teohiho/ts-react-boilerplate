@@ -11,7 +11,7 @@ const SearchContext = () => (
 		items={
 			['a']
 		}
-		itemRenderer={(item: string) => (<> {item} </>)}
+		itemRenderer={(item: string) => (<div key={item}> {item} </div>)}
 		onItemSelect={() => {}}
 	>
 		 <Button

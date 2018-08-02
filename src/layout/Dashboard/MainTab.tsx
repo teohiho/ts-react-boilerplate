@@ -42,10 +42,10 @@ interface IMainTabHandler {
 }
 
 interface IMainTabPropsIn extends IMainTabPropsOut, IMainTabState, IMainTabHandler {
-
+	children: any
 }
 
-const MainTabView = ({ changeTab, selectedTabId }: IMainTabPropsIn) => (
+const MainTabView = ({ changeTab, selectedTabId, children }: IMainTabPropsIn) => (
 	<Card>
 		<Tabs id="TabsExample" selectedTabId={selectedTabId}  onChange={changeTab}>
 			<OverflowList
@@ -65,7 +65,8 @@ const MainTabView = ({ changeTab, selectedTabId }: IMainTabPropsIn) => (
 			<Tab id="vue" title="Vue" panel={<h1>Vue</h1>} />
 			{/* <Tab id="bb" disabled title="Backbone" panel={<h1>Backbone</h1>} /> */}
 		</Tabs>
-		<SwitchTheme />
+		{/* <SwitchTheme /> */}
+		{children}
 	</Card>
 )
 

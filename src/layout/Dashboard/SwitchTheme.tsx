@@ -1,10 +1,10 @@
 import { Switch } from '@blueprintjs/core'
+import { TRootState } from 'conf/redux/reducer'
+import { changeTheme } from 'module/setting/logic.redux/action'
+import { TPaletteType } from 'module/setting/logic.redux/initalState'
 import * as React from 'react'
 import { connect, Dispatch } from 'react-redux'
 import { compose, pure } from 'recompose'
-import { TRootState } from '../conf/redux/reducer'
-import { changeTheme } from '../module/setting/logic.redux/action'
-import { TPaletteType } from '../module/setting/logic.redux/initalState'
 
 
 interface ISwitchThemePropsOut {

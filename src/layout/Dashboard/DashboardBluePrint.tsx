@@ -65,7 +65,11 @@ const generateState = withStateHandlers(
 )
 
 const EnhanceMenuView = compose<IMenuPropsIn, IMenuPropsOut>(generateState, pure)(MenuView)
-const DashBoard = () => (
+
+interface IDashboardPropsIn {
+	children: any
+}
+const DashBoard = ({ children }: IDashboardPropsIn) => (
 	<div className="dashboard-app">
 	 	<Navbar>
 			<NavbarGroup className="nav">
@@ -81,7 +85,7 @@ const DashBoard = () => (
 				</div>
 			</NavbarGroup>
 		</Navbar>
-		<MainTab />
+		<MainTab children={children}/>
 	</div>
 )
 

@@ -52,6 +52,7 @@ const App = ({ theme, lang }: IAppConfigPropsIn) => (
 
 const mapStateToProps = (state: TRootState) => ({
 	theme: state.setting.theme.paletteType,
+	lang: state.setting.lang,
 })
 const withRedux = connect(mapStateToProps)
 
