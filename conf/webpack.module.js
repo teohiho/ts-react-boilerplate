@@ -20,9 +20,7 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
 		rules: [
 			{
 				test: /\.css$/,
-				include,
-				exclude,
-		
+				include: /(node_modules)/,
 				use: ["style-loader", "css-loader"],
 			},
 		],
@@ -33,9 +31,9 @@ const loadSCSS = ({ include, exclude } = {}) => ({
 	module: {
 		rules: [
 			{
-				test: /\.(sa|sc|c)ss$/,
-				include,
-				exclude,
+				test: /\.(sa|sc)ss$/,
+				include: /src/,
+				exclude: /(node_modules)/,
 				use: [
 					{ 
 						loader: 'style-loader',
@@ -54,6 +52,7 @@ const loadSCSS = ({ include, exclude } = {}) => ({
 							localIdentName: '[path][name]__[local]--[hash:base64:5]',
 						} 
 					},
+					{ loader: 'sass-loader', options: { sourceMap: true } },
 					{ 
 						loader: 'postcss-loader',
 						options: {
@@ -63,18 +62,17 @@ const loadSCSS = ({ include, exclude } = {}) => ({
 								// Help to generate specific css for each component
 								// require('postcss-modules'),
 								autoprefixer({
-								  browsers: [
+									browsers: [
 									'>1%',
 									'last 4 versions',
 									'Firefox ESR',
 									'not ie < 9', // React doesn't support IE8 anyway
-								  ],
-								  flexbox: 'no-2009',
+									],
+									flexbox: 'no-2009',
 								}),
 							],	
 						}
 					},
-					{ loader: 'sass-loader', options: { sourceMap: true } }
 				],
 			},
 		],
@@ -176,7 +174,7 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
 				{
 					test: /\.(sa|sc|c)ss$/,
 					include,
-					exclude,
+					exclude: /(src|node_modules)/,
 					use: [
 						{
 							loader: MiniCssExtractPlugin.loader,

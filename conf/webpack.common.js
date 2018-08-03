@@ -53,7 +53,8 @@ const entry = {
 exports.commonConfig = merge([
 	part.loadJs(),
 	part.loadAwesomeTypescript(),
-	// part.loadCSS(),
+	part.loadCSS(),
+	// part.loadSCSS(),
 	part.loadFile(),
 	nodeConfig,
 	resloveConfig,

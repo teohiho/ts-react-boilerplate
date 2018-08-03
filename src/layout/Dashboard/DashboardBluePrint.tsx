@@ -2,6 +2,7 @@ import {
 	Button,
 	Classes,
 	Dialog,
+	FocusStyleManager,
 	Navbar,
 	NavbarDivider,
 	NavbarGroup,
@@ -15,6 +16,10 @@ import { MainTab } from './MainTab'
 import { SearchBox } from './SearchBox'
 import { UserBox } from './UserBox'
 const  styles = require('./DashboardBluePrint.scss')
+
+// Remove the blue out line when active element
+// Related: https://github.com/palantir/blueprint/issues/2755
+FocusStyleManager.onlyShowFocusOnTabs()
 
 const MenuContent = () => (
 	<>
@@ -81,7 +86,8 @@ const DashBoard = ({ children }: IDashboardPropsIn) => (
 	 	<Navbar>
 			<NavbarGroup className="nav">
 				<NavbarHeading>
-					<img src={'https://demo.trackitforlife.com/static/assets/img/logotext.png'} className={styles.logo}/>
+					{/* <img src={'https://demo.trackitforlife.com/static/assets/img/logotext.png'} className={styles.logo}/> */}
+					LOGO HERE
 				</NavbarHeading>
 				<NavbarDivider />
 				<EnhanceMenuView />

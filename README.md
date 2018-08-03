@@ -33,7 +33,7 @@ Add extension react in chrome at [here](https://chrome.google.com/webstore/detai
 
 ## Webpack
 
-+ [] Remove unused css
++ [ ] Remove unused css
 + [x] Remove unused js
 + [x] GZip js
 + [x] Convert scss -> css
@@ -41,8 +41,8 @@ Add extension react in chrome at [here](https://chrome.google.com/webstore/detai
 
 ## Test
 
-+ [] Config Jest
-+ [] Add Jest
++ [ ] Config Jest
++ [ ] Add Jest
 
 ## Theme
 
