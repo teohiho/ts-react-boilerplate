@@ -15,12 +15,11 @@ const pages = getPageList()
 const renderDashBoard = (props: any) => {
 	const convertRouteComponent = mapObjIndexed((page: any, key: string) => (
 		<Route
-		{...page}
-		key={key}
+			{...page}
+			key={key}
 		/>
 	))
 	const routesRender = compose(values, convertRouteComponent)(pages)
-
 	// const pageIgnore = [
 	// 	'todoSingle',
 	// ]
@@ -37,10 +36,11 @@ const renderDashBoard = (props: any) => {
 const AppRouteView = () => (
 	<>
 		<Router history={hist}>
-			<Switch>
+			{renderDashBoard(1)}
+			{/* <Switch>
 				<Route path={''} render={renderDashBoard}>
 				</Route>
-			</Switch>
+			</Switch> */}
 		</Router>
 	</>
 )

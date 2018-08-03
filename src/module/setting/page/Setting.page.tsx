@@ -25,7 +25,7 @@ interface ISettingPagePropsIn extends ISettingPagePropsOut, ISettingPageStateToP
 
 const SettingPageView = ({ switchTheme, paletteType }: ISettingPagePropsIn) => (
 	<>
-		Setting Theme:
+		Setting Themeabcsdedd:
 		<Switch checked={paletteType === 'dark' ? true : false} onChange={switchTheme} />
 	</>
 )

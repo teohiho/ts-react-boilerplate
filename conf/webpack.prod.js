@@ -120,13 +120,13 @@ const pruductionMainConfig = {
 	}
 }
 const productionConfig = merge([
-	parts.extractCSS({}),
+	// parts.extractCSS({}),
 	// parts.loadSCSS({}),
 ])
 module.exports = merge(
 	[
 		commonConfig,
 		pruductionMainConfig,
-		productionConfig
+		productionConfig,ß
 	]
 )
