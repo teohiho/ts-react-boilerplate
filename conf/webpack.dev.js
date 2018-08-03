@@ -62,5 +62,4 @@ const config = merge([
 	]
 )
 exports.config = config
-console.log('<<<Config', config.module.rules)
 module.exports = config

@@ -31,9 +31,9 @@ const loadSCSS = ({ include, exclude } = {}) => ({
 	module: {
 		rules: [
 			{
-				test: /\.(sa|sc)ss$/,
-				include: /src/,
-				exclude: /(node_modules)/,
+				test: /\.(sa|sc|c)ss$/,
+				// include: /src/,
+				// exclude: /(node_modules)/,
 				use: [
 					{ 
 						loader: 'style-loader',
@@ -173,8 +173,8 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
 			rules: [
 				{
 					test: /\.(sa|sc|c)ss$/,
-					include,
-					exclude: /(src|node_modules)/,
+					// include,
+					// exclude: /(src|node_modules)/,
 					use: [
 						{
 							loader: MiniCssExtractPlugin.loader,
