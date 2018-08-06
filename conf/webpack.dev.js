@@ -62,6 +62,5 @@ const config = merge([
 		developmentMainConfig, 
 	]
 )
-console.log('config', config.module.rules)
 exports.config = config
 module.exports = config

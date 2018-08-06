@@ -31,7 +31,7 @@ const loadSCSS = ({ include, exclude } = {}) => ({
 	module: {
 		rules: [
 			{
-				test: /\.(sa|sc)ss$/,
+				test: /\.(sa|sc|c)ss$/,
 				// include: /src/,
 				// exclude: /(node_modules)/,
 				use: [
