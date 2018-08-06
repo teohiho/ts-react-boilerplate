@@ -6,7 +6,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
-
 const webpack = require('webpack')
 
 const { commonConfig } = require('./webpack.common')
