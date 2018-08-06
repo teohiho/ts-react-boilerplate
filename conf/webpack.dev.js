@@ -19,6 +19,7 @@ const developmentMainConfig = {
 		overlay: false,
 		open: true,
 		port: 3000,
+		host: '0.0.0.0',
 		compress: true,
 		historyApiFallback: true,
 	},
@@ -61,5 +62,6 @@ const config = merge([
 		developmentMainConfig, 
 	]
 )
+console.log('config', config.module.rules)
 exports.config = config
 module.exports = config

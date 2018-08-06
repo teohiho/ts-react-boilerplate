@@ -5,7 +5,6 @@ import { PersistGate } from 'redux-persist/integration/react'
 import configureStore from 'conf/redux/redux'
 import { compose, pure } from 'recompose'
 import { AppConfig } from './AppConfig'
-
 const { store, persistor } = configureStore()
 
 const ReduxView = () => (

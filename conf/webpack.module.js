@@ -20,7 +20,7 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
 		rules: [
 			{
 				test: /\.css$/,
-				include: /(node_modules)/,
+				// include: /(node_modules)/,
 				use: ["style-loader", "css-loader"],
 			},
 		],
@@ -31,7 +31,7 @@ const loadSCSS = ({ include, exclude } = {}) => ({
 	module: {
 		rules: [
 			{
-				test: /\.(sa|sc|c)ss$/,
+				test: /\.(sa|sc)ss$/,
 				// include: /src/,
 				// exclude: /(node_modules)/,
 				use: [
