@@ -4,7 +4,8 @@ import { Select } from '@blueprintjs/select'
 import * as React from 'react'
 import { compose, pure } from 'recompose'
 
-import './SearchBox.scss'
+const styles = require('./SearchBox.scss')
+import * as classnames from 'classnames'
 
 const SearchContext = () => (
 	<Select
@@ -13,6 +14,7 @@ const SearchContext = () => (
 		}
 		itemRenderer={(item: string) => (<div key={item}> {item} </div>)}
 		onItemSelect={() => {}}
+		className={'m-l-md'}
 	>
 		 <Button
 			// icon="film"
@@ -25,9 +27,9 @@ const SearchContext = () => (
 
 const SearchBoxView = () => (
 	<>
-		<SearchContext />
+		{/* <SearchContext /> */}
 		<InputGroup
-			className="textinput"
+			className={classnames('m-l-md', styles.textInput)}
 			// large={large}
 			leftIcon="search"
 			// onChange={this.handleFilterChange}

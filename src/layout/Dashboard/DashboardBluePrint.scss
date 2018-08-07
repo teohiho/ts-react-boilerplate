@@ -19,8 +19,15 @@
 	flex: 1;
 	flex-direction: column;
 }
+:local(.menuDiaglogSibling) {
+	background-color: rgba(16, 22, 26, 0.3);
+	+ .bp3-dialog-container {
+		align-items: flex-start;
+		justify-content: flex-start;
+	}
+}
 
-:local(.menuDiaglogSibling) + .bp3-dialog-container {
-	align-items: flex-start;
-	justify-content: flex-start;
+:local(.dialog) {
+	border-radius: 0px;
+	margin-top: 52px;
 }

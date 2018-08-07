@@ -1,0 +1,15 @@
+$primary-color: #303F9F;
+$primary-color--dark: darken($primary-color, 80%);
+$primary-color--light: lighter($primary-color, 80%);
+$primary-color__contrastText: white;
+
+$secondary-color: #D81B60;
+$secondary-color--dark: darken($secondary-color, 80%);
+$secondary-color--light: lighter($secondary-color, 80%);
+$primary-color__contrastText: white;
+
+$text-color: #FAFAFA;
+$text-color--dark: darken($text-color, 80%);
+$text-color--light: lighter($text-color, 80%);
+
+$background-color: #424242;

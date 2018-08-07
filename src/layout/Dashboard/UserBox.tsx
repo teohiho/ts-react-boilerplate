@@ -4,7 +4,7 @@ import { compose, pure } from 'recompose'
 import './UserBox.scss'
 const User = () => (
 	<>
-		<Icon icon="notifications" className="icon"/>
+		<Icon icon="notifications" className="m-l-sm m-r-sm"/>
 		Unknown team
 		{/* @tomle */}
 	</>

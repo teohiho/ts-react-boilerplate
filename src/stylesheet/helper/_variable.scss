@@ -1,4 +1,5 @@
 // Making margin/ padding following by https://gist.github.com/furey/aa886e3117f103af6046fc1978d5ca09
+
 // For example:
 // .m-none { margin: 0; }
 // .p-none { padding: 0; }
@@ -23,7 +24,6 @@
 // .m-xs { margin: 0.25rem; }
 
 // Use for margin/ padding
-
 $sizeUnit: rem;
 $marginKey: 'm';
 $paddingKey: 'p';
@@ -69,6 +69,3 @@ $positions: (
         }
     }
 }
-
-
-// 
