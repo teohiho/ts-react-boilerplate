@@ -91,7 +91,7 @@ const DashBoard = ({ children }: IDashboardPropsIn) => (
 					<NavbarDivider />
 					<EnhanceMenuView />
 					<SearchBox />
-				<div className="rightAvatar">
+				<div className="nav__avatar-container">
 					{/* <Button className={Classes.MINIMAL} icon="document" text="Files" /> */}
 					<UserBox />
 				</div>

@@ -1,5 +1,5 @@
 // Force to override first
-import './stylesheet/__stylesheet.scss'
+import './stylesheet/stylesheet.scss'
 
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
