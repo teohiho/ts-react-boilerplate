@@ -14,6 +14,7 @@ import * as React from 'react'
 import { compose, pure, withState, withStateHandlers } from 'recompose'
 // const styles = require('./DashboardBluePrint.scss.json')
 import { MainTab } from './MainTab'
+import { MenuContent } from './MenuContent'
 import { SearchBox } from './SearchBox'
 import { UserBox } from './UserBox'
 const  styles = require('./DashboardBluePrint.scss')
@@ -22,18 +23,19 @@ const  styles = require('./DashboardBluePrint.scss')
 // Related: https://github.com/palantir/blueprint/issues/2755
 FocusStyleManager.onlyShowFocusOnTabs()
 
-const MenuContent = () => (
-	<>
-		{/* <div className="bp3-dialog-header">
-			<span className="bp3-icon-large bp3-icon-inbox"></span>
-			<h4 className="bp3-heading">Dialog header</h4>
-			<button aria-label="Close" className="bp3-dialog-close-button bp3-icon-small-cross"></button>
-		</div> */}
-		<div className="">
-			This will show Menu Content
-		</div>
-	</>
-)
+// const MenuContent = () => (
+// 	<>
+// 		{/* <div className="bp3-dialog-header">
+// 			<span className="bp3-icon-large bp3-icon-inbox"></span>
+// 			<h4 className="bp3-heading">Dialog header</h4>
+// 			<button aria-label="Close" className="bp3-dialog-close-button bp3-icon-small-cross"></button>
+// 		</div> */}
+// 		<div className="">
+// 			This will show Menu Content
+// 		</div>
+// 		<Button>ABCDÈ</Button>
+// 	</>
+// )
 
 
 
@@ -51,21 +53,17 @@ interface IMenuPropsIn extends IMenuPropsOut, IMenuState, IMenuHandler {
 }
 const MenuView = ({ isOpen, popUpMenu }: IMenuPropsIn) => (
 	<>
-		<Dialog isOpen={isOpen} backdropClassName={styles.menuDiaglogSibling} onClose={popUpMenu} className={styles.dialog}>
+		<Dialog
+			isOpen={isOpen}
+			backdropClassName={styles.menuDiaglogSibling}
+			onClose={popUpMenu}
+			className={styles.dialog}
+			// transitionName={'fade-enter-done'}
+		>
 			<MenuContent />
 		</Dialog>
 		<Button className={Classes.MINIMAL} icon="menu" text="Menu" onClick={popUpMenu} />
 	</>
-	// <Popover
-	// 	popoverClassName={Classes.POPOVER_CONTENT_SIZING}
-	// 	portalClassName="foo"
-	// 	enforceFocus={false}
-	// 	isOpen={isOpen}
-	// 	content={<MenuContent />}
-	// 	position="bottom-left"
-	// >
-	// 	<Button className={Classes.MINIMAL} icon="menu" text="Menu" onClick={popUpMenu} />
-	// </Popover>
 )
 
 const generateState = withStateHandlers(
