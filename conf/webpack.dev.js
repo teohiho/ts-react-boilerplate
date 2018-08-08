@@ -15,7 +15,7 @@ const developmentMainConfig = {
 		  // Delay the rebuild after the first change
 		  aggregateTimeout: 300,
 		},
-		hot: false,
+		hot: true,
 		overlay: false,
 		open: true,
 		port: 3000,

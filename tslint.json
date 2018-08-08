@@ -23,9 +23,6 @@
 			"jsx-double"
 		],
 		"ordered-imports": true,
-		"interface-name": [
-			false
-		],
 		"max-line-length": [
 			true,
 			140
@@ -47,6 +44,7 @@
 			"check-format",
 			"allow-pascal-case"
 		],
+		"interface-name": [true, "always-prefix"],
 		"no-unused-variable": false
 	},
 	"rulesDirectory": []

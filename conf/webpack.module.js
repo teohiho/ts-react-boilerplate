@@ -50,6 +50,7 @@ const loadSCSS = ({ include, exclude } = {}) => ({
 						options: {
 							sourceMap: true ,
 							localIdentName: '[path][name]__[local]--[hash:base64:5]',
+							camelCase: true,
 						} 
 					},
 					{ loader: 'sass-loader', options: { sourceMap: true } },

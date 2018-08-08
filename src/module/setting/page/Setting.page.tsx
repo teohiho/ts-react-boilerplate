@@ -25,7 +25,7 @@ interface ISettingPagePropsIn extends ISettingPagePropsOut, ISettingPageStateToP
 
 const SettingPageView = ({ switchTheme, paletteType }: ISettingPagePropsIn) => (
 	<>
-		Setting Themeabcsdedd:
+		Switch Theme:
 		<Switch checked={paletteType === 'dark' ? true : false} onChange={switchTheme} />
 	</>
 )
@@ -38,5 +38,22 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 })
 
 const withRedux = connect(mapStateToProps, mapDispatchToProps)
+// const  withTab = addTab({
+// 	itemOverFlowList: [
+// 		{
+// 			href: '#',
+// 			text: 'Grand',
+// 		},
+// 		{
+// 			href: '#',
+// 			text: 'Parent',
+// 		},
+// 		{
+// 			text: 'Child',
+// 		},
+// 	],
+// 	tabs: {
 
+// 	}
+// })
 export const SettingPage = compose<ISettingPagePropsIn, ISettingPagePropsOut>(pure, withRedux)(SettingPageView)

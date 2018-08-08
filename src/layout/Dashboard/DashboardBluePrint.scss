@@ -1,8 +1,7 @@
-:local(.logo) {
-	height: 40px;
-}
-.nav {
-	width: 100%;
+.c-nav {
+	&__group {
+		width: 100%;
+	}
 	&__avatar-container {
 		flex: 1;
 		flex-direction: row;
@@ -10,15 +9,15 @@
 		justify-content: flex-end;
 		align-items: center;
 	};
-	
 }
 
-
-
-.dashboard-app {
+:local(.dashboard-app) {
 	display: flex;
 	flex: 1;
 	flex-direction: column;
+	&__card {
+		border-radius: 0px;
+	};
 }
 
 :local(.menuDiaglogSibling) {

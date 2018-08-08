@@ -1,5 +1,6 @@
 import {
 	Button,
+	Card,
 	Classes,
 	Dialog,
 	FocusStyleManager,
@@ -12,7 +13,6 @@ import {
 import * as classnames from 'classnames'
 import * as React from 'react'
 import { compose, pure, withState, withStateHandlers } from 'recompose'
-// const styles = require('./DashboardBluePrint.scss.json')
 import { MainTab } from './MainTab'
 import { MenuContent } from './MenuContent'
 import { SearchBox } from './SearchBox'
@@ -81,9 +81,9 @@ interface IDashboardPropsIn {
 	children: any
 }
 const DashBoard = ({ children }: IDashboardPropsIn) => (
-	<div className="dashboard-app">
+	<div className={styles.dashboardApp}>
 	 	<Navbar>
-			<NavbarGroup className={classnames('nav')}>
+			<NavbarGroup className={classnames('c-nav__group')}>
 					<NavbarHeading>
 						{/* <img src={'https://demo.trackitforlife.com/static/assets/img/logotext.png'} className={styles.logo}/> */}
 						LOGO HERE
@@ -91,13 +91,16 @@ const DashBoard = ({ children }: IDashboardPropsIn) => (
 					<NavbarDivider />
 					<EnhanceMenuView />
 					<SearchBox />
-				<div className="nav__avatar-container">
+				<div className="c-nav__avatar-container">
 					{/* <Button className={Classes.MINIMAL} icon="document" text="Files" /> */}
 					<UserBox />
 				</div>
 			</NavbarGroup>
 		</Navbar>
-		<MainTab children={children}/>
+		{/* <MainTab children={children}/> */}
+		<Card className={`${styles.dashboardApp}__card`}>
+			{children}
+		</Card>
 	</div>
 )
 
