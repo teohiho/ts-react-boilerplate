@@ -75,7 +75,6 @@ const AppTabView = ({ changeTab, selectedTabId, breadcrumbItems, tabs, children 
 				{renderOverFlowList(breadcrumbItems)}
 				<Tabs.Expander />
 				{renderChildTabs(tabs)}
-				<Tab id="bb" disabled title="Backbone" panel={<h1>Backbone</h1>} />
 			</Tabs>
 			{children}
 		</>

@@ -1,4 +1,5 @@
-import { Switch, Tab, Tabs } from '@blueprintjs/core'
+import { Button, InputGroup, MenuItem, Switch, Tab, Tabs } from '@blueprintjs/core'
+import { Select } from '@blueprintjs/select'
 import { TRootState } from 'conf/redux/reducer'
 import { changeTheme } from 'module/setting/logic.redux/action'
 import { TPaletteType } from 'module/setting/logic.redux/initalState'
@@ -27,7 +28,7 @@ interface ISettingPagePropsIn extends ISettingPagePropsOut, ISettingPageStateToP
 
 const SettingPageView = ({ switchTheme, paletteType }: ISettingPagePropsIn) => (
 	<>
-		Switch Theme:
+		Dark Theme:
 		<Switch checked={paletteType === 'dark' ? true : false} onChange={switchTheme} />
 	</>
 )
@@ -44,14 +45,37 @@ const withRedux = connect(mapStateToProps, mapDispatchToProps)
 const SettingTheme = compose<ISettingPagePropsIn, ISettingPagePropsOut>(withRedux, pure)(SettingPageView)
 
 const ReactView = () => (<h1>React</h1>)
-const Vue = () => (
-	<Tabs
-		id={v4()}
-	>
-		<Tab id={v4()} title="React" panel={<h1>React</h1>} />
-		<Tab id={v4()} title="Angular"  panel={<h1>Angular</h1>} />
-		<Tabs.Expander />
-	</Tabs>
+const SettingLanguage = () => (
+	<>
+		Select language:
+		<Select
+			items={[
+				{
+					id: 'vi',
+					text: 'Vietnamese',
+				},
+				{
+					id: 'en',
+					text: 'English',
+				},
+			]}
+			itemRenderer={({ text }) => (
+				<>
+					{/* {text}
+					<br /> */}
+					<MenuItem
+						text={text}
+					/>
+				</>
+			)}
+			onItemSelect={({ text }) => <>{text}</>}
+		>
+			{/* <InputGroup className="m-l-sm" value={'Vietnamese'} disabled/> */}
+			<Button className="m-l-sm">
+				Vietnamese
+			</Button>
+		</Select>
+	</>
 
 )
 
@@ -71,14 +95,14 @@ const addTab = createTab({
 	],
 	tabs: [
 		{
-			id: 're',
-			title: 'React',
+			id: 'th',
+			title: 'Theme',
 			panel: <SettingTheme />,
 		},
 		{
-			id: 'vu',
-			title: 'Vue',
-			panel: <Vue />,
+			id: 'la',
+			title: 'Language',
+			panel: <SettingLanguage />,
 		},
 	],
 })
