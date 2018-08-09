@@ -14,16 +14,18 @@ import * as React from 'react'
 import { compose, pure, withStateHandlers } from 'recompose'
 const styles = require('./AppTab.scss')
 
-
-interface IAppTabPropsOut {
-	tabs?: ITabProps[]
-	breadcrumbItems: ({
-		href: string;
-		text: string;
-	} | {
-		text: string;
-	})[]
+type TbreadCrumbItem = {
+	href: string;
+	text: string;
+} | {
+	text: string;
 }
+interface IAppTabPropsOut {
+	tabs?: ITabProps[],
+	RenderComponent?: () => JSX.Element,
+	breadcrumbItems: TbreadCrumbItem[]
+}
+
 
 interface IAppTabState {
 	selectedTabId: string
@@ -54,23 +56,27 @@ const renderEnhanceBreadcrumb = (props: IMenuItemProps , index: number) => {
 
 const renderChildTabs = (tabs: ITabProps[] = []) => {
 	return tabs.map(tab => (
-		<Tab {...tab} />
+		<Tab {...tab} key={tab.id}/>
 		),
 	)
 }
-
+const renderOverFlowList = (items: TbreadCrumbItem[]) => (
+	<OverflowList
+		className={Classes.BREADCRUMBS}
+		items={items}
+		overflowRenderer={item => <>{item}</>}
+		visibleItemRenderer={renderEnhanceBreadcrumb}
+	/>
+)
 const AppTabView = ({ changeTab, selectedTabId, breadcrumbItems, tabs, children }: IAppTabPropsIn) => {
 	return (
 		<>
 			<Tabs id="TabsExample" selectedTabId={selectedTabId}  onChange={changeTab}>
-				<OverflowList
-					className={Classes.BREADCRUMBS}
-					items={breadcrumbItems}
-					overflowRenderer={item => <>{item}</>}
-					visibleItemRenderer={renderEnhanceBreadcrumb}
-				/>
-				<Tabs.Expander />
-				{renderChildTabs(tabs)}
+				{/* {renderOverFlowList(breadcrumbItems)} */}
+				{/* <Tabs.Expander /> */}
+				{/* <div className={styles.tab}> */}
+					{renderChildTabs(tabs)}
+				{/* </div> */}
 				{/* <Tab id="bb" disabled title="Backbone" panel={<h1>Backbone</h1>} /> */}
 			</Tabs>
 			{children}
@@ -89,32 +95,21 @@ const addStateAndHandlers = withStateHandlers(
 export const AppTab = compose<IAppTabPropsIn, IAppTabPropsOut>(pure, addStateAndHandlers)(AppTabView)
 
 
-export const createTab = ({ breadcrumbItems, tabs }: IAppTabPropsOut) => {
-		if (!tabs) {
-			return () => null
-			// const TargetComponent = ComponentTabs[0]
-			// // return null
-			// // return (props: any) => <div/>
-			// return (props: any) => (
-			// 	<AppTab breadcrumbItems={breadcrumbItems} tabs={tabs}>
-			// 		<TargetComponent {...props} />
-			// 	</AppTab>
-			// )
-		}
-
-		// const addPanel = (props: ITabProps, index: number) => {
-		// 	const ComponentSelected = ComponentTabs[index]
-		// 	return {
-		// 		...props,
-		// 		panel: props.panel ? props.panel : <ComponentSelected />,
-		// 	}
-		// }
-		// // const mapIndexed = addIndex(map)
-		// const tabEnhance = addIndex<ITabProps>(map)(addPanel)(tabs)
-		// console.log('tabEnhance', tabEnhance)
-		return () => (
-			// <AppTab breadcrumbItems={breadcrumbItems} tabs={tabEnhance}/>
-			<AppTab breadcrumbItems={breadcrumbItems} tabs={tabs}/>
+export const createTab = ({ breadcrumbItems, tabs, RenderComponent }: IAppTabPropsOut) => {
+	if (RenderComponent) {
+		return (props:any) => (
+		<>
+			{renderOverFlowList(breadcrumbItems)}
+			<RenderComponent {...props} />
+		</>
 		)
+	}
+	if (tabs) {
+		return (props: any) => (
+			<AppTab {...props} breadcrumbItems={breadcrumbItems} tabs={tabs}/>
+		)
+	}
+	console.warn('createTab params have to contains one each tabs or RenderComponent')
+	return () => null
 }
 
