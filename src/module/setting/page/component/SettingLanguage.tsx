@@ -27,7 +27,6 @@ const langs = {
 	},
 }
 const SettingLanguageView = ({ langCode, updateLanguage }: ISettingLanguagePropsIn) => {
-	console.log('>>>>', langCode, updateLanguage)
 	return (
 	<>
 		<FormattedMessage id="Setting.selectLanguage" />
