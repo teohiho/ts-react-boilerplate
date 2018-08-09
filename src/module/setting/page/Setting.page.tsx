@@ -1,13 +1,13 @@
-import { Button, InputGroup, MenuItem, Switch, Tab, Tabs } from '@blueprintjs/core'
-import { Select } from '@blueprintjs/select'
+import { Switch } from '@blueprintjs/core'
 import { TRootState } from 'conf/redux/reducer'
 import { changeTheme } from 'module/setting/logic.redux/action'
 import { TPaletteType } from 'module/setting/logic.redux/initalState'
 import * as React from 'react'
+import { FormattedMessage } from 'react-intl'
 import { connect, Dispatch } from 'react-redux'
 import { compose, pure } from 'recompose'
 import { createTab } from 'tpl/tab'
-import { v4 } from 'uuid'
+import { SettingLanguage } from './component/SettingLanguage'
 
 
 interface ISettingPagePropsOut {
@@ -44,41 +44,6 @@ const withRedux = connect(mapStateToProps, mapDispatchToProps)
 
 const SettingTheme = compose<ISettingPagePropsIn, ISettingPagePropsOut>(withRedux, pure)(SettingPageView)
 
-const ReactView = () => (<h1>React</h1>)
-const SettingLanguage = () => (
-	<>
-		Select language:
-		<Select
-			items={[
-				{
-					id: 'vi',
-					text: 'Vietnamese',
-				},
-				{
-					id: 'en',
-					text: 'English',
-				},
-			]}
-			itemRenderer={({ text }) => (
-				<>
-					{/* {text}
-					<br /> */}
-					<MenuItem
-						text={text}
-					/>
-				</>
-			)}
-			onItemSelect={({ text }) => <>{text}</>}
-		>
-			{/* <InputGroup className="m-l-sm" value={'Vietnamese'} disabled/> */}
-			<Button className="m-l-sm">
-				Vietnamese
-			</Button>
-		</Select>
-	</>
-
-)
-
 const addTab = createTab({
 	breadcrumbItems: [
 		{
@@ -96,12 +61,12 @@ const addTab = createTab({
 	tabs: [
 		{
 			id: 'th',
-			title: 'Theme',
+			title: <FormattedMessage id="Setting.theme" />,
 			panel: <SettingTheme />,
 		},
 		{
 			id: 'la',
-			title: 'Language',
+			title: <FormattedMessage id="Setting.language" />,
 			panel: <SettingLanguage />,
 		},
 	],

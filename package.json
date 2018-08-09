@@ -112,7 +112,7 @@
   "scripts": {
     "build": "node script/build.js",
     "build:direct": "webpack --config ./conf/webpack.prod.js",
-    "build:lang": "node ./scripts/build-i18n.js",
+    "build:lang": "node ./script/build-i18n.js",
     "build:storybook": "build-storybook",
     "start:server": "node ./server/start.js",
     "lint:auto-fix": "tslint --fix 'src/**/*.{ts,tsx}'",
