@@ -72,12 +72,10 @@ const AppTabView = ({ changeTab, selectedTabId, breadcrumbItems, tabs, children 
 	return (
 		<>
 			<Tabs id={v4()} selectedTabId={selectedTabId}  onChange={changeTab}>
-				{/* {renderOverFlowList(breadcrumbItems)} */}
-				{/* <Tabs.Expander /> */}
-				{/* <div className={styles.tab}> */}
-					{renderChildTabs(tabs)}
-				{/* </div> */}
-				{/* <Tab id="bb" disabled title="Backbone" panel={<h1>Backbone</h1>} /> */}
+				{renderOverFlowList(breadcrumbItems)}
+				<Tabs.Expander />
+				{renderChildTabs(tabs)}
+				<Tab id="bb" disabled title="Backbone" panel={<h1>Backbone</h1>} />
 			</Tabs>
 			{children}
 		</>
