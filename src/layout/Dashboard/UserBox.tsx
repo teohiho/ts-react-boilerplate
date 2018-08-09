@@ -1,12 +1,34 @@
-import { Button, Icon } from '@blueprintjs/core'
+import {
+	Button,
+	Classes,
+	Icon,
+	Menu,
+	MenuDivider,
+	MenuItem,
+	Popover,
+	Position } from '@blueprintjs/core'
 import * as React from 'react'
 import { compose, pure } from 'recompose'
 import './UserBox.scss'
+
+const exampleMenu = (
+	<Menu>
+		<MenuItem icon="lock" text="Lock session" />
+		<MenuItem icon="maximize" text="Full screen" />
+		<MenuDivider />
+		<MenuItem icon="wrench" text="Settings" />
+		<MenuItem icon="person" text="Profile" />
+		<MenuItem icon="help" text="Help" />
+		<MenuDivider />
+		<MenuItem icon="power" text="Logout" />
+	</Menu>
+)
+
 const User = () => (
 	<>
-		<Icon icon="notifications" className="m-l-sm m-r-sm"/>
-		Unknown team
-		{/* @tomle */}
+		<Popover content={exampleMenu} position={Position.BOTTOM}>
+			<Button className={Classes.MINIMAL} icon="notifications" text="Unknown team" />
+		</Popover>
 	</>
 )
 

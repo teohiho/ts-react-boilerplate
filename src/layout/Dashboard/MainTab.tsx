@@ -63,9 +63,7 @@ const MainTabView = ({ changeTab, selectedTabId, children }: IMainTabPropsIn) =>
 			<Tab id="mb" title="Ember" panel={<h1>Ember</h1>} />
 			<Tab id="rx" title="React" panel={<h1>React</h1>} />
 			<Tab id="vue" title="Vue" panel={<h1>Vue</h1>} />
-			{/* <Tab id="bb" disabled title="Backbone" panel={<h1>Backbone</h1>} /> */}
 		</Tabs>
-		{/* <SwitchTheme /> */}
 		{children}
 	</Card>
 )
