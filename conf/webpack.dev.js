@@ -3,9 +3,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin')
 const webpack = require('webpack');
 
-const part = require("./webpack.module");
+const parts = require("./webpack.module");
 const { appPath } = require('./helper/path')
 const { commonConfig } = require('./webpack.common')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 
 const developmentMainConfig = {
@@ -43,6 +44,14 @@ const developmentMainConfig = {
 			template: appPath.appHtml,
 		}),
 		new webpack.HotModuleReplacementPlugin(),
+
+		// Multi processing for build app: https://survivejs.com/webpack/optimizing/performance/
+		new MiniCssExtractPlugin({
+			// Options similar to the same options in webpackOptions.output
+			// both options are optional
+			filename: "static/css/[name].css",
+			chunkFilename: "[id].css"
+		}),
 		// display error clearly
 		// new ErrorOverlayPlugin(),
 	],
@@ -54,7 +63,9 @@ const developmentMainConfig = {
 	},
 }
 const developmentConfig = merge([
-	part.loadSCSS(),
+	// parts.loadSCSS(),
+	parts.extractCSS({}),
+
 ])
 const config = merge([
 		commonConfig, 

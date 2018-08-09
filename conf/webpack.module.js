@@ -32,14 +32,12 @@ const loadSCSS = ({ include, exclude } = {}) => ({
 		rules: [
 			{
 				test: /\.(sa|sc|c)ss$/,
-				// include: /src/,
-				// exclude: /(node_modules)/,
 				use: [
 					{ 
 						loader: 'style-loader',
 						options: {
-							sourceMap: true,
-							
+							insertAt: 'top',
+							sourceMap: true
 						}
 					},
 					{
@@ -53,11 +51,11 @@ const loadSCSS = ({ include, exclude } = {}) => ({
 							camelCase: true,
 						} 
 					},
-					{ loader: 'sass-loader', options: { sourceMap: true } },
 					{ 
 						loader: 'postcss-loader',
 						options: {
 							sourceMap: true,
+							// minimize: true,
 							plugins: () => [
 								require('postcss-flexbugs-fixes'),
 								// Help to generate specific css for each component
@@ -74,6 +72,7 @@ const loadSCSS = ({ include, exclude } = {}) => ({
 							],	
 						}
 					},
+					{ loader: 'sass-loader', options: { sourceMap: true } },
 				],
 			},
 		],
@@ -164,18 +163,11 @@ exports.autoprefix = () => ({
 });
 
 exports.extractCSS = ({ include, exclude, use = [] }) => {
-	// Output extracted CSS to a file
-	// const plugin = new MiniCssExtractPlugin({
-	// 	filename: "static/css/[name].css",
-	// 	chunkFilename: "[id].css"
-	// });
 	return {
 		module: {
 			rules: [
 				{
 					test: /\.(sa|sc|c)ss$/,
-					// include,
-					// exclude: /(src|node_modules)/,
 					use: [
 						{
 							loader: MiniCssExtractPlugin.loader,
@@ -184,7 +176,7 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
 							  // by default it use publicPath in webpackOptions.output
 							//   publicPath: '../'
 							}
-						  },
+						},
 						{
 							// Handle import/ require css
 							// It help to css for each component
@@ -193,6 +185,7 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
 							options: {
 								sourceMap: true ,
 								localIdentName: '[path][name]__[local]--[hash:base64:5]',
+								camelCase: true,
 							} 
 						},
 						{ 

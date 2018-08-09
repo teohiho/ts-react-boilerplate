@@ -13,7 +13,7 @@ import { addIndex, compose as ramdaCompose, map, mapObjIndexed } from 'ramda'
 import * as React from 'react'
 import { compose, pure, withStateHandlers } from 'recompose'
 const styles = require('./AppTab.scss')
-
+import { v4 } from 'uuid'
 type TbreadCrumbItem = {
 	href: string;
 	text: string;
@@ -71,7 +71,7 @@ const renderOverFlowList = (items: TbreadCrumbItem[]) => (
 const AppTabView = ({ changeTab, selectedTabId, breadcrumbItems, tabs, children }: IAppTabPropsIn) => {
 	return (
 		<>
-			<Tabs id="TabsExample" selectedTabId={selectedTabId}  onChange={changeTab}>
+			<Tabs id={v4()} selectedTabId={selectedTabId}  onChange={changeTab}>
 				{/* {renderOverFlowList(breadcrumbItems)} */}
 				{/* <Tabs.Expander /> */}
 				{/* <div className={styles.tab}> */}

@@ -6,6 +6,7 @@ import * as React from 'react'
 import { connect, Dispatch } from 'react-redux'
 import { compose, pure } from 'recompose'
 import { createTab } from 'tpl/tab'
+import { v4 } from 'uuid'
 
 
 interface ISettingPagePropsOut {
@@ -45,10 +46,10 @@ const SettingTheme = compose<ISettingPagePropsIn, ISettingPagePropsOut>(withRedu
 const ReactView = () => (<h1>React</h1>)
 const Vue = () => (
 	<Tabs
-		id="TabsExample"
+		id={v4()}
 	>
-		<Tab id="rx" title="React" panel={<h1>React</h1>} />
-		<Tab id="ng" title="Angular"  panel={<h1>Angular</h1>} />
+		<Tab id={v4()} title="React" panel={<h1>React</h1>} />
+		<Tab id={v4()} title="Angular"  panel={<h1>Angular</h1>} />
 		<Tabs.Expander />
 	</Tabs>
 

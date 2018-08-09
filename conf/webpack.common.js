@@ -3,7 +3,7 @@ const merge = require("webpack-merge");
 // const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
-const part = require("./webpack.module");
+const parts = require("./webpack.module");
 const { appPath } = require('./helper/path')
 const resloveConfig = {
 	resolve: {
@@ -51,11 +51,11 @@ const entry = {
 	entry: [appPath.appIndexJs],
 }
 exports.commonConfig = merge([
-	part.loadJs(),
-	part.loadAwesomeTypescript(),
-	// part.loadCSS(),
-	// part.loadSCSS(),
-	part.loadFile(),
+	parts.loadJs(),
+	parts.loadAwesomeTypescript(),
+	// parts.loadCSS(),
+	// parts.loadSCSS(),
+	parts.loadFile(),
 	nodeConfig,
 	resloveConfig,
 	entry
