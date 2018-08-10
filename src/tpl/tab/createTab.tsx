@@ -20,6 +20,7 @@ type TbreadCrumbItem = {
 } | {
 	text: string;
 }
+
 interface IAppTabPropsOut {
 	tabs?: ITabProps[],
 	RenderComponent?: () => JSX.Element,
