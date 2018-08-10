@@ -1,6 +1,21 @@
+@import '~include-media/dist/_include-media.scss';
+
 :local(.menu-group) {
 	// float: left;
 }
 :local(.menu) {
 	// background-color: black;
+}
+
+.o-menu {
+	&--vertical {
+		display: flex;
+		flex-direction: row;
+		@include media("<=tablet") {
+			flex-direction: column;
+		}
+	}
+	&__item {
+
+	}
 }
