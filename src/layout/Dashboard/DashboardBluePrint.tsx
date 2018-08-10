@@ -12,13 +12,13 @@ import {
 } from '@blueprintjs/core'
 import * as classnames from 'classnames'
 import * as React from 'react'
+import { Switch } from 'react-router'
 import { Link } from 'react-router-dom'
 import { compose, pure, withState, withStateHandlers } from 'recompose'
 import { MainTab } from './MainTab'
 import { MenuContent } from './MenuContent'
 import { SearchBox } from './SearchBox'
 import { UserBox } from './UserBox'
-import { Switch } from 'react-router'
 
 const  styles = require('./DashboardBluePrint.scss')
 
@@ -60,7 +60,7 @@ const DashBoard = ({ children }: IDashboardPropsIn) => (
 				</div>
 			</NavbarGroup>
 		</Navbar>
-		<div className={`${styles.dashboardApp}__card`}>
+		<div className={classnames('m-h-md', `${styles.dashboardApp}__body`)}>
 			{children}
 		</div>
 	</div>
