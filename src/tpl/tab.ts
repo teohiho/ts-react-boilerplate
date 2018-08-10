@@ -1,7 +1,7 @@
-import { AppTab } from './tab/AppTab'
+import { Loading } from './loading/Loading'
 import { createTab } from './tab/createTab'
 
 export {
-	AppTab,
 	createTab,
+	Loading,
 }

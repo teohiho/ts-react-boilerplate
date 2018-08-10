@@ -46,12 +46,12 @@ const developmentMainConfig = {
 		new webpack.HotModuleReplacementPlugin(),
 
 		// Multi processing for build app: https://survivejs.com/webpack/optimizing/performance/
-		new MiniCssExtractPlugin({
-			// Options similar to the same options in webpackOptions.output
-			// both options are optional
-			filename: "static/css/[name].css",
-			chunkFilename: "[id].css"
-		}),
+		// new MiniCssExtractPlugin({
+		// 	// Options similar to the same options in webpackOptions.output
+		// 	// both options are optional
+		// 	filename: "static/css/[name].css",
+		// 	chunkFilename: "[id].css"
+		// }),
 		// display error clearly
 		// new ErrorOverlayPlugin(),
 	],
@@ -63,8 +63,8 @@ const developmentMainConfig = {
 	},
 }
 const developmentConfig = merge([
-	// parts.loadSCSS(),
-	parts.extractCSS({}),
+	parts.loadSCSS(),
+	// parts.extractCSS({}),
 
 ])
 const config = merge([

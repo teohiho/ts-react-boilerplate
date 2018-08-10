@@ -1,12 +1,13 @@
-import { Switch, Tab, Tabs } from '@blueprintjs/core'
+import { Switch } from '@blueprintjs/core'
 import { TRootState } from 'conf/redux/reducer'
 import { changeTheme } from 'module/setting/logic.redux/action'
 import { TPaletteType } from 'module/setting/logic.redux/initalState'
 import * as React from 'react'
+import { FormattedMessage } from 'react-intl'
 import { connect, Dispatch } from 'react-redux'
 import { compose, pure } from 'recompose'
 import { createTab } from 'tpl/tab'
-import { v4 } from 'uuid'
+import { SettingLanguage } from './component/SettingLanguage'
 
 
 interface ISettingPagePropsOut {
@@ -27,7 +28,7 @@ interface ISettingPagePropsIn extends ISettingPagePropsOut, ISettingPageStateToP
 
 const SettingPageView = ({ switchTheme, paletteType }: ISettingPagePropsIn) => (
 	<>
-		Switch Theme:
+		Dark Theme:
 		<Switch checked={paletteType === 'dark' ? true : false} onChange={switchTheme} />
 	</>
 )
@@ -42,18 +43,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 const withRedux = connect(mapStateToProps, mapDispatchToProps)
 
 const SettingTheme = compose<ISettingPagePropsIn, ISettingPagePropsOut>(withRedux, pure)(SettingPageView)
-
-const ReactView = () => (<h1>React</h1>)
-const Vue = () => (
-	<Tabs
-		id={v4()}
-	>
-		<Tab id={v4()} title="React" panel={<h1>React</h1>} />
-		<Tab id={v4()} title="Angular"  panel={<h1>Angular</h1>} />
-		<Tabs.Expander />
-	</Tabs>
-
-)
 
 const addTab = createTab({
 	breadcrumbItems: [
@@ -71,14 +60,14 @@ const addTab = createTab({
 	],
 	tabs: [
 		{
-			id: 're',
-			title: 'React',
+			id: 'th',
+			title: <FormattedMessage id="Setting.theme" />,
 			panel: <SettingTheme />,
 		},
 		{
-			id: 'vu',
-			title: 'Vue',
-			panel: <Vue />,
+			id: 'la',
+			title: <FormattedMessage id="Setting.language" />,
+			panel: <SettingLanguage />,
 		},
 	],
 })
