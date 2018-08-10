@@ -56,11 +56,12 @@ const DashBoard = ({ children }: IDashboardPropsIn) => (
 				</div>
 			</NavbarGroup>
 		</Navbar>
-		{/* <MainTab children={children}/> */}
 		<Card className={`${styles.dashboardApp}__card`}>
-			{children}
+			<>
+				{children}
+			</>
 		</Card>
 	</div>
 )
 
-export const DashBoardBluePrint = compose(pure)(DashBoard)
+export const DashBoardBluePrint = compose()(DashBoard)

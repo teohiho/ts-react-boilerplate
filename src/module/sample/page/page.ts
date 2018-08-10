@@ -1,11 +1,20 @@
+import { SamplePage } from './Sample.page'
 import { SampleNoTab } from './SampleNoTab.page'
+import { SampleOOPPage } from './SampleOOP'
 
 export const page = {
 	route: {
-		sample: {
+		sampleNoTab: {
 			path: '/sample-no-tab',
-			exact: true,
 			component: SampleNoTab,
+		},
+		sample: {
+			path: '/sample',
+			component: SamplePage,
+		},
+		sampleOop: {
+			path: '/sample-oop',
+			component: SampleOOPPage,
 		},
 	},
 }

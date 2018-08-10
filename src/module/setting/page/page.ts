@@ -4,7 +4,6 @@ export const page = {
 	route: {
 		app: {
 			path: '/setting',
-			exact: true,
 			component: SettingPage,
 			sidebarName: 'Setting',
 			sidebarI18nId: 'Setting.title',
