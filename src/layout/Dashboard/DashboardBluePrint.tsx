@@ -12,6 +12,7 @@ import {
 } from '@blueprintjs/core'
 import * as classnames from 'classnames'
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 import { compose, pure, withState, withStateHandlers } from 'recompose'
 import { MainTab } from './MainTab'
 import { MenuContent } from './MenuContent'
@@ -46,7 +47,9 @@ const DashBoard = ({ children }: IDashboardPropsIn) => (
 	 	<Navbar>
 			<NavbarGroup className={classnames('c-nav__group')}>
 					<NavbarHeading>
-						LOGO HERE
+						<Link to="/">
+							LOGO HERE
+						</Link>
 					</NavbarHeading>
 					<NavbarDivider />
 					<MenuContent />
