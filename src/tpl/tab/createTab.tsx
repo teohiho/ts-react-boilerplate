@@ -8,12 +8,14 @@ import {
 	Tab,
 	Tabs,
 } from '@blueprintjs/core'
+
 import * as classnames from 'classnames'
-import { addIndex, compose as ramdaCompose, map, mapObjIndexed } from 'ramda'
 import * as React from 'react'
+import { addIndex, compose as ramdaCompose, map, mapObjIndexed } from 'ramda'
 import { compose, pure, withStateHandlers } from 'recompose'
-const styles = require('./AppTab.scss')
 import { v4 } from 'uuid'
+
+const styles = require('./AppTab.scss')
 type TbreadCrumbItem = {
 	href: string;
 	text: string;

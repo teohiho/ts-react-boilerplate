@@ -1,13 +1,14 @@
-import { Switch } from '@blueprintjs/core'
-import { TRootState } from 'conf/redux/reducer'
-import { changeTheme } from 'module/setting/logic.redux/action'
-import { TPaletteType } from 'module/setting/logic.redux/initalState'
 import * as React from 'react'
-import { FormattedMessage } from 'react-intl'
-import { connect, Dispatch } from 'react-redux'
+import { changeTheme } from 'module/setting/logic.redux/action'
 import { compose, pure } from 'recompose'
+import { connect } from 'react-redux'
+import { Dispatch  } from 'redux'
 import { createTab } from 'tpl/tab'
+import { FormattedMessage } from 'react-intl'
 import { SettingLanguage } from './component/SettingLanguage'
+import { Switch } from '@blueprintjs/core'
+import { TPaletteType } from 'module/setting/logic.redux/initalState'
+import { TRootState } from 'conf/redux/reducer'
 
 
 interface ISettingPagePropsOut {

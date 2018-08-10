@@ -17,6 +17,8 @@ import { MainTab } from './MainTab'
 import { MenuContent } from './MenuContent'
 import { SearchBox } from './SearchBox'
 import { UserBox } from './UserBox'
+import { Switch } from 'react-router'
+
 const  styles = require('./DashboardBluePrint.scss')
 
 // Remove the blue out line when active element
@@ -33,14 +35,13 @@ interface IMenuState {
 interface IMenuHandler {
 	popUpMenu: () => void
 }
-interface IMenuPropsIn extends IMenuPropsOut, IMenuState, IMenuHandler {
 
-}
-
+interface IMenuPropsIn extends IMenuPropsOut, IMenuState, IMenuHandler {}
 
 interface IDashboardPropsIn {
-	children: any
+	children: Switch
 }
+
 const DashBoard = ({ children }: IDashboardPropsIn) => (
 	<div className={styles.dashboardApp}>
 	 	<Navbar>
@@ -56,11 +57,9 @@ const DashBoard = ({ children }: IDashboardPropsIn) => (
 				</div>
 			</NavbarGroup>
 		</Navbar>
-		<Card className={`${styles.dashboardApp}__card`}>
-			<>
-				{children}
-			</>
-		</Card>
+		<div className={`${styles.dashboardApp}__card`}>
+			{children}
+		</div>
 	</div>
 )
 
