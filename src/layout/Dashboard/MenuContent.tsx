@@ -16,7 +16,7 @@ const SlideBar = (
 	<Menu className={'o-menu--vertical'}>
 		<div>
 			<MenuDivider title="NAVIGATION" />
-			<Link to="/setting">
+			<Link className={'o-menu__link'} to="/setting">
 				<MenuItem icon="lock" text="Setting" />
 			</Link>
 			<MenuItem icon="maximize" text="Menber Lookup" />
