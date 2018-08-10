@@ -39,7 +39,7 @@ interface IAppTabPropsIn extends IAppTabPropsOut, IAppTabState, IAppTabHandler {
 	children: any
 }
 
-const renderEnhanceBreadcrumb = (props: IMenuItemProps , index: number) => {
+const renderEnhanceBreadcrumb = (props: IMenuItemProps, index: number) => {
 	if (!props.href) {
 		return (
 			<li className={classnames(Classes.BREADCRUMB, Classes.BREADCRUMB_CURRENT)} key={index}>
@@ -56,8 +56,8 @@ const renderEnhanceBreadcrumb = (props: IMenuItemProps , index: number) => {
 
 const renderChildTabs = (tabs: ITabProps[] = []) => {
 	return tabs.map(tab => (
-		<Tab {...tab} key={tab.id}/>
-		),
+		<Tab {...tab} key={tab.id} />
+	),
 	)
 }
 const renderOverFlowList = (items: TbreadCrumbItem[]) => (
@@ -71,7 +71,7 @@ const renderOverFlowList = (items: TbreadCrumbItem[]) => (
 const AppTabView = ({ changeTab, selectedTabId, breadcrumbItems, tabs, children }: IAppTabPropsIn) => {
 	return (
 		<>
-			<Tabs id={v4()} selectedTabId={selectedTabId}  onChange={changeTab}>
+			<Tabs id={v4()} selectedTabId={selectedTabId} onChange={changeTab}>
 				{renderOverFlowList(breadcrumbItems)}
 				<Tabs.Expander />
 				{renderChildTabs(tabs)}
@@ -82,7 +82,7 @@ const AppTabView = ({ changeTab, selectedTabId, breadcrumbItems, tabs, children 
 }
 const addStateAndHandlers = withStateHandlers(
 	({ tabs }: IAppTabPropsOut) => ({
-			selectedTabId: tabs && tabs[0].id,
+		selectedTabId: tabs && tabs[0].id,
 	})
 	,
 	{
@@ -94,16 +94,16 @@ export const AppTab = compose<IAppTabPropsIn, IAppTabPropsOut>(pure, addStateAnd
 
 export const createTab = ({ breadcrumbItems, tabs, RenderComponent }: IAppTabPropsOut) => {
 	if (RenderComponent) {
-		return (props:any) => (
-		<>
-			{renderOverFlowList(breadcrumbItems)}
-			<RenderComponent {...props} />
-		</>
+		return (props: any) => (
+			<>
+				{renderOverFlowList(breadcrumbItems)}
+				<RenderComponent {...props} />
+			</>
 		)
 	}
 	if (tabs) {
 		return (props: any) => (
-			<AppTab {...props} breadcrumbItems={breadcrumbItems} tabs={tabs}/>
+			<AppTab {...props} breadcrumbItems={breadcrumbItems} tabs={tabs} />
 		)
 	}
 	console.warn('createTab params have to contains one each tabs or RenderComponent')
