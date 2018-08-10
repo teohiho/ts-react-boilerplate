@@ -5,6 +5,7 @@ import { TPaletteType } from 'module/setting/logic.redux/initalState'
 import * as React from 'react'
 import { connect, Dispatch } from 'react-redux'
 import { compose, pure } from 'recompose'
+import { createTab } from 'tpl/tab'
 const style = require('./Hien.scss')
 
 
@@ -39,6 +40,30 @@ const SettingPageView = () => (
 
 	</>
 )
+const SpecialCom = () => (<h1>Abc</h1>)
 
-
-export const HienPage = compose(pure)(SettingPageView)
+const AddTab = createTab({
+	breadcrumbItems: [
+		{
+			text: 'Grand',
+			href: '#',
+		},
+		{
+			text: 'Parent',
+			href: '#',
+		},
+	],
+	tabs: [
+		{
+			id: 'hien1',
+			panel: <SettingPageView />,
+			title: 'Hien 1',
+		},
+		{
+			id: 'hien2',
+			panel: <SpecialCom />,
+			title: 'Hien 2',
+		},
+	],
+})
+export const HienPage = compose(pure)(AddTab)

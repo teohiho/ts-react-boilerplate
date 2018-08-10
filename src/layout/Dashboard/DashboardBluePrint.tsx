@@ -53,7 +53,7 @@ interface IMenuPropsIn extends IMenuPropsOut, IMenuState, IMenuHandler {
 }
 const MenuView = ({ isOpen, popUpMenu }: IMenuPropsIn) => (
 	<>
-		<Dialog
+		{/* <Dialog
 			isOpen={isOpen}
 			backdropClassName={styles.menuDiaglogSibling}
 			onClose={popUpMenu}
@@ -62,7 +62,8 @@ const MenuView = ({ isOpen, popUpMenu }: IMenuPropsIn) => (
 		>
 			<MenuContent />
 		</Dialog>
-		<Button className={Classes.MINIMAL} icon="menu" text="Menu" onClick={popUpMenu} />
+		<Button className={Classes.MINIMAL} icon="menu" text="Menu" onClick={popUpMenu} /> */}
+		{/* <MenuContent /> */}
 	</>
 )
 
@@ -89,7 +90,8 @@ const DashBoard = ({ children }: IDashboardPropsIn) => (
 						LOGO HERE
 					</NavbarHeading>
 					<NavbarDivider />
-					<EnhanceMenuView />
+					{/* <EnhanceMenuView /> */}
+					<MenuContent />
 					<SearchBox />
 				<div className="c-nav__avatar-container">
 					{/* <Button className={Classes.MINIMAL} icon="document" text="Files" /> */}
