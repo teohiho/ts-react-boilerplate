@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { IntlProvider } from 'react-intl'
 
-import { connect, Dispatch } from 'react-redux'
+import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
 
 import * as classnames from 'classnames'
 import { settingConfig } from 'conf/config'

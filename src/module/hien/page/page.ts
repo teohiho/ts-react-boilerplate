@@ -4,7 +4,6 @@ export const page = {
 	route: {
 		hien: {
 			path: '/hien',
-			exact: true,
 			component: HienPage,
 		},
 	},

@@ -78,10 +78,12 @@ $colors: yellow, blue;
 $translucent-color: rgba(silver, 0.5);
 @function background($color: $translucent-color, $img:null, $xtra-values...){
 	$url: if($img,url("~img/#{$img}.jpg"), null);
+	
 	@return $color $url $xtra-values;
 }
 
 .sidebar {
 	// background: background(rgba(silver, 0.5),null, center fixed);
 	background: background(rgba(silver, 0.5),sidebar-1, center fixed );
+	height: 200px;
 }

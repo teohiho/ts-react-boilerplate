@@ -1,11 +1,13 @@
-import { Switch } from '@blueprintjs/core'
-import { TRootState } from 'conf/redux/reducer'
-import { changeTheme } from 'module/setting/logic.redux/action'
-import { TPaletteType } from 'module/setting/logic.redux/initalState'
+// import { createTabHien } from '../tpl-hien/createTabHien'
 import * as React from 'react'
-import { connect, Dispatch } from 'react-redux'
+import { changeTheme } from 'module/setting/logic.redux/action'
 import { compose, pure } from 'recompose'
+import { connect } from 'react-redux'
 import { createTab } from 'tpl/tab'
+import { Dispatch } from 'redux'
+import { Switch } from '@blueprintjs/core'
+import { TPaletteType } from 'module/setting/logic.redux/initalState'
+import { TRootState } from 'conf/redux/reducer'
 const style = require('./Hien.scss')
 
 
@@ -32,7 +34,7 @@ const SettingPageView = () => (
 			TEST MIXIN
 		</div>
 		<div className="sidebar">
-		sidebar
+		Sidebar
 		</div>
 		<div className="p-h-xl">
 		Spacing
@@ -66,4 +68,5 @@ const AddTab = createTab({
 		},
 	],
 })
+
 export const HienPage = compose(pure)(AddTab)
