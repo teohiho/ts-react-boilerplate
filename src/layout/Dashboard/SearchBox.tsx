@@ -1,7 +1,8 @@
-import { Button, InputGroup } from '@blueprintjs/core'
+import { Button, Classes, Icon, InputGroup } from '@blueprintjs/core'
 import { Select } from '@blueprintjs/select'
 
 import * as React from 'react'
+import MediaQuery from 'react-responsive'
 import { compose, pure } from 'recompose'
 
 const styles = require('./SearchBox.scss')
@@ -26,19 +27,22 @@ const SearchContext = () => (
 )
 
 const SearchBoxView = () => (
-	<>
-		{/* <SearchContext /> */}
-		<InputGroup
-			className={classnames('m-l-md', styles.textInput)}
-			// large={large}
-			leftIcon="search"
-			// onChange={this.handleFilterChange}
-			placeholder="Search anything"
-			round
-			// rightElement={maybeSpinner}
-			// value={filterValue}
-		/>
-	</>
+	<div className="m-l-md">
+		<MediaQuery orientation="landscape">
+			<InputGroup
+				className={classnames(styles.textInput)}
+				leftIcon="search"
+				placeholder="Search anything"
+				round
+			/>
+		</MediaQuery>
+		<MediaQuery orientation="portrait">
+			<Button
+				icon="search"
+				// intent="primary"
+				className={classnames(Classes.ELEVATION_0, '_u-round-max')} />
+		</MediaQuery>
+	</ div>
 )
 
 export const SearchBox = compose(pure)(SearchBoxView)

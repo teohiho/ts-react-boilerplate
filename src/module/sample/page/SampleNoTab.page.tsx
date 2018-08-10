@@ -17,9 +17,6 @@ const withTab = createTab({
 			href: '#',
 			text: 'Parent',
 		},
-		{
-			text: 'Sample',
-		},
 	],
 	RenderComponent: SampleNoTabView,
 })
