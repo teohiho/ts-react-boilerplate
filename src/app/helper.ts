@@ -1,4 +1,4 @@
-import { compose, filter, flatten, isNil, map, mapObjIndexed, mergeAll, path, values } from 'ramda'
+import { compose, filter, flatten, isNil, map, mapObjIndexed, mergeAll, mergeDeepLeft, mergeDeepRight, path, values } from 'ramda'
 import { RouteProps } from 'react-router'
 import app from './index'
 
@@ -54,13 +54,16 @@ const getSpecificData = (appList: typeof app, pathList: string[], type: TAppType
 		removeUndefinedItem,
 		// Get data from path
 		mapObjIndexed(
-			// point to path that we need to querry
-			path(pathList),
+			compose(
+				// point to path that we need to querry
+				path(pathList),
+			),
 		),
 	)
 	// const convertDataType = handleDataDependType(type)
+	const flatten2lvl = compose(values, mergeAll, values)
 	if (type === 'flatten') {
-		return compose(compose(flatten, values), getSpecificDataList)(appList)
+		return compose(flatten2lvl, getSpecificDataList)(appList)
 	}
 	return 	getSpecificDataList(appList)
 }
