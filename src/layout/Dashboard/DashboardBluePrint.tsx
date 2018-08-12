@@ -15,10 +15,10 @@ import * as React from 'react'
 import { Switch } from 'react-router'
 import { Link } from 'react-router-dom'
 import { compose, pure, withState, withStateHandlers } from 'recompose'
-import { MainTab } from './MainTab'
-import { MenuContent } from './MenuContent'
-import { SearchBox } from './SearchBox'
-import { UserBox } from './UserBox'
+import { MainTab } from './com/MainTab'
+import { MenuContent } from './com/MenuContent'
+import { SearchBox } from './com/SearchBox'
+import { UserBox } from './com/UserBox'
 
 const  styles = require('./DashboardBluePrint.scss')
 
@@ -45,7 +45,7 @@ interface IDashboardPropsIn {
 
 const DashBoard = ({ children }: IDashboardPropsIn) => (
 	<div className={styles.dashboardApp}>
-	 	<Navbar>
+	 	<Navbar className={classnames('p-h-md')}>
 			<NavbarGroup className={classnames('c-nav__group')}>
 					<NavbarHeading>
 						<Link to="/">
@@ -60,7 +60,7 @@ const DashBoard = ({ children }: IDashboardPropsIn) => (
 				</div>
 			</NavbarGroup>
 		</Navbar>
-		<div className={classnames('m-h-md', `${styles.dashboardApp}__body`)}>
+		<div className={classnames('p-h-md', 'p-v-sm', `${styles.dashboardApp}__body`)}>
 			{children}
 		</div>
 	</div>

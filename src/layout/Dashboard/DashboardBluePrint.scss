@@ -1,3 +1,5 @@
+@import	'~scss/theme/theme.scss';
+
 .c-nav {
 	&__group {
 		width: 100%;
@@ -18,7 +20,10 @@
 	&__body {
 		border-radius: 0px;
 		height: 100%;
-		// background-color: $dark-gray2;
+		background-color: $white;
+		.bp3-dark & {
+			background-color: $dark-gray4;
+		}
 	};
 }
 

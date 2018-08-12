@@ -1,0 +1,16 @@
+{
+	"en": {
+		"setting.title": "Setting",
+		"setting.theme": "Theme",
+		"setting.darkTheme": "Dark",
+		"setting.language": "Language",
+		"setting.selectLanguage": "Select language"
+	},
+	"vi": {
+		"setting.title": "Cài đặt",
+		"setting.theme": "Giao diện",
+		"setting.darkTheme": "Tối",
+		"setting.language": "Ngôn ngữ",
+	  	"setting.selectLanguage": "Chọn ngôn ngữ"
+	}
+  }

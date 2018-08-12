@@ -4,8 +4,8 @@ import { changeTheme } from 'module/setting/logic.redux/action'
 import { TPaletteType } from 'module/setting/logic.redux/initalState'
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
 import { compose, pure } from 'recompose'
+import { Dispatch } from 'redux'
 
 
 interface ISwitchThemePropsOut {

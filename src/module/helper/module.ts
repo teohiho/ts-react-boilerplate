@@ -24,7 +24,6 @@ interface IModuleType {
 
 type ReduxKey = 'reducer' | 'action' | 'saga'
 
-
 function pathDict(data: typeof module, rootPath: string[], options: IOptionType = { type: 'list' }) {
   const { type } = options
   const getListData = mapObjIndexed((eachModuleValue: IModuleType) => path(rootPath)(eachModuleValue))
@@ -37,7 +36,6 @@ function pathDict(data: typeof module, rootPath: string[], options: IOptionType 
 	default: return listCompose(data)
   }
 }
-
 
 export const getSpecificModuleRedux = (key: ReduxKey, options?: IOptionType) => pathDict(module, ['redux', key], options)
 export const getPageList = () => <IPageType>pathDict(module, ['page', 'route'], { type: 'flatten' })

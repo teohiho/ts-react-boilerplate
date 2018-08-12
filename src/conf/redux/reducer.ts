@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux'
 import { persistReducer } from 'redux-persist'
 
+import { getReduxModule } from 'app/helper'
 import { getSpecificModuleRedux } from 'module/helper/module'
 import { TAppState } from 'module/setting/logic.redux/initalState'
 // import { TTodoState } from 'module/todo/logic.redux/initialState'
 import { PERSIST_CONFIG } from './persist'
 
-const moduleReducer = getSpecificModuleRedux('reducer')
+const moduleReducer = getReduxModule('reducer')
+console.log('REducer', moduleReducer)
 const reducer = combineReducers({
   ...moduleReducer,
 })
