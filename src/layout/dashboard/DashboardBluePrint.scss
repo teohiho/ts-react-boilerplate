@@ -1,0 +1,43 @@
+@import	'~scss/theme/theme.scss';
+
+.c-nav {
+	&__group {
+		width: 100%;
+	}
+	&__avatar-container {
+		flex: 1;
+		flex-direction: row;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	};
+}
+
+:local(.dashboard-app) {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	&__body {
+		border-radius: 0px;
+		height: 100%;
+		background-color: $white;
+		.bp3-dark & {
+			background-color: $dark-gray4;
+		}
+	};
+}
+
+:local(.menuDiaglogSibling) {
+	background-color: rgba(16, 22, 26, 0.3);
+	+ .bp3-dialog-container {
+		align-items: flex-start;
+		justify-content: flex-start;
+	}
+}
+
+:local(.dialog) {
+	border-radius: 0px;
+	margin-top: 52px;
+	// background-color: black;
+	// color: white;
+}
