@@ -5,7 +5,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import configureStore from 'conf/redux/redux'
 import { branch, compose, lifecycle, pure, renderComponent, withStateHandlers } from 'recompose'
 import { AppConfig } from './AppConfig'
-import { Loading } from './tpl/tab'
+import { Loading } from './com/index'
 const { store, persistor } = configureStore()
 interface IAppReduxPropsOut {
 

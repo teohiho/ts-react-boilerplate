@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { compose, pure } from 'recompose'
-import { createTab } from 'tpl/tab'
+import { createTab } from 'com/index'
 const SampleNoTabView = () => (
 	<>
 		<h1>Sample</h1>

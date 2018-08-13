@@ -7,7 +7,7 @@ import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
 import { compose, pure } from 'recompose'
 import { Dispatch  } from 'redux'
-import { createTab } from 'tpl/tab'
+import { createTab } from 'com/index'
 import { SettingLanguage } from '../com/'
 
 
