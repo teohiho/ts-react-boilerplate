@@ -1,53 +1,21 @@
-import { compose, filter, flatten, isNil, map, mapObjIndexed, mergeAll, mergeDeepLeft, mergeDeepRight, path, values } from 'ramda'
-import { RouteProps } from 'react-router'
+import { compose, filter, flatten, identity, isNil, mapObjIndexed, mergeAll, path, values } from 'ramda'
+// import { RouteProps } from 'react-router'
 import app from './index'
 
-interface IRoute extends RouteProps{}
+// interface IRoute extends RouteProps{}
 
-// Flatten that means array is only 1 lvl
-// Dict is obj
-type TAppType = 'dict' | 'flatten'
+// `flatten` that means array is only 1 demention
+// For example of flatten: [{}, {}, {}]
+// `dict` is obj
+// {a:{}, b:{}}
+// `dict-flatten`
+// dict-flatten is object and flatten values
 type TReduxType = 'reducer' | 'action' | 'saga'
-interface IApp {
-	route?: IRoute
-}
+type TAppType = 'dict' | 'flatten' | 'dict-flatten'
 
-type TGetRouteList = (appList?: typeof app) => IRoute[]
 
-// const pointToRoute = path(['route'])
-// console.log('APP', app)
 const removeUndefinedItem = filter((item: any) => !isNil(item))
 
-// const getRouteList:TGetRouteList = (appList = app) => {
-// 	return compose(
-// 		flatten,
-// 		values,
-// 		mapObjIndexed(compose(values, removeUndefinedItem, pointToRoute)),
-// 	)(appList)
-// }
-
-// type TGetReduxModule<T = typeof app, K = keyof T> = (type: TReduxType, appList?: T) => { [key: string]: any }
-// const pointToModuleOfRedux = (type: TReduxType) => path([type])
-
-// const getReduxModule: TGetReduxModule = (type, appList = app) => {
-// 	return compose(
-// 		mapObjIndexed(
-// 			compose(
-// 				removeUndefinedItem,
-// 				pointToModuleOfRedux(type),
-// 			),
-// 		),
-// 	)(appList)
-// }
-
-// const handleDataDependType = (type: TAppType) => {
-// 	if (type === 'flatten') {
-// 		return compose(flatten, values)
-// 	}
-// 	if (type === 'dict') {
-// 		return null
-// 	}
-// }
 const getSpecificData = (appList: typeof app, pathList: string[], type: TAppType= 'dict') => {
 	const getSpecificDataList = compose(
 		// Remove items which undefined
@@ -60,14 +28,13 @@ const getSpecificData = (appList: typeof app, pathList: string[], type: TAppType
 			),
 		),
 	)
-	// const convertDataType = handleDataDependType(type)
 	const flatten2lvl = compose(values, mergeAll, values)
-	if (type === 'flatten') {
-		return compose(flatten2lvl, getSpecificDataList)(appList)
-	}
-	return 	getSpecificDataList(appList)
+	return compose(
+		type === 'flatten' ? flatten2lvl : identity,
+		type === 'dict-flatten' ? compose(mergeAll, values) : identity,
+		getSpecificDataList,
+	)(appList)
 }
-
 const getRouteList = (appList = app) => getSpecificData(appList, ['route'], 'flatten')
 const getReduxModule = (reduxType: TReduxType, appList = app) => getSpecificData(appList, [reduxType])
 export {
