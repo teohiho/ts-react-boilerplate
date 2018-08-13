@@ -3,7 +3,7 @@ import './scss/style.scss'
 
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { AppRedux } from './AppRedux'
+import { AppRedux } from './appRedux'
 
 const rootEl = document.getElementById('root')
 ReactDOM.render(<AppRedux />, rootEl)
