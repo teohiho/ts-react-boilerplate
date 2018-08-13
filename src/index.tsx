@@ -10,9 +10,9 @@ ReactDOM.render(<AppRedux />, rootEl)
 
 // Read this first https://survivejs.com/webpack/appendices/hmr/
 if (module.hot) {
-	module.hot.accept('./AppRedux', () => {
+	module.hot.accept('./appRedux', () => {
 		// hot reload
-		const NextApp = require('./AppRedux').default
+		const NextApp = require('./appRedux').default
 		console.log('HOT RELOAD')
 		ReactDOM.render(
 			<NextApp />,
