@@ -2,9 +2,27 @@
 
 # Usuage
 
+## Prefix
 ```
 yarn install
+```
+
+#### 1. Run dev-server
+
+```
 yarn start:direct
+```
+
+#### 2. Build
+
+```
+yarn build:direct
+```
+
+#### 3. Run server from build
+
+```
+yarn start:server
 ```
 
 # Tips
@@ -29,6 +47,20 @@ Add extension react in chrome at [here](https://chrome.google.com/webstore/detai
 
 ### Create module/app by using 'zkr' CLI (feature comming soon)
 
+#### Install
+
+```
+npm install --global zkrn
+```
+
+
+#### Usage
+
+```
+zkr module create [nameApp]
+```
+
+
 # Todo
 
 ## Webpack
@@ -50,9 +82,9 @@ Add extension react in chrome at [here](https://chrome.google.com/webstore/detai
 
 ### Language
 
-+ [x] Add Language
++ [x] Add Language (react-i18n)
 
 ### Redux
 
 + [x] Add redux
-+ [x] Add saga
++ [ ] Add saga
