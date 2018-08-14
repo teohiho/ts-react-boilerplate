@@ -13,7 +13,6 @@ import { AppRoute } from 'router/router'
 
 
 import { TPaletteType } from 'module/setting/logic.redux/initalState'
-const styles = require('./appConfig.scss')
 
 const messages = require('./i18n/i18n.__generate__.json')
 settingConfig()
