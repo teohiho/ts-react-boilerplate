@@ -16,6 +16,7 @@ type TAppType = 'dict' | 'flatten' | 'dict-flatten'
 
 const removeUndefinedItem = filter((item: any) => !isNil(item))
 
+
 const getSpecificData = (appList: typeof app, pathList: string[], type: TAppType= 'dict') => {
 	const getSpecificDataList = compose(
 		// Remove items which undefined
@@ -23,19 +24,27 @@ const getSpecificData = (appList: typeof app, pathList: string[], type: TAppType
 		// Get data from path
 		mapObjIndexed(
 			compose(
+				// Convert {} => [] by only get key
+				(data: any) => { // Check if item undefined
+					if (data !== undefined && type === 'flatten') {
+						return values(data)
+					}
+					return identity(data)
+				} ,
+				// removeUndefinedItem,
 				// point to path that we need to querry
 				path(pathList),
 			),
 		),
 	)
-	const flatten2lvl = compose(values, mergeAll, values)
+	const addFlatten = compose(flatten, values)
 	return compose(
-		type === 'flatten' ? flatten2lvl : identity,
+		type === 'flatten' ? addFlatten : identity,
 		type === 'dict-flatten' ? compose(mergeAll, values) : identity,
 		getSpecificDataList,
 	)(appList)
 }
-
+console.log('APP;m', app)
 const getRouteList = (appList = app) => getSpecificData(appList, ['route'], 'flatten')
 const getReduxModule = (reduxType: TReduxType, appList = app) => getSpecificData(appList, [reduxType])
 

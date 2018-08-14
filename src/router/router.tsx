@@ -15,7 +15,7 @@ import { DashBoardBluePrint } from '../layout/dashboard/DashboardBluePrint'
 const hist = createBrowserHistory()
 
 const pages = getRouteList()
-console.log('Get Pages', pages)
+console.log('Get Pages, getRouteList', pages)
 const convertRouteComponent = mapObjIndexed((page: any, key: string) => (
 	<Route
 		{...page}

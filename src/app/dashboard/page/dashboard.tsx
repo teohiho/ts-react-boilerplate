@@ -1,7 +1,7 @@
+import { createTab } from 'com/index'
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { compose, pure } from 'recompose'
-import { createTab } from 'com/index'
 const DashboardView = () => (
 	<>
 		<h1>Dashboard</h1>
