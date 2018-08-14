@@ -1,4 +1,4 @@
-import { Loading } from './loading/Loading'
+import { Loading } from './loading/loading'
 import { createTab } from './tab/createTab'
 
 export {

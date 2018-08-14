@@ -16,7 +16,7 @@ import {
 import * as classnames from 'classnames'
 import * as React from 'react'
 import { compose, pure, withStateHandlers } from 'recompose'
-const styles = require('./AppTab.scss')
+const styles = require('./appTab.scss')
 import { v4 } from 'uuid'
 type TbreadCrumbItem = {
 	href: string;

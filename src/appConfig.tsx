@@ -45,7 +45,7 @@ const App = ({ theme, lang }: IAppConfigPropsIn) => (
 		locale={lang}
 		messages={messages[lang]}
 	>
-		<div className={classnames(styles.app, theme === 'dark' ? 'bp3-dark' : '')}>
+		<div className={classnames('u-flex', theme === 'dark' ? 'bp3-dark' : '')}>
 			<AppRoute />
 		</div>
 	</IntlProvider >
