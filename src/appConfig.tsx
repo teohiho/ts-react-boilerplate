@@ -12,7 +12,7 @@ import { compose, lifecycle, pure } from 'recompose'
 import { AppRoute } from 'router/router'
 
 
-import { TPaletteType } from 'module/setting/logic.redux/initalState'
+import { TPaletteType } from 'app/setting/redux/initalState'
 
 const messages = require('./i18n/i18n.__generate__.json')
 settingConfig()
