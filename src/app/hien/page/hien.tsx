@@ -1,14 +1,14 @@
 // import { createTabHien } from '../com-hien/createTabHien'
-// import { connect } from 'react-redux'
+import { Switch } from '@blueprintjs/core'
 import { createTab } from 'com/index'
+import { TRootState } from 'conf/redux/reducer'
+import { changeTheme } from 'module/setting/logic.redux/action'
+import { TPaletteType } from 'module/setting/logic.redux/initalState'
 import * as React from 'react'
-// import { changeTheme } from 'module/setting/logic.redux/action'
+import { connect } from 'react-redux'
 import { compose, pure } from 'recompose'
-// import { Dispatch } from 'redux'
-// import { Switch } from '@blueprintjs/core'
-// import { TPaletteType } from 'module/setting/logic.redux/initalState'
-// import { TRootState } from 'conf/redux/reducer'
-const style = require('./Hien.scss')
+import { Dispatch } from 'redux'
+const style = require('../scss/style.scss')
 
 
 
