@@ -19,17 +19,15 @@ const SlideBar = (
 			<Link className={'o-menu__link'} to="/setting">
 				<MenuItem icon="lock" text="Setting" />
 			</Link>
-			<MenuItem icon="maximize" text="Menber Lookup" />
 		</div>
 		<div>
-			<MenuDivider title="APPLICATION" />
-			<MenuItem text="Templates" />
-			<MenuItem icon="search-around" text="Routers"/>
-		</div>
-		<div>
-			<MenuDivider title="NAVIGATION" />
-			<MenuItem icon="lock" text="Dashboard" />
-			<MenuItem icon="maximize" text="Menber Lookup" />
+			<MenuDivider title="Example" />
+			<Link className={'o-menu__link'} to="/man">
+				<MenuItem icon="lock" text="Man" />
+			</Link>
+			<Link className={'o-menu__link'} to="/hien">
+				<MenuItem icon="lock" text="Hien" />
+			</Link>
 		</div>
 	</Menu >
 )
