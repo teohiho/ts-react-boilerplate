@@ -2,8 +2,6 @@
 import { Switch } from '@blueprintjs/core'
 import { createTab } from 'com/index'
 import { TRootState } from 'conf/redux/reducer'
-import { changeTheme } from 'module/setting/logic.redux/action'
-import { TPaletteType } from 'module/setting/logic.redux/initalState'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { compose, pure } from 'recompose'

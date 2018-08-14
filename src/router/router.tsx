@@ -4,7 +4,6 @@ import { Switch } from 'react-router'
 
 import { getRouteList } from 'app/helper'
 import { createBrowserHistory } from 'history'
-import { getPageList } from 'module/helper/module'
 import {
   Link,
   Route,
