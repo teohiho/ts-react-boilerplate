@@ -12,8 +12,7 @@ import { compose, lifecycle, pure } from 'recompose'
 import { AppRoute } from 'router/router'
 
 
-import { TPaletteType } from 'module/setting/logic.redux/initalState'
-const styles = require('./appConfig.scss')
+import { TPaletteType } from 'app/setting/redux/initalState'
 
 const messages = require('./i18n/i18n.__generate__.json')
 settingConfig()
@@ -45,7 +44,7 @@ const App = ({ theme, lang }: IAppConfigPropsIn) => (
 		locale={lang}
 		messages={messages[lang]}
 	>
-		<div className={classnames(styles.app, theme === 'dark' ? 'bp3-dark' : '')}>
+		<div className={classnames('u-flex', theme === 'dark' ? 'bp3-dark' : '')}>
 			<AppRoute />
 		</div>
 	</IntlProvider >

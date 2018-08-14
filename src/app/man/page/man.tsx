@@ -1,7 +1,7 @@
 import { Alignment, AnchorButton, Button, ButtonGroup, FormGroup, InputGroup, Navbar, Tab , Tabs } from '@blueprintjs/core'
 import * as React from 'react'
 import { compose, pure } from 'recompose'
-const style = require('./Man.scss')
+const style = require('../scss/man.scss')
 
 const SettingPageView = () => (
 	<>
