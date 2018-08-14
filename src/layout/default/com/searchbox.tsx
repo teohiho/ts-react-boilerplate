@@ -5,7 +5,7 @@ import * as React from 'react'
 import MediaQuery from 'react-responsive'
 import { compose, pure } from 'recompose'
 
-const styles = require('./SearchBox.scss')
+const styles = require('./searchBox.scss')
 import * as classnames from 'classnames'
 
 const SearchContext = () => (

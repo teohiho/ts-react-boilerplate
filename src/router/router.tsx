@@ -10,7 +10,7 @@ import {
   Router,
 } from 'react-router-dom'
 import { compose as recompose, pure } from 'recompose'
-import { DashBoardBluePrint } from '../layout/dashboard/DashboardBluePrint'
+import { DashBoardBluePrint } from '../layout/default/layoutDefault'
 const hist = createBrowserHistory()
 
 const pages = getRouteList()

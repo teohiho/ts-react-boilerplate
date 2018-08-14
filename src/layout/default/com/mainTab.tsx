@@ -10,8 +10,7 @@ import {
 import * as classnames from 'classnames'
 import * as React from 'react'
 import { compose, pure, withStateHandlers } from 'recompose'
-import { SwitchTheme } from './SwitchTheme'
-const styles = require('./MainTab.scss')
+const styles = require('./mainTab.scss')
 
 const renderEnhanceBreadcrumb = (props: IMenuItemProps , index: number) => {
 	if (!props.href) {

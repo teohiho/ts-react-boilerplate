@@ -15,12 +15,12 @@ import * as React from 'react'
 import { Switch } from 'react-router'
 import { Link } from 'react-router-dom'
 import { compose, pure, withState, withStateHandlers } from 'recompose'
-import { MainTab } from './com/MainTab'
-import { MenuContent } from './com/MenuContent'
-import { SearchBox } from './com/SearchBox'
-import { UserBox } from './com/UserBox'
+import { MainTab } from './com/mainTab'
+import { MenuContent } from './com/menuContent'
+import { SearchBox } from './com/searchBox'
+import { UserBox } from './com/userBox'
 
-const  styles = require('./DashboardBluePrint.scss')
+const  styles = require('./layoutDefault.scss')
 
 // Remove the blue out line when active element
 // Related: https://github.com/palantir/blueprint/issues/2755
@@ -54,8 +54,8 @@ const DashBoard = ({ children }: IDashboardPropsIn) => (
 					</NavbarHeading>
 					<NavbarDivider />
 					<MenuContent />
-					<SearchBox />
 				<div className="c-nav__avatar-container">
+					<SearchBox />
 					<UserBox />
 				</div>
 			</NavbarGroup>
