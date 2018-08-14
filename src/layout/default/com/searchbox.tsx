@@ -27,7 +27,7 @@ const SearchContext = () => (
 )
 
 const SearchBoxView = () => (
-	<div className="m-l-md">
+	<div className="m-r-sm">
 		<MediaQuery orientation="landscape">
 			<InputGroup
 				className={classnames(styles.textInput)}

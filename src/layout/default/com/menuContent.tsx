@@ -29,7 +29,7 @@ const SlideBar = (
 				<MenuItem icon="lock" text="Hien" />
 			</Link>
 		</div>
-	</Menu >
+	</Menu>
 )
 
  const MenuContentView = () => (
