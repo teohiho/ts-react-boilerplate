@@ -3,17 +3,20 @@ import { persistReducer } from 'redux-persist'
 
 import { getReduxModule } from 'app/helper'
 import { TAppState } from 'app/setting/redux/initalState'
+import { TLayoutDefault } from 'layout/default/redux/initialState'
+import layout from 'layout/default/redux/reducer'
 // import { TTodoState } from 'module/todo/logic.redux/initialState'
 import { PERSIST_CONFIG } from './persist'
 
 const moduleReducer = getReduxModule('reducer')
-console.log('REducer', moduleReducer)
 const reducer = combineReducers({
   ...moduleReducer,
+  layout,
 })
 
 export type TRootState = {
   setting: TAppState,
+  layout: TLayoutDefault,
 //   todo: TTodoState,
 }
 

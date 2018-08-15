@@ -7,8 +7,10 @@ import {
 	Popover,
 	Position } from '@blueprintjs/core'
 import * as React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { compose, pure } from 'recompose'
+import { TRootState } from '../../../conf/redux/reducer'
 
 const  styles = require('./menuContent.scss')
 
@@ -32,15 +34,27 @@ const SlideBar = (
 	</Menu>
 )
 
- const MenuContentView = () => (
+ const MenuContentView = ({ breadCrumbItems }: IMenuContentPropsIn) => (
 	<>
 		<Popover
 			content={SlideBar}
 			position={Position.BOTTOM}
 		>
-			<Button className={Classes.MINIMAL} icon="menu" text="Menu" />
+			<Button className={Classes.MINIMAL} icon="menu" text={breadCrumbItems.join(' > ')} />
 		</Popover>
 	</>
 )
 
- export const MenuContent = compose(pure)(MenuContentView)
+interface IMenuContentStateProps {
+	breadCrumbItems: string[]
+}
+interface IMenuContentPropsOut {}
+interface IMenuContentPropsIn  extends IMenuContentPropsOut, IMenuContentStateProps {}
+const mapStateToProps = (state: TRootState) => ({
+	breadCrumbItems: state.layout.frameworkNavbar.breadCrumbItems,
+})
+
+const addRedux = connect(mapStateToProps)
+
+
+ export const MenuContent = compose<IMenuContentPropsIn, IMenuContentPropsOut>(pure, addRedux)(MenuContentView)
