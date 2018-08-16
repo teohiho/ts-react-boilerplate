@@ -1,0 +1,43 @@
+@import '~@blueprintjs/core/src/common/_colors.scss';
+
+.t-background {
+	background-color: $white;
+	.bp3-dark & {
+		background-color: $black;
+	}
+}
+
+.t-background1 {
+	background-color: $light-gray1;
+	.bp3-dark & {
+		background-color: $dark-gray1;
+	}
+}
+
+.t-background2 {
+	background-color: $light-gray2;
+	.bp3-dark & {
+		background-color: $dark-gray2;
+	}
+}
+
+.t-background3 {
+	background-color: $light-gray3;
+	.bp3-dark & {
+		background-color: $dark-gray3;
+	}
+}
+
+.t-background4 {
+	background-color: $light-gray4;
+	.bp3-dark & {
+		background-color: $dark-gray4;
+	}
+}
+
+.t-background5 {
+	background-color: $light-gray5;
+	.bp3-dark & {
+		background-color: $dark-gray5;
+	}
+}
