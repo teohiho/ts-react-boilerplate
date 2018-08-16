@@ -15,6 +15,7 @@ import * as React from 'react'
 import { Switch } from 'react-router'
 import { Link } from 'react-router-dom'
 import { compose } from 'recompose'
+import { Footer } from './com/footer'
 import { MenuContent } from './com/menuContent'
 import { SearchBox } from './com/searchBox'
 import { UserBox } from './com/userBox'
@@ -62,6 +63,7 @@ const DashBoard = ({ children }: IDashboardPropsIn) => (
 		<div className={classnames('p-h-md', 'p-v-sm', `${styles.dashboardApp}__body`)}>
 			{children}
 		</div>
+		<Footer />
 	</div>
 )
 

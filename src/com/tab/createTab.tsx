@@ -18,7 +18,7 @@ import * as React from 'react'
 import { compose, pure, withStateHandlers } from 'recompose'
 const styles = require('./appTab.scss')
 import { v4 } from 'uuid'
-type TbreadCrumbItem = {
+type TbreadcrumbItem = {
 	href: string;
 	text: string;
 } | {
@@ -27,7 +27,7 @@ type TbreadCrumbItem = {
 interface IAppTabPropsOut {
 	tabs ? : ITabProps[],
 	RenderComponent ? : () => JSX.Element,
-	breadcrumbItems: TbreadCrumbItem[]
+	breadcrumbItems: TbreadcrumbItem[]
 }
 interface IAppTabState {
 	selectedTabId: string
@@ -65,7 +65,7 @@ const renderChildTabs = (tabs: ITabProps[] = []) => {
 	),
 	)
 }
-const renderBreadcrumb = (items: TbreadCrumbItem[]) => {
+const renderBreadcrumb = (items: TbreadcrumbItem[]) => {
 	return (
 			<div style={{ width: '50%' }}>
 				<div style={{ width: `${100}%` }}>
@@ -79,7 +79,7 @@ const renderBreadcrumb = (items: TbreadCrumbItem[]) => {
 			</div>
 	)
 }
-const renderOverflow = (items: TbreadCrumbItem[]) => {
+const renderOverflow = (items: TbreadcrumbItem[]) => {
 	const orderedItems = items
 	const menuItems = orderedItems.map((item, index) => <MenuItem {...item} key={index} />)
 	return (

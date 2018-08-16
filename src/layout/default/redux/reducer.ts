@@ -9,7 +9,7 @@ interface ILayoutAction {
 const reducer = (state = initialState, actions: ILayoutAction) => {
 	switch (actions.type) {
 		case actionType.UPDATE_NAV: {
-			return state.setIn(['frameworkNavbar', 'breadCrumbItems'], actions.breadCrumbItems)
+			return state.setIn(['frameworkNavbar', 'breadcrumbItems'], actions.breadcrumbItems)
 		}
 		default: return state
 	}

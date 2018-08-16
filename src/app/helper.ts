@@ -45,10 +45,12 @@ const getSpecificData = (appList: typeof app, pathList: string[], type: TAppType
 	)(appList)
 }
 
-const getRouteList = (appList = app) => getSpecificData(appList, ['route'], 'flatten')
+const getRouteList = (appList = app) => getSpecificData(appList, ['route'], 'dict-flatten')
+const getNavList = (appList = app) => getSpecificData(appList, ['nav'])
 const getReduxModule = (reduxType: TReduxType, appList = app) => getSpecificData(appList, [reduxType])
 
 export {
 	getRouteList,
 	getReduxModule,
+	getNavList,
 }

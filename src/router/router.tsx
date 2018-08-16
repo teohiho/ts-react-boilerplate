@@ -1,26 +1,34 @@
-import { compose, mapObjIndexed, omit, values } from 'ramda'
+import { compose, identity, mapObjIndexed, omit, path, values } from 'ramda'
 import * as React from 'react'
 import { Switch } from 'react-router'
 
-import { getRouteList } from 'app/helper'
+import { getNavList, getRouteList } from 'app/helper'
 import { createBrowserHistory } from 'history'
+import { createContainer } from 'layout/default/createContainer'
+import { DashBoardBluePrint } from 'layout/default/layoutDefault'
 import {
   Link,
   Route,
   Router,
 } from 'react-router-dom'
 import { compose as recompose, pure } from 'recompose'
-import { DashBoardBluePrint } from '../layout/default/layoutDefault'
 const hist = createBrowserHistory()
 
 const pages = getRouteList()
-console.log('Get Pages, getRouteList', pages)
-const convertRouteComponent = mapObjIndexed((page: any, key: string) => (
-	<Route
-		{...page}
-		key={key}
-	/>
-))
+const navConfList = getNavList()
+const convertRouteComponent = mapObjIndexed((page: any, key: string) => {
+	const AddBreadCrumb = recompose(
+		path([key, 'breadcrumb'])(navConfList) ? createContainer({ breadcrumbItems: navConfList[key].breadcrumb }) : identity,
+	)(page.component)
+	return (
+		<Route
+			{...page}
+			key={key}
+			component={AddBreadCrumb}
+		/>
+	)
+	},
+)
 const routesRender = compose(values, convertRouteComponent)(pages)
 const AppRouteView = () => (
 	<Router history={hist}>
