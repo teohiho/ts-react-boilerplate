@@ -1,3 +1,4 @@
+import animationSample from './animation-sample'
 import dashboard from './dashboard'
 // import hien from './hien'
 // import layout from './layout'
@@ -9,6 +10,7 @@ import testContainerTab from './test-container-tab'
 import testTab from './test-tab'
 
 export default {
+	animationSample,
 	testTab,
 	testContainerTab,
 	// testContainer,

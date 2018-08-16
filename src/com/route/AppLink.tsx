@@ -15,16 +15,16 @@ const updateLink = (url: string, to: H.LocationDescriptor) => {
 		return to
 	}
 }
-const addUrl = withProps<IAppLinkPropsIn, IAppLinkPropsIn>(
-	({ to, ...props }) => {
-		if (typeof to === 'string') {
-			return {
-				to,
-				...props,
-				// to: `1`,
-			}
-		}
-		// return props
-	},
-)
+// const addUrl = withProps<IAppLinkPropsIn, IAppLinkPropsIn>(
+// 	({ to, ...props }) => {
+// 		if (typeof to === 'string') {
+// 			return {
+// 				to,
+// 				...props,
+// 				// to: `1`,
+// 			}
+// 		}
+// 		// return props
+// 	},
+// )
 const AppLink = compose(withRouter)(Link)

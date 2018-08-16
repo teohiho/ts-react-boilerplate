@@ -49,7 +49,9 @@ const addBreadcrumbLc = lifecycle<IContainerPropsIn, IContainerState>({
 export const addRedux = connect(undefined, mapActionToProps)
 
 // export const Container = compose(pure, addRedux, addBreadcrumbLc)(ContainerView)
-export const Container = compose(pure, addRedux, addBreadcrumbLc)(ContainerView)
+
+// TODO: Try to run `breadcrumbItems` at begin lifecycle(constructor in case) in fp but still not work. That why move to class
+export const Container = compose(pure, addRedux)(ContainerView)
 
 export const createContainer = (options: ICreateContainerPropsOut) => (Component: React.ComponentType) => {
 	return () => (

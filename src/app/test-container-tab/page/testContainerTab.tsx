@@ -17,14 +17,14 @@ const TestContainerView2 = () => (
 	</>
 )
 const TestContainer1 = compose(
-	// createContainer({
-	// 	breadcrumbItems: ['Test', 'Container', 'Tab1'],
-	// }),
+	createContainer({
+		breadcrumbItems: ['Test', 'Container', 'Tab1'],
+	}),
 )(TestContainerView1)
 const TestContainer2 = compose(
-	// createContainer({
-	// 	breadcrumbItems: ['Test', 'Container', 'Tab2'],
-	// }),
+	createContainer({
+		breadcrumbItems: ['Test', 'Container', 'Tab2'],
+	}),
 )(TestContainerView2)
 const TabContainer = createTabContainer({
 	tabs: [
