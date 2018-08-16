@@ -29,8 +29,8 @@ interface ISettingPropsIn extends ISettingPropsOut, ISettingStateToProps, ISetti
 
 const SettingView = ({ switchTheme, paletteType }: ISettingPropsIn) => (
 	<>
-		Dark Theme:
-		<Switch checked={paletteType === 'dark' ? true : false} onChange={switchTheme} />
+		{/* Dark Theme: */}
+		<Switch checked={paletteType === 'dark' ? true : false} onChange={switchTheme} label={'Dark Theme'} />
 	</>
 )
 

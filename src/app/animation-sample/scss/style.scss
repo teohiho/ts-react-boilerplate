@@ -1,10 +1,23 @@
-.slider {
-	position: absolute;
-	left: 0;
-	transition: all 500ms ease;
-	-webkit-transition: all 500ms ease;
-	border: 2px solid #FFF;
-	width: 30px;
-	background-color: red;
+.tab {
+	position: relative;
+	display: inline-block;
+	&:after {
+		content:'';
+		position:absolute;
+		left:0;
+		right:0;
+		top:100%;
+		width:0%;
+		background: #00f;
+		margin-left: 50%;
+		height:2px;
+		transition: width 0.5s, margin-left 0.5s;
+	}
+	&--selected {
+		// border-bottom: 1px solid red;
+		&:after {
+			width:100%;
+			margin-left: 0%;
+		}
+	}
   }
-  
