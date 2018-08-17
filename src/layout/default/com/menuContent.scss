@@ -1,4 +1,5 @@
 @import '~include-media/dist/_include-media.scss';
+@import "~@blueprintjs/core/lib/scss/variables";
 
 :local(.menu-group) {
 	// float: left;
@@ -21,7 +22,10 @@
 	}
 	&__link {
 		color:unset;
-
+		&--selected {
+			color: $blue1;
+			font-weight: bold;
+		}
 		.bp3-dark & {
 			color: unset;
 		}

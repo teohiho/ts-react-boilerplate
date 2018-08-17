@@ -11,6 +11,7 @@ import { SettingLanguage } from '../com/'
 import { changeTheme } from '../redux/action'
 import { TPaletteType } from '../redux/initalState'
 
+const styles = require('../scss/style.scss')
 
 interface ISettingPropsOut {
 
@@ -30,8 +31,12 @@ interface ISettingPropsIn extends ISettingPropsOut, ISettingStateToProps, ISetti
 
 const SettingView = ({ switchTheme, paletteType }: ISettingPropsIn) => (
 	<>
-		{/* Dark Theme: */}
-		<Switch checked={paletteType === 'dark' ? true : false} onChange={switchTheme} label={'Dark Theme'} />
+		<Switch
+			checked={paletteType === 'dark' ? true : false}
+			onChange={switchTheme}
+			className={'switch'}
+			label={'Dark Theme'}
+		/>
 	</>
 )
 
