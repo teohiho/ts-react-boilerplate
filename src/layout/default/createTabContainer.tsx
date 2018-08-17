@@ -5,7 +5,7 @@ import { RouteComponentProps, RouteProps, withRouter } from 'react-router'
 import { Link,  Route, Switch } from 'react-router-dom'
 import { compose, withStateHandlers } from 'recompose'
 import { v4 } from 'uuid'
-
+const styles = require('./creatTabContainer.scss')
 interface ITabProps extends RouteProps {
 	path: string,
 	title: string
@@ -72,9 +72,13 @@ const ListTabView = ({ tabs, match, changeId, selectedId }: IListTabPropsIn) => 
 			{/* <Button>
 				{tab.title}
 			</Button> */}
-			<Button key={tab.path} onClick={() => changeId(tab.path)} className={classnames('tab', { 'tab--selected': selectedId === tab.path })}>
+			<div
+				key={tab.path}
+				onClick={() => changeId(tab.path)}
+				className={classnames('tab', 't-color', 'p-h-sm', { 'tab--selected': selectedId === tab.path })}
+			>
 				{tab.title}
-			</Button>
+			</div>
 		</Link>
 	))
 	return (

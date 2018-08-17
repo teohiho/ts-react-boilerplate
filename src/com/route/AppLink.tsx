@@ -14,6 +14,7 @@ const updateLink = (url: string, to: H.LocationDescriptor) => {
 	if (to === 'object') {
 		return to
 	}
+	return null;
 }
 // const addUrl = withProps<IAppLinkPropsIn, IAppLinkPropsIn>(
 // 	({ to, ...props }) => {

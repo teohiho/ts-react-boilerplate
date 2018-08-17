@@ -39,6 +39,16 @@ const TabContainer = createTabContainer({
 			component: TestContainer2,
 			title: 'Tab 2',
 		},
+		{
+			path: '/abc3',
+			component: TestContainer2,
+			title: 'Tab 3',
+		},
+		{
+			path: '/abc4',
+			component: TestContainer2,
+			title: 'Tab 4',
+		},
 	],
 })
 
