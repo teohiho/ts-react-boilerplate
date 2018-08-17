@@ -41,3 +41,9 @@
 		background-color: $dark-gray5;
 	}
 }
+.t-color {
+	color: $black;
+	.bp3-dark & {
+		color: $white;
+	}
+}

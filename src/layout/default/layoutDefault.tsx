@@ -60,9 +60,9 @@ const DashBoard = ({ children }: IDashboardPropsIn) => (
 				</div>
 			</NavbarGroup>
 		</Navbar>
-		<div className={classnames('p-h-md', 'p-v-sm', `${styles.dashboardApp}__body`)}>
+		{/* <div className={classnames('p-h-md', 'p-v-sm', `${styles.dashboardApp}__body`)}> */}
 			{children}
-		</div>
+		{/* </div> */}
 		<Footer />
 	</div>
 )
