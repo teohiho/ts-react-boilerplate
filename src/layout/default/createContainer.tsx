@@ -69,8 +69,8 @@ interface ITab {
 
 }
 
-export const addContainer = (Component: React.ComponentType) => () => (
-	<div className={classnames('p-h-md', 'u-flex',  't-background')}>
+export const addContainer = (Component: React.ComponentType, className?: string) => () => (
+	<div className={classnames('p-h-md', 'u-flex',  't-background', className)}>
 		<Component />
 	</div>
 )
