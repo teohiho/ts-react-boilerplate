@@ -1,49 +1,74 @@
 import { Button } from '@blueprintjs/core'
+import * as classnames from 'classnames'
 import * as React from 'react'
 import { compose, pure, withStateHandlers } from 'recompose'
 
 const styles = require('../scss/style.scss')
 
+interface ITab {
+	id: string
+	title: string
+}
 interface ITabPropsOut {
+	tabs: ITab[]
 }
 interface ITabState {
-	left: string
+	selectedId: string
 }
 interface ITabStateHandler {
-	updateLeft: (event: React.MouseEvent<HTMLButtonElement>) => void
+	changeId: (id: string) => void
 }
 interface ITabPropsIn extends ITabPropsOut, ITabState, ITabStateHandler {}
-// const Slider = ({ left }: ISliderPropsIn) => (
-// 	<div className="slider" style={{ left }}></div>
-// )
-
-const AnimationSampleView = ({ left, updateLeft }: ITabPropsIn) => (
+const TabView = ({ selectedId, changeId, tabs }: ITabPropsIn) => (
 	<>
-		{/* <Button onClick={updateLeft}> Tab 1</Button>
-		<Button onClick={updateLeft}> Tab 2</Button>
-		<Button onClick={updateLeft}> Tab 3</Button>
-		<Button onClick={updateLeft}> Tab 4</Button> */}
-		{/* <Button> Tab 2</Button>
-		<Button> Tab 3</Button>
-		<Button> Tab 4</Button> */}
-		{/* <div className="slider" style={{ left }}></div> */}
+		{tabs.map(({ title, id }) => (
+			<Button key={id} onClick={() => changeId(id)} className={classnames('tab', { 'tab--selected': selectedId === id })} >{title}</Button>
+		))}
 	</>
 )
 
 const addLeftHandler = withStateHandlers(
 	{
-		left: '0px',
+		selectedId: '1',
 	},
 	{
-		updateLeft: () => (event: React.MouseEvent<HTMLButtonElement>) => {
-			console.log('>>>>', event.target, event.screenX, event.screenY)
-			return {
-				// left:  event.target.offsetLeft + 'px',
-				left: event.nativeEvent.offsetY + 'px',
-			}
-			// ({ left:  event.screenY + 'px' })
-		} ,
+		changeId: () => (id: string) => ({ selectedId: id }),
 	},
 )
+const Tab = compose<ITabPropsIn, ITabPropsOut>(addLeftHandler)(TabView)
 
-export const AnimationSamplePage = compose<ITabPropsIn, ITabPropsOut>(pure, addLeftHandler)(AnimationSampleView)
+
+
+const AnimationSampleView = () => (
+	<Tab
+		tabs={
+			[
+				{
+					id: '1',
+					title: 'Tab1',
+				},
+				{
+					id: '2',
+					title: 'Tab2',
+				},
+				{
+					id: '3',
+					title: 'Tab3',
+				},
+				{
+					id: '4',
+					title: 'Tab3',
+				},
+				{
+					id: '5',
+					title: 'Tab3',
+				},
+				{
+					id: '66',
+					title: 'Tab34214214234324324',
+				},
+			]
+		}
+	/>
+)
+export const AnimationSamplePage = compose(pure)(AnimationSampleView)

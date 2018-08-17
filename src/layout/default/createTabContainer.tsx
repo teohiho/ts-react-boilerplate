@@ -1,4 +1,5 @@
 import { Button, Tab, Tabs } from '@blueprintjs/core'
+import * as classnames from 'classnames'
 import * as React from 'react'
 import { RouteComponentProps, RouteProps, withRouter } from 'react-router'
 import { Link,  Route, Switch } from 'react-router-dom'
@@ -11,28 +12,67 @@ interface ITabProps extends RouteProps {
 }
 interface ICreateTabContainerPropsOut {
 	tabs: ITabProps[],
+	selectedPath?: string
 }
 interface IListTabPropsOut {
 	tabs: ITabProps[]
 }
-interface IListTabPropsIn extends IListTabPropsOut, RouteComponentProps<any> {
+interface IListTabPropsIn extends IListTabPropsOut, RouteComponentProps<any>,  ITabState, ITabStateHandler {
 
 }
-const renderChildTabs = (tabs: ITabProps[] = []) => {
-	return tabs.map((tab, key) => (
-		<Link to={tab.path} key={key}>
-			{/* <Tab id={tab.path} title={tab.title} /> */}
-			<Button>
-				{tab.title}
-			</Button>
-		</Link>
-	))
-}
+// const renderChildTabs = (tabs: ITabProps[] = []) => {
+// 	return tabs.map((tab, key) => (
+// 		<Link to={tab.path} key={key}>
+// 			{/* <Tab id={tab.path} title={tab.title} /> */}
+// 			<Button>
+// 				{tab.title}
+// 			</Button>
+// 		</Link>
+// 	))
+// }
 
-const ListTabView = ({ tabs, match }: IListTabPropsIn) => {
+// interface ITab {
+// 	id: string
+// 	title: string
+// }
+// interface ITabPropsOut {
+// 	tabs: ITab[]
+// }
+interface ITabState {
+	selectedId: string
+}
+interface ITabStateHandler {
+	changeId: (id: string) => void
+}
+// interface ITabPropsIn extends ITabPropsOut, ITabState, ITabStateHandler {}
+// const TabView = ({ selectedId, changeId, tabs }: ITabPropsIn) => (
+// 	<>
+// 		{tabs.map(({ title, id }) => (
+// 			<Button key={id} onClick={() => changeId(id)} className={classnames('tab', { 'tab--selected': selectedId === id })} >{title}</Button>
+// 		))}
+// 	</>
+// )
+
+const addLeftHandler = withStateHandlers<ITabState, {}, ICreateTabContainerPropsOut>(
+	({ selectedPath, tabs }) => ({
+		selectedId: selectedPath ? selectedPath : tabs[0].path,
+	}),
+	{
+		changeId: () => (id: string) => ({ selectedId: id }),
+	},
+)
+// const Tab = compose<ITabPropsIn, ITabPropsOut>(addLeftHandler)(TabView)
+
+
+
+
+const ListTabView = ({ tabs, match, changeId, selectedId }: IListTabPropsIn) => {
 	const ListTab = tabs.map((tab, key) => (
 		<Link to={`${match.url}${tab.path}`} key={key}>
-			<Button>
+			{/* <Button>
+				{tab.title}
+			</Button> */}
+			<Button key={tab.path} onClick={() => changeId(tab.path)} className={classnames('tab', { 'tab--selected': selectedId === tab.path })}>
 				{tab.title}
 			</Button>
 		</Link>
@@ -44,7 +84,7 @@ const ListTabView = ({ tabs, match }: IListTabPropsIn) => {
 	)
 }
 
-const ListTab = compose<IListTabPropsIn, IListTabPropsOut>(withRouter)(ListTabView)
+const ListTab = compose<IListTabPropsIn, IListTabPropsOut>(withRouter, addLeftHandler)(ListTabView)
 
 const renderBodyContent = (tabs: ITabProps[] = []) => {
 	return tabs.map((tab, key) => (
