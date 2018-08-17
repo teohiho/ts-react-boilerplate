@@ -1,3 +1,4 @@
+import * as classnames from 'classnames'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { compose, lifecycle, pure, renderComponent } from 'recompose'
@@ -68,3 +69,8 @@ interface ITab {
 
 }
 
+export const addContainer = (Component: React.ComponentType) => () => (
+	<div className={classnames('p-h-md', 'u-flex',  't-background')}>
+		<Component />
+	</div>
+)
