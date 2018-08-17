@@ -110,10 +110,10 @@ const Body = compose<IListTabPropsIn, IListTabPropsOut>(withRouter)(BodyView)
 const AppTabView = ({ tabs }: ICreateTabContainerPropsOut) => {
 	return (
 		<>
-			<div>
+			<div className={'tab'}>
 				<ListTab tabs={tabs} />
-				<Body tabs={tabs} />
 			</div>
+			<Body tabs={tabs} />
 		</>
 	)
 }
