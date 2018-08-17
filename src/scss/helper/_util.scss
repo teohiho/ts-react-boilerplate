@@ -3,5 +3,10 @@
 }
 .u-flex {
 	display: flex;
-	flex: 1
+	flex: 1;
+	flex-direction: column;
+}
+.u-flex-row {
+	display: flex;
+	flex-direction: row;
 }

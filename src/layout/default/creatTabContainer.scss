@@ -6,6 +6,9 @@ $time: 0.5s;
 	position: relative;
 	display: inline-block;
 	font-weight: 400;
+	// :first-child {
+	// 	padding-left: 0px;
+	// }
 	&:after {
 		content:'';
 		position:absolute;
@@ -14,7 +17,7 @@ $time: 0.5s;
 		top:100%;
 		width:0%;
 		background: $blue1;
-		margin-top: 6px;
+		margin-top: 3px;
 		margin-left: 50%;
 		height: 3px;
 		transition: width $time, margin-left $time;
@@ -41,4 +44,7 @@ $time: 0.5s;
 			margin-left: (100 - $width)/2;
 		}
 	}
-  }
+}
+.tabs {
+
+}

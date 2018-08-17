@@ -1,6 +1,7 @@
 import { Switch } from '@blueprintjs/core'
 import { createTab } from 'com/index'
 import { TRootState } from 'conf/redux/reducer'
+import { createTabContainer } from 'layout/default/createTabContainer'
 import * as React from 'react'
 import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
@@ -45,33 +46,47 @@ const withRedux = connect(mapStateToProps, mapDispatchToProps)
 
 const SettingTheme = compose<ISettingPropsIn, ISettingPropsOut>(withRedux, pure)(SettingView)
 
-const addTab = createTab({
-	breadcrumbItems: [
-		{
-			href: '#',
-			text: 'Grand',
-		},
-		{
-			href: '#',
-			text: 'Parent',
-		},
-		{
-			text: 'Child',
-		},
-	],
+// const addTab = createTab({
+// 	breadcrumbItems: [
+// 		{
+// 			href: '#',
+// 			text: 'Grand',
+// 		},
+// 		{
+// 			href: '#',
+// 			text: 'Parent',
+// 		},
+// 		{
+// 			text: 'Child',
+// 		},
+// 	],
+// 	tabs: [
+// 		{
+// 			id: 'th',
+// 			title: <FormattedMessage id="Setting.theme" />,
+// 			panel: <SettingTheme />,
+// 		},
+// 		{
+// 			id: 'la',
+// 			title: <FormattedMessage id="Setting.language" />,
+// 			panel: <SettingLanguage />,
+// 		},
+// 	],
+// })
+const addTab = createTabContainer({
 	tabs: [
 		{
-			id: 'th',
+			path: '',
+			component: SettingTheme,
 			title: <FormattedMessage id="Setting.theme" />,
-			panel: <SettingTheme />,
+			exact: true,
 		},
 		{
-			id: 'la',
+			path: '/language',
+			component: SettingLanguage,
 			title: <FormattedMessage id="Setting.language" />,
-			panel: <SettingLanguage />,
 		},
 	],
 })
-
 
 export const SettingPage = compose<ISettingPropsIn, ISettingPropsOut>()(addTab)
