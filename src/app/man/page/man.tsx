@@ -86,7 +86,7 @@ const TabView = ({ changeId, tabs, idSelected }: ITabsPropsIn) => (
 const Tab = compose<ITabsPropsIn, ITabsPropsOut>(idStateHandler)(TabView)
 
 const TabsDemoView = () => (
-	<>
+	<div className ="demo0">
 		<Tab
 			tabs={
 				[
@@ -121,14 +121,14 @@ const TabsDemoView = () => (
 				]
 			}
 		/>
-	</>
+	</div>
 )
 const TabsDemo = compose()(TabsDemoView)
 // <=====================================================================================>
 const Test = () => (
 	<h1>Hello WOrld</h1>
 )
-const addTab = createTabContainer({
+const addTabView = createTabContainer({
 	tabs: [
 		{
 			path: '',
@@ -142,12 +142,17 @@ const addTab = createTabContainer({
 			title: 'TabsDemoTest',
 		},
 	],
+	classes: {
+		tab: 'transparent',
+		tabs: 'transparent',
+		body: 'transparent',
+	},
 })
+export const AddTab = compose()(addTabView)
+const Body = () => (
+	<div className={style.body} >
+		<AddTab />
+	</div>
+)
 
-// const Body = () => (
-// 	<div className={style.body} >
-// 		<addTab />
-// 	</div>
-// )
-
-export const ManPage = compose()(addTab)
+export const ManPage = compose()(Body)
