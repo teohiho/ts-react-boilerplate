@@ -23,8 +23,11 @@
 	&__link {
 		color:unset;
 		&--selected {
-			color: $blue1;
+			color: $blue4 !important;
 			font-weight: bold;
+			& .bp3-icon {
+				color: $blue4 !important;
+			}
 		}
 		.bp3-dark & {
 			color: unset;

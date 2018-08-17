@@ -9,6 +9,7 @@ import {
 	Position} from '@blueprintjs/core'
 import * as classnames from 'classnames'
 import { TRootState } from 'conf/redux/reducer'
+import { Location } from 'history'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps, withRouter } from 'react-router'
@@ -18,15 +19,20 @@ import { compose, pure } from 'recompose'
 const  styles = require('./menuContent.scss')
 
 interface ILinkPropsOut extends IMenuItemProps {
-	isActive: boolean,
+	// isActive: boolean,
 	path: string
 }
 interface ILinkPropsIn extends ILinkPropsOut, RouteComponentProps<any> {}
-const LinkItemView = ({ isActive, icon, text, path, match }: ILinkPropsIn) => {
-	console.log('match', match)
+const isRouteEqualPathname = (location: Location, pathLink: string) => {
+	return	(pathLink === '/' && location.pathname === '/' && true)
+			|| (pathLink !== '/' && location.pathname.indexOf(pathLink) === 0 && true)
+			|| false
+}
+const LinkItemView = ({ icon, text, path, match, location, history }: ILinkPropsIn) => {
+	console.log('match, location', match, location, history)
 	return (
 		<Link
-			className={classnames('o-menu__link', { 'o-menu__link--selected': isActive })}
+			className={classnames('o-menu__link', { 'o-menu__link--selected': isRouteEqualPathname(location, path) })}
 			to={path}
 		>
 			<MenuItem icon={icon} text={text} />
@@ -38,16 +44,14 @@ const SlideBar = (
 	<Menu className={'o-menu--vertical'}>
 		<div>
 			<MenuDivider title="NAVIGATION" />
-			<LinkItem isActive={true} icon="lock" text="Setting" path="/setting"  />
+			<LinkItem icon="lock" text="Setting" path="/setting"  />
+			<LinkItem icon="lock" text="Dashboard" path="/"  />
 		</div>
 		<div>
 			<MenuDivider title="Example" />
-			<Link className={'o-menu__link'} to="/man">
-				<MenuItem icon="lock" text="Man" />
-			</Link>
-			<Link className={'o-menu__link'} to="/hien">
-				<MenuItem icon="lock" text="Hien" />
-			</Link>
+			<LinkItem icon="lock" text="Man" path="/man" />
+			<LinkItem icon="lock" text="Hien" path="/hien" />
+			<LinkItem icon="lock" text="Test" path="/test" />
 		</div>
 	</Menu>
 )

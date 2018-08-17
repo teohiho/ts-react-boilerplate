@@ -1,5 +1,6 @@
 import { Button, Tab, Tabs } from '@blueprintjs/core'
 import * as classnames from 'classnames'
+import { path } from 'ramda'
 import * as React from 'react'
 import { RouteComponentProps, RouteProps, withRouter } from 'react-router'
 import { Link,  Route, Switch } from 'react-router-dom'
@@ -14,9 +15,16 @@ interface ITabProps extends RouteProps {
 interface ICreateTabContainerPropsOut {
 	tabs: ITabProps[],
 	selectedPath?: string
+	classes?: {
+		tabs?: string,
+		tab?: string,
+		title?: string,
+		body?: string,
+	}
 }
 interface IListTabPropsOut {
-	tabs: ITabProps[]
+	tabs: ITabProps[],
+	className?: string,
 }
 interface IListTabPropsIn extends IListTabPropsOut, RouteComponentProps<any>,  ITabState, ITabStateHandler {
 
@@ -40,13 +48,19 @@ const addLeftHandler = withStateHandlers<ITabState, {}, ICreateTabContainerProps
 
 
 
-const ListTabView = ({ tabs, match, changeId, selectedId }: IListTabPropsIn) => {
+const ListTabView = ({ tabs, match, changeId, selectedId, className }: IListTabPropsIn) => {
 	const ListTab = tabs.map((tab, key) => (
 		<Link to={`${match.url}${tab.path}`} key={key}>
 			<div
 				key={tab.path}
 				onClick={() => changeId(tab.path)}
-				className={classnames('tab', 't-color', 'p-h-sm', { 'tab--selected': selectedId === tab.path })}
+				className={classnames(
+					'tab',
+					't-color',
+					'p-h-sm',
+					{ 'tab--selected': selectedId === tab.path },
+					className,
+				)}
 			>
 				{tab.title}
 			</div>
@@ -84,11 +98,18 @@ const BodyView = ({ tabs, match }: IListTabPropsIn) => {
 
 const Body = compose<IListTabPropsIn, IListTabPropsOut>(withRouter)(BodyView)
 
-const AppTabView = ({ tabs }: ICreateTabContainerPropsOut) => {
+const AppTabView = ({ tabs, classes }: ICreateTabContainerPropsOut) => {
 	return (
 		<>
-			<div className={classnames('tabs',  'p-l-sm', 'p-t-sm', 'p-b-md', 't-background')}>
-				<ListTab tabs={tabs} />
+			<div className={classnames(
+					'tabs',
+					'p-l-sm',
+					'p-t-sm',
+					'p-b-md',
+					't-background',
+					path(['tabs'])(classes),
+				)}>
+				<ListTab tabs={tabs} className={classes && classes.title} />
 			</div>
 			<Body tabs={tabs} />
 		</>
