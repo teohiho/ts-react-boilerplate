@@ -1,11 +1,14 @@
-import { Alignment, AnchorButton, Button, ButtonGroup, FormGroup, InputGroup, Navbar , Tabs } from '@blueprintjs/core'
+import { Alignment, AnchorButton, Button, ButtonGroup, FormGroup, H1, InputGroup , Navbar, Tabs } from '@blueprintjs/core'
 import { createTab } from 'com/index'
+import { createTabContainer } from 'layout/default/createTabContainer'
 import * as React from 'react'
 import { Motion, spring, TransitionMotion } from 'react-motion'
 import { compose, pure, withStateHandlers } from 'recompose'
 const style = require('../scss/man.scss')
 
-const SettingPageView = () => (
+// <=====================================================================================>
+
+const BlueprintView = () => (
 	<>
 		<div className={style.nav}>
 			<div className={`${style.nav}__left`}>
@@ -27,17 +30,8 @@ const SettingPageView = () => (
 		</ButtonGroup>
 	</>
 )
-// <=====================================================================================>
-
-const styleById = (id: number) => {
-	switch (id) {
-		case 1: return 0
-		default: return id * 100
-	}
-}
 
 // <=====================================================================================>
-
 
 interface ITabsState {
 	idSelected: number
@@ -53,6 +47,13 @@ const idStateHandler = withStateHandlers(
 		changeId: () => (id: number) => ({ idSelected: id }),
 	},
 )
+
+const styleById = (id: number) => {
+	switch (id) {
+		case 1: return 0
+		default: return id * 100
+	}
+}
 
 interface ITab {
 	id: number
@@ -71,14 +72,12 @@ const TabView = ({ changeId, tabs, idSelected }: ITabsPropsIn) => (
 		))}
 		<Motion style={{ x: spring(styleById(idSelected)) }}>
 			{({ x }) =>
-			// children is a callback which should accept the current value of
-			// `style`
-			<div className="demo0">
-				<div className="demo0-block" style={{
-				WebkitTransform: `translate3d(${x}px, 0, 0)`,
-				transform: `translate3d(${x}px, 0, 0)`,
-				}} />
-			</div>
+				<div className="demo0">
+					<div className="demo0-block" style={{
+					WebkitTransform: `translate3d(${x}px, 0, 0)`,
+					transform: `translate3d(${x}px, 0, 0)`,
+					}} />
+				</div>
 			}
 		</Motion>
 	</>
@@ -86,7 +85,7 @@ const TabView = ({ changeId, tabs, idSelected }: ITabsPropsIn) => (
 
 const Tab = compose<ITabsPropsIn, ITabsPropsOut>(idStateHandler)(TabView)
 
-const DemoAView = () => (
+const TabsDemoView = () => (
 	<>
 		<Tab
 			tabs={
@@ -124,53 +123,31 @@ const DemoAView = () => (
 		/>
 	</>
 )
-
-
-const DemoA = compose()(DemoAView)
+const TabsDemo = compose()(TabsDemoView)
 // <=====================================================================================>
-const Special4 = () => (<h1>Abc</h1>)
-// <=====================================================================================>
-const Special5 = () => (<h1>Abc</h1>)
-// <=====================================================================================>
-
-const AddTab = createTab({
-	breadcrumbItems: [
-		{
-			text: 'Grand',
-			href: '#',
-		},
-		{
-			text: 'Parent',
-			href: '#',
-		},
-	],
+const Test = () => (
+	<h1>Hello WOrld</h1>
+)
+const addTab = createTabContainer({
 	tabs: [
 		{
-			id: 'Become a host',
-			panel: <DemoA />,
-			title: 'Become a host',
-		},
-		// {
-		// 	id: 'Earn credit',
-		// 	panel: <Demo />,
-		// 	title: 'Earn credit',
-		// },
-		{
-			id: 'Help',
-			panel: <SettingPageView />,
-			title: 'Help',
+			path: '',
+			component: TabsDemo,
+			title: 'TabsDemo',
+			exact: true,
 		},
 		{
-			id: 'Sign up',
-			panel: <Special4 />,
-			title: 'Sign up',
-		},
-		{
-			id: 'Log in',
-			panel: <Special5 />,
-			title: 'Log in',
+			path: '/abc',
+			component: Test,
+			title: 'TabsDemoTest',
 		},
 	],
 })
 
-export const ManPage = compose(pure)(AddTab)
+// const Body = () => (
+// 	<div className={style.body} >
+// 		<addTab />
+// 	</div>
+// )
+
+export const ManPage = compose()(addTab)

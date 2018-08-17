@@ -1,6 +1,18 @@
+:local(.body) {
+	background-image: url('../../../img/background-man-2.jpeg');
+	background-size: 100vw 100vh;
+	height: 100vh;
+	color: white;
+}
+
+:local(.bp3-tab) {
+	color: white;
+}
+
 :local(.nav) {
+	
 	display: flex;
-	background-image: url('../../../img/background-man-1.jpeg');
+	
 	&__right {
 		flex: 1;		
 	}
