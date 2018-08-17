@@ -51,33 +51,6 @@ const withRedux = connect(mapStateToProps, mapDispatchToProps)
 
 const SettingTheme = compose<ISettingPropsIn, ISettingPropsOut>(withRedux, pure)(SettingView)
 
-// const addTab = createTab({
-// 	breadcrumbItems: [
-// 		{
-// 			href: '#',
-// 			text: 'Grand',
-// 		},
-// 		{
-// 			href: '#',
-// 			text: 'Parent',
-// 		},
-// 		{
-// 			text: 'Child',
-// 		},
-// 	],
-// 	tabs: [
-// 		{
-// 			id: 'th',
-// 			title: <FormattedMessage id="Setting.theme" />,
-// 			panel: <SettingTheme />,
-// 		},
-// 		{
-// 			id: 'la',
-// 			title: <FormattedMessage id="Setting.language" />,
-// 			panel: <SettingLanguage />,
-// 		},
-// 	],
-// })
 const addTab = createTabContainer({
 	tabs: [
 		{
