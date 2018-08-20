@@ -3,7 +3,7 @@ import { compose, pure } from 'recompose'
 
 export const SampleView = () => (
 	<>
-		<h1>Sample</h1>
+		<h1>Sample abc</h1>
 	</>
 )
 

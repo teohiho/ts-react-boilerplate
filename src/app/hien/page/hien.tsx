@@ -6,6 +6,8 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { compose, pure } from 'recompose'
 import { Dispatch } from 'redux'
+import { HienHelloPage } from './hienHello'
+
 const style = require('../scss/style.scss')
 
 
@@ -42,7 +44,7 @@ const SettingPageView = () => (
 )
 const SpecialCom = () => (<h1>Abc</h1>)
 
-const AddTab = createTab({
+const addTab = createTab({
 	breadcrumbItems: [
 		{
 			text: 'Grand',
@@ -55,9 +57,14 @@ const AddTab = createTab({
 	],
 	tabs: [
 		{
+			id: 'hien3',
+			panel: <HienHelloPage />,
+			title: 'Hello',
+		},
+		{
 			id: 'hien1',
 			panel: <SettingPageView />,
-			title: 'Hien 1',
+			title: 'Sample',
 		},
 		{
 			id: 'hien2',
@@ -67,4 +74,4 @@ const AddTab = createTab({
 	],
 })
 
-export const HienPage = compose(pure)(AddTab)
+export const HienPage = compose(pure)(addTab)
