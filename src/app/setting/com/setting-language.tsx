@@ -29,7 +29,7 @@ const langs = {
 }
 const SettingLanguageView = ({ langCode, updateLanguage }: ISettingLanguagePropsIn) => {
 	return (
-	<div className={'.u-flex-row'}>
+	<div className={'.u-flex--row'}>
 		<FormattedMessage id="Setting.selectLanguage" />
 		<Select
 			items={[
