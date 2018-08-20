@@ -7,6 +7,7 @@
   "dependencies": {
     "@blueprintjs/core": "^3.0.1",
     "@blueprintjs/datetime": "^3.0.0",
+    "@blueprintjs/docs-theme": "^3.0.1",
     "@blueprintjs/select": "^3.0.0",
     "@storybook/addon-storyshots": "^3.4.1",
     "@types/create-react-class": "^15.6.2",
