@@ -1,12 +1,14 @@
 import {
 	Button,
 	Classes,
+	Icon,
 	IMenuItemProps,
 	Menu,
 	MenuDivider,
 	MenuItem,
 	Popover,
-	Position} from '@blueprintjs/core'
+	Position,
+	Text} from '@blueprintjs/core'
 import * as classnames from 'classnames'
 import { TRootState } from 'conf/redux/reducer'
 import { Location } from 'history'
@@ -14,8 +16,9 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps, withRouter } from 'react-router'
 import { Link, LinkProps } from 'react-router-dom'
-import { compose, pure } from 'recompose'
-
+import { compose, pure, renderComponent } from 'recompose'
+import * as Immutable from 'seamless-immutable'
+import { v4 } from 'uuid'
 const  styles = require('./menuContent.scss')
 
 interface ILinkPropsOut extends IMenuItemProps {
@@ -29,7 +32,6 @@ const isRouteEqualPathname = (location: Location, pathLink: string) => {
 			|| false
 }
 const LinkItemView = ({ icon, text, path, match, location, history }: ILinkPropsIn) => {
-	console.log('match, location', match, location, history)
 	return (
 		<Link
 			className={classnames('o-menu__link', { 'o-menu__link--selected': isRouteEqualPathname(location, path) })}
@@ -48,35 +50,25 @@ const SlideBar = (
 			<LinkItem icon="lock" text="Dashboard" path="/"  />
 		</div>
 		<div>
-			<MenuDivider title="Example" />
-			<LinkItem icon="lock" text="Man" path="/man" />
-			<LinkItem icon="lock" text="Hien" path="/hien" />
-			<LinkItem icon="lock" text="Test" path="/test" />
+			<MenuDivider title="Test" />
+			{/* <LinkItem icon="lock" text="Man" path="/man" />
+			<LinkItem icon="lock" text="Hien" path="/hien" /> */}
+			<LinkItem icon="lock" text="Test Tab" path="/test" />
 		</div>
 	</Menu>
 )
 
- const MenuContentView = ({ breadcrumbItems }: IMenuContentPropsIn) => (
+const MenuContentView = () => (
 	<>
 		<Popover
 			content={SlideBar}
 			position={Position.BOTTOM}
 		>
-			<Button className={Classes.MINIMAL} icon="menu" text={breadcrumbItems.join(' > ')} />
+			<Button className={Classes.MINIMAL} icon="menu">
+				MENU
+			</Button>
 		</Popover>
 	</>
 )
 
-interface IMenuContentStateProps {
-	breadcrumbItems: string[]
-}
-interface IMenuContentPropsOut {}
-interface IMenuContentPropsIn  extends IMenuContentPropsOut, IMenuContentStateProps {}
-const mapStateToProps = (state: TRootState) => ({
-	breadcrumbItems: state.layout.frameworkNavbar.breadcrumbItems,
-})
-
-const addRedux = connect(mapStateToProps)
-
-
- export const MenuContent = compose<IMenuContentPropsIn, IMenuContentPropsOut>(pure, addRedux)(MenuContentView)
+ export const MenuContent = compose(pure)(MenuContentView)

@@ -15,6 +15,7 @@ import * as React from 'react'
 import { Switch } from 'react-router'
 import { Link } from 'react-router-dom'
 import { compose } from 'recompose'
+import { Breadcrumb } from './com/breadCrumb'
 import { Footer } from './com/footer'
 import { MenuContent } from './com/menuContent'
 import { SearchBox } from './com/searchBox'
@@ -54,6 +55,8 @@ const DashBoard = ({ children }: IDashboardPropsIn) => (
 					</NavbarHeading>
 					<NavbarDivider />
 					<MenuContent />
+					<NavbarDivider />
+					<Breadcrumb />
 				<div className="c-nav__avatar-container">
 					<SearchBox />
 					<UserBox />
