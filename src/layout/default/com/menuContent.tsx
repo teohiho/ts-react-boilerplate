@@ -16,7 +16,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps, withRouter } from 'react-router'
 import { Link, LinkProps } from 'react-router-dom'
-import { compose, pure, renderComponent } from 'recompose'
+import { compose, pure, renderComponent, withStateHandlers } from 'recompose'
 import * as Immutable from 'seamless-immutable'
 import { v4 } from 'uuid'
 const  styles = require('./menuContent.scss')
@@ -58,11 +58,33 @@ const SlideBar = (
 	</Menu>
 )
 
-const MenuContentView = () => (
+interface IOpenState {
+	isOpen: boolean
+}
+interface IOpenHandler {
+	hide: () => void
+	show: () => void
+	switch: () => void
+}
+
+interface IMenuContentPropOut {}
+interface IMenuContentPropIn extends IOpenState, IOpenHandler {}
+const addOpenStateHandler = withStateHandlers(
+	{
+		isOpen: false,
+	},
+	{
+		hide: () => () => ({ isOpen: false }),
+		show: () => () => ({ isOpen: true }),
+		switchShow: ({ isOpen }) => () => ({ isOpen: !isOpen }),
+	},
+)
+const MenuContentView = ({ isOpen, show, hide }: IMenuContentPropIn) => (
 	<>
 		<Popover
 			content={SlideBar}
 			position={Position.BOTTOM}
+			// isOpen={isOpen}
 		>
 			<Button className={Classes.MINIMAL} icon="menu">
 				MENU
@@ -71,4 +93,4 @@ const MenuContentView = () => (
 	</>
 )
 
- export const MenuContent = compose(pure)(MenuContentView)
+ export const MenuContent = compose<IMenuContentPropIn, IMenuContentPropOut>(pure, addOpenStateHandler)(MenuContentView)

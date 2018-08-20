@@ -18,7 +18,6 @@ interface ICreateTabContainerPropsOut {
 	classes?: {
 		tabs?: string,
 		tab?: string,
-		title?: string,
 		body?: string,
 	}
 }
@@ -36,11 +35,14 @@ interface ITabState {
 interface ITabStateHandler {
 	changeId: (id: string) => void
 }
-
-const addLeftHandler = withStateHandlers<ITabState, {}, ICreateTabContainerPropsOut>(
-	({ selectedPath, tabs }) => ({
-		selectedId: selectedPath ? selectedPath : tabs[0].path,
-	}),
+interface ILeftHandlerProps extends ICreateTabContainerPropsOut, RouteComponentProps<any>{}
+const addLeftHandler = withStateHandlers<ITabState, {}, ILeftHandlerProps >(
+	({ selectedPath, tabs, match, location }) => {
+		return {
+			// selectedId: selectedPath ? selectedPath : tabs[0].path,
+			selectedId: selectedPath ? selectedPath : location.pathname.replace(match.path, ''),
+		}
+	},
 	{
 		changeId: () => (id: string) => ({ selectedId: id }),
 	},
@@ -81,9 +83,9 @@ const renderBodyContent = (tabs: ITabProps[] = []) => {
 	))
 }
 
-const BodyView = ({ tabs, match }: IListTabPropsIn) => {
+const BodyView = ({ tabs, match, className }: IListTabPropsIn) => {
 	const ListTab = tabs.map((tab, key) => {
-		const AddMargin = tab.component && addContainer(tab.component)
+		const AddMargin = tab.component && addContainer(tab.component, className)
 		return (
 			<Route {...tab} path={`${match.path}${tab.path}`} component={AddMargin} key={key} />
 		)
@@ -109,9 +111,9 @@ const AppTabView = ({ tabs, classes }: ICreateTabContainerPropsOut) => {
 					't-background',
 					path(['tabs'])(classes),
 				)}>
-				<ListTab tabs={tabs} className={classes && classes.title} />
+				<ListTab tabs={tabs} className={classes && classes.tab} />
 			</div>
-			<Body tabs={tabs} />
+			<Body tabs={tabs} className={classes && classes.body} />
 		</>
 	)
 }
