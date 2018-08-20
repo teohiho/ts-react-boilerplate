@@ -1,8 +1,10 @@
 import {
 	Button,
 	Classes,
+	H5,
 	Icon,
 	IMenuItemProps,
+	Intent,
 	Menu,
 	MenuDivider,
 	MenuItem,
@@ -41,8 +43,9 @@ const LinkItemView = ({ icon, text, path, match, location, history }: ILinkProps
 		</Link>
 	)
 }
+
 const LinkItem = compose<ILinkPropsIn, ILinkPropsOut>(withRouter)(LinkItemView)
-const SlideBar = (
+const SlideBar = () => (
 	<Menu className={'o-menu--vertical'}>
 		<div>
 			<MenuDivider title="NAVIGATION" />
@@ -51,10 +54,9 @@ const SlideBar = (
 		</div>
 		<div>
 			<MenuDivider title="Test" />
-			{/* <LinkItem icon="lock" text="Man" path="/man" />
-			<LinkItem icon="lock" text="Hien" path="/hien" /> */}
 			<LinkItem icon="lock" text="Test Tab" path="/test" />
 		</div>
+
 	</Menu>
 )
 
@@ -64,7 +66,7 @@ interface IOpenState {
 interface IOpenHandler {
 	hide: () => void
 	show: () => void
-	switch: () => void
+	toggle: () => void
 }
 
 interface IMenuContentPropOut {}
@@ -76,19 +78,18 @@ const addOpenStateHandler = withStateHandlers(
 	{
 		hide: () => () => ({ isOpen: false }),
 		show: () => () => ({ isOpen: true }),
-		switchShow: ({ isOpen }) => () => ({ isOpen: !isOpen }),
+		toggle: ({ isOpen }) => () => ({ isOpen: !isOpen }),
 	},
 )
-const MenuContentView = ({ isOpen, show, hide }: IMenuContentPropIn) => (
+const MenuContentView = ({ isOpen, show, hide, toggle }: IMenuContentPropIn) => (
 	<>
 		<Popover
-			content={SlideBar}
 			position={Position.BOTTOM}
-			// isOpen={isOpen}
 		>
 			<Button className={Classes.MINIMAL} icon="menu">
 				MENU
 			</Button>
+			<SlideBar />
 		</Popover>
 	</>
 )

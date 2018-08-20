@@ -12,6 +12,7 @@ import {
   Router,
 } from 'react-router-dom'
 import { compose as recompose, pure } from 'recompose'
+import { AuthenticationLayout } from '../layout/auth/page/authentication'
 const hist = createBrowserHistory()
 
 const pages = getRouteList()
@@ -30,13 +31,24 @@ const convertRouteComponent = mapObjIndexed((page: any, key: string) => {
 	},
 )
 const routesRender = compose(values, convertRouteComponent)(pages)
+const DashboardRoute = () => (
+	<DashBoardBluePrint>
+		<Switch>
+			{routesRender}
+		</Switch>
+	</DashBoardBluePrint>
+)
+const AuthenticationRoute = () => (
+	<AuthenticationLayout>
+
+	</AuthenticationLayout>
+)
 const AppRouteView = () => (
 	<Router history={hist}>
-		<DashBoardBluePrint>
-			<Switch>
-				{routesRender}
-			</Switch>
-		</DashBoardBluePrint>
+		<Switch>
+			<Route path="/auth" component={AuthenticationRoute} />
+			<Route path="/" component={DashboardRoute} />
+		</Switch>
 	</Router>
 )
 export const AppRoute = recompose()(AppRouteView)
