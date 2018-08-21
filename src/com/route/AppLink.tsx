@@ -28,4 +28,10 @@ const updateLink = (url: string, to: H.LocationDescriptor) => {
 // 		// return props
 // 	},
 // )
-const AppLink = compose(withRouter)(Link)
+const AppLinkView = (props: any) => (
+	// <Link {...props} to={`${props.match.url}${props.to}`}>
+	// 	{props.children}
+	// </Link>
+	null
+)
+const AppLink = compose(withRouter)(AppLinkView)

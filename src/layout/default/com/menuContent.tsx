@@ -16,10 +16,11 @@ import { TRootState } from 'conf/redux/reducer'
 import { Location } from 'history'
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { RouteComponentProps, withRouter } from 'react-router'
+import { match, RouteComponentProps, withRouter } from 'react-router'
 import { Link, LinkProps } from 'react-router-dom'
 import { compose, pure, renderComponent, withStateHandlers } from 'recompose'
 import * as Immutable from 'seamless-immutable'
+import { makeUpdatePath } from 'util/route'
 import { v4 } from 'uuid'
 const  styles = require('./menuContent.scss')
 
@@ -29,17 +30,25 @@ interface ILinkPropsOut extends IMenuItemProps {
 }
 interface ILinkPropsIn extends ILinkPropsOut, RouteComponentProps<any> {}
 const isRouteEqualPathname = (location: Location, pathLink: string) => {
-	return	(pathLink === '/' && location.pathname === '/' && true)
-			|| (pathLink !== '/' && location.pathname.indexOf(pathLink) === 0 && true)
+	return	(pathLink === location.pathname && true)
+			|| (location.pathname === pathLink && true)
 			|| false
 }
 const LinkItemView = ({ icon, text, path, match, location, history }: ILinkPropsIn) => {
+	const updatePath = makeUpdatePath(match)
+	const fullPath = updatePath(path)
 	return (
 		<Link
-			className={classnames('o-menu__link', { 'o-menu__link--selected': isRouteEqualPathname(location, path) })}
-			to={path}
+			className={
+				classnames(
+					'o-menu__link',
+					Classes.POPOVER_DISMISS,
+					{ 'o-menu__link--selected': isRouteEqualPathname(location, fullPath) },
+				)
+			}
+			to={fullPath}
 		>
-			<MenuItem icon={icon} text={text} />
+			<MenuItem icon={icon} text={text} className={Classes.POPOVER_DISMISS}/>
 		</Link>
 	)
 }
