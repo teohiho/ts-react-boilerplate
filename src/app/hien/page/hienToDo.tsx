@@ -2,6 +2,7 @@ import {
 	Button,
 	Classes,
 	InputGroup,
+	Intent,
 	Popover,
 	Position,
 	Tag,
@@ -25,6 +26,8 @@ interface ITodoState {
 export interface IToDoStateHandle extends ITextStateHandle, IIsOpenStateHandle{
 	handleAddToDo: (text:string) => void,
 	handleDeleteToDo: (key:number) => void,
+	handleEditToDo: (key:number, text:string) => void,
+
 }
 
 interface IToDoPropsIn extends IToDoPropsOut, IToDoStateHandle, ITodoState, ITextState, IIsOpenState {
@@ -55,9 +58,27 @@ export const toDoState = withStateHandlers<ITodoState, any, any>(
 
 			}
 		},
+
+		handleEditToDo: ({ listToDo }) => (key, textEdit) => {
+			console.log('textEdit:', textEdit)
+			console.log('listToDo:', listToDo)
+			console.log('key:', key)
+			return {
+				listToDo: [
+					...listToDo.slice(0,  key),
+					// {
+					// 	...listToDo[key],
+					// 	textEdit,
+					// },
+					textEdit,
+					...listToDo.slice(key + 1),
+				],
+
+			}
+		},
 	},
 )
-const getContents = ({ text, onChangeText }:IContentPropsIn) => (
+const ContentView = ({ text, onChangeText, index, updateValue }:IContentPropsIn) => (
 	<>
 		<div key="input">
 			<label className={Classes.LABEL}>
@@ -66,16 +87,28 @@ const getContents = ({ text, onChangeText }:IContentPropsIn) => (
 					onChange={event => onChangeText(event.target.value)}
 				/>
 			</label>
+			<Button
+				intent={Intent.SUCCESS}
+				className={Classes.POPOVER_DISMISS}
+				onClick={(event:any) => updateValue(index, text)}
+			>
+				Edit
+			</Button>
+
+
+			{/* <button onClick={() => handleDeleteToDo(key)} className="bp3-tag-remove"></button> */}
 		</div>
 	</>
 )
 
-const Content = compose<IContentPropsIn, IContentPropsOut>(textState)(getContents)
+const Content = compose<IContentPropsIn, IContentPropsOut>(textState)(ContentView)
 
 interface IContentPropsOut {
-	text: string
+	text: string,
+	index: number,
+	updateValue: (key:number, text:string) => void,
 }
-interface IContentPropsIn extends ITextState, IContentPropsOut, ITextStateHandle{
+interface IContentPropsIn extends ITextState, IContentPropsOut, ITextStateHandle, IToDoStateHandle{
 
 }
 
@@ -86,6 +119,7 @@ const HienToDoView =  ({ text,
 			listToDo,
 			handleAddToDo,
 			handleDeleteToDo,
+			handleEditToDo,
 			handleBooleanChange }: IToDoPropsIn) => {
 	return (
 		<>
@@ -124,7 +158,7 @@ const HienToDoView =  ({ text,
 									{task}
 								</Tag>
 								{/* {getContents({ text: task })} */}
-								<Content text={task} />
+								<Content text={task} index={key} updateValue={handleEditToDo} />
 							</Popover>
 							<button onClick={() => handleDeleteToDo(key)} className="bp3-tag-remove"></button>
 

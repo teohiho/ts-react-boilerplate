@@ -6,6 +6,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { compose, pure } from 'recompose'
 import { Dispatch } from 'redux'
+import { HienComposePage } from './hienCompose'
 import { HienHelloPage } from './hienHello'
 
 const style = require('../scss/style.scss')
@@ -39,9 +40,11 @@ const SettingPageView = () => (
 		<div className="p-h-xl">
 		Spacing
 		</div>
-
 	</>
 )
+
+
+
 const SpecialCom = () => (<h1>Abc</h1>)
 
 const addTab = createTab({
@@ -57,19 +60,24 @@ const addTab = createTab({
 	],
 	tabs: [
 		{
-			id: 'hien3',
+			id: 'hien1',
 			panel: <HienHelloPage />,
 			title: 'Hello',
 		},
 		{
-			id: 'hien1',
+			id: 'hien2',
 			panel: <SettingPageView />,
 			title: 'Sample',
 		},
 		{
-			id: 'hien2',
+			id: 'hien3',
 			panel: <SpecialCom />,
-			title: 'Hien 2',
+			title: 'Hien',
+		},
+		{
+			id: 'hien4',
+			panel: <HienComposePage  />,
+			title: 'Hien Compose',
 		},
 	],
 })
