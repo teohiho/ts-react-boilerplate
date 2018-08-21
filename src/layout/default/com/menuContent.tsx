@@ -65,6 +65,11 @@ const SlideBar = () => (
 			<MenuDivider title="Test" />
 			<LinkItem icon="lock" text="Test Tab" path="/test" />
 		</div>
+		<div>
+			<MenuDivider title="Example" />
+			<LinkItem icon="lock" text="Man" path="/man" />
+			<LinkItem icon="lock" text="Hien" path="/hien" />
+		</div>
 
 	</Menu>
 )
