@@ -24,9 +24,14 @@ const compose1 = (fn1:any, fn2:any) => (text:string) => {
 const HienComposeView = () => {
 	const letters = compose1(words, unique)
 	const chars: string[] = letters('I am Hien')
-	return chars.map((task:string, key:number) => (
+	const taskList = chars.map((task:string, key:number) => (
 		<div key={key}>{task}</div>
 	))
+	return (
+		<>
+			{taskList}
+		</>
+	)
 }
 
 export const HienComposePage = HienComposeView

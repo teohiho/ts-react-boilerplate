@@ -2,12 +2,14 @@
 import { Switch } from '@blueprintjs/core'
 import { createTab } from 'com/index'
 import { TRootState } from 'conf/redux/reducer'
+import { createTabContainer } from 'layout/default/createTabContainer'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { compose, pure } from 'recompose'
 import { Dispatch } from 'redux'
 import { HienComposePage } from './hienCompose'
 import { HienHelloPage } from './hienHello'
+
 
 const style = require('../scss/style.scss')
 
@@ -47,39 +49,66 @@ const SettingPageView = () => (
 
 const SpecialCom = () => (<h1>Abc</h1>)
 
-const addTab = createTab({
-	breadcrumbItems: [
-		{
-			text: 'Grand',
-			href: '#',
-		},
-		{
-			text: 'Parent',
-			href: '#',
-		},
-	],
+const addTab = createTabContainer({
 	tabs: [
 		{
-			id: 'hien1',
-			panel: <HienHelloPage />,
-			title: 'Hello',
+			path: '/',
+			component: HienHelloPage,
+			title:'Hello',
+			exact: true,
 		},
 		{
-			id: 'hien2',
-			panel: <SettingPageView />,
+			path: '/sample',
+			component: SettingPageView,
 			title: 'Sample',
 		},
 		{
-			id: 'hien3',
-			panel: <SpecialCom />,
+			path: '/hien',
+			component: SpecialCom,
 			title: 'Hien',
 		},
 		{
-			id: 'hien4',
-			panel: <HienComposePage  />,
-			title: 'Hien Compose',
+			path: '/compose',
+			component: HienComposePage,
+			title: 'Compose',
 		},
 	],
 })
+
+
+// const addTab = createTab({
+// 	breadcrumbItems: [
+// 		{
+// 			text: 'Grand',
+// 			href: '#',
+// 		},
+// 		{
+// 			text: 'Parent',
+// 			href: '#',
+// 		},
+// 	],
+// 	tabs: [
+// 		{
+// 			id: 'hien1',
+// 			panel: <HienHelloPage />,
+// 			title: 'Hello',
+// 		},
+// 		{
+// 			id: 'hien2',
+// 			panel: <SettingPageView />,
+// 			title: 'Sample',
+// 		},
+// 		{
+// 			id: 'hien3',
+// 			panel: <SpecialCom />,
+// 			title: 'Hien',
+// 		},
+// 		{
+// 			id: 'hien4',
+// 			panel: <HienComposePage  />,
+// 			title: 'Hien Compose',
+// 		},
+// 	],
+// })
 
 export const HienPage = compose(pure)(addTab)
