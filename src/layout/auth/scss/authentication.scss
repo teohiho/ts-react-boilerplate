@@ -1,5 +1,5 @@
 :local(.body) {
-	background-image: url("~img/background-man-4.jpg");
+	background-image: url("~img/background-man-5.jpeg");
 	background-size: cover;
 	width: 100vw;
 	height: 100vh;
@@ -12,8 +12,13 @@
 	background-color: #fdfdfd;
 	justify-content: center;
 	align-content: center;
+	min-width: 300px;
 }
 :local(.btn) {
 	width: 100%;
 	background-color: #d21717 !important;
+}
+:local(.input) {
+	width: 100%;
+	margin-bottom: 10px;
 }

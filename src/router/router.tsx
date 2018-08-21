@@ -38,16 +38,16 @@ const DashboardRoute = () => (
 		</Switch>
 	</DashBoardBluePrint>
 )
-const AuthenticationRoute = () => (
-	<AuthenticationLayout>
+// const AuthenticationRoute = () => (
+// 	<AuthenticationLayout>
 
-	</AuthenticationLayout>
-)
+// 	</AuthenticationLayout>
+// )
 const AppRouteView = () => (
 	<Router history={hist}>
 		<Switch>
-			<Route path="/auth" component={AuthenticationRoute} />
-			<Route path="/" component={DashboardRoute} />
+			<Route path="/auth" component={AuthenticationLayout} />
+			<Route path="/" component={DashboardRoute}  />
 		</Switch>
 	</Router>
 )
