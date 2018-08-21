@@ -38,7 +38,7 @@ $dark-color: darken($default-color, 20%);
 		} 
 	}
 }
-
+//sss
 $colors: yellow, blue;
 @each $color in $colors {
 	.abc{
@@ -60,6 +60,7 @@ $colors: yellow, blue;
 .text1{
 	color: blue;
 }
+//sss
    
 .login-button {
 	@extend .button2, .text1;

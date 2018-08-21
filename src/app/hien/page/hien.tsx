@@ -1,5 +1,6 @@
 // import { createTabHien } from '../com-hien/createTabHien'
 import { Switch } from '@blueprintjs/core'
+import * as classnames from 'classnames'
 import { createTab } from 'com/index'
 import { TRootState } from 'conf/redux/reducer'
 import { createTabContainer } from 'layout/default/createTabContainer'
@@ -73,7 +74,22 @@ const addTab = createTabContainer({
 			title: 'Compose',
 		},
 	],
+	classes:{
+		tab: style.transparent,
+		tabs: style.transparent,
+		body: classnames(style.transparent, 'u-flex--row'),
+		// body: 'transparent',
+	},
 })
+
+
+export const AddTab = compose()(addTab)
+const Body = () => (
+	<div className={classnames(style.wrapper) } >
+		<AddTab />
+	</div>
+)
+
 
 
 // const addTab = createTab({
@@ -111,4 +127,4 @@ const addTab = createTabContainer({
 // 	],
 // })
 
-export const HienPage = compose(pure)(addTab)
+export const HienPage = compose(pure)(Body)
