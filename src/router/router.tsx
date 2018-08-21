@@ -1,15 +1,14 @@
-import { compose, identity, mapObjIndexed, omit, path, values } from 'ramda'
-import * as React from 'react'
-import { Switch } from 'react-router'
-
 import { getNavList, getRouteList } from 'app/helper'
 import { createBrowserHistory } from 'history'
 import { createContainer } from 'layout/default/createContainer'
 import { DashBoardBluePrint } from 'layout/default/layoutDefault'
+import { compose, identity, mapObjIndexed, omit, path, values } from 'ramda'
+import * as React from 'react'
+import { Switch } from 'react-router'
 import {
-  Link,
-  Route,
-  Router,
+	Link,
+	Route,
+	Router,
 } from 'react-router-dom'
 import { compose as recompose, pure } from 'recompose'
 import { AuthenticationLayout } from '../layout/auth/page/authentication'
@@ -38,16 +37,16 @@ const DashboardRoute = () => (
 		</Switch>
 	</DashBoardBluePrint>
 )
-// const AuthenticationRoute = () => (
-// 	<AuthenticationLayout>
+const AuthenticationRoute = () => (
+	<AuthenticationLayout>
 
-// 	</AuthenticationLayout>
-// )
+	</AuthenticationLayout>
+)
 const AppRouteView = () => (
 	<Router history={hist}>
 		<Switch>
-			<Route path="/auth" component={AuthenticationLayout} />
-			<Route path="/" component={DashboardRoute}  />
+			<Route path="/auth" component={AuthenticationRoute} />
+			<Route path="/" component={DashboardRoute} />
 		</Switch>
 	</Router>
 )
