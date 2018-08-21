@@ -130,7 +130,7 @@ exports.loadFile = ({ include, exclude } = {}) => ({
 	module: {
 		rules: [
 			{
-				test: /\.(jpg|png)$/,
+				test: /\.(jpg|png|jpeg)$/,
 				include,
 				exclude,
 				use: {

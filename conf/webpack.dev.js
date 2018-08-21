@@ -33,6 +33,8 @@ const developmentMainConfig = {
 		filename: 'static/js/bundle.js',
 		// There are also additional JS chunk files if you use code splitting.
 		chunkFilename: 'static/js/[name].chunk.js',
+		path: appPath.appBuild,
+		publicPath: '/',
 	},
 	// devtool: 'eval', //generated code
 	devtool: 'cheap-module-eval-source-map',

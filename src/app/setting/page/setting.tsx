@@ -1,6 +1,7 @@
 import { Switch } from '@blueprintjs/core'
 import { createTab } from 'com/index'
 import { TRootState } from 'conf/redux/reducer'
+import { createTabContainer } from 'layout/default/createTabContainer'
 import * as React from 'react'
 import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
@@ -10,6 +11,7 @@ import { SettingLanguage } from '../com/'
 import { changeTheme } from '../redux/action'
 import { TPaletteType } from '../redux/initalState'
 
+const styles = require('../scss/style.scss')
 
 interface ISettingPropsOut {
 
@@ -29,8 +31,12 @@ interface ISettingPropsIn extends ISettingPropsOut, ISettingStateToProps, ISetti
 
 const SettingView = ({ switchTheme, paletteType }: ISettingPropsIn) => (
 	<>
-		Dark Theme:
-		<Switch checked={paletteType === 'dark' ? true : false} onChange={switchTheme} />
+		<Switch
+			checked={paletteType === 'dark' ? true : false}
+			onChange={switchTheme}
+			className={'switch'}
+			label={'Dark Theme'}
+		/>
 	</>
 )
 
@@ -45,33 +51,20 @@ const withRedux = connect(mapStateToProps, mapDispatchToProps)
 
 const SettingTheme = compose<ISettingPropsIn, ISettingPropsOut>(withRedux, pure)(SettingView)
 
-const addTab = createTab({
-	breadcrumbItems: [
-		{
-			href: '#',
-			text: 'Grand',
-		},
-		{
-			href: '#',
-			text: 'Parent',
-		},
-		{
-			text: 'Child',
-		},
-	],
+const addTab = createTabContainer({
 	tabs: [
 		{
-			id: 'th',
+			path: '',
+			component: SettingTheme,
 			title: <FormattedMessage id="Setting.theme" />,
-			panel: <SettingTheme />,
+			exact: true,
 		},
 		{
-			id: 'la',
+			path: '/language',
+			component: SettingLanguage,
 			title: <FormattedMessage id="Setting.language" />,
-			panel: <SettingLanguage />,
 		},
 	],
 })
-
 
 export const SettingPage = compose<ISettingPropsIn, ISettingPropsOut>()(addTab)

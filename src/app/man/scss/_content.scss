@@ -1,0 +1,84 @@
+:local(.body) {
+	background-image: url('../../../img/background-man-3.jpeg');
+	background-size: 100vw 100vh;
+	flex: 1;
+	color: white;
+}
+
+:local(.bp3-tab) {
+	color: white;
+}
+
+:local(.nav) {
+	
+	display: flex;
+	
+	&__right {
+		flex: 1;		
+	}
+	&__left {
+		flex: 1;
+	}
+	&__input {
+		width: 300px;
+	}
+}
+:local(.tabs) {
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+			transform: translateX(-50%);
+	position: relative;
+	padding: 50px;
+	padding-bottom: 80px;
+	width: 70%;
+	height: 250px;
+	border-radius: 5px;
+	min-width: 240px;
+	&__tab-control {
+		//display: none;
+	}
+	&__ul {
+		list-style-type: none;
+		padding-left: 0;
+		display: flex;
+		flex-direction: row;
+		margin-bottom: 10px;
+		justify-content: space-between;
+		align-items: flex-end;
+		flex-wrap: wrap;
+		
+	}
+	&__li {
+		box-sizing: border-box;
+		flex: 1;
+		width: 25%;
+		padding: 0 10px;
+		text-align: center;
+	}
+}
+
+
+
+.demo0 {
+	background-color: transparent;
+    border-radius: 4px;
+    position: relative;
+    margin: 5px 3px 10px;
+    width: 100%;
+	height: 5px;
+	margin-left: 25px;
+}
+.demo0-block {
+    position: absolute;
+    width: 50px;
+    height: 5px;
+    border-radius: 4px;
+    background-color: rgb(130, 181, 198);
+}
+.demo0-button {
+	width: 100px;
+	
+}
+.transparent {
+	background-color: transparent !important;
+}

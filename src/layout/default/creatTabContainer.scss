@@ -1,0 +1,50 @@
+@import "~@blueprintjs/core/lib/scss/variables";
+
+$width: 80%;
+$time: 0.5s;
+.tab {
+	position: relative;
+	display: inline-block;
+	font-weight: 400;
+	// :first-child {
+	// 	padding-left: 0px;
+	// }
+	&:after {
+		content:'';
+		position:absolute;
+		left:0;
+		right:0;
+		top:100%;
+		width:0%;
+		background: $blue1;
+		margin-top: 3px;
+		margin-left: 50%;
+		height: 3px;
+		transition: width $time, margin-left $time;
+		.bp3-dark & {
+			background: $blue5;
+		}
+	}
+	&:hover {
+		color: $blue1 !important;
+		.bp3-dark & {
+			color: $blue5 !important;
+		}
+	}
+	&--selected {
+		// border-bottom: 1px solid red;
+		color: $blue1 !important;
+		// color: blue;
+		.bp3-dark & {
+			color: $blue5 !important;
+		}
+		font-weight: 500;
+		&:after {
+			width: $width;
+			margin-left: (100 - $width)/2;
+		}
+	}
+}
+.tabs {
+
+}

@@ -5,11 +5,14 @@
     ]
   },
   "dependencies": {
-    "@blueprintjs/core": "^3.0.1",
+    "@blueprintjs/core": "^3.3.0",
     "@blueprintjs/datetime": "^3.0.0",
+    "@blueprintjs/docs-theme": "^3.0.1",
     "@blueprintjs/select": "^3.0.0",
     "@storybook/addon-storyshots": "^3.4.1",
+    "@types/create-react-class": "^15.6.2",
     "classnames": "^2.2.6",
+    "create-react-class": "^15.6.3",
     "flexboxgrid": "^6.3.1",
     "global": "^4.3.2",
     "include-media": "^1.4.9",
@@ -21,6 +24,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-intl": "^2.4.0",
+    "react-motion": "^0.5.2",
     "react-responsive": "^5.0.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
@@ -33,8 +37,7 @@
     "reselect": "^3.0.1",
     "resolve": "1.6.0",
     "seamless-immutable": "^7.1.3",
-    "uuid": "^3.2.1",
-    "zkrn": "^1.0.15"
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.1",
@@ -51,6 +54,7 @@
     "@types/react": "^16.4.1",
     "@types/react-dom": "16.0.4",
     "@types/react-intl": "^2.3.8",
+    "@types/react-motion": "^0.0.27",
     "@types/react-redux": "^6.0.2",
     "@types/react-responsive": "^3.0.2",
     "@types/react-router": "^4.0.26",

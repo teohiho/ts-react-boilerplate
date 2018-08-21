@@ -43,8 +43,8 @@ const LoadingStateHandler = withStateHandlers(
 
 const withLifeCycle = lifecycle({
 	componentDidMount() {
-		// this.setState({ isLoading: false })
-		setTimeout(() => this.setState({ isLoading: false }), 500)
+		this.setState({ isLoading: false })
+		// setTimeout(() => this.setState({ isLoading: false }), 500)
 	},
 })
 

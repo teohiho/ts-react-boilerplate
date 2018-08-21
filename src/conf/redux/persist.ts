@@ -7,7 +7,7 @@ export const PERSIST_CONFIG = {
 	storeConfig: {
 		storage,
 		key: 'primary',
-		blacklist: ['login', 'search', 'nav'],
+		blacklist: ['login', 'search', 'nav', 'layout'],
 		// Optionally, just specify the keys you DO want stored to persistence.
 		// An empty array means 'don't store any reducers' -> infinitered/ignite#409
 		// whitelist: [],
