@@ -8,17 +8,31 @@
 	justify-content: center;
 	align-items: center;
 }
+@import '~@blueprintjs/core/src/common/_colors.scss';
+
 :local(.card) {
-	background-color: #fdfdfd;
-	justify-content: center;
-	align-content: center;
-	min-width: 300px;
-}
-:local(.btn) {
-	width: 100%;
-	background-color: #d21717 !important;
-}
-:local(.input) {
-	width: 100%;
-	margin-bottom: 10px;
+	border-radius: 8px;
+	background-color: #ffffffd7;
+	overflow: hidden;
+	&__image {
+		background-image: url('~img/photo-man--2.jpeg');
+		background-size: cover;
+		min-height: 300px;
+		width: 250px;
+	}
+	&__content {
+		max-width: 500px;
+	}
+	&__input {
+		width: 100%;
+	}
+	&__title {
+	}
+	&__btn {
+		margin-bottom: 10px;
+		width: 100%;
+	}
+	&__rule {
+		width: 100%;
+	}
 }
