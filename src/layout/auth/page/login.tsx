@@ -3,8 +3,7 @@ import * as classnames from 'classnames'
 import * as React from 'react'
 import { compose } from 'recompose'
 const style = require('../scss/authentication.scss')
-const Login = () => {
-	console.log('>>>>>>>>')
+const LoginView = () => {
 	return (
 		<Card className={classnames(style.card, 'u-flex--center')} interactive={true} elevation={Elevation.TWO}>
 			<h1 >LOGIN</h1>
@@ -24,4 +23,4 @@ const Login = () => {
 		</Card>
 	)
 }
-export const LoginLayout = compose()(Login)
+export const Login = compose()(LoginView)

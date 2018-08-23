@@ -4,7 +4,7 @@ import './loading.scss'
 const LoadingView = () => (
 	// <h1>Loading</h1>
 	<div className="c-loading">
-		<div className="u-flex-center">
+		<div className="u-flex--center">
 			<div className="sk-circle">
 				<div className="sk-circle1 sk-child"></div>
 				<div className="sk-circle2 sk-child"></div>
