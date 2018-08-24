@@ -1,14 +1,16 @@
 import * as classnames from 'classnames'
 import * as React from 'react'
-import { compose } from 'recompose'
-const styles = require('./footer.scss')
+import { compose, pure } from 'recompose'
 
-const FooterView = () => (
-	<div className="footer">
-		<div className={classnames('t-background3', 'footer__copy', 'p-v-sm', 'p-h-sm')}>
-			Copyright © 2018 Track It For Life.
+const FooterView = () => {
+	console.log('Footer')
+ 	return (
+		<div className="footer">
+			<div className={classnames('t-background3', 'footer__copy', 'p-v-sm', 'p-h-sm')}>
+				Copyright © 2018 Track It For Life.
+			</div>
 		</div>
-	</div>
-)
+	)
+}
 
-export const Footer = compose()(FooterView)
+export const Footer = compose(pure)(FooterView)

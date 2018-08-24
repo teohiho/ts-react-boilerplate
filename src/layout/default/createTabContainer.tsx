@@ -4,11 +4,12 @@ import { path } from 'ramda'
 import * as React from 'react'
 import { RouteComponentProps, RouteProps, withRouter } from 'react-router'
 import { Link,  Route, Switch } from 'react-router-dom'
-import { compose, withStateHandlers } from 'recompose'
+import { compose, mapProps, pure, withStateHandlers } from 'recompose'
 import { v4 } from 'uuid'
+import { withPropsChecker } from '../../util/react'
 import { makeUpdatePath } from '../../util/route'
 import { addContainer } from './createContainer'
-const styles = require('./creatTabContainer.scss')
+const styles = require('./scss/style.scss')
 interface ITabProps extends RouteProps {
 	path: string,
 	title: React.ReactNode,
@@ -26,7 +27,7 @@ interface IListTabPropsOut {
 	tabs: ITabProps[],
 	className?: string,
 }
-interface IListTabPropsIn extends IListTabPropsOut, RouteComponentProps<any>,  ITabState, ITabStateHandler {
+interface IListTabPropsIn extends IListTabPropsOut, RouteComponentProps<null>,  ITabState, ITabStateHandler {
 
 }
 
@@ -37,7 +38,7 @@ interface ITabStateHandler {
 	changeId: (id: string) => void
 }
 interface ILeftHandlerProps extends ICreateTabContainerPropsOut, RouteComponentProps<any>{}
-const addLeftHandler = withStateHandlers<ITabState, {}, ILeftHandlerProps >(
+const idHandler = withStateHandlers<ITabState, {}, ILeftHandlerProps >(
 	({ selectedPath, tabs, match, location }) => {
 		return {
 			// selectedId: selectedPath ? selectedPath : tabs[0].path,
@@ -53,7 +54,7 @@ const addLeftHandler = withStateHandlers<ITabState, {}, ILeftHandlerProps >(
 
 const ListTabView = ({ tabs, match, changeId, selectedId, className }: IListTabPropsIn) => {
 	const ListTab = tabs.map((tab, key) => (
-		<Link to={makeUpdatePath(match)(tab.path)} key={key}>
+		<Link to={makeUpdatePath(match.url)(tab.path)} key={key}>
 			<div
 				key={tab.path}
 				onClick={() => changeId(tab.path)}
@@ -76,7 +77,7 @@ const ListTabView = ({ tabs, match, changeId, selectedId, className }: IListTabP
 	)
 }
 
-const ListTab = compose<IListTabPropsIn, IListTabPropsOut>(withRouter, addLeftHandler)(ListTabView)
+const ListTab = compose<IListTabPropsIn, IListTabPropsOut>(pure, withRouter, idHandler)(ListTabView)
 
 const renderBodyContent = (tabs: ITabProps[] = []) => {
 	return tabs.map((tab, key) => (
@@ -99,7 +100,7 @@ const BodyView = ({ tabs, match, className }: IListTabPropsIn) => {
 }
 
 
-const Body = compose<IListTabPropsIn, IListTabPropsOut>(withRouter)(BodyView)
+const Body = compose<IListTabPropsIn, IListTabPropsOut>(pure, withRouter)(BodyView)
 
 const AppTabView = ({ tabs, classes }: ICreateTabContainerPropsOut) => {
 	return (
@@ -118,9 +119,5 @@ const AppTabView = ({ tabs, classes }: ICreateTabContainerPropsOut) => {
 		</>
 	)
 }
-
-export const createTabContainer = (options: ICreateTabContainerPropsOut) => {
-	return () => (
-		<AppTabView {...options} />
-	)
-}
+export const createTabContainer = (options: ICreateTabContainerPropsOut) =>
+	compose<ICreateTabContainerPropsOut, ICreateTabContainerPropsOut>(mapProps(() => options))(AppTabView)

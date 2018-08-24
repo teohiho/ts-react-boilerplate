@@ -1,16 +1,18 @@
+import cv from './cv'
 import dashboard from './dashboard'
 import hien from './hien'
-import man from './man'
+// import man from './man'
 // import sample from './sample'
 import setting from './setting'
 import testContainerTab from './test-container-tab'
 
 export default {
+	cv,
 	testContainerTab,
 	// layout,
 	setting,
 	dashboard,
 	// sample,
 	hien,
-	man,
+	// man,
 }

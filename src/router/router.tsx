@@ -37,10 +37,10 @@ const convertRouteComponent = (updatePath: (path: string) => string) => mapObjIn
 )
 
 const DashboardRoute = (props: RouteComponentProps<any>) => {
-	const updatePath = makeUpdatePath(props.match)
+	const updatePath = makeUpdatePath(props.match.url)
 	const routesRender = compose(values, convertRouteComponent(updatePath))(pages)
 	return (
-		<DashBoardBluePrint {...props}>
+		<DashBoardBluePrint url={props.match.url}>
 			<Switch>
 				{routesRender}
 			</Switch>
@@ -49,7 +49,7 @@ const DashboardRoute = (props: RouteComponentProps<any>) => {
 }
 
 const AuthenticationRoute = (props:any) => {
-	const updatePath = makeUpdatePath(props.match)
+	const updatePath = makeUpdatePath(props.match.url)
 	return (
 		<AuthenticationLayout>
 			<Switch>

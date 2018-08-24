@@ -1,8 +1,10 @@
 import * as classnames from 'classnames'
+import { TRootState } from 'conf/redux/reducer'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { compose, lifecycle, pure, renderComponent } from 'recompose'
 import { Dispatch } from 'redux'
+import { withPropsChecker } from 'util/react'
 import { updateNavbar } from './redux/action'
 
 interface IContaienrReduxActions {
@@ -49,16 +51,17 @@ const addBreadcrumbLc = lifecycle<IContainerPropsIn, IContainerState>({
 
 export const addRedux = connect(undefined, mapActionToProps)
 
-// export const Container = compose(pure, addRedux, addBreadcrumbLc)(ContainerView)
+export const Container = compose(pure, addRedux, addBreadcrumbLc)(ContainerView)
 
 // TODO: Try to run `breadcrumbItems` at begin lifecycle(constructor in case) in fp but still not work. That why move to class
-export const Container = compose(pure, addRedux)(ContainerView)
+// export const Container = compose(addRedux, pure)(ContainerView)
 
-export const createContainer = (options: ICreateContainerPropsOut) => (Component: React.ComponentType) => {
-	return () => (
+export const createContainer = (options: ICreateContainerPropsOut) => (BaseComponent: React.ComponentType) => {
+	return compose(addRedux, addBreadcrumbLc)(BaseComponent)
+	return (props: any) => (
 		<Container {...options} >
 			{/* {renderComponent(Component)} */}
-			<Component />
+			<BaseComponent {...props}/>
 		</Container>
 	)
 }

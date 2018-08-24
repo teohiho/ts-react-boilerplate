@@ -67,4 +67,4 @@ const addTab = createTabContainer({
 	],
 })
 
-export const SettingPage = compose<ISettingPropsIn, ISettingPropsOut>()(addTab)
+export const SettingPage = compose<ISettingPropsOut, ISettingPropsOut>()(addTab)

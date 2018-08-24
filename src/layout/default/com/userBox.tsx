@@ -9,7 +9,7 @@ import {
 	Position } from '@blueprintjs/core'
 import * as React from 'react'
 import { compose, pure } from 'recompose'
-import './userBox.scss'
+import '../scss/style.scss'
 
 const exampleMenu = (
 	<Menu>

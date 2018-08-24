@@ -22,7 +22,7 @@ import { compose, pure, renderComponent, withStateHandlers } from 'recompose'
 import * as Immutable from 'seamless-immutable'
 import { makeUpdatePath } from 'util/route'
 import { v4 } from 'uuid'
-const  styles = require('./menuContent.scss')
+const  styles = require('../scss/style.scss')
 
 interface ILinkPropsOut extends IMenuItemProps {
 	// isActive: boolean,
@@ -35,7 +35,7 @@ const isRouteEqualPathname = (location: Location, pathLink: string) => {
 			|| false
 }
 const LinkItemView = ({ icon, text, path, match, location, history }: ILinkPropsIn) => {
-	const updatePath = makeUpdatePath(match)
+	const updatePath = makeUpdatePath(match.url)
 	const fullPath = updatePath(path)
 	return (
 		<Link

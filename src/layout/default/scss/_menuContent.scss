@@ -1,14 +1,6 @@
 @import '~include-media/dist/_include-media.scss';
 @import "~@blueprintjs/core/lib/scss/variables";
 
-:local(.menu-group) {
-	// float: left;
-}
-:local(.menu) {
-	// background-color: black;
-	
-}
-
 .o-menu {
 	&--vertical {
 		display: flex;
