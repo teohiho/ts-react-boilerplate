@@ -29,7 +29,7 @@ interface ICreateContainerPropsOut {
 class ContainerView extends React.PureComponent<IContainerPropsIn, IContainerState> {
 	constructor(props: IContainerPropsIn) {
 		super(props)
-		this.props.breadcrumbItems && this.props.updateBreadcrumb(this.props.breadcrumbItems)
+		this.props.breadcrumbItems && this.props.updateBreadcrumb && this.props.updateBreadcrumb(this.props.breadcrumbItems)
 	}
 	render() {
 		return (
@@ -44,28 +44,31 @@ const mapActionToProps = (dispatch: Dispatch) => ({
 })
 
 const addBreadcrumbLc = lifecycle<IContainerPropsIn, IContainerState>({
-	componentDidMount() {
-		this.props.breadcrumbItems && this.props.updateBreadcrumb(this.props.breadcrumbItems)
+	componentWillMount() {
+		this.props.breadcrumbItems && this.props.updateBreadcrumb && this.props.updateBreadcrumb(this.props.breadcrumbItems)
 	},
 })
 
-export const addRedux = connect(undefined, mapActionToProps)
+export const breadcrumbRedux = connect(undefined, mapActionToProps)
 
-export const Container = compose(pure, addRedux, addBreadcrumbLc)(ContainerView)
+export const Container = compose(pure, breadcrumbRedux)(ContainerView)
 
 // TODO: Try to run `breadcrumbItems` at begin lifecycle(constructor in case) in fp but still not work. That why move to class
-// export const Container = compose(addRedux, pure)(ContainerView)
-
 export const createContainer = (options: ICreateContainerPropsOut) => (BaseComponent: React.ComponentType) => {
-	return compose(addRedux, addBreadcrumbLc)(BaseComponent)
 	return (props: any) => (
 		<Container {...options} >
-			{/* {renderComponent(Component)} */}
 			<BaseComponent {...props}/>
 		</Container>
 	)
 }
-
+const addBreadcrumbLc1 = (items: string[]) => lifecycle<IContainerPropsIn, IContainerState>({
+	componentWillMount() {
+		this.props.updateBreadcrumb && this.props.updateBreadcrumb(items)
+	},
+})
+export const addBreadcrumb = (items:  string[]) => (BaseComponent: React.ComponentType) => {
+	return compose(breadcrumbRedux, addBreadcrumbLc1(items))(BaseComponent)
+}
 
 interface ITab {
 	path: string,

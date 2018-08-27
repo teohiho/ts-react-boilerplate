@@ -23,7 +23,7 @@ const pages = getRouteList()
 const navConfList = getNavList()
 const convertRouteComponent = (updatePath: (path: string) => string) => mapObjIndexed((page: any, key: string) => {
 	const AddBreadCrumb = recompose(
-		path([key, 'breadcrumb'])(navConfList) ? createContainer({ breadcrumbItems: navConfList[key].breadcrumb }) : identity,
+		// TODO: Error with connect will force re-rendering and cause error on tab
 	)(page.component)
 	return (
 		<Route

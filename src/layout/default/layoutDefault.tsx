@@ -37,7 +37,6 @@ interface IDashboardPropsIn extends IDashboardPropsOut{
 	children: Switch
 }
 const DashBoard = ({ children, url }: IDashboardPropsIn) => {
-	console.log('DASHBOARD RENDERING')
 	return (
 		<div className={styles.dashboardApp}>
 			<Header url={url} />

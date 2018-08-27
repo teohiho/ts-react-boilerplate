@@ -100,9 +100,10 @@ const BodyView = ({ tabs, match, className }: IListTabPropsIn) => {
 }
 
 
-const Body = compose<IListTabPropsIn, IListTabPropsOut>(pure, withRouter)(BodyView)
+const Body = compose<IListTabPropsIn, IListTabPropsOut>(withRouter)(BodyView)
 
 const AppTabView = ({ tabs, classes }: ICreateTabContainerPropsOut) => {
+	console.log('APPTAB')
 	return (
 		<>
 			<div className={classnames(

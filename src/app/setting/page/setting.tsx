@@ -7,6 +7,7 @@ import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
 import { compose, pure } from 'recompose'
 import { Dispatch  } from 'redux'
+import { addBreadcrumb, createContainer } from '../../../layout/default/createContainer'
 import { SettingLanguage } from '../com/'
 import { changeTheme } from '../redux/action'
 import { TPaletteType } from '../redux/initalState'
@@ -67,4 +68,6 @@ const addTab = createTabContainer({
 	],
 })
 
-export const SettingPage = compose<ISettingPropsOut, ISettingPropsOut>()(addTab)
+export const SettingPage = compose<ISettingPropsOut, ISettingPropsOut>(
+	addBreadcrumb(['Setting']),
+)(addTab)

@@ -1,5 +1,5 @@
 import { createTab } from 'com/index'
-import { addContainer } from 'layout/default/createContainer'
+import { addBreadcrumb, addContainer } from 'layout/default/createContainer'
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { compose, pure } from 'recompose'
@@ -12,4 +12,8 @@ const DashboardView = () => (
 	</>
 )
 
-export const DashboardPage = compose(pure, addContainer)(DashboardView)
+export const DashboardPage = compose(
+	pure,
+	addContainer,
+	addBreadcrumb(['Dashboard']),
+)(DashboardView)

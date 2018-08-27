@@ -2,6 +2,7 @@ import { createContainer } from 'layout/default/createContainer'
 import { createTabContainer } from 'layout/default/createTabContainer'
 import * as React from 'react'
 import { compose, pure } from 'recompose'
+import { addBreadcrumb } from '../../../layout/default/createContainer'
 
 const TestContainerView1 = () => {
 	console.log('I am createContainer View 1')
@@ -39,19 +40,9 @@ const TabContainer = createTabContainer({
 			component: TestContainer2,
 			title: 'Tab 2',
 		},
-		{
-			path: '/abc3',
-			component: TestContainer2,
-			title: 'Tab 3',
-		},
-		{
-			path: '/abc4',
-			component: TestContainer2,
-			title: 'Tab 4',
-		},
 	],
 })
 
 export const TestContainerTabPage = compose(
-	// createContainer({ breadcrumbItems: ['Test', 'Container', 'Tabasdasd'] }),
+	// addBreadcrumb(['Test', 'Container']),
 )(TabContainer)
