@@ -5,16 +5,17 @@ import { match, RouteComponentProps, RouterProps, Switch } from 'react-router'
 import { getNavList, getRouteList } from 'app/helper'
 // import { AppRoute as Route } from  'com/route/AppRoute'
 import { createBrowserHistory } from 'history'
+import { Login } from 'layout/auth/com/login'
+import { RegistrationLayout } from 'layout/auth/com/registration'
 import { createContainer } from 'layout/default/createContainer'
 import { DashBoardBluePrint } from 'layout/default/layoutDefault'
 import {
-  Link,
-  Route,
-  Router,
+	Link,
+	Route,
+	Router,
 } from 'react-router-dom'
 import { compose as recompose, pure } from 'recompose'
-import { AuthenticationLayout, Login } from '../layout/auth/page/authentication'
-import { RegistrationLayout } from '../layout/auth/page/registration'
+import { AuthenticationLayout } from '../layout/auth/page/authentication'
 import { makeUpdatePath } from '../util/route'
 
 const hist = createBrowserHistory()

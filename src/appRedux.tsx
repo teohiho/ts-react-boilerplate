@@ -43,10 +43,9 @@ const LoadingStateHandler = withStateHandlers(
 
 const withLifeCycle = lifecycle({
 	componentDidMount() {
-		this.setState({ isLoading: false })
-		// setTimeout(() => this.setState({ isLoading: false }), 500)
+		// this.setState({ isLoading: false })
+		setTimeout(() => this.setState({ isLoading: false }), 800)
 	},
 })
-
 
 export const AppRedux = compose(pure, LoadingStateHandler, withLifeCycle, withLoading)(ReduxView)

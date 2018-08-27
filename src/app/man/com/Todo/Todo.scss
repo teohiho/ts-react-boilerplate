@@ -1,0 +1,23 @@
+:local(.form) {
+	color: black;
+	min-width: 400px;
+	border: 2px solid rgb(11, 48, 199);
+	border-radius: 8px;
+	box-shadow: 2px 2px 4px #000000;
+	overflow: hidden;
+	&__title {
+		display: flex;
+		width: 100%;
+		margin-bottom: 20px;
+		justify-content: center;
+	}
+	&__content {
+		display: flex;
+		width: 100%;
+		&__btn {
+			height: 30px;
+			flex-grow: 1;
+			background-color: rgba(54, 194, 82, 0.742);
+		}
+	}
+}

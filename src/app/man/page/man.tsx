@@ -4,6 +4,7 @@ import { compose, pure, withStateHandlers } from 'recompose'
 import { BlueprintView } from '../com/Blueprinttab/BlueprintDemo'
 import { TabsDemo } from '../com/tab/Tab'
 import { Test } from '../com/Test/Test'
+import { Todo } from '../com/Todo/Todo'
 const style = require('../scss/man.scss')
 
 // <=====================================================================================>
@@ -24,6 +25,11 @@ const addTabView = createTabContainer({
 			path: '/blueprint',
 			component: BlueprintView,
 			title: 'Blueprint css',
+		},
+		{
+			path: '/todo',
+			component: Todo,
+			title: 'Todo App',
 		},
 	],
 	classes: {
