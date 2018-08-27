@@ -18,7 +18,6 @@ const PortraitView = () => (
 				<Input
 					leftIcon="box"
 					placeholder="Email"
-					inputRef={a = () => console.log(a)}
 				/>
 				<Input
 					leftIcon="user"
