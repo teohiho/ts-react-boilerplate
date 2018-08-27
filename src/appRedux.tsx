@@ -48,5 +48,4 @@ const withLifeCycle = lifecycle({
 	},
 })
 
-
 export const AppRedux = compose(pure, LoadingStateHandler, withLifeCycle, withLoading)(ReduxView)

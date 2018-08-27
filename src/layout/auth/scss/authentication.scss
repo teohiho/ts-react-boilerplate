@@ -1,21 +1,22 @@
 :local(.body) {
-	background-image: url("~img/background-man-5.jpeg");
+	background-image: url("~img/background-man-7-1.jpg");
 	background-size: cover;
+	// opacity: 0.4;
 	width: 100vw;
-	height: 100vh;
 	background-color: transparent;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex:1;
 }
 @import '~@blueprintjs/core/src/common/_colors.scss';
 
 :local(.card) {
 	border-radius: 8px;
-	background-color: #ffffffd7;
+	background-color: rgba($color: #fff, $alpha: 0.5);
 	overflow: hidden;
 	&__image {
-		background-image: url('~img/photo-man--2.jpeg');
+		background-image: url('~img/background-man-7.jpeg');
 		background-size: cover;
 		min-height: 300px;
 		width: 250px;

@@ -1,18 +1,18 @@
-import { Button, Card, Elevation, InputGroup } from '@blueprintjs/core'
 import * as classnames from 'classnames'
-import { path } from 'ramda'
 import * as React from 'react'
-import { Route, Switch } from 'react-router'
-import { compose } from 'recompose'
-import { RegistrationLayout } from './registration'
+import { compose, pure } from 'recompose'
+import { Footer } from '../../default/com/footer'
 const style = require('../scss/authentication.scss')
 
 const Authentication = (props: any) => {
 	return (
-		<div className={style.body}>
-			{props.children}
+		<div className={classnames('u-flex--1', 'u-size--min-vh--full')} >
+			<div className={classnames('u-flex--1', style.body)}>
+				{props.children}
+			</div >
+				<Footer/>
 		</div >
 	)
 }
 
-export const AuthenticationLayout = compose()(Authentication)
+export const AuthenticationLayout = compose(pure)(Authentication)
