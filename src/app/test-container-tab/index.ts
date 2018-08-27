@@ -1,4 +1,3 @@
-import { nav } from './conf/nav'
 import { route } from './conf/route'
 
 export default {
@@ -6,7 +5,6 @@ export default {
 
 	// Config
 	route,
-	nav,
 	// Redux
 	// reducer,
 	// saga,

@@ -7,7 +7,6 @@ import { getNavList, getRouteList } from 'app/helper'
 import { createBrowserHistory } from 'history'
 import { Login } from 'layout/auth/com/login'
 import { RegistrationLayout } from 'layout/auth/com/registration'
-import { createContainer } from 'layout/default/createContainer'
 import { DashBoardBluePrint } from 'layout/default/layoutDefault'
 import {
 	Link,

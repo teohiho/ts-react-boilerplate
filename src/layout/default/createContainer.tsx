@@ -10,73 +10,39 @@ import { updateNavbar } from './redux/action'
 interface IContaienrReduxActions {
 	updateBreadcrumb: (items: string[]) => void
 }
-interface IContainerReduxProps {
+
+interface IContainerPropsOut extends IBreadCrumbPropsOut{
 
 }
-
-interface IContainerPropsOut extends ICreateContainerPropsOut{
-
-}
-interface IContainerPropsIn extends IContainerPropsOut, IContainerReduxProps, IContaienrReduxActions {
+interface IContainerPropsIn extends IContainerPropsOut, IContaienrReduxActions {
 	children: any,
 }
 interface IContainerState {}
 
-interface ICreateContainerPropsOut {
+interface IBreadCrumbPropsOut {
 	breadcrumbItems: string[],
 }
 
-class ContainerView extends React.PureComponent<IContainerPropsIn, IContainerState> {
-	constructor(props: IContainerPropsIn) {
-		super(props)
-		this.props.breadcrumbItems && this.props.updateBreadcrumb && this.props.updateBreadcrumb(this.props.breadcrumbItems)
-	}
-	render() {
-		return (
-			<>
-				{this.props.children}
-			</>
-		)
-	}
-}
 const mapActionToProps = (dispatch: Dispatch) => ({
 	updateBreadcrumb: (items: string[]) => dispatch(updateNavbar(items)),
 })
 
-const addBreadcrumbLc = lifecycle<IContainerPropsIn, IContainerState>({
-	componentWillMount() {
-		this.props.breadcrumbItems && this.props.updateBreadcrumb && this.props.updateBreadcrumb(this.props.breadcrumbItems)
-	},
-})
-
-export const breadcrumbRedux = connect(undefined, mapActionToProps)
-
-export const Container = compose(pure, breadcrumbRedux)(ContainerView)
-
 // TODO: Try to run `breadcrumbItems` at begin lifecycle(constructor in case) in fp but still not work. That why move to class
-export const createContainer = (options: ICreateContainerPropsOut) => (BaseComponent: React.ComponentType) => {
-	return (props: any) => (
-		<Container {...options} >
-			<BaseComponent {...props}/>
-		</Container>
-	)
-}
-const addBreadcrumbLc1 = (items: string[]) => lifecycle<IContainerPropsIn, IContainerState>({
+// Check this commit: 181227922503bd0ae1452deca2282598b77fd4a3
+
+const addBreadcrumbLc = (items: string[]) => lifecycle<IContainerPropsIn, IContainerState>({
 	componentWillMount() {
 		this.props.updateBreadcrumb && this.props.updateBreadcrumb(items)
 	},
 })
+export const breadcrumbRedux = connect(undefined, mapActionToProps)
+
 export const addBreadcrumb = (items:  string[]) => (BaseComponent: React.ComponentType) => {
-	return compose(breadcrumbRedux, addBreadcrumbLc1(items))(BaseComponent)
+	return compose(breadcrumbRedux, addBreadcrumbLc(items))(BaseComponent)
 }
 
-interface ITab {
-	path: string,
-
-}
-
-export const addContainer = (Component: React.ComponentType, className?: string) => () => (
+export const addContainer = (BaseComponent: React.ComponentType, className?: string) => () => (
 	<div className={classnames('p-h-md', 'u-flex--1',  't-background', className)}>
-		<Component />
+		<BaseComponent />
 	</div>
 )

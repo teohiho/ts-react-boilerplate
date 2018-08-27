@@ -1,4 +1,3 @@
-import { createContainer } from 'layout/default/createContainer'
 import { createTabContainer } from 'layout/default/createTabContainer'
 import * as React from 'react'
 import { compose, pure } from 'recompose'
@@ -18,14 +17,10 @@ const TestContainerView2 = () => (
 	</>
 )
 const TestContainer1 = compose(
-	createContainer({
-		breadcrumbItems: ['Test', 'Container', 'Tab1'],
-	}),
+	addBreadcrumb(['Test', 'Container', 'Tab1']),
 )(TestContainerView1)
 const TestContainer2 = compose(
-	createContainer({
-		breadcrumbItems: ['Test', 'Container', 'Tab2'],
-	}),
+	addBreadcrumb(['Test', 'Container', 'Tab2']),
 )(TestContainerView2)
 const TabContainer = createTabContainer({
 	tabs: [
@@ -44,5 +39,4 @@ const TabContainer = createTabContainer({
 })
 
 export const TestContainerTabPage = compose(
-	// addBreadcrumb(['Test', 'Container']),
 )(TabContainer)
