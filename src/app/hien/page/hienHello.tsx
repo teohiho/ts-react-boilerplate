@@ -61,19 +61,24 @@ export const helloState = withStateHandlers<IHelloState, any, any>(
 const HienHelloView = ({ text, handleChangeText, result, onClickButton, isHidden, onChangeText }: IHelloPropsIn) => {
 	return (
 		<>
-			<h3 className={classnames(style.title, 'p-b-sm')}>SAY SOMETHING</h3>
-			<InputGroup type="text" placeholder="What is your name?" value={text}
-				large={true}
-				onKeyPress={event => event.key === 'Enter' ? handleChangeText(text) : null}
-				onChange={(event: any) => onChangeText(event.target.value)} />
-			<Button onClick={() => handleChangeText(text)} >
-				Done
-			</Button>
-			{/* {isHidden ? '' : result } */}
-			<div className="p-t-sm">
-				{result}
+			<div className="section1">
+				<h3 className={classnames(style.title, 'p-b-sm')}>SAY SOMETHING</h3>
+				<InputGroup type="text" placeholder="What is your name?" value={text}
+					large={true}
+					onKeyPress={event => event.key === 'Enter' ? handleChangeText(text) : null}
+					onChange={(event: any) => onChangeText(event.target.value)} />
+				<Button onClick={() => handleChangeText(text)} >
+					Done
+				</Button>
+				{/* {isHidden ? '' : result } */}
+				<div className="p-t-sm">
+					{result}
+				</div>
 			</div>
-			<HienToDoPage textHello= {text}/>
+			<div className="section2">
+				<HienToDoPage textHello= {text}/>
+			</div>
+			<div className="clear"></div>
 		</>
 	)
 }
