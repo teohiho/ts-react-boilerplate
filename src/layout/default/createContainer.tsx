@@ -1,5 +1,6 @@
 import * as classnames from 'classnames'
 import { TRootState } from 'conf/redux/reducer'
+import { identity, path } from 'ramda'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { compose, lifecycle, pure, renderComponent } from 'recompose'
@@ -40,8 +41,20 @@ export const breadcrumbRedux = connect(undefined, mapActionToProps)
 export const addBreadcrumb = (items:  string[]) => (BaseComponent: React.ComponentType) => {
 	return compose(breadcrumbRedux, addBreadcrumbLc(items))(BaseComponent)
 }
+interface IContainerProps {
+	breadcrumbItems?: string[],
+	classes?: {
+		container?: string,
+	}
+}
+export const addContainer = (options: IContainerProps = {}) => {
+	return compose(
+		addContainerClassName(options && options.classes && options.classes.container),
+		options.breadcrumbItems ? addBreadcrumb(options.breadcrumbItems) : identity,
+	)
+}
 
-export const addContainer = (BaseComponent: React.ComponentType, className?: string) => () => (
+export const addContainerClassName = (className?: string) => (BaseComponent: React.ComponentType) => () => (
 	<div className={classnames('p-h-md', 'u-flex--1',  't-background', className)}>
 		<BaseComponent />
 	</div>

@@ -8,7 +8,7 @@ import { compose, mapProps, pure, withStateHandlers } from 'recompose'
 import { v4 } from 'uuid'
 import { withPropsChecker } from '../../util/react'
 import { makeUpdatePath } from '../../util/route'
-import { addContainer } from './createContainer'
+import { addContainerClassName } from './createContainer'
 const styles = require('./scss/style.scss')
 interface ITabProps extends RouteProps {
 	path: string,
@@ -38,7 +38,7 @@ interface ITabStateHandler {
 	changeId: (id: string) => void
 }
 interface ILeftHandlerProps extends ICreateTabContainerPropsOut, RouteComponentProps<any>{}
-const idHandler = withStateHandlers<ITabState, {}, ILeftHandlerProps >(
+const idStateHandler = withStateHandlers<ITabState, {}, ILeftHandlerProps >(
 	({ selectedPath, tabs, match, location }) => {
 		return {
 			// selectedId: selectedPath ? selectedPath : tabs[0].path,
@@ -77,7 +77,7 @@ const ListTabView = ({ tabs, match, changeId, selectedId, className }: IListTabP
 	)
 }
 
-const ListTab = compose<IListTabPropsIn, IListTabPropsOut>(pure, withRouter, idHandler)(ListTabView)
+const ListTab = compose<IListTabPropsIn, IListTabPropsOut>(withRouter, idStateHandler)(ListTabView)
 
 const renderBodyContent = (tabs: ITabProps[] = []) => {
 	return tabs.map((tab, key) => (
@@ -87,7 +87,7 @@ const renderBodyContent = (tabs: ITabProps[] = []) => {
 
 const BodyView = ({ tabs, match, className }: IListTabPropsIn) => {
 	const ListTab = tabs.map((tab, key) => {
-		const AddMargin = tab.component && addContainer(tab.component, className)
+		const AddMargin = tab.component && compose(addContainerClassName(className))(tab.component)
 		return (
 			<Route {...tab} path={`${match.path}${tab.path}`} component={AddMargin} key={key} />
 		)

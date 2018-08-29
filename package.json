@@ -14,6 +14,7 @@
     "classnames": "^2.2.6",
     "create-react-class": "^15.6.3",
     "flexboxgrid": "^6.3.1",
+    "formik": "^1.1.1",
     "global": "^4.3.2",
     "include-media": "^1.4.9",
     "lodash": "^4.17.10",

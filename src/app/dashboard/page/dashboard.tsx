@@ -14,6 +14,9 @@ const DashboardView = () => (
 
 export const DashboardPage = compose(
 	pure,
-	addContainer,
-	addBreadcrumb(['Dashboard']),
+	addContainer(
+		{
+			breadcrumbItems: ['Setting'],
+		},
+	),
 )(DashboardView)

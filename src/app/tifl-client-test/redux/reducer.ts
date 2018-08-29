@@ -2,16 +2,16 @@ import { from } from 'seamless-immutable'
 import ActionTypes from './actionType'
 
 const {
-  CHANGE_CV,
+  CHANGE_TIFL_CLIENT_TEST,
 } = ActionTypes
-interface ICvAction {
+interface ITiflClientTestAction {
 	type: string,
 	[key: string]: any
 }
 
-export const reducer = (state= from({}), action: ICvAction) => {
+export const reducer = (state= from({}), action: ITiflClientTestAction) => {
   switch (action.type) {
-	case CHANGE_CV:
+	case CHANGE_TIFL_CLIENT_TEST:
 		return state
 	default:
 		return state

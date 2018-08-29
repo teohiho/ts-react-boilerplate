@@ -6,7 +6,6 @@ export default {
 
 	// Config
 	route,
-	nav,
 
 	// Redux
 	// reducer,
