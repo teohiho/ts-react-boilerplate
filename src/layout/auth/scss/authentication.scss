@@ -13,13 +13,12 @@
 
 :local(.card) {
 	border-radius: 8px;
-	background-color: rgba($color: #fff, $alpha: 0.5);
+	background-color: #ffffffd7;
 	overflow: hidden;
 	&__image {
-		background-image: url('~img/background-man-7.jpeg');
+		background-image: url('~img/photo-man--2.jpeg');
 		background-size: cover;
-		min-height: 300px;
-		width: 250px;
+		min-width: 250px;
 	}
 	&__content {
 		max-width: 500px;

@@ -1,6 +1,3 @@
-import { Alignment, AnchorButton, Button, ButtonGroup, FormGroup, H1, InputGroup , Navbar, Tabs } from '@blueprintjs/core'
-import { createTab } from 'com/index'
-import { createTabContainer } from 'layout/default/createTabContainer'
 import * as React from 'react'
 import { Motion, spring, TransitionMotion } from 'react-motion'
 import { compose, pure, withStateHandlers } from 'recompose'
