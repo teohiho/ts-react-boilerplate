@@ -4,10 +4,11 @@
 	border-radius: 8px;
 	background-color: #ffffffd7;
 	overflow: hidden;
+	max-width: 600px;
 	&__image {
 		background-image: url('~img/photo-man--2.jpeg');
 		background-size: cover;
-		width: 250px;
+		min-width: 250px;
 	}
 	&__content {
 		max-width: 500px;
