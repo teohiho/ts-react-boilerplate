@@ -1,6 +1,7 @@
 import * as classnames from 'classnames'
 import * as React from 'react'
 import { compose, pure } from 'recompose'
+import './footer.scss'
 
 const FooterView = () => {
 	console.log('Footer')

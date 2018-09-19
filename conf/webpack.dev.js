@@ -8,7 +8,9 @@ const { appPath } = require('./helper/path')
 const { commonConfig } = require('./webpack.common')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
-
+// let DOMAIN = "demo.trackitforlife.com"
+// let SERVER_BASE = `https://${DOMAIN}/`;
+const { DOMAIN, SERVER_BASE } = require('../setting')
 const developmentMainConfig = {
 	mode: 'development',
 	devServer: {
@@ -19,8 +21,8 @@ const developmentMainConfig = {
 		hot: true,
 		overlay: false,
 		open: true,
-		port: 3000,
-		host: '0.0.0.0',
+		port: 8000,
+		host: DOMAIN,
 		compress: true,
 		historyApiFallback: true,
 	},
@@ -34,7 +36,7 @@ const developmentMainConfig = {
 		// There are also additional JS chunk files if you use code splitting.
 		chunkFilename: 'static/js/[name].chunk.js',
 		path: appPath.appBuild,
-		publicPath: '/',
+		publicPath: SERVER_BASE,
 	},
 	// devtool: 'eval', //generated code
 	devtool: 'cheap-module-eval-source-map',

@@ -17,7 +17,7 @@ export const registerUserLogger = (user: TUser) => {
 }
 
 export const settingLogrocket = () => {
-	const appName = 'otk1d8/react-ts-boilderplate'
+	const appName = 'tifl/react-ts-boilderplate'
 	LogRocket.init(appName)
 	// after calling LogRocket.init()
 	setupLogRocketReact(LogRocket)

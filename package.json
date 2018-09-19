@@ -11,6 +11,7 @@
     "@blueprintjs/select": "^3.0.0",
     "@storybook/addon-storyshots": "^3.4.1",
     "@types/create-react-class": "^15.6.2",
+    "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "create-react-class": "^15.6.3",
     "flexboxgrid": "^6.3.1",

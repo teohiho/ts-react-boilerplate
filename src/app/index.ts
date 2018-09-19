@@ -4,13 +4,13 @@ import hien from './hien'
 import man from './man'
 // import sample from './sample'
 import setting from './setting'
-import testContainerTab from './test-container-tab'
+import test from './test'
 import tiflClientTest from './tifl-client-test'
 
 export default {
+	test,
 	tiflClientTest,
 	authentication,
-	testContainerTab,
 	setting,
 	dashboard,
 	// sample,

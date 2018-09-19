@@ -5,6 +5,7 @@ export default {
 
 	// Config
 	route,
+
 	// Redux
 	// reducer,
 	// saga,

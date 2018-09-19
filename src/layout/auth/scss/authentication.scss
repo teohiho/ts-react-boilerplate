@@ -13,15 +13,15 @@
 
 :local(.card) {
 	border-radius: 8px;
-	background-color: #ffffffd7;
 	overflow: hidden;
 	&__image {
 		background-image: url('~img/photo-man--2.jpeg');
 		background-size: cover;
 		min-width: 250px;
+		min-height: 400px;
 	}
 	&__content {
-		max-width: 500px;
+		max-width: 600px;
 	}
 	&__input {
 		width: 100%;
@@ -31,6 +31,9 @@
 	&__btn {
 		margin-bottom: 10px;
 		width: 100%;
+		// For keyclock 
+		text-align: center;
+		width: 200px;
 	}
 	&__rule {
 		width: 100%;

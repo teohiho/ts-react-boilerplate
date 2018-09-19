@@ -1,8 +1,8 @@
 import { generateActionTypeList } from 'util/redux/actionType'
 
-const type = 'testContainerTab'
+const type = 'test'
 
 export default generateActionTypeList(type, { actionType: [
-	'CHANGE_TEST_CONTAINER_TAB',
-	'CHANGE_TEST_CONTAINER_TAB_SAGA',
+	'CHANGE_TEST',
+	'CHANGE_TEST_SAGA',
 ] })

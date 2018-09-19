@@ -116,10 +116,10 @@ exports.loadJs = ({ include, exclude } = {}) => ({
 		rules: [
 			{
 				test: /\.(js|jsx|mjs)$/,
-				loader: 'source-map-loader',
-				enforce: 'pre',
-				include: appPath.appSrc || include,
-				exclude
+				// loader: 'source-map-loader',
+				// enforce: 'pre',
+				// include: appPath.appSrc || include,
+				// exclude
 			}
 		]
 	}

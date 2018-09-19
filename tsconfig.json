@@ -12,7 +12,7 @@
 
 		// If lib in node_modules has problems
 		"skipLibCheck": true,
-		"rootDir": "./",
+		"rootDirs": ["./"],
 		"experimentalDecorators": true,
 		"forceConsistentCasingInFileNames": true,
 		"noImplicitReturns": true,
@@ -24,7 +24,8 @@
 		"baseUrl": "./src",
 		"paths": {
 			"@asset/*": ["./asset/*"],
-			"@fii-client": ["./3rd/fii-client/dist/index.js"]
+			"@nietzsche-client": ["3rd/nietzsche-client/src/index.ts"],
+			"@settingConfig": ["./settingConfig.ts"]
 		}
 	},
 	"exclude": [

@@ -28,7 +28,7 @@ const addCheckboxStateHandlers = withStateHandlers(
 		isChanged: ({ isChecked }) => () => ({ isChecked: !isChecked }),
 	},
 )
-interface ILoginPropsIn {}
+interface ILoginPropsIn extends FormikProps<ILoginFormPropsIn> {}
 const LandscapeView = () => (
 	<MediaQuery orientation="landscape">
 			<div className={`${style.card}__image`} />
@@ -38,7 +38,7 @@ const PortraitView = () => (
 	<MediaQuery orientation="portrait">
 	</MediaQuery>
 )
-const LoginView = () => {
+const LoginView = ({  isSubmitting, handleSubmit }: ILoginPropsIn) => {
 	const User = makeFormikInput({ className: 'm-b-none' })({ leftIcon: 'user', placeholder: 'username' })
 	const Password = makeFormikInput(
 		{ className: 'm-b-none' },
@@ -48,12 +48,25 @@ const LoginView = () => {
 		<div className={classnames(style.card, 'u-flex--row', 't-background3')}>
 			<LandscapeView />
 			<PortraitView />
-			<div
+			<form
 				className={classnames('u-flex--center', 'p-h-sm', 'p-v-sm')}
+				onSubmit={handleSubmit}
 				>
+				<H2 className={classnames(`${style.card}__title`)}>
+					LOG IN
+				</H2>
+				<Field type="user" name="user" render={User} />
+				<Field type="password" name="password" render={Password}/>
+				{/* <Checkbox
+					className={'m-t-md'}
+					// checked={isChecked}
+					// onClick={isChanged}
+					label="Remember password"
+				/> */}
 				<Button
 					type="submit"
 					// disabled={isSubmitting}
+					loading={isSubmitting}
 					intent={Intent.SUCCESS}
 					className={classnames(`${style.card}__btn`, 'm-t-md')}
 					large
@@ -61,12 +74,48 @@ const LoginView = () => {
 					SIGN IN
 				</Button>
 				<hr className={'c-hr-blur'}/>
-
-			</div>
+				<Link to="#" className="m-t-sm">
+					Forgot username or password
+				</Link>
+				{/* <Link to="/auth/register">
+					<Button intent={Intent.PRIMARY} className={`${style.card}__btn`} large>
+						SIGN UP
+					</Button>
+				</Link> */}
+			</form>
 		</div>
 	)
 }
 
+interface ILoginFormPropsIn {
+	user: string,
+	password: string
+}
+const validateEmail = (email?: string) => {
+	return	 (!email && 'Required')
+			|| ((!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email || '')) && 'Invalid email address')
+			|| undefined
+}
+const validatePass = (pass?: string) => {
+	return	 (!pass && 'Required')
+			|| ((pass && pass.length < 6) && 'Invalid password')
+			|| undefined
+}
+const getValidate = (name: string, validate?: string) => validate && { [name]: validate }
+const addLoginForm = withFormik<{}, ILoginFormPropsIn>({
+	mapPropsToValues: props => ({ user: '', password: '' }),
+	handleSubmit: (values) => {
+		console.log('DATA', values)
+		// do submitting things
+	},
+	validate: ((values) => {
+		// Need to return empty if validate without err
+		return {
+			...getValidate('user', validateEmail(values.user)),
+			...getValidate('password', validatePass(values.password)),
+		}
+	}),
+})
 
 // <======================Export========================>
-export const Login = compose<ILoginPropsIn, {}>()(LoginView)
+export const LoginForm = compose<ILoginPropsIn, {}>(addLoginForm)(LoginView)

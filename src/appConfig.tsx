@@ -34,7 +34,7 @@ const withLifeCircle = lifecycle({
 			name: 'Test Name',
 			email: 'TestEmail@gmail.com',
 		}
-		registerUserLogger(sampleUser)
+		// registerUserLogger(sampleUser)
 	},
   })
 

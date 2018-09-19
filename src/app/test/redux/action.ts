@@ -1,10 +1,10 @@
 import ActionTypes from './actionType'
 const {
-  CHANGE_TEST_CONTAINER_TAB,
-  CHANGE_TEST_CONTAINER_TAB_SAGA,
+  CHANGE_TEST,
+  CHANGE_TEST_SAGA,
 } = ActionTypes
 
 
 export const doSomethingAwesome = () => ({
-  type: 'CHANGE_TEST_CONTAINER_TAB',
+  type: 'CHANGE_TEST',
 })
