@@ -1,2 +1,2 @@
-import { tiflClient } from '@nietzsche-client'
-export const tifl = tiflClient()
+// import { tiflClient } from '@nietzsche-client'
+// export const tifl = tiflClient()

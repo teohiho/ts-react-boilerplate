@@ -39,7 +39,9 @@ interface IDashboardPropsIn extends IDashboardPropsOut{
 const DashBoard = ({ children, url }: IDashboardPropsIn) => {
 	return (
 		<div className={styles.dashboardApp}>
-			<Header url={url} />
+			<Header
+			 	url={url}
+			 />
 			{children}
 			<Footer />
 		</div>

@@ -24,7 +24,7 @@
 		"baseUrl": "./src",
 		"paths": {
 			"@asset/*": ["./asset/*"],
-			"@nietzsche-client": ["3rd/nietzsche-client/src/index.ts"],
+			"@nietzsche-client/*": ["3rd/nietzsche-client/src/*"],
 			"@settingConfig": ["./settingConfig.ts"]
 		}
 	},
