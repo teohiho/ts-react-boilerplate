@@ -5,6 +5,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { compose, pure, withState, withStateHandlers } from 'recompose'
+import organization from '../../../3rd/nietzsche-client/src/backend/tifl/organization/index'
 
 const renderBody  = (
 	key: string,
@@ -71,7 +72,8 @@ const namespaceHandler = (namespace: string) => withStateHandlers(
 		[`update${namespace}`]: () => (data: any) => ({ [namespace]: data }),
 	},
 )
-const OrganizationTest = ({ organization, update, item, updateorganization, organizationInput, updateorganizationInput, getList }: any) =>
+const OrganizationTest = ({ organization, update, search, item,
+	 updateorganization, organizationInput, updateorganizationInput, getList }: any) =>
 	renderBody(
 		'organization',
 		item,
@@ -82,8 +84,8 @@ const OrganizationTest = ({ organization, update, item, updateorganization, orga
 		// async (item: any, targetItem:any) => await tiflResource.organization.update({ ...item, name: targetItem }),
 		// undefined,
 		getList,
-		// async (text: string) => await tiflResource.organization.search(text),
-		undefined,
+		(text: string) => search(text),
+		// undefined,
 		(data: any) =>  data[0].name,
 	)
 // const PatientTest = ({ patient, updatepatient, patientInput, updatepatientInput }: any) =>
@@ -146,15 +148,18 @@ const Auth = ({ login, logout }: IAuthPropsIn) => (
 	</div>
 )
 const mapAuthActionToProps = (dispatch: any) => ({
-	login: () => dispatch(tifl.action.auth.login('/')),
-	logout: () => dispatch(tifl.action.auth.logout('/')),
+	login: () => dispatch(tifl.auth.action.login('/t-test')),
+	logout: () => dispatch(tifl.auth.action.logout('/')),
 })
 const mapOrgActionToProps = (dispatch: any) => ({
-	getList: () => dispatch(tifl.action.organization.getList()),
-	update: (id: string, data: any) => dispatch(tifl.action.organization.updateSingle(id , data)),
+	getList: () => dispatch(tifl.organization.action.query()),
+	update: (id: string, data: any) => dispatch(tifl.organization.action.save(id , data)),
+	search: (keyText: string) => dispatch(tifl.organization.action.textSearch(keyText)),
 })
 const mapOrgStateToProps = (state: any) => ({
-	item: state.resource.organization.data[state.resource.organization.list[0]],
+	// item: state.resource.organization.data[state.resource.organization.list[0]],
+	item: tifl.organization.selector.itemSelector(state, { id: '5915975d50a23f00151a79b5' }),
+	// item: undefined,
 })
 const addAuthRedux = connect(undefined, mapAuthActionToProps)
 const addOrgRedux = connect(mapOrgStateToProps, mapOrgActionToProps)

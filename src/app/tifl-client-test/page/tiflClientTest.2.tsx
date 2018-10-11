@@ -18,7 +18,7 @@ const Test = ({ getEncounter }: ITestPropsIn) => (
 )
 
 const mapEncounterActionsToProps = (dispatch: any) => ({
-	getEncounter: () => dispatch(tifl.action.encounter.getList()),
+	getEncounter: () => dispatch(tifl.encounter.action.query()),
 })
 
 const addRedux = connect(undefined, mapEncounterActionsToProps)

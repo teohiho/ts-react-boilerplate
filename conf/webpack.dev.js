@@ -8,8 +8,9 @@ const { appPath } = require('./helper/path')
 const { commonConfig } = require('./webpack.common')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
-// let DOMAIN = "demo.trackitforlife.com"
-// let SERVER_BASE = `https://${DOMAIN}/`;
+// If you want run at local ip: 
+// change port, host and SERVER_BASE
+
 const { DOMAIN, SERVER_BASE } = require('../setting')
 const developmentMainConfig = {
 	mode: 'development',
@@ -21,8 +22,8 @@ const developmentMainConfig = {
 		hot: true,
 		overlay: false,
 		open: true,
-		port: 8000,
-		host: DOMAIN,
+		port: 8000, // 7000 local
+		host: DOMAIN, // 0.0.0.0 local
 		compress: true,
 		historyApiFallback: true,
 	},

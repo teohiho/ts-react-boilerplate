@@ -22,7 +22,9 @@
 			"single",
 			"jsx-double"
 		],
-		"ordered-imports": true,
+		"ordered-imports": [
+			true
+		],
 		"max-line-length": [
 			true,
 			140
@@ -40,6 +42,8 @@
 		"no-increment-decrement": false,
 		"variable-name": [
 			true,
+			"allow-leading-underscore",
+			"allow-trailing-underscore",
 			"ban-keywords",
 			"check-format",
 			"allow-pascal-case"
