@@ -11,7 +11,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 // If you want run at local ip: 
 // change port, host and SERVER_BASE
 
-const { DOMAIN, SERVER_BASE } = require('../setting')
+const config = require('./setting')
 const developmentMainConfig = {
 	mode: 'development',
 	devServer: {
@@ -22,8 +22,8 @@ const developmentMainConfig = {
 		hot: true,
 		overlay: false,
 		open: true,
-		port: 8000, // 7000 local
-		host: DOMAIN, // 0.0.0.0 local
+		port: config.PORT, // 7000 local, 8000 config to nginx
+		host: config.DOMAIN, // 0.0.0.0 local
 		compress: true,
 		historyApiFallback: true,
 	},
@@ -37,7 +37,7 @@ const developmentMainConfig = {
 		// There are also additional JS chunk files if you use code splitting.
 		chunkFilename: 'static/js/[name].chunk.js',
 		path: appPath.appBuild,
-		publicPath: SERVER_BASE,
+		publicPath: config.SERVER_BASE,
 	},
 	// devtool: 'eval', //generated code
 	devtool: 'cheap-module-eval-source-map',
@@ -72,11 +72,11 @@ const developmentConfig = merge([
 	// parts.extractCSS({}),
 
 ])
-const config = merge([
+const devConfig = merge([
 		commonConfig, 
 		developmentConfig,
 		developmentMainConfig, 
 	]
 )
-exports.config = config
-module.exports = config
+exports.config = devConfig
+module.exports = devConfig

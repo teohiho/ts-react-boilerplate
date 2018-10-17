@@ -7,7 +7,7 @@ import { Link,  Route, Switch } from 'react-router-dom'
 import { compose, mapProps, pure, withStateHandlers } from 'recompose'
 import { v4 } from 'uuid'
 import { withPropsChecker } from '../../util/react'
-import { makeUpdatePath } from '../../util/route'
+import { concatPath } from '../../util/route'
 import { addContainerClassName } from './createContainer'
 const styles = require('./scss/style.scss')
 interface ITabProps extends RouteProps {
@@ -54,7 +54,7 @@ const idStateHandler = withStateHandlers<ITabState, {}, ILeftHandlerProps >(
 
 const ListTabView = ({ tabs, match, changeId, selectedId, className }: IListTabPropsIn) => {
 	const ListTab = tabs.map((tab, key) => (
-		<Link to={makeUpdatePath(match.url)(tab.path)} key={key}>
+		<Link to={concatPath(match.url)(tab.path)} key={key}>
 			<div
 				key={tab.path}
 				onClick={() => changeId(tab.path)}

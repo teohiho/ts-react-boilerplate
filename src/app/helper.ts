@@ -10,7 +10,7 @@ import app from './index'
 // {a:{}, b:{}}
 // `dict-flatten`
 // dict-flatten is object and flatten values
-type TReduxType = 'reducer' | 'action' | 'saga'
+type TReduxType = 'reducer' | 'saga'
 type TAppType = 'dict' | 'flatten' | 'dict-flatten'
 
 
@@ -32,7 +32,7 @@ const getSpecificData = (appList: typeof app, pathList: string[], type: TAppType
 					return identity(data)
 				} ,
 				// removeUndefinedItem,
-				// point to path that we need to querry
+				// point to path that we need to query
 				path(pathList),
 			),
 		),
@@ -46,11 +46,16 @@ const getSpecificData = (appList: typeof app, pathList: string[], type: TAppType
 }
 
 const getRouteList = (appList = app) => getSpecificData(appList, ['route'], 'dict-flatten')
-const getNavList = (appList = app) => getSpecificData(appList, ['nav'])
 const getReduxModule = (reduxType: TReduxType, appList = app) => getSpecificData(appList, [reduxType])
+
+const routeCollection = getRouteList()
+const reducerCollection = getReduxModule('reducer')
+const sagaCollection = getReduxModule('saga')
 
 export {
 	getRouteList,
 	getReduxModule,
-	getNavList,
+	routeCollection,
+	sagaCollection,
+	reducerCollection,
 }

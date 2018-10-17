@@ -6,11 +6,11 @@ import mqtt from './mqtt'
 // import sample from './sample'
 import setting from './setting'
 import test from './test'
-import tiflClientTest from './tifl-client-test'
+import tifl from './tifl'
 
 export default {
 	test,
-	tiflClientTest,
+	tifl,
 	authentication,
 	setting,
 	dashboard,

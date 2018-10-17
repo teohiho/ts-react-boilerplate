@@ -18,9 +18,9 @@ const Test = ({ getEncounter }: ITestPropsIn) => (
 )
 
 const mapEncounterActionsToProps = (dispatch: any) => ({
-	getEncounter: () => dispatch(tifl.encounter.action.query()),
+	getEncounter: () => dispatch(tifl.encounter.redux.action.query()),
 })
 
 const addRedux = connect(undefined, mapEncounterActionsToProps)
 
-export const TiflClientTestPage = compose<ITestPropsIn, ITestPropsOut>(pure, addRedux)(Test)
+export const Encounter = compose<ITestPropsIn, ITestPropsOut>(pure, addRedux)(Test)

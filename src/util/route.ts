@@ -2,4 +2,4 @@ import { compose } from 'ramda'
 import { match } from 'react-router'
 
 const removeSlash = (text: string) => text.replace(/(\/)+/g, '/')
-export const makeUpdatePath = (matchUrl: string) => (path:string) => compose(removeSlash)(`${matchUrl}${path}`)
+export const concatPath = (matchUrl: string) => (path:string) => compose(removeSlash)(`${matchUrl}${path}`)

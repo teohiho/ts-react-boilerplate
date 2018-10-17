@@ -20,7 +20,7 @@ import { match, RouteComponentProps, withRouter } from 'react-router'
 import { Link, LinkProps } from 'react-router-dom'
 import { compose, pure, renderComponent, withStateHandlers } from 'recompose'
 import * as Immutable from 'seamless-immutable'
-import { makeUpdatePath } from 'util/route'
+import { concatPath } from 'util/route'
 import { v4 } from 'uuid'
 const  styles = require('../scss/style.scss')
 
@@ -35,7 +35,7 @@ const isRouteEqualPathname = (location: Location, pathLink: string) => {
 			|| false
 }
 const LinkItemView = ({ icon, text, path, match, location, history }: ILinkPropsIn) => {
-	const updatePath = makeUpdatePath(match.url)
+	const updatePath = concatPath(match.url)
 	const fullPath = updatePath(path)
 	return (
 		<Link
@@ -63,6 +63,8 @@ const SlideBar = () => (
 		</div>
 		<div>
 			<MenuDivider title="Test" />
+			<LinkItem icon="lock" text="Organization" path="/t-test/auth" />
+			<LinkItem icon="lock" text="Login" path="/auth" />
 		</div>
 		<div>
 			<MenuDivider title="Example" />

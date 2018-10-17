@@ -4,7 +4,7 @@ import * as React from 'react'
 import { match } from 'react-router'
 import { Link } from 'react-router-dom'
 import { compose, pure } from 'recompose'
-import { makeUpdatePath } from 'util/route'
+import { concatPath } from 'util/route'
 import { Breadcrumb } from './breadcrumb'
 import { MenuContent } from './menuContent'
 import { SearchBox } from './searchBox'
@@ -18,7 +18,7 @@ const HeaderView = ({ url }: IHeader) => {
 		<Navbar className={classnames('p-h-md')}>
 			<NavbarGroup className={classnames('c-nav__group')}>
 					<NavbarHeading>
-						<Link to={makeUpdatePath(url)('/')}>
+						<Link to={concatPath(url)('/')}>
 							LOGO HERE
 						</Link>
 					</NavbarHeading>

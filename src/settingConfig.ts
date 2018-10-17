@@ -1,8 +1,9 @@
-import { DOMAIN, SERVER_BASE } from '../setting'
+import * as config from '../conf/setting'
+
 export const server = {
-	domain: DOMAIN,
-	server: SERVER_BASE,
-	obj: `${SERVER_BASE}obj/fhir-measure-program-batch?max_results=100000`,
-	login: `${SERVER_BASE}oauth/login?next=/`,
-	logout: `${SERVER_BASE}oauth/logout?next=/`,
+	domain: config.DOMAIN,
+	server: config.SERVER_BASE,
+	obj: `${config.SERVER_BASE}obj/fhir-measure-program-batch?max_results=100000`,
+	login: `${config.SERVER_BASE}oauth/login?next=/`,
+	logout: `${config.SERVER_BASE}oauth/logout?next=/`,
 }
