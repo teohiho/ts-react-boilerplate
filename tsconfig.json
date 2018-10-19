@@ -24,7 +24,7 @@
 		"baseUrl": "./src",
 		"paths": {
 			"@asset/*": ["./asset/*"],
-			"@nietzsche-client/*": ["3rd/nietzsche-client/src/*"],
+			"@nietzsche-client/tifl/*": ["3rd/nietzsche-client/src/backend/tifl/*"],
 			"@settingConfig": ["./settingConfig.ts"]
 		}
 	},
