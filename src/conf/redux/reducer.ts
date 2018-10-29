@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux'
 import { persistReducer } from 'redux-persist'
 
-import { getReducer, tifl } from '@nietzsche-client/index'
+// import { getReducer, tifl } from '@nietzsche-client/index'
+import { defaulResource } from 'nietzsche-client/tifl'
+
 import { reducerCollection } from 'app/helper'
 import { TAppState } from 'app/setting/redux/initalState'
 import { TLayoutDefault } from 'layout/default/redux/initialState'
@@ -12,7 +14,7 @@ import { PERSIST_CONFIG } from './persist'
 const reducer = combineReducers({
   ...reducerCollection,
   layout,
-  tifl: getReducer(tifl),
+  tifl: defaulResource.reducer,
 })
 
 export type TRootState = {

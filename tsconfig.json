@@ -20,11 +20,11 @@
 		"noImplicitAny": true,
 		"strictNullChecks": true,
 		"suppressImplicitAnyIndexErrors": true,
-		"noUnusedLocals": false,
+		// "noUnusedLocals": false,
+		"downlevelIteration": true,
 		"baseUrl": "./src",
 		"paths": {
 			"@asset/*": ["./asset/*"],
-			"@nietzsche-client/tifl/*": ["3rd/nietzsche-client/src/backend/tifl/*"],
 			"@settingConfig": ["./settingConfig.ts"]
 		}
 	},

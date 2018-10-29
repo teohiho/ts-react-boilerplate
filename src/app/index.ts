@@ -6,7 +6,7 @@ import mqtt from './mqtt'
 // import sample from './sample'
 import setting from './setting'
 import test from './test'
-import tifl from './tifl'
+import tifl from './tifl/'
 
 export default {
 	test,

@@ -1,5 +1,5 @@
 import { Button } from '@blueprintjs/core'
-import { tifl } from '@nietzsche-client/index'
+// import { tifl } from '@nietzsche-client/index'
 import  { connect as connectMQTT } from 'mqtt'
 import * as React from 'react'
 import { connect } from 'react-redux'
@@ -37,8 +37,8 @@ const mqttSubscribeLc = lifecycle<any , {}, {}>({
 })
 
 export const mqttRedux = (dispatch: Dispatch) => ({
-	subscribeLocal: () => dispatch(tifl.mqtt.action.subscribe()),
-	publishLocal: (mess: string) => () => dispatch(tifl.mqtt.action.publish(new Date().toString() + mess)),
+	// subscribeLocal: () => dispatch(tifl.mqtt.action.subscribe()),
+	// publishLocal: (mess: string) => () => dispatch(tifl.mqtt.action.publish(new Date().toString() + mess)),
 })
 
 export const MQTTPage = compose<IMQTTPropIn, IMQTTPropOut>(pure, connect(undefined, mqttRedux), mqttSubscribeLc)(MQTTView)

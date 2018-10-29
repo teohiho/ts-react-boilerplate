@@ -1,11 +1,10 @@
-import resource from '@nietzsche-client/tifl/resource'
+import app from 'app/index'
+import { defaulResource } from 'nietzsche-client/tifl'
+import reduxHelper from 'nietzsche-client/util'
 import { all } from 'redux-saga/effects'
-import app from '../../app'
-
 export function* appSaga() {
 	yield all([
-		// ...getSaga(tifl),
-		...getSaga(app),
+		...defaulResource.saga,
+		...reduxHelper.getSaga(app),
 	])
 }
-// export const appSaga = getSaga(tifl)
