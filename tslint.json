@@ -23,7 +23,7 @@
 			"jsx-double"
 		],
 		"ordered-imports": [
-			true
+			false
 		],
 		"max-line-length": [
 			true,

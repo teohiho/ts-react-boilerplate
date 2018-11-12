@@ -1,6 +1,7 @@
-import * as classnames from 'classnames'
-import * as React from 'react'
+import React from 'react'
+import classnames from 'classnames'
 import { compose } from 'recompose'
+
 const style = require('./Todo.scss')
 const TodoView = () => (
 	<div className = {classnames(style.form, 'u-flex--center')}>

@@ -1,4 +1,4 @@
-import * as config from '../conf/setting'
+import * as config from '../../conf/setting'
 
 export const server = {
 	domain: config.DOMAIN,

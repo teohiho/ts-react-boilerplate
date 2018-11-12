@@ -1,14 +1,16 @@
 import { Navbar, NavbarDivider, NavbarGroup, NavbarHeading } from '@blueprintjs/core'
-import * as classnames from 'classnames'
-import * as React from 'react'
-import { match } from 'react-router'
-import { Link } from 'react-router-dom'
 import { compose, pure } from 'recompose'
-import { concatPath } from 'util/route'
+
 import { Breadcrumb } from './breadcrumb'
+import { Link } from 'react-router-dom'
 import { MenuContent } from './menuContent'
+import React from 'react'
 import { SearchBox } from './searchBox'
 import { UserBox } from './userBox'
+import classnames from 'classnames'
+import { concatPath } from 'util/route'
+import { match } from 'react-router'
+
 interface IHeader {
 	url: string
 }

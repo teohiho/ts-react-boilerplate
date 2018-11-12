@@ -1,5 +1,6 @@
-import * as React from 'react'
 import { compose, pure } from 'recompose'
+
+import React from 'react'
 
 export const SampleView = () => (
 	<>

@@ -1,7 +1,9 @@
-import * as classnames from 'classnames'
-import * as React from 'react'
 import { compose, pure } from 'recompose'
+
 import { Footer } from '../../default/com/footer'
+import React from 'react'
+import classnames from 'classnames'
+
 const style = require('../scss/authentication.scss')
 
 const Authentication = (props: any) => {

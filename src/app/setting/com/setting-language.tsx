@@ -1,13 +1,13 @@
 import { Button, MenuItem } from '@blueprintjs/core'
+import { compose, pure } from 'recompose'
+
+import { Dispatch } from 'redux'
+import { FormattedMessage } from 'react-intl'
+import React from 'react'
 import { Select } from '@blueprintjs/select'
 import { TRootState } from 'conf/redux/reducer'
-import * as React from 'react'
-import { FormattedMessage } from 'react-intl'
-import { connect } from 'react-redux'
-import { compose, pure } from 'recompose'
-import { Dispatch } from 'redux'
 import { changeLanguage } from '../redux/action'
-
+import { connect } from 'react-redux'
 
 interface ISettingLanguagePropsOut {}
 interface ISettingLanguageStateProps {

@@ -1,12 +1,12 @@
 import { Button, Classes, Icon, InputGroup } from '@blueprintjs/core'
-import { Select } from '@blueprintjs/select'
-
-import * as React from 'react'
-import MediaQuery from 'react-responsive'
 import { compose, pure } from 'recompose'
 
+import MediaQuery from 'react-responsive'
+import React from 'react'
+import { Select } from '@blueprintjs/select'
+import classnames from 'classnames'
+
 const styles = require('../scss/style.scss')
-import * as classnames from 'classnames'
 
 const SearchContext = () => (
 	<Select

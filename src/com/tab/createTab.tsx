@@ -13,11 +13,13 @@ import {
 	Tab,
 	Tabs,
 } from '@blueprintjs/core'
-import * as classnames from 'classnames'
-import * as React from 'react'
 import { compose, pure, withStateHandlers } from 'recompose'
-const styles = require('./appTab.scss')
+
+import React from 'react'
+import classnames from 'classnames'
 import { v4 } from 'uuid'
+
+const styles = require('./appTab.scss')
 type TbreadcrumbItem = {
 	href: string;
 	text: string;

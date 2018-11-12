@@ -1,12 +1,15 @@
-import * as classnames from 'classnames'
-import { TRootState } from 'conf/redux/reducer'
 import { identity, path } from 'ramda'
-import * as React from 'react'
-import { connect } from 'react-redux'
 import { compose, lifecycle, pure, renderComponent } from 'recompose'
+
+import classnames from 'classnames'
+import { TRootState } from 'conf/redux/reducer'
+import React from 'react'
+import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import { withPropsChecker } from 'util/react'
 import { updateNavbar } from './redux/action'
+
+// TYPE 1ST
 
 interface IContaienrReduxActions {
 	updateBreadcrumb: (items: string[]) => void
@@ -15,22 +18,33 @@ interface IContaienrReduxActions {
 interface IContainerPropsOut extends IBreadCrumbPropsOut{
 
 }
+
 interface IContainerPropsIn extends IContainerPropsOut, IContaienrReduxActions {
 	children: any,
 }
+
 interface IContainerState {}
 
 interface IBreadCrumbPropsOut {
 	breadcrumbItems: string[],
 }
 
+interface IContainerProps {
+	breadcrumbItems?: string[],
+	classes?: {
+		container?: string,
+	}
+}
+
 const mapActionToProps = (dispatch: Dispatch) => ({
 	updateBreadcrumb: (items: string[]) => dispatch(updateNavbar(items)),
 })
 
+
+// RUNTIME CODE
+
 // TODO: Try to run `breadcrumbItems` at begin lifecycle(constructor in case) in fp but still not work. That why move to class
 // Check this commit: 181227922503bd0ae1452deca2282598b77fd4a3
-
 const addBreadcrumbLc = (items: string[]) => lifecycle<IContainerPropsIn, IContainerState>({
 	componentWillMount() {
 		this.props.updateBreadcrumb && this.props.updateBreadcrumb(items)
@@ -41,12 +55,7 @@ export const breadcrumbRedux = connect(undefined, mapActionToProps)
 export const addBreadcrumb = (items:  string[]) => (BaseComponent: React.ComponentType) => {
 	return compose(breadcrumbRedux, addBreadcrumbLc(items))(BaseComponent)
 }
-interface IContainerProps {
-	breadcrumbItems?: string[],
-	classes?: {
-		container?: string,
-	}
-}
+
 export const addContainer = (options: IContainerProps = {}) => {
 	return compose(
 		addContainerClassName(options && options.classes && options.classes.container),

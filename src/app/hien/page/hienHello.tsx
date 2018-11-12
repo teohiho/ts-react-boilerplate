@@ -1,9 +1,11 @@
 import { Button, InputGroup } from '@blueprintjs/core'
-import * as classnames from 'classnames'
-import * as React from 'react'
-import { compose, pure, withStateHandlers } from 'recompose'
 import { ITextState, ITextStateHandle, textState } from '../com/onChangeText'
+import { compose, pure, withStateHandlers } from 'recompose'
+
 import { HienToDoPage } from './hienToDo'
+import React from 'react'
+import classnames from 'classnames'
+
 const style = require('../scss/style.scss')
 
 export interface IHelloPropsOut {

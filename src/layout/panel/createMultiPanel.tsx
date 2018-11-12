@@ -1,8 +1,8 @@
-import { curry } from 'ramda'
-import * as React from 'react'
 import { compose, nest } from 'recompose'
-import { addContainerClassName } from '../default/createContainer'
 
+import React from 'react'
+import { addContainerClassName } from '../default/createContainer'
+import { curry } from 'ramda'
 
 const makeGetLayoutFlex = (lengthOfPanel: number) => (index: number) => {
 	return lengthOfPanel === 2

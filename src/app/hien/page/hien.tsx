@@ -1,16 +1,16 @@
-// import { createTabHien } from '../com-hien/createTabHien'
-import { Switch } from '@blueprintjs/core'
-import * as classnames from 'classnames'
-import { createTab } from 'com/index'
-import { TRootState } from 'conf/redux/reducer'
-import { createTabContainer } from 'layout/default/createTabContainer'
-import * as React from 'react'
-import { connect } from 'react-redux'
 import { compose, pure } from 'recompose'
+
 import { Dispatch } from 'redux'
 import { HienComposePage } from './hienCompose'
 import { HienHelloPage } from './hienHello'
-
+import React from 'react'
+// import { createTabHien } from '../com-hien/createTabHien'
+import { Switch } from '@blueprintjs/core'
+import { TRootState } from 'conf/redux/reducer'
+import classnames from 'classnames'
+import { connect } from 'react-redux'
+import { createTab } from 'com/index'
+import { createTabContainer } from 'layout/default/createTabContainer'
 
 const style = require('../scss/style.scss')
 

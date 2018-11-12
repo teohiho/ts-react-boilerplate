@@ -1,11 +1,12 @@
-import { routeCollection } from 'app/helper'
-import { DashBoardBluePrint } from 'layout/default/layoutDefault'
-import { TwoPanel } from 'layout/panel/createMultiPanel'
 import { compose, join, values } from 'ramda'
-import * as React from 'react'
+
+import { DashBoardBluePrint } from 'layout/default/layoutDefault'
+import React from 'react'
 import { Switch } from 'react-router-dom'
+import { TwoPanel } from 'layout/panel/createMultiPanel'
 import { concatPath } from 'util/route'
 import { convertRouteComponent } from './router'
+import { routeCollection } from 'app/helper'
 
 export const PanelRoute = (props: any) => {
 	const panelPath = concatPath(props.match.url)

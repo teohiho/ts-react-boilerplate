@@ -1,9 +1,17 @@
-import { curry } from 'ramda'
-import * as React from 'react'
 import { compose, nest } from 'recompose'
+
+import { curry } from 'ramda'
+import React from 'react'
 import { addContainerClassName } from './createContainer'
 
+// TYPE 1ST
+interface IPanelOptions {
+	render: React.ComponentType,
+	path: string,
 
+}
+
+// RUNTIME CODE
 const makeGetLayoutFlex = (lengthOfPanel: number) => (index: number) => {
 	return lengthOfPanel === 2
 				&& (((index === 0) && 10)
@@ -12,11 +20,7 @@ const makeGetLayoutFlex = (lengthOfPanel: number) => (index: number) => {
 				&& 1
 			|| 1
 }
-interface IPanelOptions {
-	render: React.ComponentType,
-	path: string,
 
-}
 export const createMultiPanel = (panelOptions: IPanelOptions[]) => {
 	const getLayoutFlex = makeGetLayoutFlex(panelOptions.length)
 	const MultiPanelViewList = panelOptions.map(({ render, path }, index) => {

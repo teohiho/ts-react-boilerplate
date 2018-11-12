@@ -1,18 +1,18 @@
-import { mapObjIndexed } from 'ramda'
-import * as React from 'react'
-import { Switch } from 'react-router'
-
-// import { getRouteList } from 'app/helper'
-// import { AppRoute as Route } from  'com/route/AppRoute'
-import { createBrowserHistory } from 'history'
 import {
 	Route,
 	Router,
 } from 'react-router-dom'
-import { compose } from 'recompose'
+
 import { AuthenticationRoute } from './auth'
 import { DashboardRoute } from './dashboard'
 import { PanelRoute } from './panel'
+import React from 'react'
+import { Switch } from 'react-router'
+import { compose } from 'recompose'
+// import { getRouteList } from 'app/helper'
+// import { AppRoute as Route } from  'com/route/AppRoute'
+import { createBrowserHistory } from 'history'
+import { mapObjIndexed } from 'ramda'
 
 const hist = createBrowserHistory()
 

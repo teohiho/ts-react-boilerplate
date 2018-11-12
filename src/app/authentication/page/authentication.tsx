@@ -1,9 +1,10 @@
-import { Button } from '@blueprintjs/core'
-import { server } from '@settingConfig'
 import axios from 'axios'
-import { createTabContainer } from 'layout/default/createTabContainer'
-import * as React from 'react'
+import React from 'react'
+import { Button } from '@blueprintjs/core'
 import { compose, pure } from 'recompose'
+import { createTabContainer } from 'layout/default/createTabContainer'
+import { server } from '@setting'
+
 
 const AuthenticationView = () => (
 	<div>

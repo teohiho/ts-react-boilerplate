@@ -1,6 +1,7 @@
-import * as React from 'react'
-import { Motion, spring, TransitionMotion } from 'react-motion'
+import { Motion, TransitionMotion, spring } from 'react-motion'
 import { compose, pure, withStateHandlers } from 'recompose'
+
+import React from 'react'
 interface ITabsState {
 	idSelected: number
 }

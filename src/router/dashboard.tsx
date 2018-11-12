@@ -1,10 +1,11 @@
-import { routeCollection } from 'app/helper'
-import { DashBoardBluePrint } from 'layout/default/layoutDefault'
-import { compose, values } from 'ramda'
-import * as React from 'react'
 import { RouteComponentProps, Switch } from 'react-router'
+import { compose, values } from 'ramda'
+
+import { DashBoardBluePrint } from 'layout/default/layoutDefault'
+import React from 'react'
 import { concatPath } from '../util/route'
 import { convertRouteComponent } from './router'
+import { routeCollection } from 'app/helper'
 
 export const DashboardRoute = (props: RouteComponentProps<any>) => {
 	const dashboardPath = concatPath(props.match.url)

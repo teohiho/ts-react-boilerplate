@@ -1,16 +1,17 @@
+import { compose, pure } from 'recompose'
+
+import { Dispatch } from 'redux'
+import { FormattedMessage } from 'react-intl'
+import React from 'react'
+import { SettingLanguage } from '../com/'
 import { Switch } from '@blueprintjs/core'
-import { createTab } from 'com/index'
+import { TPaletteType } from '../redux/initalState'
 import { TRootState } from 'conf/redux/reducer'
 import { addBreadcrumb } from 'layout/default/createContainer'
-import { createTabContainer } from 'layout/default/createTabContainer'
-import * as React from 'react'
-import { FormattedMessage } from 'react-intl'
-import { connect } from 'react-redux'
-import { compose, pure } from 'recompose'
-import { Dispatch  } from 'redux'
-import { SettingLanguage } from '../com/'
 import { changeTheme } from '../redux/action'
-import { TPaletteType } from '../redux/initalState'
+import { connect } from 'react-redux'
+import { createTab } from 'com/index'
+import { createTabContainer } from 'layout/default/createTabContainer'
 
 const styles = require('../scss/style.scss')
 

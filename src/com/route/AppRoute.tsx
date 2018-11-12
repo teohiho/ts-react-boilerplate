@@ -1,5 +1,6 @@
-import * as React from 'react'
-import { match, Route, RouteProps } from 'react-router'
+import { Route, RouteProps, match } from 'react-router'
+
+import React from 'react'
 import { compose } from 'recompose'
 
 interface IAppRoutePropsOut extends RouteProps {

@@ -7,11 +7,12 @@ import {
 	Position,
 	Tag,
 } from '@blueprintjs/core'
-import * as classnames from 'classnames'
-import * as React from 'react'
-import { compose, withStateHandlers } from 'recompose'
 import { IIsOpenState, IIsOpenStateHandle, isOpenState } from '../com/isOpen'
 import { ITextState, ITextStateHandle, textState } from '../com/onChangeText'
+import { compose, withStateHandlers } from 'recompose'
+
+import React from 'react'
+import classnames from 'classnames'
 
 const style = require('../scss/style.scss')
 

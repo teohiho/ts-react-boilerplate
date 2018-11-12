@@ -1,12 +1,14 @@
 // <======================Import========================>
 import { Button, Card, Checkbox, Elevation, H2, H3, IInputGroupProps, InputGroup, Intent, MenuDivider } from '@blueprintjs/core'
-import * as classnames from 'classnames'
 import { Field, FormikProps, withFormik } from 'formik'
-import * as React from 'react'
-import MediaQuery from 'react-responsive'
-import { Link } from 'react-router-dom'
 import { compose, withStateHandlers } from 'recompose'
+
+import { Link } from 'react-router-dom'
+import MediaQuery from 'react-responsive'
+import React from 'react'
+import classnames from 'classnames'
 import { makeFormikInput } from '../../../com/formik/input'
+
 const style = require('../scss/authentication.scss')
 
 const Input = (props: IInputGroupProps) => (

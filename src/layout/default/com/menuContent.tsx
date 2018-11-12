@@ -1,27 +1,31 @@
+import * as Immutable from 'seamless-immutable'
+
 import {
 	Button,
 	Classes,
 	H5,
-	Icon,
 	IMenuItemProps,
+	Icon,
 	Intent,
 	Menu,
 	MenuDivider,
 	MenuItem,
 	Popover,
 	Position,
-	Text} from '@blueprintjs/core'
-import * as classnames from 'classnames'
-import { TRootState } from 'conf/redux/reducer'
-import { Location } from 'history'
-import * as React from 'react'
-import { connect } from 'react-redux'
-import { match, RouteComponentProps, withRouter } from 'react-router'
+	Text
+} from '@blueprintjs/core'
 import { Link, LinkProps } from 'react-router-dom'
+import { RouteComponentProps, match, withRouter } from 'react-router'
 import { compose, pure, renderComponent, withStateHandlers } from 'recompose'
-import * as Immutable from 'seamless-immutable'
+
+import { Location } from 'history'
+import React from 'react'
+import { TRootState } from 'conf/redux/reducer'
+import classnames from 'classnames'
 import { concatPath } from 'util/route'
+import { connect } from 'react-redux'
 import { v4 } from 'uuid'
+
 const  styles = require('../scss/style.scss')
 
 interface ILinkPropsOut extends IMenuItemProps {

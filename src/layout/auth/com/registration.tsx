@@ -1,9 +1,11 @@
 import { Button, Card, Elevation, H2, H3, IInputGroupProps, InputGroup, Intent } from '@blueprintjs/core'
-import * as classnames from 'classnames'
-import * as React from 'react'
-import MediaQuery from 'react-responsive'
-import { Link } from 'react-router-dom'
 import { compose, withStateHandlers } from 'recompose'
+
+import { Link } from 'react-router-dom'
+import MediaQuery from 'react-responsive'
+import React from 'react'
+import classnames from 'classnames'
+
 const style = require('../scss/registration.scss')
 const PortraitView = () => (
 	<MediaQuery orientation="portrait">

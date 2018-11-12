@@ -1,10 +1,12 @@
-import { FormGroup, HTMLInputProps, IFormGroupProps, IInputGroupProps, InputGroup } from '@blueprintjs/core'
-import * as classnames from 'classnames'
 import { Field, FieldProps, Form, FormikProps, FormikValues, withFormik } from 'formik'
-import { addContainer } from 'layout/default/createContainer'
-import * as React from 'react'
+import { FormGroup, HTMLInputProps, IFormGroupProps, IInputGroupProps, InputGroup } from '@blueprintjs/core'
 import { compose, withStateHandlers } from 'recompose'
+
+import React from 'react'
+import { addContainer } from 'layout/default/createContainer'
+import classnames from 'classnames'
 import { makeFormikInput } from '../../../com/formik/input'
+
 interface ILoginFormPropsIn {
 	email: string,
 	password: string

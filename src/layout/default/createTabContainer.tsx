@@ -1,19 +1,25 @@
 import { Button, Tab, Tabs } from '@blueprintjs/core'
-import * as classnames from 'classnames'
-import { path } from 'ramda'
-import * as React from 'react'
 import { RouteComponentProps, RouteProps, withRouter } from 'react-router'
-import { Link,  Route, Switch } from 'react-router-dom'
+import { Link, Route, Switch } from 'react-router-dom'
 import { compose, mapProps, pure, withStateHandlers } from 'recompose'
+
+import classnames from 'classnames'
+import { path } from 'ramda'
+import React from 'react'
 import { v4 } from 'uuid'
 import { withPropsChecker } from '../../util/react'
 import { concatPath } from '../../util/route'
 import { addContainerClassName } from './createContainer'
+
 const styles = require('./scss/style.scss')
+
+// TYPE 1ST
+
 interface ITabProps extends RouteProps {
 	path: string,
 	title: React.ReactNode,
 }
+
 interface ICreateTabContainerPropsOut {
 	tabs: ITabProps[],
 	selectedPath?: string
@@ -23,10 +29,12 @@ interface ICreateTabContainerPropsOut {
 		body?: string,
 	}
 }
+
 interface IListTabPropsOut {
 	tabs: ITabProps[],
 	className?: string,
 }
+
 interface IListTabPropsIn extends IListTabPropsOut, RouteComponentProps<null>,  ITabState, ITabStateHandler {
 
 }
@@ -34,10 +42,15 @@ interface IListTabPropsIn extends IListTabPropsOut, RouteComponentProps<null>,  
 interface ITabState {
 	selectedId: string
 }
+
 interface ITabStateHandler {
 	changeId: (id: string) => void
 }
+
 interface ILeftHandlerProps extends ICreateTabContainerPropsOut, RouteComponentProps<any>{}
+
+// RUNTIME CODE
+
 const idStateHandler = withStateHandlers<ITabState, {}, ILeftHandlerProps >(
 	({ selectedPath, tabs, match, location }) => {
 		return {

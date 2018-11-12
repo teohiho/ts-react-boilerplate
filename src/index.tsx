@@ -1,9 +1,9 @@
-// Force to override first
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { AppRedux } from './appRedux'
 import './scss/style.scss'
 
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import { AppRedux } from './appRedux'
+// Force to override first
 
 const rootEl = document.getElementById('root')
 ReactDOM.render(<AppRedux />, rootEl)

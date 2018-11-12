@@ -1,21 +1,17 @@
-import * as React from 'react'
-import { IntlProvider } from 'react-intl'
-
-import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
-
-import * as classnames from 'classnames'
-import { settingConfig } from 'conf/config'
-import { registerUserLogger } from 'conf/debug/logrocket'
-import { TRootState } from 'conf/redux/reducer'
-import { compose, lifecycle, pure } from 'recompose'
+import classnames from 'classnames'
+import React from 'react'
 import { AppRoute } from 'router/router'
-
-
+import { compose, lifecycle, pure } from 'recompose'
+import { connect } from 'react-redux'
+import { IntlProvider } from 'react-intl'
+import { registerUserLogger } from 'conf/debug/logrocket'
+import { settingConfiguration } from 'conf/config'
 import { TPaletteType } from 'app/setting/redux/initalState'
+import { TRootState } from 'conf/redux/reducer'
+
 
 const messages = require('./i18n/i18n.__generate__.json')
-settingConfig()
+settingConfiguration()
 
 
 export interface IAppConfigPropsIn extends IAppConfigPropsOut {
@@ -34,7 +30,7 @@ const withLifeCircle = lifecycle({
 			name: 'Test Name',
 			email: 'TestEmail@gmail.com',
 		}
-		// registerUserLogger(sampleUser)
+		registerUserLogger(sampleUser)
 	},
   })
 
@@ -58,5 +54,3 @@ const withRedux = connect(mapStateToProps)
 
 
 export const AppConfig = compose<IAppConfigPropsIn, IAppConfigPropsOut>(withRedux, withLifeCircle, pure)(App)
-
-

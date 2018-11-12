@@ -1,4 +1,4 @@
-import * as R from 'ramda'
+import R from 'ramda'
 import { addPrefix } from './name'
 import { getRule } from './rule'
 
@@ -11,7 +11,6 @@ interface IGenerateActionTypeOption<T>{
   groupName?: string,
   appName?: string,
 }
-
 
 const generateActionTypeList = <T extends string, U = { [K in T]: string}>
 	(nameModule: string, options: IGenerateActionTypeOption<T>): U => {

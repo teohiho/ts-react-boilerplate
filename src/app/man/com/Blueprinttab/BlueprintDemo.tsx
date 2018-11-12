@@ -1,5 +1,6 @@
-import { AnchorButton, Button, ButtonGroup, Callout, Code, FormGroup , H1, Icon, InputGroup } from '@blueprintjs/core'
-import * as React from 'react'
+import { AnchorButton, Button, ButtonGroup, Callout, Code, FormGroup, H1, Icon, InputGroup } from '@blueprintjs/core'
+
+import React from 'react'
 const style = require('../../scss/man.scss')
 export const BlueprintView = () => (
 	<>

@@ -1,10 +1,11 @@
 import { Alert, Button, InputGroup } from '@blueprintjs/core'
-import { createTabContainer } from 'layout/default/createTabContainer'
-import { defaulResource, organization } from 'nietzsche-client/tifl'
-import * as React from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { compose, pure, withState, withStateHandlers } from 'recompose'
+
+import { Link } from 'react-router-dom'
+import React from 'react'
+import { connect } from 'react-redux'
+import { createTabContainer } from 'layout/default/createTabContainer'
+import { defaultRedux } from 'nietzsche-client/tifl'
 // import encounter from '../../../3rd/nietzsche-client/src/backend/tifl/encounter/index'
 
 
@@ -25,8 +26,8 @@ const Test = ({ getEncounter, onLogin }: ITestPropsIn) => (
 )
 
 const mapEncounterActionsToProps = (dispatch: any) => ({
-	getEncounter: () => dispatch(defaulResource.module.organization.action.query()),
-	onLogin: () => dispatch(defaulResource.module.auth.action.login()),
+	getEncounter: () => dispatch(defaultRedux.part.organization.actionCollection.query()),
+	onLogin: () => dispatch(defaultRedux.part.auth.actionCollection.login('/')),
 })
 
 const addRedux = connect(undefined, mapEncounterActionsToProps)

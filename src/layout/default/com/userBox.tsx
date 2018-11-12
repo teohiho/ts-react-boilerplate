@@ -1,3 +1,5 @@
+import '../scss/style.scss'
+
 import {
 	Button,
 	Classes,
@@ -6,10 +8,11 @@ import {
 	MenuDivider,
 	MenuItem,
 	Popover,
-	Position } from '@blueprintjs/core'
-import * as React from 'react'
+	Position
+} from '@blueprintjs/core'
 import { compose, pure } from 'recompose'
-import '../scss/style.scss'
+
+import React from 'react'
 
 const exampleMenu = (
 	<Menu>

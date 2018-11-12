@@ -1,10 +1,11 @@
-import { createTabContainer } from 'layout/default/createTabContainer'
-import * as React from 'react'
 import { compose, pure, withStateHandlers } from 'recompose'
+
 import { BlueprintView } from '../com/Blueprinttab/BlueprintDemo'
+import React from 'react'
 import { TabsDemo } from '../com/tab/Tab'
 import { Test } from '../com/Test/Test'
 import { Todo } from '../com/Todo/Todo'
+import { createTabContainer } from 'layout/default/createTabContainer'
 const style = require('../scss/man.scss')
 
 // <=====================================================================================>

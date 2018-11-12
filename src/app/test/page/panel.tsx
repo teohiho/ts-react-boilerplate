@@ -1,5 +1,5 @@
+import React from 'react'
 import { createMultiPanel } from 'layout/default/createMultiPanel'
-import * as React from 'react'
 
 const Panel1View = () => <h1>Panel1</h1>
 const Panel2View = () => <h1>Panel2</h1>

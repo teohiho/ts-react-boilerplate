@@ -1,22 +1,20 @@
-import * as React from 'react'
-import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/integration/react'
-
 import configureStore from 'conf/redux/redux'
-import { branch, compose, lifecycle, pure, renderComponent, withStateHandlers } from 'recompose'
+import React from 'react'
 import { AppConfig } from './appConfig'
 import { Loading } from './com/index'
+import { PersistGate } from 'redux-persist/integration/react'
+import { Provider } from 'react-redux'
+import {
+	branch,
+	compose,
+	lifecycle,
+	pure,
+	renderComponent,
+	withStateHandlers,
+} from 'recompose'
+
+
 const { store, persistor } = configureStore()
-interface IAppReduxPropsOut {
-
-}
-interface IAppReduxState {
-	isLoading: boolean
-}
-
-interface IAppReduxPropsIn extends IAppReduxPropsOut, IAppReduxState {
-
-}
 
 const ReduxView = () => (
 	<Provider store={store}>
@@ -37,15 +35,15 @@ const LoadingStateHandler = withStateHandlers(
 		isLoading: true,
 	},
 	{
-		loadSuccessful: () => () => ({ isLoading: false }),
+		loadFinished: () => () => ({ isLoading: false }),
 	},
 )
 
 const withLifeCycle = lifecycle({
 	componentDidMount() {
 		this.setState({ isLoading: false })
-		// setTimeout(() => this.setState({ isLoading: false }), 800)
 	},
 })
 
 export const AppRedux = compose(pure, LoadingStateHandler, withLifeCycle, withLoading)(ReduxView)
+

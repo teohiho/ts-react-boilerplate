@@ -1,6 +1,8 @@
-import * as React from 'react'
-import { compose, pure } from 'recompose'
 import './loading.scss'
+
+import { compose, pure } from 'recompose'
+
+import React from 'react'
 const LoadingView = () => (
 	// <h1>Loading</h1>
 	<div className="c-loading">

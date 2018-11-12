@@ -23,9 +23,10 @@
 		// "noUnusedLocals": false,
 		"downlevelIteration": true,
 		"baseUrl": "./src",
+		"esModuleInterop": true,
 		"paths": {
 			"@asset/*": ["./asset/*"],
-			"@settingConfig": ["./settingConfig.ts"]
+			"@setting": ["./conf/setting.ts"]
 		}
 	},
 	"exclude": [

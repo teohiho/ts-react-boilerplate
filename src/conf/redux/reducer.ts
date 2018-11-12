@@ -1,20 +1,17 @@
-import { combineReducers } from 'redux'
-import { persistReducer } from 'redux-persist'
-
-// import { getReducer, tifl } from '@nietzsche-client/index'
-import { defaulResource } from 'nietzsche-client/tifl'
-
+// import { TTodoState } from 'module/todo/logic.redux/initialState'
 import { reducerCollection } from 'app/helper'
 import { TAppState } from 'app/setting/redux/initalState'
 import { TLayoutDefault } from 'layout/default/redux/initialState'
 import layout from 'layout/default/redux/reducer'
-// import { TTodoState } from 'module/todo/logic.redux/initialState'
+import { defaultRedux } from 'nietzsche-client/tifl'
+import { combineReducers } from 'redux'
+import { persistReducer } from 'redux-persist'
 import { PERSIST_CONFIG } from './persist'
 
 const reducer = combineReducers({
   ...reducerCollection,
   layout,
-  tifl: defaulResource.reducer,
+  tifl: defaultRedux.reducer,
 })
 
 export type TRootState = {
@@ -37,4 +34,5 @@ const rootReducer = (state: any, action: any) => {
   }
   return reducer(state, action)
 }
+
 export const appReducer = persistReducer(PERSIST_CONFIG.storeConfig, rootReducer)
