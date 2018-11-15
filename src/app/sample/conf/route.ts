@@ -1,8 +1,8 @@
-import { SamplePage } from '../page/sample'
+import Todo from '../page/todo'
 
-export const route = {
+export default {
 	sample: {
 		path: '/sample',
-		container: SamplePage,
+		component: Todo,
 	},
 }

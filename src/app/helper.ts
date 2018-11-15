@@ -1,61 +1,73 @@
-import { compose, filter, flatten, identity, isNil, mapObjIndexed, mergeAll, path, values } from 'ramda'
-// import { RouteProps } from 'react-router'
-import app from './index'
+import reduxUtil from 'redux-packaged'
+import sample from './sample'
+import { Reducer } from 'redux'
+import { RouteProps } from 'react-router'
+import {
+	mapObjIndexed,
+} from 'ramda'
 
-// interface IRoute extends RouteProps{}
+// import app from './index'
 
-// `flatten` that means array is only 1 demention
-// For example of flatten: [{}, {}, {}]
-// `dict` is obj
-// {a:{}, b:{}}
-// `dict-flatten`
-// dict-flatten is object and flatten values
-type TReduxType = 'reducer' | 'saga'
-type TAppType = 'dict' | 'flatten' | 'dict-flatten'
-
-
-const removeUndefinedItem = filter((item: any) => !isNil(item))
-
-
-const getSpecificData = (appList: typeof app, pathList: string[], type: TAppType= 'dict') => {
-	const getSpecificDataList = compose(
-		// Remove items which undefined
-		removeUndefinedItem,
-		// Get data from path
-		mapObjIndexed(
-			compose(
-				// Convert {} => [] by only get key
-				(data: any) => { // Check if item undefined
-					if (data !== undefined && type === 'flatten') {
-						return values(data)
-					}
-					return identity(data)
-				} ,
-				// removeUndefinedItem,
-				// point to path that we need to query
-				path(pathList),
-			),
-		),
-	)
-	const addFlatten = compose(flatten, values)
-	return compose(
-		type === 'flatten' ? addFlatten : identity,
-		type === 'dict-flatten' ? compose(mergeAll, values) : identity,
-		getSpecificDataList,
-	)(appList)
+const app = {
+	sample,
 }
 
-const getRouteList = (appList = app) => getSpecificData(appList, ['route'], 'dict-flatten')
-const getReduxModule = (reduxType: TReduxType, appList = app) => getSpecificData(appList, [reduxType])
+type RouteConfig = {
+	[id: string]: RouteProps,
+}
 
-const routeCollection = getRouteList()
-const reducerCollection = getReduxModule('reducer')
-const sagaCollection = getReduxModule('saga')
+type Redux = {
+	reducer: Reducer,
+	actionType: any,
+	action: any,
+	saga?: any,
+	selector?: any,
+}
+interface IRegisterModule<R extends Redux, RO extends RouteConfig, C> {
+	redux: R | undefined
+	route: RO
+	com: C | undefined
+}
+
+// runtime code
+const registerModule = <C, RO extends RouteConfig, R extends Redux>(routeConfig: RO, component?: C, redux?: R) => {
+	return {
+		redux,
+		route: routeConfig,
+		com: component,
+	}
+}
+
+const getPart = <R extends Redux,
+				RO extends RouteConfig,
+				C,
+				T extends {[N in keyof T]: IRegisterModule<R, RO, C > },
+				K extends keyof IRegisterModule < R, RO, C >
+				>
+
+	(part: K, app: T) => {
+		return mapObjIndexed(module => module[part], app) as {[N in keyof T]: T[N][K]}
+	}
+
+const getRoute =  <R extends Redux, RO extends RouteConfig, C, T extends {[N in keyof T]: IRegisterModule<R, RO, C > }>
+	(app: T) => getPart('route', app)
+const getRedux =  <R extends Redux, RO extends RouteConfig, C, T extends {[N in keyof T]: IRegisterModule<R, RO, C > }>
+	(app: T) => getPart('redux', app)
+const getCom =  <R extends Redux, RO extends RouteConfig, C, T extends {[N in keyof T]: IRegisterModule<R, RO, C > }>
+	(app: T) => getPart('com', app)
+
+const routeCollection = getRoute(app)
+const reduxApp = getRedux(app)
+const comCollection = getCom(app)
+const reducerCollection = reduxUtil.reducer.get(reduxApp)
+const sagaCollection = reduxUtil.saga.get(reduxApp)
 
 export {
-	getRouteList,
-	getReduxModule,
+	// getRouteList,
+	// getReduxModule,
 	routeCollection,
+	comCollection,
 	sagaCollection,
 	reducerCollection,
+	registerModule,
 }
