@@ -1,6 +1,12 @@
-import { generateActionTypeList } from 'util/redux/actionType'
+import reduxUtil, { ReturnActionType } from 'redux-packaged'
 
-export default generateActionTypeList('app', { actionType: [
-  'CHANGE_THEME',
-  'CHANGE_LANGUAGE',
-] })
+const make = reduxUtil.actionType.make([
+	'CHANGE_THEME',
+	'CHANGE_LANGUAGE',
+])
+
+export type ActionTypeSetting = ReturnActionType<typeof make>
+
+export default {
+	make,
+}

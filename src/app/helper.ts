@@ -7,6 +7,7 @@ import {
 } from 'ramda'
 
 // import app from './index'
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 
 const app = {
 	sample,
@@ -16,30 +17,35 @@ type RouteConfig = {
 	[id: string]: RouteProps,
 }
 
-type Redux = {
+interface IRedux {
 	reducer: Reducer,
 	actionType: any,
 	action: any,
 	saga?: any,
 	selector?: any,
 }
-interface IRegisterModule<R extends Redux, RO extends RouteConfig, C> {
-	redux: R | undefined
-	route: RO
-	com: C | undefined
+type IRegisterModule<R, RO, C> = {
+	redux?: R,
+	route: RO,
+	com?: C,
 }
 
 // runtime code
-const registerModule = <C, RO extends RouteConfig, R extends Redux>(routeConfig: RO, component?: C, redux?: R) => {
+function registerModule<C, RO, R>(routeConfig?: RO, component?: C, redux?: R) {
 	return {
 		redux,
 		route: routeConfig,
 		com: component,
+	} as {
+		redux: R extends undefined ? undefined : R,
+		route: RO extends undefined ? undefined : RO,
+		com: C extends undefined ? undefined : C,
 	}
 }
 
-const getPart = <R extends Redux,
-				RO extends RouteConfig,
+
+const getPart = <R,
+				RO,
 				C,
 				T extends {[N in keyof T]: IRegisterModule<R, RO, C > },
 				K extends keyof IRegisterModule < R, RO, C >
@@ -49,25 +55,18 @@ const getPart = <R extends Redux,
 		return mapObjIndexed(module => module[part], app) as {[N in keyof T]: T[N][K]}
 	}
 
-const getRoute =  <R extends Redux, RO extends RouteConfig, C, T extends {[N in keyof T]: IRegisterModule<R, RO, C > }>
+// @TODO: Curry will not support type
+const getRoute =  <R, RO, C, T extends {[N in keyof T]: IRegisterModule<R, RO, C> }>
 	(app: T) => getPart('route', app)
-const getRedux =  <R extends Redux, RO extends RouteConfig, C, T extends {[N in keyof T]: IRegisterModule<R, RO, C > }>
+const getRedux =  <R, RO, C, T extends {[N in keyof T]: IRegisterModule<R, RO, C > }>
 	(app: T) => getPart('redux', app)
-const getCom =  <R extends Redux, RO extends RouteConfig, C, T extends {[N in keyof T]: IRegisterModule<R, RO, C > }>
+const getCom =  <R, RO, C, T extends {[N in keyof T]: IRegisterModule<R, RO, C > }>
 	(app: T) => getPart('com', app)
 
-const routeCollection = getRoute(app)
-const reduxApp = getRedux(app)
-const comCollection = getCom(app)
-const reducerCollection = reduxUtil.reducer.get(reduxApp)
-const sagaCollection = reduxUtil.saga.get(reduxApp)
 
-export {
-	// getRouteList,
-	// getReduxModule,
-	routeCollection,
-	comCollection,
-	sagaCollection,
-	reducerCollection,
+export default {
+	getRoute,
+	getRedux,
+	getCom,
 	registerModule,
 }

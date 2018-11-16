@@ -1,24 +1,25 @@
-// import { TTodoState } from 'module/todo/logic.redux/initialState'
-import { reducerCollection } from 'app/helper'
+import app from 'app'
+import layout from 'layout/default/redux/reducer'
+import { combineReducers } from 'redux'
+import { PERSIST_CONFIG } from './persist'
+import { persistReducer } from 'redux-persist'
 import { TAppState } from 'app/setting/redux/initalState'
 import { TLayoutDefault } from 'layout/default/redux/initialState'
-import layout from 'layout/default/redux/reducer'
-import { defaultRedux } from 'nietzsche-client/tifl'
-import { combineReducers } from 'redux'
-import { persistReducer } from 'redux-persist'
-import { PERSIST_CONFIG } from './persist'
+// import { TTodoState } from 'module/todo/logic.redux/initialState'
+// import { reducerCollection } from 'app/helper'
+// import { defaultRedux } from 'nietzsche-client/tifl'
 
 const reducer = combineReducers({
-  ...reducerCollection,
+  ...app.reducerRaw,
   layout,
-  tifl: defaultRedux.reducer,
+//   tifl: defaultRedux.reducer,
 })
-
-export type TRootState = {
-  setting: TAppState,
-  layout: TLayoutDefault,
-//   todo: TTodoState,
-}
+export type TRootState = ReturnType<typeof reducer>
+// export type TRootState = {
+//   setting: TAppState,
+//   layout: TLayoutDefault,
+// //   todo: TTodoState,
+// }
 
 const rootReducer = (state: any, action: any) => {
   const { type } = action

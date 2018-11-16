@@ -5077,6 +5077,10 @@ immutable@^3.8.1:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
 
+immutable@^4.0.0-rc.12:
+  version "4.0.0-rc.12"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.0.0-rc.12.tgz#ca59a7e4c19ae8d9bf74a97bdf0f6e2f2a5d0217"
+
 import-cwd@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/import-cwd/-/import-cwd-2.1.0.tgz#aa6cf36e722761285cb371ec6519f53e2435b0a9"
@@ -8842,9 +8846,9 @@ redux-logger@^3.0.6:
   dependencies:
     deep-diff "^0.3.5"
 
-redux-packaged@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/redux-packaged/-/redux-packaged-1.0.0.tgz#0edea50862998802fb6a8e2eb79635ce63532fca"
+redux-packaged@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/redux-packaged/-/redux-packaged-1.0.2.tgz#32bc37c8fda468e8cc811d0454fc4faafb8ac97f"
   dependencies:
     js-tokens "^4.0.0"
     loose-envify "^1.4.0"

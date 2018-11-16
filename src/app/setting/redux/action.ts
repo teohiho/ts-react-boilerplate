@@ -1,24 +1,25 @@
-import actionType from './actionType'
+import { action, ActionType } from 'typesafe-actions'
+import { ActionTypeSetting } from './actionType'
+import { IReduxModule } from 'redux-packaged'
 
-// export enum ActionType {
-//   CHANGE_THEME,
-// }
 
-export interface IAppAction<T> {
-  type: 'CHANGE_THEME',
-  lang: string
+// import { SelectorTodo } from './selector'
+
+
+export type ActionCollectionSetting = ReturnType<typeof make>
+export type ActionSetting = ActionType<ActionCollectionSetting>
+
+const make = (reduxModule: IReduxModule<ActionTypeSetting, {}>) => {
+	const { actionType } = reduxModule
+	const changeTheme = (title: string, status = 'idle') =>
+		action(actionType.CHANGE_THEME)
+	const changeLanguage = (id: string) => action(actionType.CHANGE_LANGUAGE, { id })
+	return {
+		changeTheme,
+		changeLanguage,
+	}
 }
 
-
-export const changeTheme = () => {
-  return {
-	type: actionType.CHANGE_THEME,
-  }
-}
-
-export const changeLanguage = (lang: string) => {
-  return {
-	lang,
-	type: actionType.CHANGE_LANGUAGE,
-  }
+export default {
+	make,
 }

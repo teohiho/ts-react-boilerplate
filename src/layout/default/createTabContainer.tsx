@@ -1,15 +1,20 @@
-import { Button, Tab, Tabs } from '@blueprintjs/core'
-import { RouteComponentProps, RouteProps, withRouter } from 'react-router'
-import { Link, Route, Switch } from 'react-router-dom'
-import { compose, mapProps, pure, withStateHandlers } from 'recompose'
-
 import classnames from 'classnames'
-import { path } from 'ramda'
 import React from 'react'
+import { addContainerClassName } from './createContainer'
+import { Button, Tab, Tabs } from '@blueprintjs/core'
+import { concatPath } from '../../util/route'
+import { Link, Route, Switch } from 'react-router-dom'
+import { path } from 'ramda'
+import { RouteComponentProps, RouteProps, withRouter } from 'react-router'
 import { v4 } from 'uuid'
 import { withPropsChecker } from '../../util/react'
-import { concatPath } from '../../util/route'
-import { addContainerClassName } from './createContainer'
+import {
+	compose,
+	mapProps,
+	pure,
+	withStateHandlers,
+} from 'recompose'
+
 
 const styles = require('./scss/style.scss')
 
@@ -115,7 +120,7 @@ const BodyView = ({ tabs, match, className }: IListTabPropsIn) => {
 
 const Body = compose<IListTabPropsIn, IListTabPropsOut>(withRouter)(BodyView)
 
-const AppTabView = ({ tabs, classes }: ICreateTabContainerPropsOut) => {
+const AppTabView = ({ tabs, classes= {} }: ICreateTabContainerPropsOut) => {
 	console.log('APPTAB')
 	return (
 		<>
