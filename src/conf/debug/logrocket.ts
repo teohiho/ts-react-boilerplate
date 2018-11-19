@@ -1,6 +1,5 @@
-import * as LogRocket from 'logrocket'
-import * as setupLogRocketReact from 'logrocket-react'
-
+import LogRocket from 'logrocket'
+import setupLogRocketReact from 'logrocket-react'
 
 type TUser = {
 	id: string,

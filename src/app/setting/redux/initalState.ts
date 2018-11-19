@@ -1,18 +1,16 @@
-import { from, ImmutableObject } from 'seamless-immutable'
 export type TPaletteType = 'light' | 'dark'
 
-interface IAppState {
+export type TSettingState = {
 	theme: {
 		paletteType: TPaletteType,
 	},
-	lang: string
+	lang: string,
 }
 
-export type TAppState = ImmutableObject<IAppState>
 
-export const initialState: TAppState = from({
+export const initialState: TSettingState = {
   theme: {
 	paletteType: 'light' as TPaletteType,
   },
   lang: 'en',
-})
+}

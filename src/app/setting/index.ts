@@ -1,16 +1,6 @@
-import { SettingLanguage } from './com/setting-language'
+import redux from './redux'
+import { registerModule } from '../helper'
 import { route } from './conf/route'
-import * as action from './redux/action'
-import reducer from './redux/reducer'
 
-export default {
-	// Component
-	SettingLanguage,
-
-	// Config
-	route,
-
-	// Redux
-	action,
-	reducer,
-}
+console.log('registerModuleregisterModuleregisterModule', registerModule)
+export default registerModule(route, undefined, redux)

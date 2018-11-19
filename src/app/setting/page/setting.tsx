@@ -1,17 +1,16 @@
+import React from 'react'
+import redux from '../redux/'
+import { addBreadcrumb } from 'layout/default/createContainer'
 import { compose, pure } from 'recompose'
-
+import { connect } from 'react-redux'
+import { createTabContainer } from 'layout/default/createTabContainer'
 import { Dispatch } from 'redux'
 import { FormattedMessage } from 'react-intl'
-import React from 'react'
 import { SettingLanguage } from '../com/'
 import { Switch } from '@blueprintjs/core'
 import { TPaletteType } from '../redux/initalState'
 import { TRootState } from 'conf/redux/reducer'
-import { addBreadcrumb } from 'layout/default/createContainer'
-import { changeTheme } from '../redux/action'
-import { connect } from 'react-redux'
-import { createTab } from 'com/index'
-import { createTabContainer } from 'layout/default/createTabContainer'
+
 
 const styles = require('../scss/style.scss')
 
@@ -47,7 +46,7 @@ const mapStateToProps = (state: TRootState) => ({
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-	switchTheme: () => dispatch(changeTheme()),
+	switchTheme: () => dispatch(redux.actionCollection.changeTheme()),
 })
 const withRedux = connect(mapStateToProps, mapDispatchToProps)
 

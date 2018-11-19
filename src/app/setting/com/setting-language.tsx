@@ -1,13 +1,13 @@
+import React from 'react'
+import redux from '../redux/'
 import { Button, MenuItem } from '@blueprintjs/core'
 import { compose, pure } from 'recompose'
-
+import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import { FormattedMessage } from 'react-intl'
-import React from 'react'
 import { Select } from '@blueprintjs/select'
 import { TRootState } from 'conf/redux/reducer'
-import { changeLanguage } from '../redux/action'
-import { connect } from 'react-redux'
+
 
 interface ISettingLanguagePropsOut {}
 interface ISettingLanguageStateProps {
@@ -67,7 +67,7 @@ const mapStateToProps = (state:TRootState) => ({
 })
 
 const mapActionsToProps = (dispatch: Dispatch) => ({
-	updateLanguage:  (code: string) => () => dispatch(changeLanguage(code)),
+	updateLanguage:  (code: string) => () => dispatch(redux.actionCollection.changeLanguage(code)),
 })
 
 const withRedux = connect(mapStateToProps, mapActionsToProps)

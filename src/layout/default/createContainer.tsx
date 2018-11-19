@@ -1,13 +1,15 @@
-import { identity, path } from 'ramda'
-import { compose, lifecycle, pure, renderComponent } from 'recompose'
-
 import classnames from 'classnames'
-import { TRootState } from 'conf/redux/reducer'
 import React from 'react'
+import redux from './redux/'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import { withPropsChecker } from 'util/react'
-import { updateNavbar } from './redux/action'
+import { identity, path } from 'ramda'
+import {
+	compose,
+	lifecycle,
+	pure,
+} from 'recompose'
+
 
 // TYPE 1ST
 
@@ -37,7 +39,7 @@ interface IContainerProps {
 }
 
 const mapActionToProps = (dispatch: Dispatch) => ({
-	updateBreadcrumb: (items: string[]) => dispatch(updateNavbar(items)),
+	updateBreadcrumb: (items: string[]) => dispatch(redux.actionCollection.updateNavbar(items)),
 })
 
 

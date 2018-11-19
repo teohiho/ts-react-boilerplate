@@ -1,4 +1,4 @@
 export default {
-	localPath: ['sample'],
+	local: ['sample'],
 	name: 'sample',
 }

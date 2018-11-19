@@ -1,4 +1,0 @@
-Store config:
-	+ route
-	+ language
-	

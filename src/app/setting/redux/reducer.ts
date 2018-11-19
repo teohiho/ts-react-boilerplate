@@ -1,32 +1,26 @@
-import { cond, T } from 'ramda'
-import { IAppAction } from './action'
-import actionType from './actionType'
-import { initialState, TAppState, TPaletteType } from './initalState'
+import produce from 'immer'
+import { ActionSetting } from './action'
+import { ActionTypeSetting } from './actionType'
+import { initialState, TSettingState } from './initalState'
+import { IReduxModuleAction } from 'redux-packaged'
 
-const isLight = (paletteType: TPaletteType) => paletteType === 'light'
-const reducer = (state: TAppState = initialState, action: IAppAction<any>) => {
-  switch (action.type) {
-	case actionType.CHANGE_THEME: {
-		const branchPalette = cond([
-			[
-				isLight, () => {
-				return state.setIn(['theme', 'paletteType'], 'dark')
-				},
-			],
-			[
-				T, () => {
-					return state.setIn(['theme', 'paletteType'], 'light')
-				},
-			],
-		],
-		)
-		return branchPalette(state.theme.paletteType)
+
+const make = ({ actionType }: IReduxModuleAction<ActionTypeSetting, {}, ActionSetting>) =>
+	(state: TSettingState = initialState, action: ActionSetting): TSettingState => {
+		return produce(state, (draft) => {
+			switch (action.type) {
+				case actionType.CHANGE_THEME: {
+					draft.theme.paletteType = action.payload.mode || (draft.theme.paletteType === 'dark' ? 'light' : 'dark')
+					return
+				}
+				case actionType.CHANGE_LANGUAGE: {
+					draft.lang = action.payload.lang
+					return
+				}
+			}
+		})
 	}
-	case actionType.CHANGE_LANGUAGE: {
-		return state.setIn(['lang'], action.lang)
-	}
-	default: return state
-  }
+
+export default {
+	make,
 }
-
-export default reducer

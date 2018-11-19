@@ -1,7 +1,11 @@
-import { generateActionTypeList } from 'util/redux/actionType'
+import reduxUtil, { ReturnActionType } from 'redux-packaged'
 
-const type = 'layout'
+export type ActionTypeLayoutDefault = ReturnActionType<typeof make>
 
-export default generateActionTypeList(type, { actionType: [
+const make = reduxUtil.actionType.make([
 	'UPDATE_NAV',
-] })
+])
+
+export default {
+	make,
+}

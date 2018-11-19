@@ -1,17 +1,16 @@
 import { from, ImmutableObject } from 'seamless-immutable'
 
+type IFrameworkNavBar = {
+	breadcrumbItems: string[],
+}
 
-export const initialState: TLayoutDefault = from({
+export type TLayoutDefault = {
+	frameworkNavbar: IFrameworkNavBar,
+}
+
+export const initialState: TLayoutDefault = {
 	frameworkNavbar: {
 		breadcrumbItems: ['Dashboard'],
 	},
-})
-
-interface IFrameworkNavBar {
-	breadcrumbItems: string[]
 }
-export type TLayoutDefault = ImmutableObject<ILayoutDefault>
 
-export interface ILayoutDefault  {
-	frameworkNavbar: IFrameworkNavBar
-}

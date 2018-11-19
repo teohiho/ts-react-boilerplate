@@ -14,6 +14,9 @@ interface IProps {
 
 const TodoPage = ({ list }: IProps) => (
 	<div>
+		<h1>
+			Todo
+		</h1>
 		{list}
 	</div>
 )
