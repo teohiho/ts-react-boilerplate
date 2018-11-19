@@ -5,7 +5,7 @@ import { keys, merge, omit } from 'ramda'
 import { SelectorTodo } from './selector'
 
 
-export type Status = 'inProcessing' | 'done' | 'idle'
+export type Status = 'inprocess' | 'done' | 'idle'
 export interface ITodo {
 	id: string,
 	date: string,

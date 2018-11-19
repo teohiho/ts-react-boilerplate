@@ -13,13 +13,15 @@ interface ISettingLanguagePropsOut {}
 interface ISettingLanguageStateProps {
 	langCode: string
 }
+
 interface ISettingLanguageActionsProps {
 	updateLanguage: (code: string) => () => void
 }
+
 interface ISettingLanguagePropsIn extends ISettingLanguagePropsOut, ISettingLanguageStateProps, ISettingLanguageActionsProps {
 
 }
-const langs = {
+const LANGUAGES = {
 	vi: {
 		text: 'Vietnamese',
 	},
@@ -27,6 +29,7 @@ const langs = {
 		text: 'English',
 	},
 }
+
 const SettingLanguageView = ({ langCode, updateLanguage }: ISettingLanguagePropsIn) => {
 	return (
 	<div className={'.u-flex--row'}>
@@ -56,7 +59,7 @@ const SettingLanguageView = ({ langCode, updateLanguage }: ISettingLanguageProps
 		>
 			{/* <InputGroup className="m-l-sm" value={'Vietnamese'} disabled/> */}
 			<Button className="m-l-sm">
-				{langs[langCode].text}
+				{LANGUAGES[langCode].text}
 			</Button>
 		</Select>
 	</div>

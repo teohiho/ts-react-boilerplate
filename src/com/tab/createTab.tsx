@@ -20,7 +20,7 @@ import classnames from 'classnames'
 import { v4 } from 'uuid'
 
 const styles = require('./appTab.scss')
-type TbreadcrumbItem = {
+type TBreadcrumbItem = {
 	href: string;
 	text: string;
 } | {
@@ -29,7 +29,7 @@ type TbreadcrumbItem = {
 interface IAppTabPropsOut {
 	tabs ? : ITabProps[],
 	RenderComponent ? : () => JSX.Element,
-	breadcrumbItems: TbreadcrumbItem[]
+	breadcrumbItems: TBreadcrumbItem[]
 }
 interface IAppTabState {
 	selectedTabId: string
@@ -67,7 +67,7 @@ const renderChildTabs = (tabs: ITabProps[] = []) => {
 	),
 	)
 }
-const renderBreadcrumb = (items: TbreadcrumbItem[]) => {
+const renderBreadcrumb = (items: TBreadcrumbItem[]) => {
 	return (
 			<div style={{ width: '50%' }}>
 				<div style={{ width: `${100}%` }}>
@@ -81,7 +81,7 @@ const renderBreadcrumb = (items: TbreadcrumbItem[]) => {
 			</div>
 	)
 }
-const renderOverflow = (items: TbreadcrumbItem[]) => {
+const renderOverflow = (items: TBreadcrumbItem[]) => {
 	const orderedItems = items
 	const menuItems = orderedItems.map((item, index) => <MenuItem {...item} key={index} />)
 	return (

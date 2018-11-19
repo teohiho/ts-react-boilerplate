@@ -42,6 +42,7 @@ const LinkItemView = ({ icon, text, path, match, location, history }: ILinkProps
 	const updatePath = concatPath(match.url)
 	const fullPath = updatePath(path)
 	return (
+		<MenuItem icon={icon} text={text} className={Classes.POPOVER_DISMISS} style={{"marginBottom":"5px"}}>
 		<Link
 			className={
 				classnames(
@@ -51,32 +52,31 @@ const LinkItemView = ({ icon, text, path, match, location, history }: ILinkProps
 				)
 			}
 			to={fullPath}
-		>
-			<MenuItem icon={icon} text={text} className={Classes.POPOVER_DISMISS}/>
-		</Link>
+		></Link>
+		</MenuItem>
 	)
 }
 
 const LinkItem = compose<ILinkPropsIn, ILinkPropsOut>(withRouter)(LinkItemView)
 const SlideBar = () => (
-	<Menu className={'o-menu--vertical'}>
-		<div>
+	<section className={'o-menu--vertical'}>
+		<Menu>
 			<MenuDivider title="NAVIGATION" />
 			<LinkItem icon="lock" text="Setting" path="/setting"  />
 			<LinkItem icon="lock" text="Dashboard" path="/"  />
-		</div>
-		<div>
+		</Menu>
+		<Menu>
 			<MenuDivider title="Test" />
 			<LinkItem icon="lock" text="Organization" path="/t-test/auth" />
 			<LinkItem icon="lock" text="Login" path="/auth" />
-		</div>
-		<div>
+		</Menu>
+		<Menu>
 			<MenuDivider title="Example" />
 			<LinkItem icon="lock" text="Man" path="/man" />
 			<LinkItem icon="lock" text="Hien" path="/hien" />
-		</div>
+		</Menu>
 
-	</Menu>
+	</section>
 )
 
 interface IOpenState {
