@@ -10,13 +10,13 @@ yarn install
 #### 1. Run dev-server
 
 ```
-yarn start:direct
+yarn start
 ```
 
 #### 2. Build
 
 ```
-yarn build:direct
+yarn build
 ```
 
 #### 3. Run server from build
