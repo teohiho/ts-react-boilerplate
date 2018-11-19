@@ -5,10 +5,10 @@
     ]
   },
   "dependencies": {
-    "@blueprintjs/core": "^3.6.1",
-    "@blueprintjs/datetime": "^3.0.0",
-    "@blueprintjs/docs-theme": "^3.0.1",
-    "@blueprintjs/select": "^3.0.0",
+    "@blueprintjs/core": "^3.9.0",
+    "@blueprintjs/datetime": "^3.4.0",
+    "@blueprintjs/docs-theme": "^3.0.3",
+    "@blueprintjs/select": "^3.3.0",
     "@storybook/addon-storyshots": "^3.4.1",
     "@types/create-react-class": "^15.6.2",
     "async-mqtt": "^2.0.0",
@@ -37,7 +37,7 @@
     "recompose": "^0.27.1",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
-    "redux-packaged": "^1.0.5",
+    "redux-packaged": "^1.0.8",
     "redux-persist": "^5.10.0",
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.3.0",
