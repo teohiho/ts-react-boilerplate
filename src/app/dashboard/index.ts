@@ -1,9 +1,6 @@
-import { Graph } from './com/graph'
-import { route } from './conf/route'
-export default {
-	// Component
-	Graph,
+import moduleUtil from '../helper'
+import route from './conf/route'
+import { RouteProps } from 'react-router'
 
-	// Config
-	route,
-}
+export default moduleUtil.registerModule(route, undefined, undefined)
+

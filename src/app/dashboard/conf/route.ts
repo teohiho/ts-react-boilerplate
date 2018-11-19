@@ -1,6 +1,6 @@
 import { DashboardPage } from '../page/dashboard'
 
-export const route = {
+export default {
 	dashboard: {
 		path: '/',
 		component: DashboardPage,

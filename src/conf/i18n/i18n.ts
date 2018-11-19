@@ -1,7 +1,6 @@
-import * as en from 'react-intl/locale-data/en'
-import * as vi from 'react-intl/locale-data/vi'
+import en from 'react-intl/locale-data/en'
+import vi from 'react-intl/locale-data/vi'
 import { addLocaleData } from 'react-intl'
-
 
 // TODO: Make lazy load when user request
 

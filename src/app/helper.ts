@@ -1,6 +1,9 @@
+import objectUtil from 'util/object'
 import { Reducer } from 'redux'
 import { RouteProps } from 'react-router'
-import {
+import R, {
+	filter,
+	isNil,
 	mapObjIndexed,
 	mergeAll,
 	values,
@@ -23,7 +26,7 @@ interface IRedux {
 }
 type IRegisterModule<R, RO, C> = {
 	redux?: R,
-	route: RO,
+	route?: RO,
 	com?: C,
 }
 
@@ -40,7 +43,6 @@ function registerModule<C, RO, R>(routeConfig?: RO, component?: C, redux?: R) {
 	}
 }
 
-
 const getPart = <R,
 				RO,
 				C,
@@ -49,14 +51,18 @@ const getPart = <R,
 				>
 
 	(part: K, app: T) => {
-		return mapObjIndexed(module => module[part], app) as {[N in keyof T]: T[N][K]}
+		const partModule = mapObjIndexed(module => module[part], app)
+		return objectUtil.removeUndefined(partModule) as {
+			[N in keyof T]: T[N] extends undefined ? never : T[N][K] extends undefined ? never : T[N][K]
+		}
 	}
 
 // @TODO: Curry will not support typescript
 const getRoute =  <R, RO extends object, C, T extends {[N in keyof T]: IRegisterModule<R, RO, C> }>
-	(app: T) => mergeAll(values(getPart('route', app)))
+	(app: T) => mergeAll(values(getPart('route', app) as object))
 const getRedux =  <R, RO, C, T extends {[N in keyof T]: IRegisterModule<R, RO, C > }>
 	(app: T) => getPart('redux', app)
+
 const getCom =  <R, RO, C, T extends {[N in keyof T]: IRegisterModule<R, RO, C > }>
 	(app: T) => getPart('com', app)
 

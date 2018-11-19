@@ -18,6 +18,7 @@ export interface IAppConfigPropsIn extends IAppConfigPropsOut {
 	lang: string
 	theme: TPaletteType
 }
+
 export interface IAppConfigPropsOut {
 
 }

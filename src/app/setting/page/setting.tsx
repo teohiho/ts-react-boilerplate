@@ -57,13 +57,13 @@ const addTab = createTabContainer({
 		{
 			path: '',
 			component: SettingTheme,
-			title: <FormattedMessage id="Setting.theme" />,
+			title: <FormattedMessage id="setting.theme" />,
 			exact: true,
 		},
 		{
 			path: '/language',
 			component: SettingLanguage,
-			title: <FormattedMessage id="Setting.language" />,
+			title: <FormattedMessage id="setting.language" />,
 		},
 	],
 })
