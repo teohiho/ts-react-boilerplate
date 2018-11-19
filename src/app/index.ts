@@ -30,7 +30,6 @@ const reducer = reduxUtil.reducer.get(redux)
 const reducerRaw = reduxUtil.reducer.getRaw(redux)
 const saga = reduxUtil.saga.get(redux)
 
-console.log('routerouteroute', route)
 export default {
 	redux,
 	com,

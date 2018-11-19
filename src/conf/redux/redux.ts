@@ -1,10 +1,14 @@
-
 import * as LogRocket from 'logrocket'
-import { applyMiddleware, compose, createStore } from 'redux'
-import { persistStore } from 'redux-persist'
 import createSagaMiddleware from 'redux-saga'
-import { appReducer } from './reducer'
+import { applyMiddleware, compose, createStore } from 'redux'
 import { appSaga } from './saga'
+import { createAppReducer } from './reducer'
+import { createBrowserHistory } from 'history'
+import { persistStore } from 'redux-persist'
+import { routerMiddleware } from 'connected-react-router'
+
+
+const history = createBrowserHistory()
 
 const composeEnhancers =
 	typeof window === 'object' && (<any>window).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -20,13 +24,17 @@ const enhancer = composeEnhancers(
 	// Add saga, debug...
 	// LogRocket.reduxMiddleware(),
 	sagaMiddleware,
+	routerMiddleware(history),
   ),
 )
 const preloadedState = {}
 
+export {
+	history
+}
 export default function configureStore(onComplete?: Function) {
   const store = createStore(
-	appReducer,
+	createAppReducer(history),
 	preloadedState,
 	enhancer,
   )

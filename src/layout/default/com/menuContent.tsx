@@ -3,11 +3,9 @@ import classnames from 'classnames'
 import React from 'react'
 import { concatPath } from 'util/route'
 import { connect } from 'react-redux'
-import { Link, LinkProps } from 'react-router-dom'
 import { Location } from 'history'
-import { match, RouteComponentProps, withRouter } from 'react-router'
-import { TRootState } from 'conf/redux/reducer'
-import { v4 } from 'uuid'
+import { push } from 'connected-react-router'
+import { RouteComponentProps, withRouter } from 'react-router'
 
 import {
 	Button,
@@ -33,48 +31,37 @@ import {
 
 const  styles = require('../scss/style.scss')
 
-interface ILinkPropsOut extends IMenuItemProps {
+type ILinkPropsOut = IMenuItemProps & {
 	// isActive: boolean,
 	path: string
 }
-interface ILinkPropsIn extends ILinkPropsOut, RouteComponentProps<any> {}
+type ReduxProps = {
+	push: typeof push
+}
+type ILinkPropsIn = ILinkPropsOut & RouteComponentProps<any> & ReduxProps
 const isRouteEqualPathname = (location: Location, pathLink: string) => {
 	return	(pathLink === location.pathname && true)
 			|| (location.pathname === pathLink && true)
 			|| false
 }
-const LinkItemView = ({ icon, text, path, match, location, history }: ILinkPropsIn) => {
+const LinkItemView = ({ icon, text, path, match, location, history, push }: ILinkPropsIn) => {
 	const updatePath = concatPath(match.url)
-	const fullPath = updatePath(path)
-	console.log('')
+	// const fullPath = updatePath(path)
+	// console.log('')
 	return (
-		// <MenuItem icon={icon} text={text} className={Classes.POPOVER_DISMISS} style={{ marginBottom:'5px' }}>
-		// <Link
-		// 	className={
-		// 		classnames(
-		// 			'o-menu__link',
-		// 			Classes.POPOVER_DISMISS,
-		// 			{ 'o-menu__link--selected': isRouteEqualPathname(location, fullPath) },
-		// 		)
-		// 	}
-		// 	to={fullPath}
-		// ></Link>
-		// </MenuItem>
-		<MenuItem icon={icon} className={Classes.POPOVER_DISMISS}
+		<MenuItem
+			onClick={() => push(path)}
+			icon={icon}
+			active={isRouteEqualPathname(location, path)}
+			className={Classes.POPOVER_DISMISS}
 			text={
-				<Link
-					className={classnames('o-menu__link', Classes.POPOVER_DISMISS, { 'o-menu__link--selected': isRouteEqualPathname(location, path) })}
-					to={path}
-					style={{ width: '100%' }}
-				>
-				{text}
-				</Link>
+				text
 			}
 		/>
 	)
 }
 
-const LinkItem = compose<ILinkPropsIn, ILinkPropsOut>(withRouter)(LinkItemView)
+const LinkItem = compose<ILinkPropsIn, ILinkPropsOut>(withRouter, connect(undefined, {push}))(LinkItemView)
 const SlideBar = () => (
 	<section className={'o-menu--vertical'}>
 		<Menu>
