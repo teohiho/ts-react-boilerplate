@@ -9000,8 +9000,9 @@ redux-logger@^3.0.6:
   dependencies:
     deep-diff "^0.3.5"
 
-redux-packaged@/Users/zaku/Workspaces/react/redux-packaged:
-  version "1.0.6"
+redux-packaged@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/redux-packaged/-/redux-packaged-1.0.5.tgz#ee832118eb2e2a20e20638f988cfdfdf0ed7ded8"
   dependencies:
     js-tokens "^4.0.0"
     loose-envify "^1.4.0"
