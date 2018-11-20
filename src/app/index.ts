@@ -1,3 +1,4 @@
+import auth from './auth'
 import dashboard from './dashboard'
 import moduleUtil from './helper'
 import reduxUtil from 'redux-packaged'
@@ -17,6 +18,7 @@ const app = {
 	setting,
 	dashboard,
 	sample,
+	auth,
 	// hien,
 	// man,
 	// mqtt,

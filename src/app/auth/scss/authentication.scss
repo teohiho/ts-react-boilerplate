@@ -1,0 +1,38 @@
+:local(.body) {
+	background-image: url("~img/background-man-7-1.jpg");
+	background-size: cover;
+	// opacity: 0.4;
+	width: 100vw;
+	background-color: transparent;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex:1;
+}
+
+:local(.card) {
+	border-radius: 8px;
+	overflow: hidden;
+	&__image {
+		background: url('~img/photo-man--2.jpeg');
+		background-size: 100% 100%;
+	}
+	&__content {
+		max-width: 600px;
+	}
+	&__input {
+		width: 100%;
+	}
+	&__title {
+	}
+	&__btn {
+		margin-bottom: 10px;
+		width: 100%;
+		// For keyclock 
+		text-align: center;
+		width: 200px;
+	}
+	&__rule {
+		width: 100%;
+	}
+}
