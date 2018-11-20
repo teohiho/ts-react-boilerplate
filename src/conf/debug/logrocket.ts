@@ -11,13 +11,13 @@ export const registerUserLogger = (user: TUser) => {
   LogRocket.identify(user.id, {
 	...user,
 	// Add your own custom user variables here, ie:
-	subscriptionType: 'pro',
+	// subscriptionType: 'pro',
   })
 }
 
 export const settingLogrocket = () => {
 	const appName = 'tifl/react-ts-boilderplate'
-	LogRocket.init(appName)
-	// after calling LogRocket.init()
-	setupLogRocketReact(LogRocket)
+	// LogRocket.init(appName)
+	// // after calling LogRocket.init()
+	// setupLogRocketReact(LogRocket)
 }

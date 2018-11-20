@@ -1,4 +1,11 @@
 import * as Immutable from 'seamless-immutable'
+import classnames from 'classnames'
+import React from 'react'
+import { concatPath } from 'util/route'
+import { connect } from 'react-redux'
+import { Location } from 'history'
+import { push } from 'connected-react-router'
+import { RouteComponentProps, withRouter } from 'react-router'
 
 import {
 	Button,
@@ -12,52 +19,49 @@ import {
 	MenuItem,
 	Popover,
 	Position,
-	Text
+	Text,
 } from '@blueprintjs/core'
-import { Link, LinkProps } from 'react-router-dom'
-import { RouteComponentProps, match, withRouter } from 'react-router'
-import { compose, pure, renderComponent, withStateHandlers } from 'recompose'
+import {
+	compose,
+	pure,
+	renderComponent,
+	withStateHandlers,
+} from 'recompose'
 
-import { Location } from 'history'
-import React from 'react'
-import { TRootState } from 'conf/redux/reducer'
-import classnames from 'classnames'
-import { concatPath } from 'util/route'
-import { connect } from 'react-redux'
-import { v4 } from 'uuid'
 
 const  styles = require('../scss/style.scss')
 
-interface ILinkPropsOut extends IMenuItemProps {
+type ILinkPropsOut = IMenuItemProps & {
 	// isActive: boolean,
 	path: string
 }
-interface ILinkPropsIn extends ILinkPropsOut, RouteComponentProps<any> {}
-const isRouteEqualPathname = (location: Location, pathLink: string) => {
-	return	(pathLink === location.pathname && true)
-			|| (location.pathname === pathLink && true)
-			|| false
+type ReduxProps = {
+	push: typeof push
 }
-const LinkItemView = ({ icon, text, path, match, location, history }: ILinkPropsIn) => {
+type ILinkPropsIn = ILinkPropsOut & RouteComponentProps<any> & ReduxProps
+const isRouteEqualPathname = (location: Location, pathLink: string) => {
+	if(pathLink === '/') {
+		return location.pathname === '/'
+	}
+	return location.pathname.indexOf(pathLink) === 0
+}
+const LinkItemView = ({ icon, text, path, match, location, history, push }: ILinkPropsIn) => {
 	const updatePath = concatPath(match.url)
-	const fullPath = updatePath(path)
+	console.log('location', location, path)
 	return (
-		<MenuItem icon={icon} text={text} className={Classes.POPOVER_DISMISS} style={{"marginBottom":"5px"}}>
-		<Link
-			className={
-				classnames(
-					'o-menu__link',
-					Classes.POPOVER_DISMISS,
-					{ 'o-menu__link--selected': isRouteEqualPathname(location, fullPath) },
-				)
+		<MenuItem
+			onClick={() => push(path)}
+			icon={icon}
+			active={isRouteEqualPathname(location, path)}
+			className={Classes.POPOVER_DISMISS}
+			text={
+				text
 			}
-			to={fullPath}
-		></Link>
-		</MenuItem>
+		/>
 	)
 }
 
-const LinkItem = compose<ILinkPropsIn, ILinkPropsOut>(withRouter)(LinkItemView)
+const LinkItem = compose<ILinkPropsIn, ILinkPropsOut>(withRouter, connect(undefined, {push}))(LinkItemView)
 const SlideBar = () => (
 	<section className={'o-menu--vertical'}>
 		<Menu>

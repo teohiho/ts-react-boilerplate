@@ -1,13 +1,12 @@
-import { RouteComponentProps, Switch } from 'react-router'
+import React from 'react'
 import { compose, onlyUpdateForKeys, pure } from 'recompose'
+import { Footer } from './com/footer'
+import { Header } from './com/header'
+import { RouteComponentProps, Switch } from 'react-router'
 
 import {
 	FocusStyleManager,
 } from '@blueprintjs/core'
-import { Footer } from './com/footer'
-import { Header } from './com/header'
-import React from 'react'
-import classnames from 'classnames'
 
 const  styles = require('./scss/style.scss')
 

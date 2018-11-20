@@ -10,20 +10,6 @@ import R, {
 } from 'ramda'
 
 
-// import app from './index'
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
-
-type RouteConfig = {
-	[id: string]: RouteProps,
-}
-
-interface IRedux {
-	reducer: Reducer,
-	actionType: any,
-	action: any,
-	saga?: any,
-	selector?: any,
-}
 type IRegisterModule<R, RO, C> = {
 	redux?: R,
 	route?: RO,

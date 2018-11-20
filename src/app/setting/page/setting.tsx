@@ -53,19 +53,17 @@ const withRedux = connect(mapStateToProps, mapDispatchToProps)
 const SettingTheme = compose<ISettingPropsIn, ISettingPropsOut>(withRedux, pure)(SettingView)
 
 const addTab = createTabContainer({
-	tabs: [
-		{
-			path: '',
+	tabs: {
+		'': {
 			component: SettingTheme,
 			title: <FormattedMessage id="setting.theme" />,
 			exact: true,
 		},
-		{
-			path: '/language',
+		'/language': {
 			component: SettingLanguage,
 			title: <FormattedMessage id="setting.language" />,
 		},
-	],
+	},
 })
 
 export const SettingPage = compose<ISettingPropsOut, ISettingPropsOut>(

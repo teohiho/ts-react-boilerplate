@@ -37,7 +37,7 @@ const make = (reduxModule: IReduxModuleAction<ActionTypeTodo, SelectorTodo, Acti
 				}
 			}
 			case actionType.REMOVE: {
-				const resourceUpdate = omit(action.payload.id)(state.resource)
+				const resourceUpdate = omit(action.payload.id)(state.resource) as {	[id: string]: ITodo; }
 				return {
 					...state,
 					resource: resourceUpdate,

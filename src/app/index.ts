@@ -1,5 +1,6 @@
 import auth from './auth'
 import dashboard from './dashboard'
+import idtv from './idtv'
 import moduleUtil from './helper'
 import reduxUtil from 'redux-packaged'
 import sample from './sample'
@@ -32,7 +33,6 @@ const reducer = reduxUtil.reducer.get(redux)
 const reducerRaw = reduxUtil.reducer.getRaw(redux)
 const saga = reduxUtil.saga.get(redux)
 
-console.log('routerouteroute', route)
 export default {
 	redux,
 	com,
