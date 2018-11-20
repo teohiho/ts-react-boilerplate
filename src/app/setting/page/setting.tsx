@@ -55,7 +55,7 @@ const SettingTheme = compose<ISettingPropsIn, ISettingPropsOut>(withRedux, pure)
 const addTab = createTabContainer({
 	tabs: [
 		{
-			path: '',
+			path: '/',
 			component: SettingTheme,
 			title: <FormattedMessage id="setting.theme" />,
 			exact: true,

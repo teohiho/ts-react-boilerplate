@@ -2,6 +2,7 @@ const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin')
 const webpack = require('webpack');
+const resolve = require('path').resolve;
 
 const parts = require("./webpack.module");
 const { appPath } = require('./helper/path')
@@ -34,9 +35,9 @@ const developmentMainConfig = {
 		// served by WebpackDevServer in development. This is the JS bundle
 		// containing code from all our entry points, and the Webpack runtime.
 		filename: 'static/js/bundle.js',
-		// There are also additional JS chunk files if you use code splitting.
-		chunkFilename: 'static/js/[name].chunk.js',
 		path: appPath.appBuild,
+		// There are also additional JS chunk files if you use code splitting.
+		// chunkFilename: 'static/js/[name].chunk.js',
 		publicPath: config.SERVER_BASE,
 	},
 	// devtool: 'eval', //generated code

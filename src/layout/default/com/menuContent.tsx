@@ -40,14 +40,14 @@ type ReduxProps = {
 }
 type ILinkPropsIn = ILinkPropsOut & RouteComponentProps<any> & ReduxProps
 const isRouteEqualPathname = (location: Location, pathLink: string) => {
-	return	(pathLink === location.pathname && true)
-			|| (location.pathname === pathLink && true)
-			|| false
+	if(pathLink === '/') {
+		return location.pathname === '/'
+	}
+	return location.pathname.indexOf(pathLink) === 0
 }
 const LinkItemView = ({ icon, text, path, match, location, history, push }: ILinkPropsIn) => {
 	const updatePath = concatPath(match.url)
-	// const fullPath = updatePath(path)
-	// console.log('')
+	console.log('location', location, path)
 	return (
 		<MenuItem
 			onClick={() => push(path)}

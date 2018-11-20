@@ -1,3 +1,4 @@
+import SampleRoute from '../page/route'
 import Todo from '../page/todo'
 
 export default {
@@ -5,4 +6,8 @@ export default {
 		path: '/sample',
 		component: Todo,
 	},
+	sampleRoute: {
+		path: '/s-r',
+		component: SampleRoute
+	}
 }

@@ -110,6 +110,7 @@ const BodyView = ({ tabs, match, className }: IListTabPropsIn) => {
 			<Route {...tab} path={`${match.path}${tab.path}`} component={AddMargin} key={key} />
 		)
 	})
+	console.log('ListTab', `${match.path}`, ListTab)
 	return (
 		<Switch>
 			{ListTab}
@@ -121,7 +122,6 @@ const BodyView = ({ tabs, match, className }: IListTabPropsIn) => {
 const Body = compose<IListTabPropsIn, IListTabPropsOut>(withRouter)(BodyView)
 
 const AppTabView = ({ tabs, classes= {} }: ICreateTabContainerPropsOut) => {
-	console.log('APPTAB')
 	return (
 		<>
 			<div className={classnames(

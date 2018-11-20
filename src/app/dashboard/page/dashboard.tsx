@@ -23,7 +23,7 @@ const addRedux = connect(null, { push })
 export const DashboardPage = compose<Props, {}>(
 	addContainer(
 		{
-			breadcrumbItems: ['Setting'],
+			breadcrumbItems: ['Dashboard'],
 		},
 	),
 	addRedux,
