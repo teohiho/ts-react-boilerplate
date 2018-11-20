@@ -5,13 +5,14 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { push } from 'connected-react-router'
 
+
 type Props = {
-	push: typeof push
+	push: typeof push,
 }
 const DashboardView = ({ push }: Props) => (
 	<>
 		<h1>Dashboard</h1>
-		<h1 onClick={() => push('/setting')}>Move to setting by redux</h1>
+		{/* <h1 onClick={() => push('/setting')}>Move to setting by redux</h1> */}
 		<Link to="/setting" replace>
 			MOVE TO SETTING
 		</Link>

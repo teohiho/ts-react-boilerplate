@@ -1,5 +1,4 @@
 import React from 'react'
-import { AuthenticationRoute } from './auth'
 import { compose } from 'recompose'
 import { ConnectedRouter } from 'connected-react-router'
 import { DashboardRoute } from './dashboard'
@@ -30,10 +29,9 @@ export const convertRouteComponent = (_concatPath: (path: string) => string) => 
 
 const AppRouteView = () => (
 	<ConnectedRouter history={history}>
-		<div> 
+		<div>
 			<Switch>
 				<Route path="/panel" component={PanelRoute} />
-				<Route path="/auth" component={AuthenticationRoute} />
 				<Route path="/" component={DashboardRoute}  />
 			</Switch>
 		</div>

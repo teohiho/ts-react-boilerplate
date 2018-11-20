@@ -7,12 +7,18 @@ import { ITodoState } from '../redux/reducer'
 type TRootState = {
 	todo: ITodoState,
 }
-
-interface IProps {
-	list: string[]
+type OwnProps = {
 }
+type StoreProps = {
+	list: string[],
+}
+type InjectedProps = {}
+type ActionProps = {
+}
+type Props =  OwnProps & StoreProps & ActionProps & InjectedProps
 
-const TodoPage = ({ list }: IProps) => (
+
+const TodoPage = ({ list }: Props) => (
 	<div>
 		<h1>
 			Todo
@@ -27,7 +33,7 @@ const mapState = (state: TRootState) => ({
 
 const addRedux = connect(mapState)
 
-const Todo = compose<IProps, {}>(addRedux)(TodoPage)
+const Todo = compose<Props, {}>(addRedux)(TodoPage)
 
 export default Todo
 

@@ -19,14 +19,14 @@ import {
 const styles = require('./scss/style.scss')
 
 // TYPE 1ST
-
+export type TabPropsCollection = {[path: string]: ITabProps}
 interface ITabProps extends RouteProps {
-	path: string,
 	title: React.ReactNode,
+	component: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>
 }
 
 interface ICreateTabContainerPropsOut {
-	tabs: ITabProps[],
+	tabs: TabPropsCollection,
 	selectedPath?: string
 	classes?: {
 		tabs?: string,
@@ -36,7 +36,7 @@ interface ICreateTabContainerPropsOut {
 }
 
 interface IListTabPropsOut {
-	tabs: ITabProps[],
+	tabs: TabPropsCollection,
 	className?: string,
 }
 
@@ -71,20 +71,20 @@ const idStateHandler = withStateHandlers<ITabState, {}, ILeftHandlerProps >(
 
 
 const ListTabView = ({ tabs, match, changeId, selectedId, className }: IListTabPropsIn) => {
-	const ListTab = tabs.map((tab, key) => (
-		<Link to={concatPath(match.url)(tab.path)} key={key}>
+	const ListTab = Object.keys(tabs).map((path: string) => (
+		<Link to={concatPath(match.url)(path)} key={path}>
 			<div
-				key={tab.path}
-				onClick={() => changeId(tab.path)}
+				key={path}
+				onClick={() => changeId(path)}
 				className={classnames(
 					'tab',
 					't-color',
 					'p-h-sm',
-					{ 'tab--selected': selectedId === tab.path },
+					{ 'tab--selected': selectedId === path },
 					className,
 				)}
 			>
-				{tab.title}
+				{tabs[path].title}
 			</div>
 		</Link>
 	))
@@ -97,20 +97,14 @@ const ListTabView = ({ tabs, match, changeId, selectedId, className }: IListTabP
 
 const ListTab = compose<IListTabPropsIn, IListTabPropsOut>(withRouter, idStateHandler)(ListTabView)
 
-const renderBodyContent = (tabs: ITabProps[] = []) => {
-	return tabs.map((tab, key) => (
-		<Route {...tab} key={key} />
-	))
-}
 
 const BodyView = ({ tabs, match, className }: IListTabPropsIn) => {
-	const ListTab = tabs.map((tab, key) => {
-		const AddMargin = tab.component && compose(addContainerClassName(className))(tab.component)
+	const ListTab = Object.keys(tabs).map((path: string) => {
+		const AddMargin = tabs[path].component && compose(addContainerClassName(className))(tabs[path].component)
 		return (
-			<Route {...tab} path={`${match.path}${tab.path}`} component={AddMargin} key={key} />
+			<Route {...tabs[path]} path={`${match.path}${path}`} component={AddMargin} key={path} />
 		)
 	})
-	console.log('ListTab', `${match.path}`, ListTab)
 	return (
 		<Switch>
 			{ListTab}
