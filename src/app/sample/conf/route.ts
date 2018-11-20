@@ -8,6 +8,6 @@ export default {
 	},
 	sampleRoute: {
 		path: '/s-r',
-		component: SampleRoute
-	}
+		component: SampleRoute,
+	},
 }

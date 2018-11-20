@@ -14,8 +14,8 @@ const RouteSampleView = () => (
 		<Link to="/s-r/1">Sample 1</Link>
 		<Link to="/s-r/2">Sample 2</Link>
 		<Switch>
-			<Route path='/s-r/1' component={Route1}/>
-			<Route path='/s-r/2' component={Route2}/>
+			<Route path="/s-r/1" component={Route1}/>
+			<Route path="/s-r/2" component={Route2}/>
 		</Switch>
 	</div>
 )
@@ -24,4 +24,4 @@ export default compose(addContainer(
 	{
 		breadcrumbItems: ['Sample', 'Route'],
 	},
-),)(RouteSampleView)
+), )(RouteSampleView)

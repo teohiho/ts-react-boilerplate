@@ -12,7 +12,6 @@ type Props = {
 const DashboardView = ({ push }: Props) => (
 	<>
 		<h1>Dashboard</h1>
-		{/* <h1 onClick={() => push('/setting')}>Move to setting by redux</h1> */}
 		<Link to="/setting" replace>
 			MOVE TO SETTING
 		</Link>
