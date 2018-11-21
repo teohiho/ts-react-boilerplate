@@ -14,7 +14,7 @@
 	border-radius: 8px;
 	overflow: hidden;
 	&__image {
-		background: url('~img/photo-man--2.jpeg');
+		background: url('~img/anhnen2.jpeg');
 		background-size: 100% 100%;
 	}
 	&__content {
@@ -26,11 +26,18 @@
 	&__title {
 	}
 	&__btn {
+		background-color: darkcyan;
+		border-radius: 8px;
+		box-shadow: 0px 3px 11px rgba(50, 50, 50, 0.75);
 		margin-bottom: 10px;
+		font-size: 24px;
+		color: white;
+		font-weight: bold;
 		width: 100%;
 		// For keyclock 
 		text-align: center;
 		width: 200px;
+		height: 80px;
 	}
 	&__rule {
 		width: 100%;

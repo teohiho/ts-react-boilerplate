@@ -2,7 +2,7 @@ import { LoginPage } from '../page/login'
 
 export default {
 	login: {
-		path: '/login',
+		path: '/auth',
 		component: LoginPage,
 		exact: true,
 	},
