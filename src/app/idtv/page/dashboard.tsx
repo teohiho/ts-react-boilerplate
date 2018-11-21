@@ -1,10 +1,20 @@
 import React from 'react'
 import { addContainer } from 'layout/default/createContainer'
 import { compose } from 'redux'
+import {
+	Chart,
+	Drilldown,
+	Filter,
+	Header,
+} from '../organism/'
+
 
 const Dashboard = () => (
 	<div>
-		<h1>IDTV</h1>
+		<Header />
+		<Filter />
+		<Chart />
+		<Drilldown />
 	</div>
 )
 
