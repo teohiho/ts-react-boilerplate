@@ -5,6 +5,7 @@ import moduleUtil from './helper'
 import reduxUtil from 'redux-packaged'
 import sample from './sample'
 import setting from './setting'
+import tifl from './tifl'
 // import authentication from './authentication'
 // import hien from './hien'
 // import man from './man'
@@ -40,4 +41,5 @@ export default {
 	saga,
 	route,
 	reducerRaw,
+	tifl,
 }

@@ -105,7 +105,6 @@ const BodyView = ({ tabs, match, className }: IListTabPropsIn) => {
 			<Route {...tabs[path]} path={`${match.path}${path}`} component={AddMargin} key={path} />
 		)
 	})
-	console.log('MEMO')
 	return (
 		<Switch>
 			{ListTab}
