@@ -24,7 +24,6 @@
     "include-media": "^1.4.9",
     "lodash": "^4.17.10",
     "mqtt": "^2.18.8",
-    "nietzsche-client": "/Users/zaku/Workspaces/react/nietzsche-client",
     "object-assign": "4.1.1",
     "path-to-regexp": "^2.2.1",
     "promise": "8.0.1",

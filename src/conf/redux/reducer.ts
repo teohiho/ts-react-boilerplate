@@ -15,7 +15,9 @@ const reducer = (history: History) => combineReducers({
 export type TRootReducer = ReturnType<typeof reducer>
 export type TRootState = ReturnType<TRootReducer>
 
-
+// const mapStateToProps = (state: TRootState) => ({
+// 	test: state.tifl.practitioner
+// })
 const makeRootReducer = (history: History) => (state: any, action: any) => {
   const { type } = action
   switch (type) {

@@ -15,7 +15,7 @@ import tifl from './tifl'
 
 const app = {
 	// test,
-	// tifl,
+	tifl,
 	// authentication,
 	setting,
 	dashboard,
