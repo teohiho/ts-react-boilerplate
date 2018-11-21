@@ -105,9 +105,9 @@ const data = {
 	  { category: 'G', amount: 19 },
 	  { category: 'H', amount: 87 },
 	],
-  }
-const BarChart = createClassFromSpec(spec)
+}
 
+const BarChart = createClassFromSpec(spec)
 
 const Chart = () => (
 	<div>

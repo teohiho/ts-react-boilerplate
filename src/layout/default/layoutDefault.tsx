@@ -25,7 +25,7 @@ interface IDashboardPropsIn extends IDashboardPropsOut{
 // Related: https://github.com/palantir/blueprint/issues/2755
 FocusStyleManager.onlyShowFocusOnTabs()
 
-const DashBoard = ({ children, url }: IDashboardPropsIn) => {
+const Dashboard = ({ children, url }: IDashboardPropsIn) => {
 	return (
 		<div className={styles.dashboardApp}>
 			<Header
@@ -37,4 +37,4 @@ const DashBoard = ({ children, url }: IDashboardPropsIn) => {
 	)
 }
 // const retrictRenderChild = onlyUpdateForKeys(['url'])
-export const DashBoardBluePrint = compose<IDashboardPropsIn, IDashboardPropsOut>(pure)(DashBoard)
+export const DashboardBluePrint = compose<IDashboardPropsIn, IDashboardPropsOut>(pure)(Dashboard)

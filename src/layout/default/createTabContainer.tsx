@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React from 'react'
+import React, { memo } from 'react'
 import { addContainerClassName } from './createContainer'
 import { Button, Tab, Tabs } from '@blueprintjs/core'
 import { concatPath } from '../../util/route'
@@ -95,7 +95,7 @@ const ListTabView = ({ tabs, match, changeId, selectedId, className }: IListTabP
 	)
 }
 
-const ListTab = compose<IListTabPropsIn, IListTabPropsOut>(withRouter, idStateHandler)(ListTabView)
+const ListTab = compose<IListTabPropsIn, IListTabPropsOut>(memo, withRouter, idStateHandler)(ListTabView)
 
 
 const BodyView = ({ tabs, match, className }: IListTabPropsIn) => {
@@ -105,6 +105,7 @@ const BodyView = ({ tabs, match, className }: IListTabPropsIn) => {
 			<Route {...tabs[path]} path={`${match.path}${path}`} component={AddMargin} key={path} />
 		)
 	})
+	console.log('MEMO')
 	return (
 		<Switch>
 			{ListTab}
@@ -113,7 +114,7 @@ const BodyView = ({ tabs, match, className }: IListTabPropsIn) => {
 }
 
 
-const Body = compose<IListTabPropsIn, IListTabPropsOut>(withRouter)(BodyView)
+const Body = compose<IListTabPropsIn, IListTabPropsOut>(memo, withRouter)(BodyView)
 
 const AppTabView = ({ tabs, classes= {} }: ICreateTabContainerPropsOut) => {
 	return (
@@ -133,4 +134,4 @@ const AppTabView = ({ tabs, classes= {} }: ICreateTabContainerPropsOut) => {
 	)
 }
 export const createTabContainer = (options: ICreateTabContainerPropsOut) =>
-	compose<ICreateTabContainerPropsOut, ICreateTabContainerPropsOut>(mapProps(() => options))(AppTabView)
+	compose<ICreateTabContainerPropsOut, ICreateTabContainerPropsOut>(memo, mapProps(() => options))(AppTabView)

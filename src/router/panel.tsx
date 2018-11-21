@@ -3,7 +3,7 @@ import React from 'react'
 import { compose, join, values } from 'ramda'
 import { concatPath } from 'util/route'
 import { convertRouteComponent } from './router'
-import { DashBoardBluePrint } from 'layout/default/layoutDefault'
+import { DashboardBluePrint } from 'layout/default/layoutDefault'
 import { Switch } from 'react-router-dom'
 import { TwoPanel } from 'layout/panel/createMultiPanel'
 
@@ -18,7 +18,7 @@ export const PanelRoute = (props: any) => {
 	// 2 panel like this: https://reacttraining.com/react-router/core/guides/philosophy/responsive-routes
 	const routes2ndRender = compose(values, convertRouteComponent(path => panelPath(joinPath([path, path]))))(app.route)
 	return (
-		<DashBoardBluePrint url={props.match.url}>
+		<DashboardBluePrint url={props.match.url}>
 			<TwoPanel panel1={<Switch>
 					{panel1Render}
 			</Switch>}
@@ -29,6 +29,6 @@ export const PanelRoute = (props: any) => {
 				}
 			>
 			</TwoPanel>
-		</DashBoardBluePrint>
+		</DashboardBluePrint>
 	)
 }

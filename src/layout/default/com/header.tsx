@@ -1,21 +1,27 @@
-import { Navbar, NavbarDivider, NavbarGroup, NavbarHeading } from '@blueprintjs/core'
-import { compose, pure } from 'recompose'
-
+import classnames from 'classnames'
+import React, { memo, PureComponent } from 'react'
 import { Breadcrumb } from './breadcrumb'
+import { compose, pure, shouldUpdate } from 'recompose'
+import { concatPath } from 'util/route'
 import { Link } from 'react-router-dom'
+import { match } from 'react-router'
 import { MenuContent } from './menuContent'
-import React from 'react'
 import { SearchBox } from './searchBox'
 import { UserBox } from './userBox'
-import classnames from 'classnames'
-import { concatPath } from 'util/route'
-import { match } from 'react-router'
+import {
+	Navbar,
+	NavbarDivider,
+	NavbarGroup,
+	NavbarHeading,
+} from '@blueprintjs/core'
+
 
 interface IHeader {
-	url: string
+	url?: string
 }
 
-const HeaderView = ({ url }: IHeader) => {
+const HeaderView = ({ url = '/' }: IHeader) => {
+	console.log('HEADER')
 	return (
 		<Navbar className={classnames('p-h-md')}>
 			<NavbarGroup className={classnames('c-nav__group')}>
@@ -36,5 +42,4 @@ const HeaderView = ({ url }: IHeader) => {
 		</Navbar>
 	)
 }
-
-export const Header = compose<IHeader, IHeader>(pure)(HeaderView)
+export const Header = compose<IHeader, IHeader>(memo)(HeaderView)

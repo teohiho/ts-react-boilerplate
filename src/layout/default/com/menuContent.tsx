@@ -33,21 +33,20 @@ const  styles = require('../scss/style.scss')
 
 type ILinkPropsOut = IMenuItemProps & {
 	// isActive: boolean,
-	path: string
+	path: string,
 }
 type ReduxProps = {
-	push: typeof push
+	push: typeof push,
 }
 type ILinkPropsIn = ILinkPropsOut & RouteComponentProps<any> & ReduxProps
 const isRouteEqualPathname = (location: Location, pathLink: string) => {
-	if(pathLink === '/') {
+	if (pathLink === '/') {
 		return location.pathname === '/'
 	}
 	return location.pathname.indexOf(pathLink) === 0
 }
 const LinkItemView = ({ icon, text, path, match, location, history, push }: ILinkPropsIn) => {
 	const updatePath = concatPath(match.url)
-	console.log('location', location, path)
 	return (
 		<MenuItem
 			onClick={() => push(path)}
@@ -61,7 +60,7 @@ const LinkItemView = ({ icon, text, path, match, location, history, push }: ILin
 	)
 }
 
-const LinkItem = compose<ILinkPropsIn, ILinkPropsOut>(withRouter, connect(undefined, {push}))(LinkItemView)
+const LinkItem = compose<ILinkPropsIn, ILinkPropsOut>(withRouter, connect(undefined, { push }))(LinkItemView)
 const SlideBar = () => (
 	<section className={'o-menu--vertical'}>
 		<Menu>

@@ -1,9 +1,9 @@
-import { Icon, Text } from '@blueprintjs/core'
-
-import React from 'react'
-import { TRootState } from 'conf/redux/reducer'
+import React, { memo } from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
+import { Icon, Text } from '@blueprintjs/core'
+import { TRootState } from 'conf/redux/reducer'
+
 
 const BreadcrumbView = ({ breadcrumbItems }: IBreadcrumbPropsIn) => (
 	<>
@@ -45,4 +45,4 @@ const addRedux = connect(mapStateToProps)
 
 
 export const Breadcrumb
-	= compose<IBreadcrumbPropsIn, IBreadcrumbPropsOut>(addRedux)(BreadcrumbView)
+	= compose<IBreadcrumbPropsIn, IBreadcrumbPropsOut>(memo, addRedux)(BreadcrumbView)

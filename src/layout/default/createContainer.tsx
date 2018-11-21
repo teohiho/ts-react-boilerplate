@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React from 'react'
+import React, { memo } from 'react'
 import redux from './redux/'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
