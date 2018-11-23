@@ -1,21 +1,21 @@
 import * as R from 'ramda'
 import app from 'app/'
+import BlankLayout from 'layout/blank'
 import React from 'react'
 import { concatPath } from '../util/route'
 import { convertRouteComponent } from './router'
-import { DashboardBluePrint } from 'layout/default/layoutDefault'
 import { RouteComponentProps, Switch } from 'react-router'
 
 
 
-export const DashboardRoute = (props: RouteComponentProps<any>) => {
+export default (props: RouteComponentProps<any>) => {
 	const dashboardPath = concatPath(props.match.url)
-	const routesRender = R.compose(R.values, convertRouteComponent(dashboardPath), R.omit(['login']))(app.route)
+	const routesRender = R.compose(R.values, convertRouteComponent(dashboardPath), R.pick(['login']))(app.route)
 	return (
-		<DashboardBluePrint url={props.match.url}>
+		<BlankLayout>
 			<Switch>
 				{routesRender}
 			</Switch>
-		</DashboardBluePrint>
+		</BlankLayout>
 	)
 }

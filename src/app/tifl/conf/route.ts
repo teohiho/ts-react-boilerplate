@@ -7,8 +7,7 @@ export default {
 		component: Organization,
 	},
 	login: {
-		path: '/auth',
+		path: '/login',
 		component: Login,
-		exact: true,
 	},
 }

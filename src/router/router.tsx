@@ -1,3 +1,4 @@
+import AuthRoute from './auth'
 import React from 'react'
 import { compose } from 'recompose'
 import { ConnectedRouter } from 'connected-react-router'
@@ -32,6 +33,7 @@ const AppRouteView = () => (
 		<div>
 			<Switch>
 				<Route path="/panel" component={PanelRoute} />
+				<Route path="/auth" component={AuthRoute}  />
 				<Route path="/" component={DashboardRoute}  />
 			</Switch>
 		</div>

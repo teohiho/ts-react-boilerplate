@@ -8,7 +8,6 @@ import { connect } from 'react-redux'
 
 const style = require('../scss/authentication.scss')
 const authRedux = tiflRedux.part.auth
-console.log('>', authRedux)
 type ActionProps = {
 	login: typeof authRedux.actionCollection.login,
 }
@@ -30,7 +29,7 @@ const LoginView = ({ login }: Props) => {
 
 
 export default compose<Props, {}>(
-	memo,
+	// memo,
 	addContainer(
 		{
 			breadcrumbItems: ['Login'],

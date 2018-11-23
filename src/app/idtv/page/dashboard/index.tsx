@@ -6,7 +6,7 @@ import {
 	Drilldown,
 	Filter,
 	Header,
-} from '../organism/'
+} from '../../com/organism/'
 
 
 const Dashboard = () => (

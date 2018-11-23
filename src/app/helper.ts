@@ -1,13 +1,7 @@
+import * as R from 'ramda'
 import objectUtil from 'util/object'
 import { Reducer } from 'redux'
 import { RouteProps } from 'react-router'
-import R, {
-	filter,
-	isNil,
-	mapObjIndexed,
-	mergeAll,
-	values,
-} from 'ramda'
 
 
 type IRegisterModule<R, RO, C> = {
@@ -37,15 +31,52 @@ const getPart = <R,
 				>
 
 	(part: K, app: T) => {
-		const partModule = mapObjIndexed(module => module[part], app)
+		const partModule = R.mapObjIndexed(module => module[part], app)
 		return objectUtil.removeUndefined(partModule) as {
 			[N in keyof T]: T[N] extends undefined ? never : T[N][K] extends undefined ? never : T[N][K]
 		}
 	}
+const getRoute =  <R, RO extends object, C, T extends {[N in keyof T]: IRegisterModule<R, RO, C> }>
+	(app: T) => {
+		const appRoute = getPart('route', app)
+		const routeCollection = R.values(appRoute)
+		const path: string[] = []
+		let index: number = -1
+		const mergeRoute = R.reduce(
+			(previous, value: {[id: string]: RouteProps} | undefined) => {
+				R.keys(value).forEach((key) => {
+					index++
+					// Check same key
+					if (R.has(key, previous)) {
+						console.warn('WARN: Key is dupplicate: "', key, '"')
+					}
+					// check path
+					if (!value || value[key].path === undefined) {
+						console.warn('WARN: Path is not exist. Please check route with key:', R.keys(appRoute)[index], ' > ', key)
+					} else if (path.indexOf(value[key].path as string) !== -1) {
+						console.warn(
+							'WARN: Path "',
+							value && value[key].path,
+							'" is dupplicate. Please check route with key "',
+							R.keys(appRoute)[index], ' > ',
+							key,
+							)
+					} else {
+						console.log('Registering path', value[key].path)
+						path.push(value[key].path as string)
+					}
+				})
+				return {
+					...previous,
+					...value,
+				}
+			},
+			{},
+			routeCollection)
+		return mergeRoute
+	}
 
 // @TODO: Curry will not support typescript
-const getRoute =  <R, RO extends object, C, T extends {[N in keyof T]: IRegisterModule<R, RO, C> }>
-	(app: T) => mergeAll(values(getPart('route', app) as object))
 const getRedux =  <R, RO, C, T extends {[N in keyof T]: IRegisterModule<R, RO, C > }>
 	(app: T) => getPart('redux', app)
 

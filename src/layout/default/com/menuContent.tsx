@@ -46,7 +46,6 @@ const isRouteEqualPathname = (location: Location, pathLink: string) => {
 	return location.pathname.indexOf(pathLink) === 0
 }
 const LinkItemView = ({ icon, text, path, match, location, history, push }: ILinkPropsIn) => {
-	const updatePath = concatPath(match.url)
 	return (
 		<MenuItem
 			onClick={() => push(path)}
@@ -71,14 +70,8 @@ const SlideBar = () => (
 		<Menu>
 			<MenuDivider title="Test" />
 			<LinkItem icon="lock" text="Organization" path="/t-test/auth" />
-			<LinkItem icon="lock" text="Login" path="/auth" />
+			<LinkItem icon="lock" text="Login" path="/auth/login" />
 		</Menu>
-		<Menu>
-			<MenuDivider title="Example" />
-			<LinkItem icon="lock" text="Man" path="/man" />
-			<LinkItem icon="lock" text="Hien" path="/hien" />
-		</Menu>
-
 	</section>
 )
 

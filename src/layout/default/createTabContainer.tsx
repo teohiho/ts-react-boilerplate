@@ -113,7 +113,7 @@ const BodyView = ({ tabs, match, className }: IListTabPropsIn) => {
 }
 
 
-const Body = compose<IListTabPropsIn, IListTabPropsOut>(memo, withRouter)(BodyView)
+const Body = compose<IListTabPropsIn, IListTabPropsOut>(withRouter, memo)(BodyView)
 
 const AppTabView = ({ tabs, classes= {} }: ICreateTabContainerPropsOut) => {
 	return (

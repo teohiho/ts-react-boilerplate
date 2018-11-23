@@ -21,7 +21,6 @@ interface IHeader {
 }
 
 const HeaderView = ({ url = '/' }: IHeader) => {
-	console.log('HEADER')
 	return (
 		<Navbar className={classnames('p-h-md')}>
 			<NavbarGroup className={classnames('c-nav__group')}>

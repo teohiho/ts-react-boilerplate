@@ -19,7 +19,6 @@ interface IBreadcrumbPropsIn  extends IBreadcrumbPropsOut, IBreadcrumbReduxState
 const joinFrom2Element = (items: string[], renderComponent: any, renderItem: (text: string, index?: number) => void) => {
 	return items.reduce(
 		(previous, item, index) => {
-			console.log('Iprevioustems', previous)
 			if ((index === items.length - 1)) {
 				return [...previous, renderItem(item, index)]
 			}
