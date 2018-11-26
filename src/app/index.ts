@@ -20,6 +20,7 @@ const app = {
 	setting,
 	dashboard,
 	sample,
+	idtv,
 	// auth,
 	// hien,
 	// man,
