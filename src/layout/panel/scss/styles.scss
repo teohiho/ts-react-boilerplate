@@ -1,0 +1,18 @@
+.button {
+	&--close {
+		opacity: 0.5;
+		position: absolute;
+		right: 0;
+		&:hover{
+			opacity: 1;
+		}
+	}
+}
+.screen{
+	&--right {
+		// border-right: 1px solid rgb(126, 126, 126);
+	}
+	&--left {
+		border-left: 0.7px solid rgba(126, 126, 126, 0.664);
+	}
+}

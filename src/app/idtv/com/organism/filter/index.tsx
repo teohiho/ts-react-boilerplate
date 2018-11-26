@@ -1,13 +1,14 @@
 import React from 'react'
-import { InputGroup } from '@blueprintjs/core'
+import { SelectText } from '../../atom'
 import {
 	Intent,
 	Menu,
 	MenuDivider,
 	MenuItem,
-	TextArea
-	} from '@blueprintjs/core'
-import { SelectText } from '../../atom'
+	TextArea,
+} from '@blueprintjs/core'
+
+
 const Filter = () => (
 	<SelectText items={['ahihi', 'ahuhu']} hasFull={true} />
 )

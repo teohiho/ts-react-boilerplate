@@ -1,7 +1,10 @@
+import makePanel from 'layout/panel'
 import React from 'react'
 import tiflRedux from '../redux/index'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+
 const orgRedux = tiflRedux.part.organization
 type ActionProps = {
 	query: typeof orgRedux.actionCollection.query,
@@ -49,11 +52,27 @@ const Org = ({ query, save, search, queryNext, addSelect, removeSelect, pickSele
 		<h1 onClick={() => pickSelect('10')}>
 			Pick Selected
 		</h1>
+		<Link to="/tifl/list/detail">
+			<h2> To detail</h2>
+		</Link>
 	</div>
 )
-
-export default compose<Props, {}>(
-	connect(undefined, {
+const Detail = () => (
+	<div>
+		<h1> Detail </h1>
+	</div>
+)
+const tifl = makePanel(
+	{
+		id: 'list',
+		component: Org,
+	},
+	{
+		id: 'detail',
+		component: Detail,
+	},
+)
+export default connect(undefined, {
 		query: orgRedux.actionCollection.query,
 		save: orgRedux.actionCollection.save,
 		search: orgRedux.actionCollection.textSearch,
@@ -61,5 +80,4 @@ export default compose<Props, {}>(
 		addSelect: orgRedux.actionCollection.addSelect,
 		removeSelect: orgRedux.actionCollection.removeSelect,
 		pickSelect: orgRedux.actionCollection.pickSelect,
-	 }),
-	)(Org)
+})(tifl)

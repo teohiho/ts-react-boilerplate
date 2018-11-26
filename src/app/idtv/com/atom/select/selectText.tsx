@@ -3,11 +3,11 @@ import SelectMenu from './selectMenu'
 
 type OwnProps = {
 	items: string[]
-	hasFull?: boolean
+	hasFull?: boolean,
 }
 
 const SelectText = ({ items, hasFull }: OwnProps) => (
-	<SelectMenu items={items.map(item => ({text: item}))} hasFull={hasFull} />
+	<SelectMenu items={items.map(item => ({ text: item }))} hasFull={hasFull} />
 )
 
 export default SelectText

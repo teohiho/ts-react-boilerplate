@@ -6744,9 +6744,12 @@ loglevelnext@^1.0.1:
     es6-symbol "^3.1.1"
     object.assign "^4.1.0"
 
-logrocket-react@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/logrocket-react/-/logrocket-react-3.0.0.tgz#b0e1bfa4de25ae89c5da890fbb1c18276a1ac82f"
+logrocket-react@1:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/logrocket-react/-/logrocket-react-1.0.0.tgz#088b7773bd85ca44a25a5471529849d9e3fdf50b"
+  dependencies:
+    react "16"
+    react-dom "16"
 
 logrocket@^0.6.17:
   version "0.6.17"
@@ -8858,7 +8861,7 @@ react-docgen@^3.0.0-beta11:
     node-dir "^0.1.10"
     recast "^0.15.0"
 
-react-dom@^16.6.3:
+react-dom@16, react-dom@^16.6.3:
   version "16.6.3"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.6.3.tgz#8fa7ba6883c85211b8da2d0efeffc9d3825cccc0"
   dependencies:
@@ -9035,7 +9038,7 @@ react-vega@^4.0.2:
   dependencies:
     prop-types "^15.6.1"
 
-react@^16.6.3:
+react@16, react@^16.6.3:
   version "16.6.3"
   resolved "https://registry.yarnpkg.com/react/-/react-16.6.3.tgz#25d77c91911d6bbdd23db41e70fb094cc1e0871c"
   dependencies:
