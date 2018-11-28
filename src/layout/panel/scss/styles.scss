@@ -1,3 +1,32 @@
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+	// For Google Chrome
+	::-webkit-scrollbar {
+		width:  $size;
+		height: $size;
+	}
+  
+	::-webkit-scrollbar-thumb {
+		background: $foreground-color;
+	}
+  
+	::-webkit-scrollbar-track {
+		background: $background-color;
+	}
+  
+	// For Internet Explorer
+	body {
+	  scrollbar-face-color: $foreground-color;
+	  scrollbar-track-color: $background-color;
+	}
+}
+@include scrollbars(.5em, slategray);
+
+.panel {
+	&--right {
+		border-left: 1px solid rgba(126, 126, 126, 0.664);
+
+	}
+}
 .button {
 	&--close {
 		opacity: 0.5;
@@ -9,10 +38,25 @@
 	}
 }
 .screen{
+	
 	&--right {
 		// border-right: 1px solid rgb(126, 126, 126);
+		// border-left: 0.7px solid rgba(126, 126, 126, 0.664);
 	}
 	&--left {
-		border-left: 0.7px solid rgba(126, 126, 126, 0.664);
+		overflow: auto;
+		height: 100vh;
+	}
+}
+
+.icon {
+	&--close {
+		opacity: 0.5;
+		position: absolute;
+		right: 0;
+		&:hover{
+			opacity: 1;
+			color: red
+		}
 	}
 }

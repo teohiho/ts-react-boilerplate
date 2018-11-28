@@ -1,8 +1,14 @@
 import classnames from 'classnames'
 import React from 'react'
-import { Button, MenuDivider } from '@blueprintjs/core'
+import Scrollbars from 'react-custom-scrollbars'
 import { connect } from 'react-redux'
+import { Header, SideMenu } from './com'
 import { push } from 'connected-react-router'
+import {
+	Button,
+	H3,
+	MenuDivider,
+} from '@blueprintjs/core'
 import {
 	Route,
 	RouteComponentProps,
@@ -19,19 +25,25 @@ type Panel = {
 	component:  (props: any) => JSX.Element,
 }
 
+
 const wrapPanel = (Component: (props: any) => JSX.Element) => (props: any) => (
-	<div className={'u-flex--1 t-background1 screen--right p-h-md'}>
-		{/* {Component(props)} */}
-		<Component {...props} />
+	<div className={'u-flex--1 t-background'}>
+		<Header title={'Parent'} />
+		<div className="screen screen--left">
+			<Component {...props}/>
+		</div>
 	</div>
 )
+
+
 const wrapPanelRight = (Component: (props: any) => JSX.Element) => connect(undefined, { push })((props: any) => (
-	<div className={'u-flex--1 t-background screen--left p-h-md'}>
-		{/* <Button onClick={() => {
+	<div className={'u-flex--1 t-background panel--right'}>
+		<Header onClose={() => {
 			props.push('/tifl/list')
-		}} text="X" className="button--close" /> */}
-		<MenuDivider />
-		<Component {...props} />
+		}} title={'Test'}/>
+		<div className="screen screen--right">
+			<Component {...props}/>
+		</div>
 	</div>
 ))
 
@@ -39,6 +51,7 @@ const makePanel = <P extends {}>(leftPanel: Panel, rightPanel: Panel, params?: P
 	withRouter(<P extends RouteComponentProps<null>>(props: P) => {
 		return (
 			<div className={classnames(['u-flex--1', 'u-flex--row'])}>
+				{/* <SideMenu /> */}
 				<Route path={`${props.match.url}/${leftPanel.id}`} component={() => wrapPanel(leftPanel.component)(props)} />
 				<Route path={`${props.match.url}/${leftPanel.id}/${rightPanel.id}`} component={() => {
 					const RightComponent =  wrapPanelRight(rightPanel.component)

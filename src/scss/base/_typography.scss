@@ -62,19 +62,19 @@ h5,
 h6 {
     /* Change heading typefaces here */
     font-family: sans-serif;
-    margin-top: $leading;
-    margin-bottom: 0;
-    line-height: $leading;
+    // margin-top: $leading;
+    // margin-bottom: 0;
+    // line-height: $leading;
 }
 h1 {
     font-size: 3 * $scale * 1rem;
-    line-height: 3 * $leading;
-    margin-top: 2 * $leading;
+    // line-height: 3 * $leading;
+    // margin-top: 2 * $leading;
 }
 h2 {
     font-size: 2 * $scale * 1rem;
-    line-height: 2 * $leading;
-    margin-top: 2 * $leading;
+    // line-height: 2 * $leading;
+    // margin-top: 2 * $leading;
 }
 h3 {
     font-size: 1 * $scale * 1rem;

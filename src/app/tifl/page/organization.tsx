@@ -55,10 +55,59 @@ const Org = ({ query, save, search, queryNext, addSelect, removeSelect, pickSele
 		<Link to="/tifl/list/detail">
 			<h2> To detail</h2>
 		</Link>
+		<Link to="/tifl/list/detail">
+			<h2> To detail</h2>
+		</Link>
+		<Link to="/tifl/list/detail">
+			<h2> To detail</h2>
+		</Link>
+		<Link to="/tifl/list/detail">
+			<h2> To detail</h2>
+		</Link>
+		<Link to="/tifl/list/detail">
+			<h2> To detail</h2>
+		</Link>
+		<Link to="/tifl/list/detail">
+			<h2> To detail</h2>
+		</Link>
+		<Link to="/tifl/list/detail">
+			<h2> To detail</h2>
+		</Link>
 	</div>
 )
 const Detail = () => (
 	<div>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
+		<h1> Detail </h1>
 		<h1> Detail </h1>
 	</div>
 )

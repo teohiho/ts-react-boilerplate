@@ -1,9 +1,0 @@
-{
-  "version": "v1",
-  "packages": {
-    "nietzsche-client": {
-      "signature": "21475e7a8474f822e0104f1480f24019",
-      "file": true
-    }
-  }
-}

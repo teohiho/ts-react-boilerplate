@@ -8,6 +8,7 @@ import { persistStore } from 'redux-persist'
 import { routerMiddleware } from 'connected-react-router'
 
 
+
 const history = createBrowserHistory()
 
 const composeEnhancers =
@@ -28,17 +29,18 @@ const enhancer = composeEnhancers(
   ),
 )
 const preloadedState = {}
+function configureStore(onComplete?: Function) {
+	const store = createStore(
+	  createAppReducer(history),
+	  preloadedState,
+	  enhancer,
+	)
+	const persistor = persistStore(store)
+	sagaMiddleware.run(appSaga)
+	return { store, persistor }
+}
 
 export {
-	history
+	history,
 }
-export default function configureStore(onComplete?: Function) {
-  const store = createStore(
-	createAppReducer(history),
-	preloadedState,
-	enhancer,
-  )
-  const persistor = persistStore(store)
-  sagaMiddleware.run(appSaga)
-  return { store, persistor }
-}
+export default configureStore

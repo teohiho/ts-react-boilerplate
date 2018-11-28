@@ -1,0 +1,64 @@
+import axios from 'axios'
+import idtvRedux from '../../redux/index'
+import React from 'react'
+import { addContainer } from 'layout/default/createContainer'
+import { Button } from '@blueprintjs/core'
+import { compose } from 'recompose'
+import { connect } from 'react-redux'
+
+const { pcpName, pcpRegionName, pcpGroupName, leakageByRegion, serviceType, pcpPrimarySpecialty } = idtvRedux.part
+
+type OwnProps = {}
+type ActionProps = {
+	pcpNameQuery: typeof pcpName.actionCollection.query,
+	pcpRegionNameQuery: typeof pcpRegionName.actionCollection.query,
+	pcpGroupNameQuery: typeof pcpGroupName.actionCollection.query,
+	serviceTypeQuery: typeof serviceType.actionCollection.query,
+	pcpPrimarySpecialtyQuery: typeof pcpPrimarySpecialty.actionCollection.query,
+	leakageByRegionQuery: typeof leakageByRegion.actionCollection.addMany,
+}
+type Props = ActionProps & OwnProps
+
+const Test = ({ leakageByRegionQuery,
+			pcpNameQuery, pcpRegionNameQuery, pcpGroupNameQuery, serviceTypeQuery, pcpPrimarySpecialtyQuery }: Props) => (
+	<div>
+		<Button onClick={() => pcpNameQuery({})}>
+			pcpNameQuery
+		</Button>
+		<Button onClick={() => pcpRegionNameQuery({})}>
+			pcpRegionNameQuery
+		</Button>
+		<Button onClick={() => pcpGroupNameQuery({})}>
+			pcpGroupNameQuery
+		</Button>
+		<Button onClick={() => serviceTypeQuery({})}>
+			serviceTypeQuery
+		</Button>
+		<Button onClick={() => pcpPrimarySpecialtyQuery({})}>
+			pcpPrimarySpecialtyQuery
+		</Button>
+		<Button onClick={() => leakageByRegionQuery({
+			pcp_group_identifier: [],
+			pcp_identifier: [],
+			pcp_primary_specialty: [],
+			pcp_region_name: [],
+			service_type: [],
+		})}>
+			leak
+		</Button>
+	</div>
+)
+
+export default compose<Props, OwnProps>(
+	addContainer({
+		breadcrumbItems: ['IDTV'],
+	}),
+	connect(undefined, {
+		pcpNameQuery: pcpName.actionCollection.query,
+		pcpRegionNameQuery: pcpRegionName.actionCollection.query,
+		pcpGroupNameQuery: pcpGroupName.actionCollection.query,
+		serviceTypeQuery: serviceType.actionCollection.query,
+		pcpPrimarySpecialtyQuery: pcpPrimarySpecialty.actionCollection.query,
+		leakageByRegionQuery: leakageByRegion.actionCollection.addMany,
+	}),
+)(Test)
