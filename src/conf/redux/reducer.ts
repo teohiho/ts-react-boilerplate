@@ -16,7 +16,7 @@ export type TRootReducer = ReturnType<typeof reducer>
 export type TRootState = ReturnType<TRootReducer>
 
 // const mapStateToProps = (state: TRootState) => ({
-// 	test: state.tifl.practitioner
+// 	test: state.idtv.main,
 // })
 const makeRootReducer = (history: History) => (state: any, action: any) => {
   const { type } = action

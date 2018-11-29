@@ -30,12 +30,17 @@ const idtv = {
 	top20PcpByRegionIn,
 	top20PcpByRegionOOn,
 	top10Acutecare,
-	// main: buildResourceFromRedux(main),
+	main: buildResourceFromRedux(main),
 }
 
-const idtvResource = mapObjIndexed(lib => lib.resource , idtv)
+const idtvResource = mapObjIndexed(lib => lib.resource , idtv) as {[N in keyof typeof idtv]: typeof idtv[N]['resource']}
 
 const resource = combineResource(idtvResource)
 const make = resource.getRedux
+const reduxDefault = make({ name: 'idtv', local: ['idtv'] })
 
-export default make({ name: 'idtv', local: ['idtv'] })
+export {
+	make,
+}
+
+export default reduxDefault

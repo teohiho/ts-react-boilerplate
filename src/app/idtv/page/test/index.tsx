@@ -6,9 +6,13 @@ import { Button } from '@blueprintjs/core'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 
-const { pcpName, pcpRegionName, pcpGroupName,
-	//  main,
-	  leakageByRegion, serviceType, pcpPrimarySpecialty } = idtvRedux.part
+const { pcpName,
+		pcpRegionName,
+		pcpGroupName,
+		main,
+		leakageByRegion,
+		serviceType,
+		pcpPrimarySpecialty } = idtvRedux.part
 
 type OwnProps = {}
 type ActionProps = {
@@ -18,13 +22,13 @@ type ActionProps = {
 	serviceTypeQuery: typeof serviceType.actionCollection.query,
 	pcpPrimarySpecialtyQuery: typeof pcpPrimarySpecialty.actionCollection.query,
 	leakageByRegionQuery: typeof leakageByRegion.actionCollection.addMany,
-	// startQuery: typeof main.actionCollection.startQuery,
+	startQuery: typeof main.actionCollection.startQuery,
 }
 type Props = ActionProps & OwnProps
 
 const Test = ({
 			leakageByRegionQuery,
-			//  startQuery,
+			 startQuery,
 			pcpNameQuery,
 			pcpRegionNameQuery, pcpGroupNameQuery, serviceTypeQuery, pcpPrimarySpecialtyQuery }: Props) => (
 	<div>
@@ -53,11 +57,11 @@ const Test = ({
 			leak
 		</Button>
 
-		{/* <Button onClick={
+		<Button onClick={
 			() => startQuery()
 		}>
 			GET ALL
-		</Button> */}
+		</Button>
 	</div>
 )
 
@@ -72,6 +76,6 @@ export default compose<Props, OwnProps>(
 		serviceTypeQuery: serviceType.actionCollection.query,
 		pcpPrimarySpecialtyQuery: pcpPrimarySpecialty.actionCollection.query,
 		leakageByRegionQuery: leakageByRegion.actionCollection.addMany,
-		// startQuery: main.actionCollection.startQuery,
+		startQuery: main.actionCollection.startQuery,
 	}),
 )(Test)

@@ -1,7 +1,13 @@
 import { ActionCollectionIdtv, ActionIdtvType } from './action'
 import { ActionTypeIdtv } from './actionType'
-import { all, put, takeLatest } from 'redux-saga/effects'
 import { IReduxModuleAction } from 'redux-packaged'
+import {
+	all,
+	put,
+	race,
+	take,
+	takeLatest,
+} from 'redux-saga/effects'
 
 
 type ReduxResourceIdtv = IReduxModuleAction<ActionTypeIdtv, {}, ActionCollectionIdtv>
@@ -9,7 +15,7 @@ type ReduxResourceIdtv = IReduxModuleAction<ActionTypeIdtv, {}, ActionCollection
 
 function* startQuery(action: ActionIdtvType<'START_QUERY'>) {
 	console.log('Life is good')
-	yield all([
+	const data =  yield all([
 		// @TODO: Should be use action function.
 		yield put({
 			type: '@@app/PCPNAME/QUERY',
@@ -19,7 +25,20 @@ function* startQuery(action: ActionIdtvType<'START_QUERY'>) {
 			type: '@@app/PCPREGIONNAME/QUERY',
 			payload: {},
 		}),
+		yield put({
+			type: '@@app/PCPGROUPNAME/QUERY',
+			payload: {},
+		}),
+		yield put({
+			type: '@@app/SERVICETYPE/QUERY',
+			payload: {},
+		}),
+		yield put({
+			type: '@@app/PCPPRIMARYSPECIALTY/QUERY',
+			payload: {},
+		}),
 	])
+	console.log('DATA >>>', data)
 }
 
 const make = (reduxResource: ReduxResourceIdtv) => {
