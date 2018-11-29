@@ -1,9 +1,10 @@
 import makePanel from 'layout/panel'
-import React from 'react'
+import React, { memo } from 'react'
 import tiflRedux from '../redux/index'
-import { compose } from 'recompose'
+import { compose, pure } from 'recompose'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+
 
 const orgRedux = tiflRedux.part.organization
 type ActionProps = {
@@ -17,7 +18,9 @@ type ActionProps = {
 }
 type Props = ActionProps
 
-const Org = ({ query, save, search, queryNext, addSelect, removeSelect, pickSelect }: Props) => (
+const Org = ({ query, save, search, queryNext, addSelect, removeSelect, pickSelect }: Props) => {
+	console.log('ORG RENDER?')
+	return (
 	<div>
 		<h1 onClick={() => query()}>
 			QUERY
@@ -74,7 +77,7 @@ const Org = ({ query, save, search, queryNext, addSelect, removeSelect, pickSele
 			<h2> To detail</h2>
 		</Link>
 	</div>
-)
+)}
 const Detail = () => (
 	<div>
 		<h1> Detail </h1>
@@ -111,22 +114,35 @@ const Detail = () => (
 		<h1> Detail </h1>
 	</div>
 )
+
+const OrgRedux = compose<Props, {}>(connect(undefined, {
+	query: orgRedux.actionCollection.query,
+	save: orgRedux.actionCollection.save,
+	search: orgRedux.actionCollection.textSearch,
+	queryNext: orgRedux.actionCollection.queryNext,
+	addSelect: orgRedux.actionCollection.addSelect,
+	removeSelect: orgRedux.actionCollection.removeSelect,
+	pickSelect: orgRedux.actionCollection.pickSelect,
+}),                                 pure)(Org)
+
 const tifl = makePanel(
 	{
 		id: 'list',
-		component: Org,
+		component: OrgRedux,
 	},
 	{
 		id: 'detail',
 		component: Detail,
 	},
 )
-export default connect(undefined, {
-		query: orgRedux.actionCollection.query,
-		save: orgRedux.actionCollection.save,
-		search: orgRedux.actionCollection.textSearch,
-		queryNext: orgRedux.actionCollection.queryNext,
-		addSelect: orgRedux.actionCollection.addSelect,
-		removeSelect: orgRedux.actionCollection.removeSelect,
-		pickSelect: orgRedux.actionCollection.pickSelect,
-})(tifl)
+
+export default tifl
+// export default connect(undefined, {
+// 		query: orgRedux.actionCollection.query,
+// 		save: orgRedux.actionCollection.save,
+// 		search: orgRedux.actionCollection.textSearch,
+// 		queryNext: orgRedux.actionCollection.queryNext,
+// 		addSelect: orgRedux.actionCollection.addSelect,
+// 		removeSelect: orgRedux.actionCollection.removeSelect,
+// 		pickSelect: orgRedux.actionCollection.pickSelect,
+// })(tifl)

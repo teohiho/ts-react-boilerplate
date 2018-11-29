@@ -16,6 +16,8 @@ app.get('*.js', function (req, res, next) {
 	res.set('Content-Encoding', 'gzip');
 	next();
 });
+
+
 app.use( express.static( `${__dirname}/../build` ) );
 
 app.get('*', (req, res)=>{

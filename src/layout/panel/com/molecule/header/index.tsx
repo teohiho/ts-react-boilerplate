@@ -16,7 +16,7 @@ type OwnProps = {
 type Props = OwnProps
 
 const Header = ({ onClose, title }: Props) => (
-	<div className={classnames('u-flex--row', 'u-flex-1', 'p-h-sm', 'p-v-sm', 't-background2')} style={{ justifyContent: 'space-between' }}>
+	<div className={classnames('u-flex--row', 'u-flex-1', 'p-h-sm', 'p-v-sm', 't-background')} style={{ justifyContent: 'space-between' }}>
 		<div>
 			{title ? <H4 className={classnames('m-b-none')}>{title}</H4> : null}
 		</div>
