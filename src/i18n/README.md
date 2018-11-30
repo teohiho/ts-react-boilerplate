@@ -14,3 +14,9 @@ Sample json
   }
 }
 ```
+
+# Useage
+
+```
+$ yarn buid:lang
+```

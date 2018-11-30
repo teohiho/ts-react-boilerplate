@@ -1,32 +1,19 @@
-import * as Immutable from 'seamless-immutable'
-import classnames from 'classnames'
 import React from 'react'
-import { concatPath } from 'util/route'
+import { compose, pure, withStateHandlers } from 'recompose'
 import { connect } from 'react-redux'
 import { Location } from 'history'
 import { push } from 'connected-react-router'
 import { RouteComponentProps, withRouter } from 'react-router'
-
 import {
 	Button,
 	Classes,
-	H5,
 	IMenuItemProps,
-	Icon,
-	Intent,
 	Menu,
 	MenuDivider,
 	MenuItem,
 	Popover,
 	Position,
-	Text,
 } from '@blueprintjs/core'
-import {
-	compose,
-	pure,
-	renderComponent,
-	withStateHandlers,
-} from 'recompose'
 
 
 const  styles = require('../scss/style.scss')

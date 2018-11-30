@@ -26,9 +26,9 @@ const ReduxView = () => (
 
 
 const withLoading =	branch(
-		({ isLoading }) => isLoading,
-		renderComponent(Loading),
-	)
+	({ isLoading }) => isLoading,
+	renderComponent(Loading),
+)
 
 const LoadingStateHandler = withStateHandlers(
 	{

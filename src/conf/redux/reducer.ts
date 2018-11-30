@@ -6,18 +6,17 @@ import { History } from 'history'
 import { PERSIST_CONFIG } from './persist'
 import { persistReducer } from 'redux-persist'
 
+// Type definition
+export type TRootReducer = ReturnType<typeof reducer>
+export type TRootState = ReturnType<TRootReducer>
+
+
 const reducer = (history: History) => combineReducers({
   ...app.reducerRaw,
   layout: layout.reducer,
   router: connectRouter(history),
-//   tifl: defaultRedux.reducer,
 })
-export type TRootReducer = ReturnType<typeof reducer>
-export type TRootState = ReturnType<TRootReducer>
 
-// const mapStateToProps = (state: TRootState) => ({
-// 	test: state.idtv.main,
-// })
 const makeRootReducer = (history: History) => (state: any, action: any) => {
   const { type } = action
   switch (type) {
@@ -25,7 +24,6 @@ const makeRootReducer = (history: History) => (state: any, action: any) => {
 	case 'LOGOUT':
 		// tslint:disable-next-line:no-parameter-reassignment
 		state = undefined
-		// return {}
 		break
 	default:
 		break

@@ -1,5 +1,4 @@
 import storage from 'redux-persist/lib/storage'
-// import { transformPersist } from './transformPersist'
 
 export const PERSIST_CONFIG = {
 	active: true,

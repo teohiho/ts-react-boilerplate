@@ -19,7 +19,7 @@ export const withPropsChecker = (WrappedComponent: React.ComponentType) => {
 		})
 	}
 	render() {
-		return <WrappedComponent { ...this.props } / >
+		return <WrappedComponent { ...this.props } />
 	}
   }
 }

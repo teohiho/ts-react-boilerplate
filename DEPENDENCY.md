@@ -4,7 +4,7 @@
 
 Everytime an dependency is added, the reason for adding it should be written down here. E.g. purpose, etc.
 
-### Component
+### 1. Component
 [**@blueprintjs**](https://blueprintjs.com/)
 
 	The core framework UI including basic components
@@ -33,7 +33,7 @@ Everytime an dependency is added, the reason for adding it should be written dow
 
 
 
-### Logic
+### 2. Logic
 
 #### Redux
 
@@ -61,13 +61,8 @@ Everytime an dependency is added, the reason for adding it should be written dow
 
 	Add router state in redux
 
-[**seamless-immutable**]() **Deprecated
 
-	Will remove this packaged in the next version, replaced by immer
-
-
-
-### Style/ CSS
+### 3. Style/ CSS
 
 #### CSS
 
@@ -97,7 +92,7 @@ Everytime an dependency is added, the reason for adding it should be written dow
 
 
 
-### Tool/ Helper
+### 4. Tool/ Helper
 
 [**ramda**](https://ramdajs.com/docs/)
 
@@ -105,7 +100,7 @@ Same as lodash used in Functional Programming
 
 
 
-### Development (Webpack/ Type)
+### 5. Development (Webpack/ Type)
 
 #### Webpack
 
@@ -130,7 +125,7 @@ Same as lodash used in Functional Programming
 
 	Help you analyze bundle.js size
 
-### Test and dubugger
+### 6. Test and dubugger
 
 [jest]()
 
@@ -138,11 +133,11 @@ Same as lodash used in Functional Programming
 
 [**logrocket**]()
 
-	Catch user tracking the app
+	Catch user behaviour through the app
 
 
 
-### Others
+### 7. Others
 
 [**react-intl**]()
 

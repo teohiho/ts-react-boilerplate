@@ -9,9 +9,6 @@ type Config = {
 const buildConfig = (serverConfig: Config)  => ({
 	host: 'http://localhost:8088',
 	idProp: 'index',
-	// processResponseList: (method: HttpMethod, data: any) => {
-	// 	return data
-	// },
 	...serverConfig,
 })
 

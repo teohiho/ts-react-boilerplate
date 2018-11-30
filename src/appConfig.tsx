@@ -9,10 +9,7 @@ import { settingConfiguration } from 'conf/config'
 import { TPaletteType } from 'app/setting/redux/initalState'
 import { TRootState } from 'conf/redux/reducer'
 
-
 const messages = require('./i18n/i18n.__generate__.json')
-settingConfiguration()
-
 
 export interface IAppConfigPropsIn extends IAppConfigPropsOut {
 	lang: string
@@ -24,6 +21,7 @@ export interface IAppConfigPropsOut {
 }
 
 
+settingConfiguration()
 const withLifeCircle = lifecycle({
 	componentDidMount() {
 		const sampleUser = {

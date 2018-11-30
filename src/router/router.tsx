@@ -5,7 +5,6 @@ import { ConnectedRouter } from 'connected-react-router'
 import { DashboardRoute } from './dashboard'
 import { history } from 'conf/redux/redux'
 import { mapObjIndexed } from 'ramda'
-import { PanelRoute } from './panel'
 import { Switch } from 'react-router'
 import {
 	Route,
@@ -32,7 +31,6 @@ const AppRouteView = () => (
 	<ConnectedRouter history={history}>
 		<div>
 			<Switch>
-				<Route path="/panel" component={PanelRoute} />
 				<Route path="/auth" component={AuthRoute}  />
 				<Route path="/" component={DashboardRoute}  />
 			</Switch>

@@ -44,9 +44,10 @@ const getRoute =  <R, RO extends object, C, T extends {[N in keyof T]: IRegister
 		let index: number = -1
 		const mergeRoute = R.reduce(
 			(previous, value: {[id: string]: RouteProps} | undefined) => {
+				// Check dupplicate keys or path of route
 				R.keys(value).forEach((key) => {
 					index++
-					// Check same key
+					// Check dupplicate key
 					if (R.has(key, previous)) {
 						console.warn('WARN: Key is dupplicate: "', key, '"')
 					}
@@ -86,6 +87,7 @@ const getCom =  <R, RO, C, T extends {[N in keyof T]: IRegisterModule<R, RO, C >
 export {
 	registerModule,
 }
+
 export default {
 	getRoute,
 	getRedux,

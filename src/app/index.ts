@@ -2,29 +2,12 @@ import dashboard from './dashboard'
 import idtv from './idtv'
 import moduleUtil from './helper'
 import reduxUtil from 'redux-packaged'
-import sample from './sample'
 import setting from './setting'
-import tifl from './tifl'
-// import auth from './auth'
-// import authentication from './authentication'
-// import hien from './hien'
-// import man from './man'
-// import mqtt from './mqtt'
-// import test from './test'
-// import tifl from './tifl/'
 
 const app = {
-	// test,
-	tifl,
-	// authentication,
 	setting,
 	dashboard,
-	sample,
 	idtv,
-	// auth,
-	// hien,
-	// man,
-	// mqtt,
 }
 
 
@@ -42,5 +25,4 @@ export default {
 	saga,
 	route,
 	reducerRaw,
-	tifl,
 }

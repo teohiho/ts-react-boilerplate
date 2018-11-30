@@ -1,4 +1,5 @@
 import LogRocket from 'logrocket'
+import setting from '../setting'
 import setupLogRocketReact from 'logrocket-react'
 
 type TUser = {
@@ -16,8 +17,8 @@ export const registerUserLogger = (user: TUser) => {
 }
 
 export const settingLogrocket = () => {
-	const appName = 'tifl/react-ts-boilderplate'
-	// LogRocket.init(appName)
-	// // after calling LogRocket.init()
-	// setupLogRocketReact(LogRocket)
+	const appName = setting.logRocketId
+	LogRocket.init(appName)
+	// after calling LogRocket.init()
+	setupLogRocketReact(LogRocket)
 }

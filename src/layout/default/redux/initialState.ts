@@ -1,4 +1,3 @@
-import { from, ImmutableObject } from 'seamless-immutable'
 
 type IFrameworkNavBar = {
 	breadcrumbItems: string[],

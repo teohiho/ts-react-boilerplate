@@ -1,22 +1,15 @@
+import React from 'react'
+import { FieldProps } from 'formik'
 import {
-	Button,
 	FormGroup,
 	HTMLInputProps,
 	IFormGroupProps,
 	IIconProps,
 	IInputGroupProps,
-	IIntentProps,
-	ITooltipProps,
 	Icon,
-	IconName,
 	InputGroup,
-	Intent,
-	Tag,
-	Tooltip
 } from '@blueprintjs/core'
 
-import { FieldProps } from 'formik'
-import React from 'react'
 
 export const makeFormikInput = (formGroupProps: IFormGroupProps = {}) =>
 		(inputProps?: IInputGroupProps & HTMLInputProps) =>

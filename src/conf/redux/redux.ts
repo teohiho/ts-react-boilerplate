@@ -1,12 +1,11 @@
-import * as LogRocket from 'logrocket'
 import createSagaMiddleware from 'redux-saga'
+import LogRocket from 'logrocket'
 import { applyMiddleware, compose, createStore } from 'redux'
 import { appSaga } from './saga'
 import { createAppReducer } from './reducer'
 import { createBrowserHistory } from 'history'
 import { persistStore } from 'redux-persist'
 import { routerMiddleware } from 'connected-react-router'
-
 
 
 const history = createBrowserHistory()
@@ -23,12 +22,14 @@ const enhancer = composeEnhancers(
   // other store enhancers if any
   applyMiddleware(
 	// Add saga, debug...
-	// LogRocket.reduxMiddleware(),
+	LogRocket.reduxMiddleware(),
 	sagaMiddleware,
 	routerMiddleware(history),
   ),
 )
+
 const preloadedState = {}
+
 function configureStore(onComplete?: Function) {
 	const store = createStore(
 	  createAppReducer(history),
@@ -43,4 +44,5 @@ function configureStore(onComplete?: Function) {
 export {
 	history,
 }
+
 export default configureStore
