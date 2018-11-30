@@ -1,15 +1,16 @@
+import about from './about'
+import auth from './auth'
 import dashboard from './dashboard'
-import idtv from './idtv'
 import moduleUtil from './helper'
 import reduxUtil from 'redux-packaged'
 import setting from './setting'
 
 const app = {
-	setting,
+	about,
+	auth,
 	dashboard,
-	idtv,
+	setting,
 }
-
 
 const route = moduleUtil.getRoute(app)
 const redux = moduleUtil.getRedux(app)

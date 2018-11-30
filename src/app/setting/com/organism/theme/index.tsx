@@ -3,7 +3,6 @@ import redux from '../../../redux/'
 import { compose, pure } from 'recompose'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import { Switch } from '@blueprintjs/core'
 import { TPaletteType } from '../../../redux/initalState'
 import { TRootState } from 'conf/redux/reducer'
 import './index.scss'
@@ -21,12 +20,12 @@ type Props = StoreProps & ActionProps
 
 const SettingView = ({ switchTheme, paletteType }: Props) => (
 	<>
-		<Switch
-			checked={paletteType === 'dark' ? true : false}
-			onChange={switchTheme}
-			className={'switch'}
-			label={'Dark Theme'}
-		/>
+	 	<input
+            name="isGoing"
+            type="checkbox"
+            checked={paletteType === 'dark' ? true : false}
+            onChange={switchTheme} />
+		Dark Theme
 	</>
 )
 

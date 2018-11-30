@@ -554,10 +554,6 @@
   dependencies:
     redux "*"
 
-"@types/seamless-immutable@^7.1.1":
-  version "7.1.2"
-  resolved "https://registry.yarnpkg.com/@types/seamless-immutable/-/seamless-immutable-7.1.2.tgz#024e2375a74d2a228e48c0b5a89db9e67fb3bf0d"
-
 "@types/shelljs@0.7.7":
   version "0.7.7"
   resolved "https://registry.yarnpkg.com/@types/shelljs/-/shelljs-0.7.7.tgz#1f7bfa28947661afea06365db9b1135bbc903ec4"

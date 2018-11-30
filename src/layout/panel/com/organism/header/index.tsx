@@ -1,12 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import { compose } from 'recompose'
-import {
-	H3,
-	H4,
-	H6,
-	Icon,
-} from '@blueprintjs/core'
+
 
 
 type OwnProps = {
@@ -18,9 +13,9 @@ type Props = OwnProps
 const Header = ({ onClose, title }: Props) => (
 	<div className={classnames('u-flex--row', 'u-flex-1', 'p-h-sm', 'p-v-sm', 't-background')} style={{ justifyContent: 'space-between' }}>
 		<div>
-			{title ? <H4 className={classnames('m-b-none')}>{title}</H4> : null}
+			{title ? <h4 className={classnames('m-b-none')}>{title} </h4> : null}
 		</div>
-		{onClose ? <Icon onClick={onClose} icon="cross" className={'icon--close'}/> : null}
+		{onClose ? <h4 onClick={onClose}>Close</h4> : null}
 	</div>
 )
 
