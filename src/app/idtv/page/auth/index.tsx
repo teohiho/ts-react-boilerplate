@@ -1,5 +1,5 @@
 import React from 'react'
-import { addContainer } from 'layout/default/createContainer'
+import { addContainer } from 'layout/default/'
 import { compose } from 'recompose'
 import { FormGroup, InputGroup } from '@blueprintjs/core'
 

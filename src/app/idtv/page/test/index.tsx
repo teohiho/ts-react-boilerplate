@@ -1,7 +1,7 @@
 import axios from 'axios'
 import idtvRedux from '../../redux/index'
 import React from 'react'
-import { addContainer } from 'layout/default/createContainer'
+import { addContainer } from 'layout/default/'
 import { Button } from '@blueprintjs/core'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
