@@ -8,7 +8,7 @@ import { push } from 'connected-react-router'
 import { RouteComponentProps, withRouter } from 'react-router'
 
 
-const style = require('./scss/styles.scss')
+const style = require('./index.scss')
 // Use template
 type Component = ((props: any) => JSX.Element) | ComponentClass<{}, any>
 type Panel = {

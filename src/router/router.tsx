@@ -12,14 +12,14 @@ import {
 } from 'react-router-dom'
 
 
-export const convertRouteComponent = (_concatPath: (path: string) => string) => mapObjIndexed((page: any, key: string) => {
+export const convertRouteComponent = (concatPath: (path: string) => string) => mapObjIndexed((page: any, key: string) => {
 	const AddBreadCrumb = compose(
 		// TODO: Error with connect will force re-rendering and cause error on tab
 	)(page.component)
 	return (
 		<Route
 			{...page}
-			path={_concatPath(page.path)}
+			path={concatPath(page.path)}
 			key={key}
 			component={AddBreadCrumb}
 		/>

@@ -1,9 +1,9 @@
 import * as R from 'ramda'
 import app from 'app/'
+import DashboardBluePrint from 'layout/default/'
 import React from 'react'
 import { concatPath } from '../util/route'
 import { convertRouteComponent } from './router'
-import { DashboardBluePrint } from 'layout/default/layoutDefault'
 import { RouteComponentProps, Switch } from 'react-router'
 
 

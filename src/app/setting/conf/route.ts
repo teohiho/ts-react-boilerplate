@@ -1,6 +1,6 @@
 import { SettingPage } from '../page/setting'
 
-export const route = {
+export default {
 	setting: {
 		path: '/setting',
 		component: SettingPage,

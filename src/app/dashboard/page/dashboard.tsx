@@ -1,5 +1,5 @@
 import React from 'react'
-import { addBreadcrumb, addContainer } from 'layout/default/createContainer'
+import { addBreadcrumb, addContainer } from 'layout/default/'
 import { compose, pure } from 'recompose'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'

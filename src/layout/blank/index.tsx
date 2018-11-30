@@ -1,10 +1,10 @@
 import classnames from 'classnames'
 import React from 'react'
-import { compose, onlyUpdateForKeys, pure } from 'recompose'
-import { RouteComponentProps, Switch } from 'react-router'
+import { compose, pure } from 'recompose'
+import { Switch } from 'react-router'
 
 
-const styles = require('./scss/style.scss')
+const styles = require('./index.scss')
 
 
 // TYPE 1ST
