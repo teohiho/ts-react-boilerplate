@@ -1,5 +1,6 @@
 import classnames from 'classnames'
 import React, { memo } from 'react'
+import Sidebar from '../com/molecule/sidebar'
 import tiflRedux from '../redux/index'
 import { addContainer } from 'layout/default/createContainer'
 import { compose, pure } from 'recompose'
@@ -16,6 +17,7 @@ type Props = ActionProps
 const LoginView = ({ login }: Props) => {
 	return (
 		<div className={classnames(style.card, `${style.card}__image`, 't-background3', 'u-flex--1', 'u-flex--center')}>
+			<Sidebar />
 			<button
 				type="submit"
 				className={classnames(`${style.card}__btn`, 'm-t-md', 'u-flex--center')}

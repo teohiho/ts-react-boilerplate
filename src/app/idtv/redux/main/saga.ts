@@ -17,23 +17,23 @@ function* startQuery(action: ActionIdtvType<'START_QUERY'>) {
 	console.log('Life is good')
 	const data =  yield all([
 		// @TODO: Should be use action function.
-		yield put({
+		put({
 			type: '@@app/PCPNAME/QUERY',
 			payload: {},
 		}),
-		yield put({
+		put({
 			type: '@@app/PCPREGIONNAME/QUERY',
 			payload: {},
 		}),
-		yield put({
+		put({
 			type: '@@app/PCPGROUPNAME/QUERY',
 			payload: {},
 		}),
-		yield put({
+		put({
 			type: '@@app/SERVICETYPE/QUERY',
 			payload: {},
 		}),
-		yield put({
+		put({
 			type: '@@app/PCPPRIMARYSPECIALTY/QUERY',
 			payload: {},
 		}),
