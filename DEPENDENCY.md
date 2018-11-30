@@ -7,7 +7,7 @@ Everytime an dependency is added, the reason for adding it should be written dow
 ### Component
 [**@blueprintjs**](https://blueprintjs.com/)
 
-	The core framework UI including basic component
+	The core framework UI including basic components
 
 [**recompose**](https://github.com/acdlite/recompose)
 
@@ -29,7 +29,7 @@ Everytime an dependency is added, the reason for adding it should be written dow
 
 [**react-vega**/ **vega**]
 
-	Draw chart for React(**Warning**: It's not supporting Typescript now, we're using it without type)
+	Draw charts for React(**Warning**: It's not supporting Typescript now, we're using it without type)
 
 
 
@@ -39,11 +39,11 @@ Everytime an dependency is added, the reason for adding it should be written dow
 
 [**immer**](https://github.com/mweststrate/immer)
 
-	Like immutable but no API using
+	Like immutable but without API
 
 [**redux-packaged**](https://github.com/tomzaku/redux-packaged)
 
-	Wrappable redux (Writed for purpose Component Base Architecture)
+	Wrappable redux (Writed for purposing: Component Base Architecture)
 
 [**redux-saga**](https://redux-saga.js.org/docs/introduction/BeginnerTutorial.html)
 
@@ -61,7 +61,7 @@ Everytime an dependency is added, the reason for adding it should be written dow
 
 	Add router state in redux
 
-[**seamless-immutable**]
+[**seamless-immutable**]() **Deprecated
 
 	Will remove this packaged in the next version, replaced by immer
 
